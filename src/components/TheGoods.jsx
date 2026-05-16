@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, ShoppingBag } from 'lucide-react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const produce = [
   {
@@ -127,7 +128,9 @@ const ProduceCard = ({ item, index }) => (
   </motion.div>
 );
 
-const TheGoods = () => (
+const TheGoods = () => {
+  const isMobile = useIsMobile();
+  return (
   <section id="goods" className="section" style={{ background: '#0A0A0A' }}>
     <div className="container">
       {/* Header */}
@@ -189,10 +192,10 @@ const TheGoods = () => (
           background: 'linear-gradient(135deg, #111 0%, #1A1A0D 100%)',
           border: '1px solid rgba(227,123,40,0.2)',
           borderRadius: '2rem',
-          padding: '3.5rem',
+          padding: isMobile ? '2rem 1.5rem' : '3.5rem',
           display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: '3rem',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr auto',
+          gap: isMobile ? '2rem' : '3rem',
           alignItems: 'center'
         }}
       >
@@ -261,6 +264,7 @@ const TheGoods = () => (
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default TheGoods;

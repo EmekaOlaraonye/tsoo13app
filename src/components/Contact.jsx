@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle, Phone } from 'lucide-react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const InstagramIcon = ({ size = 18, color = 'currentColor' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -11,6 +12,7 @@ const InstagramIcon = ({ size = 18, color = 'currentColor' }) => (
 );
 
 const Contact = () => {
+  const isMobile = useIsMobile();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', interest: '', message: '' });
 
@@ -65,7 +67,7 @@ const Contact = () => {
       }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6rem', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '3rem' : '6rem', alignItems: 'start' }}>
 
           {/* Left: Copy */}
           <motion.div

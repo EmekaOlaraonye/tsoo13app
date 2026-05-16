@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const InstagramIcon = ({ size = 16, color = 'currentColor' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -8,7 +9,9 @@ const InstagramIcon = ({ size = 16, color = 'currentColor' }) => (
   </svg>
 );
 
-const Footer = () => (
+const Footer = () => {
+  const isMobile = useIsMobile();
+  return (
   <footer style={{
     background: '#050505',
     borderTop: '1px solid rgba(255,255,255,0.06)',
@@ -17,8 +20,9 @@ const Footer = () => (
     <div className="container">
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '1fr auto 1fr',
+        gridTemplateColumns: isMobile ? '1fr' : '1fr auto 1fr',
         alignItems: 'center',
+        textAlign: isMobile ? 'center' : 'left',
         marginBottom: '3rem',
         gap: '2rem'
       }}>
@@ -49,7 +53,7 @@ const Footer = () => (
         </div>
 
         {/* Right: Social + hashtag */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: isMobile ? 'center' : 'flex-end', gap: '1rem' }}>
           <a
             href="https://www.instagram.com/_13way_/"
             target="_blank"
@@ -84,7 +88,7 @@ const Footer = () => (
       <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1.5rem' }} />
 
       {/* Bottom bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+      <div style={{ display: 'flex', justifyContent: isMobile ? 'center' : 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', textAlign: 'center' }}>
         <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.75rem' }}>
           © 2025 13WAY · Formerly Tsoo...13 · All rights reserved
         </p>
@@ -94,6 +98,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

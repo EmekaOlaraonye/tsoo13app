@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, ExternalLink, X } from 'lucide-react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const wins = [
   {
@@ -49,7 +50,7 @@ const wins = [
   }
 ];
 
-const WinCard = ({ item, onOpen }) => {
+const WinCard = ({ item, onOpen, isMobile }) => {
   const isClickable = item.type === 'highlight' || item.type === 'movement';
 
   return (
@@ -68,7 +69,7 @@ const WinCard = ({ item, onOpen }) => {
         background: item.bg,
         position: 'relative',
         overflow: 'hidden',
-        gridColumn: item.large ? 'span 2' : 'span 1',
+        gridColumn: (!isMobile && item.large) ? 'span 2' : 'span 1',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -217,6 +218,7 @@ const Modal = ({ item, onClose }) => (
 );
 
 const TheWins = () => {
+  const isMobile = useIsMobile();
   const [modal, setModal] = useState(null);
 
   return (
@@ -243,9 +245,9 @@ const TheWins = () => {
           </h2>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: '1.5rem' }}>
           {wins.map(item => (
-            <WinCard key={item.id} item={item} onOpen={setModal} />
+            <WinCard key={item.id} item={item} onOpen={setModal} isMobile={isMobile} />
           ))}
         </div>
       </div>
