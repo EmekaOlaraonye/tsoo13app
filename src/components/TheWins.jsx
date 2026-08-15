@@ -10,7 +10,7 @@ const wins = [
     category: 'Innovation',
     title: 'Smart Hands,\nSmarter Farming.',
     body: '"Boer maak \'n plan" and we couldn\'t agree more. Innovation that grows right alongside our tomatoes — in the greenhouse, in the strategy, in the supply chain.',
-    hashtags: ['#innovationinthefield', '#smartfarming', '#13way'],
+    hashtags: ['#innovationinthefield', '#smartfarming', '#tsoo13'],
     accent: 'var(--color-sunburst-orange)',
     bg: 'linear-gradient(135deg, rgba(227,123,40,0.15) 0%, rgba(58,82,40,0.15) 100%)',
     large: true
@@ -21,7 +21,7 @@ const wins = [
     category: 'Credential',
     title: 'MCW Leadership',
     subtitle: 'Management College of Warsaw',
-    body: 'Building leaders who build things. The 13Way approach to farming is backed by world-class leadership training.',
+    body: 'Building leaders who build things. The TSOO13 approach to farming is backed by world-class leadership training.',
     accent: 'var(--color-golden-yellow)',
     bg: '#121212',
     large: false

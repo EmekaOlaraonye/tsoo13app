@@ -11,7 +11,7 @@ const InstagramIcon = ({ size = 18, color = 'currentColor' }) => (
   </svg>
 );
 
-const Contact = () => {
+const ContactUs = () => {
   const isMobile = useIsMobile();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', interest: '', message: '' });
@@ -267,4 +267,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactUs;

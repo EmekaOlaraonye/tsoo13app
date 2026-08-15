@@ -122,7 +122,7 @@ const Hero = () => {
           background: 'var(--color-sunburst-orange)',
           display: 'inline-block'
         }} />
-        FORMERLY TSOO...13 &nbsp;→&nbsp; NOW 13WAY
+        FORMERLY 13WAY &nbsp;→&nbsp; NOW TSOO13
       </motion.div>
 
       {/* Main heading */}
@@ -141,7 +141,7 @@ const Hero = () => {
             textShadow: '0 0 80px rgba(227,123,40,0.25)',
           }}
         >
-          13WAY
+          TSOO13
         </motion.h1>
 
         <motion.div

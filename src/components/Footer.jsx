@@ -45,7 +45,7 @@ const Footer = () => {
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
           }}>
-            13WAY
+            TSOO13
           </p>
           <p style={{ color: 'var(--color-sunburst-orange)', fontSize: '0.7rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginTop: '0.25rem' }}>
             Mookane Village · Botswana
@@ -90,7 +90,7 @@ const Footer = () => {
       {/* Bottom bar */}
       <div style={{ display: 'flex', justifyContent: isMobile ? 'center' : 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', textAlign: 'center' }}>
         <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.75rem' }}>
-          © 2025 13WAY · Formerly Tsoo...13 · All rights reserved
+          © 2025 TSOO13 · Formerly 13WAY · All rights reserved
         </p>
         <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.75rem' }}>
           Home grown. Hand picked quality. Always reliable.

@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile } from '../hooks/useIsMobile';
 
-const links = ['Journey', 'Wins', 'Goods', 'Contact'];
+const links = [
+  { label: 'Journey', href: '/#journey' },
+  { label: 'Wins', href: '/#wins' },
+  { label: 'Goods', href: '/#goods' },
+  { label: 'News', href: '/news' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Contact Us', href: '/contact-us' },
+];
 
 const Navbar = () => {
   const isMobile = useIsMobile(768);
@@ -38,14 +46,15 @@ const Navbar = () => {
           backdropFilter: 'blur(4px)'
         }}
       >
-        <span style={{
+        <Link to="/" style={{
           fontFamily: 'Anton, sans-serif',
           fontSize: '1.5rem',
           textTransform: 'uppercase',
-          color: 'var(--color-golden-yellow)'
+          color: 'var(--color-golden-yellow)',
+          textDecoration: 'none'
         }}>
-          13WAY
-        </span>
+          TSOO13
+        </Link>
 
         {isMobile ? (
           /* Hamburger button */
@@ -89,15 +98,27 @@ const Navbar = () => {
           /* Desktop nav links */
           <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
             {links.map(link => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                style={linkStyle}
-                onMouseEnter={e => e.target.style.color = 'var(--color-golden-yellow)'}
-                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.7)'}
-              >
-                {link}
-              </a>
+              link.href.startsWith('/#') ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  style={linkStyle}
+                  onMouseEnter={e => e.target.style.color = 'var(--color-golden-yellow)'}
+                  onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.7)'}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  style={linkStyle}
+                  onMouseEnter={e => e.target.style.color = 'var(--color-golden-yellow)'}
+                  onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.7)'}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
         )}
@@ -124,28 +145,50 @@ const Navbar = () => {
               gap: '2.5rem',
             }}
           >
-            {links.map((link, i) => (
-              <motion.a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.07, duration: 0.4 }}
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  fontFamily: 'Anton, sans-serif',
-                  fontSize: 'clamp(2.5rem, 12vw, 4rem)',
-                  textTransform: 'uppercase',
-                  color: 'white',
-                  textDecoration: 'none',
-                  letterSpacing: '0.05em',
-                }}
-                onMouseEnter={e => e.target.style.color = 'var(--color-golden-yellow)'}
-                onMouseLeave={e => e.target.style.color = 'white'}
-              >
-                {link}
-              </motion.a>
-            ))}
+            {links.map((link, i) => {
+              const itemStyle = {
+                fontFamily: 'Anton, sans-serif',
+                fontSize: 'clamp(2.5rem, 12vw, 4rem)',
+                textTransform: 'uppercase',
+                color: 'white',
+                textDecoration: 'none',
+                letterSpacing: '0.05em',
+              };
+              const hoverHandlers = {
+                onMouseEnter: e => e.target.style.color = 'var(--color-golden-yellow)',
+                onMouseLeave: e => e.target.style.color = 'white',
+              };
+              return link.href.startsWith('/#') ? (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.07, duration: 0.4 }}
+                  onClick={() => setMenuOpen(false)}
+                  style={itemStyle}
+                  {...hoverHandlers}
+                >
+                  {link.label}
+                </motion.a>
+              ) : (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.07, duration: 0.4 }}
+                >
+                  <Link
+                    to={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    style={itemStyle}
+                    {...hoverHandlers}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              );
+            })}
             <p style={{ color: 'var(--color-sunburst-orange)', fontSize: '0.8rem', letterSpacing: '0.2em', marginTop: '1rem' }}>
               #AskFor13
             </p>

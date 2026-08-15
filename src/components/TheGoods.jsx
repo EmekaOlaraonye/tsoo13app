@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { MapPin, ShoppingBag } from 'lucide-react';
 import { useIsMobile } from '../hooks/useIsMobile';
 
@@ -237,30 +238,32 @@ const TheGoods = () => {
           </div>
         </div>
 
-        <motion.a
-          href="#contact"
-          whileHover={{ scale: 1.04, backgroundColor: 'var(--color-golden-yellow)' }}
-          whileTap={{ scale: 0.97 }}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.7rem',
-            background: 'var(--color-sunburst-orange)',
-            color: 'white',
-            padding: '1rem 2rem',
-            borderRadius: '0.75rem',
-            fontFamily: 'Anton, sans-serif',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            fontSize: '0.9rem',
-            textDecoration: 'none',
-            whiteSpace: 'nowrap',
-            transition: 'all 0.3s ease'
-          }}
-        >
-          <ShoppingBag size={18} />
-          Order Direct
-        </motion.a>
+        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+          <Link
+            to="/contact-us"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.7rem',
+              background: 'var(--color-sunburst-orange)',
+              color: 'white',
+              padding: '1rem 2rem',
+              borderRadius: '0.75rem',
+              fontFamily: 'Anton, sans-serif',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              fontSize: '0.9rem',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--color-golden-yellow)'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = 'var(--color-sunburst-orange)'}
+          >
+            <ShoppingBag size={18} />
+            Order Direct
+          </Link>
+        </motion.div>
       </motion.div>
     </div>
   </section>
