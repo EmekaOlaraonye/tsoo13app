@@ -222,8 +222,22 @@ const TheWins = () => {
   const [modal, setModal] = useState(null);
 
   return (
-    <section id="wins" className="section" style={{ background: 'linear-gradient(to bottom, #0A0A0A, #0D1A0A, #0A0A0A)' }}>
-      <div className="container">
+    <section id="wins" className="section" style={{ background: 'var(--color-moss-green)', position: 'relative', overflow: 'hidden' }}>
+      {/* Decorative glows */}
+      <div style={{
+        position: 'absolute', top: '-80px', right: '-80px',
+        width: '450px', height: '450px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(253,184,19,0.12), transparent)',
+        pointerEvents: 'none'
+      }} />
+      <div style={{
+        position: 'absolute', bottom: '-100px', left: '-100px',
+        width: '500px', height: '500px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(227,123,40,0.08), transparent)',
+        pointerEvents: 'none'
+      }} />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

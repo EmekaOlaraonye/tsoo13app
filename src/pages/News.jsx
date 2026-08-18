@@ -179,8 +179,27 @@ const NewsCard = ({ item, index, isMobile }) => (
 const News = () => {
   const isMobile = useIsMobile();
   return (
-    <section className="section" style={{ background: '#0A0A0A', paddingTop: isMobile ? '9rem' : '11rem' }}>
-      <div className="container">
+    <section className="section" style={{
+      background: 'var(--color-moss-green)',
+      position: 'relative',
+      overflow: 'hidden',
+      paddingTop: isMobile ? '9rem' : '11rem'
+    }}>
+      {/* Decorative glows */}
+      <div style={{
+        position: 'absolute', top: '-80px', right: '-80px',
+        width: '450px', height: '450px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(253,184,19,0.12), transparent)',
+        pointerEvents: 'none'
+      }} />
+      <div style={{
+        position: 'absolute', bottom: '-100px', left: '-100px',
+        width: '500px', height: '500px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(227,123,40,0.08), transparent)',
+        pointerEvents: 'none'
+      }} />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

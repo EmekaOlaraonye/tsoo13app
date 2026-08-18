@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile } from '../hooks/useIsMobile';
+import logo from '../assets/tsoo13.png';
 
 const links = [
-  { label: 'Journey', href: '/#journey' },
-  { label: 'Wins', href: '/#wins' },
-  { label: 'Goods', href: '/#goods' },
+  { label: 'Journey', href: '/journey' },
+  { label: 'Wins', href: '/wins' },
+  { label: 'Goods', href: '/goods' },
   { label: 'News', href: '/news' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact Us', href: '/contact-us' },
@@ -46,14 +47,8 @@ const Navbar = () => {
           backdropFilter: 'blur(4px)'
         }}
       >
-        <Link to="/" style={{
-          fontFamily: 'Anton, sans-serif',
-          fontSize: '1.5rem',
-          textTransform: 'uppercase',
-          color: 'var(--color-golden-yellow)',
-          textDecoration: 'none'
-        }}>
-          TSOO13
+        <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={logo} alt="TSOO13" style={{ height: '130px', width: 'auto', display: 'block', margin: '-35px 0' }} />
         </Link>
 
         {isMobile ? (

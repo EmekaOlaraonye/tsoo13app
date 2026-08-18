@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const taglines = [
   'farming.creating.growing.',
@@ -174,53 +175,36 @@ const Hero = () => {
           </p>
         </motion.div>
 
-        <motion.a
-          href="#journey"
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.7 }}
-          whileHover={{ scale: 1.04, backgroundColor: 'var(--color-golden-yellow)' }}
+          whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          style={{
-            display: 'inline-block',
-            marginTop: '2.5rem',
-            padding: '0.9rem 2.4rem',
-            background: 'var(--color-sunburst-orange)',
-            color: 'white',
-            fontFamily: 'Anton, sans-serif',
-            fontSize: '0.9rem',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            borderRadius: '0.5rem',
-            transition: 'all 0.3s ease',
-            textDecoration: 'none'
-          }}
+          transition={{ delay: 1.1, duration: 0.7 }}
+          style={{ display: 'inline-block', marginTop: '2.5rem' }}
         >
-          #AskFor13
-        </motion.a>
+          <Link
+            to="/journey"
+            style={{
+              display: 'inline-block',
+              padding: '0.9rem 2.4rem',
+              background: 'var(--color-sunburst-orange)',
+              color: 'white',
+              fontFamily: 'Anton, sans-serif',
+              fontSize: '0.9rem',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              borderRadius: '0.5rem',
+              transition: 'all 0.3s ease',
+              textDecoration: 'none'
+            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--color-golden-yellow)'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = 'var(--color-sunburst-orange)'}
+          >
+            #AskFor13
+          </Link>
+        </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2.2 }}
-        style={{
-          position: 'absolute',
-          bottom: '4rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '0.4rem'
-        }}
-      >
-        <span style={{ fontSize: '0.65rem', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase' }}>
-          Scroll
-        </span>
-        <div style={{ width: '1px', height: '50px', background: 'linear-gradient(to bottom, rgba(227,123,40,0.8), transparent)' }} />
-      </motion.div>
 
       {/* Ticker */}
       <Ticker />

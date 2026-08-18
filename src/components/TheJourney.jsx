@@ -208,9 +208,23 @@ const TheJourney = () => {
   }, []);
 
   return (
-    <section id="journey" style={{ background: 'var(--color-black)', position: 'relative' }}>
+    <section id="journey" style={{ background: 'var(--color-moss-green)', position: 'relative', overflow: 'hidden' }}>
+      {/* Decorative glows */}
+      <div style={{
+        position: 'absolute', top: '-80px', right: '-80px',
+        width: '450px', height: '450px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(253,184,19,0.12), transparent)',
+        pointerEvents: 'none'
+      }} />
+      <div style={{
+        position: 'absolute', bottom: '-100px', left: '-100px',
+        width: '500px', height: '500px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(227,123,40,0.08), transparent)',
+        pointerEvents: 'none'
+      }} />
+
       {/* Section header */}
-      <div className="container" style={{ paddingTop: isMobile ? '5rem' : '8rem' }}>
+      <div className="container" style={{ paddingTop: isMobile ? '9rem' : '11rem', position: 'relative', zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -260,7 +274,7 @@ const TheJourney = () => {
         </div>
       )}
 
-      <div className="container">
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {chapters.map((chapter, i) => (
           <ChapterCard key={chapter.id} chapter={chapter} index={i} isMobile={isMobile} />
         ))}
