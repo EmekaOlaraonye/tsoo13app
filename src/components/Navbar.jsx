@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile } from '../hooks/useIsMobile';
 import logo from '../assets/tsoo13.png';
@@ -16,16 +16,7 @@ const links = [
 const Navbar = () => {
   const isMobile = useIsMobile(768);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const linkStyle = {
-    fontSize: '0.85rem',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    textTransform: 'uppercase',
-    color: 'rgba(255,255,255,0.7)',
-    transition: 'color 0.3s',
-    textDecoration: 'none',
-  };
+  const location = useLocation();
 
   return (
     <>
@@ -92,29 +83,29 @@ const Navbar = () => {
         ) : (
           /* Desktop nav links */
           <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-            {links.map(link => (
-              link.href.startsWith('/#') ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  style={linkStyle}
-                  onMouseEnter={e => e.target.style.color = 'var(--color-golden-yellow)'}
-                  onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.7)'}
-                >
-                  {link.label}
-                </a>
-              ) : (
+            {links.map(link => {
+              const active = location.pathname === link.href;
+              const restColor = active ? 'var(--color-golden-yellow)' : 'rgba(255,255,255,0.7)';
+              return (
                 <Link
                   key={link.label}
                   to={link.href}
-                  style={linkStyle}
+                  style={{
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: restColor,
+                    transition: 'color 0.3s',
+                    textDecoration: 'none',
+                  }}
                   onMouseEnter={e => e.target.style.color = 'var(--color-golden-yellow)'}
-                  onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.7)'}
+                  onMouseLeave={e => e.target.style.color = restColor}
                 >
                   {link.label}
                 </Link>
-              )
-            ))}
+              );
+            })}
           </div>
         )}
       </motion.nav>
@@ -141,32 +132,9 @@ const Navbar = () => {
             }}
           >
             {links.map((link, i) => {
-              const itemStyle = {
-                fontFamily: 'Anton, sans-serif',
-                fontSize: 'clamp(2.5rem, 12vw, 4rem)',
-                textTransform: 'uppercase',
-                color: 'white',
-                textDecoration: 'none',
-                letterSpacing: '0.05em',
-              };
-              const hoverHandlers = {
-                onMouseEnter: e => e.target.style.color = 'var(--color-golden-yellow)',
-                onMouseLeave: e => e.target.style.color = 'white',
-              };
-              return link.href.startsWith('/#') ? (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.07, duration: 0.4 }}
-                  onClick={() => setMenuOpen(false)}
-                  style={itemStyle}
-                  {...hoverHandlers}
-                >
-                  {link.label}
-                </motion.a>
-              ) : (
+              const active = location.pathname === link.href;
+              const restColor = active ? 'var(--color-golden-yellow)' : 'white';
+              return (
                 <motion.div
                   key={link.label}
                   initial={{ opacity: 0, y: 20 }}
@@ -176,8 +144,16 @@ const Navbar = () => {
                   <Link
                     to={link.href}
                     onClick={() => setMenuOpen(false)}
-                    style={itemStyle}
-                    {...hoverHandlers}
+                    style={{
+                      fontFamily: 'Anton, sans-serif',
+                      fontSize: 'clamp(2.5rem, 12vw, 4rem)',
+                      textTransform: 'uppercase',
+                      color: restColor,
+                      textDecoration: 'none',
+                      letterSpacing: '0.05em',
+                    }}
+                    onMouseEnter={e => e.target.style.color = 'var(--color-golden-yellow)'}
+                    onMouseLeave={e => e.target.style.color = restColor}
                   >
                     {link.label}
                   </Link>

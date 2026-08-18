@@ -241,8 +241,7 @@ const TheJourney = () => {
             lineHeight: 0.88,
             color: 'var(--color-white)'
           }}>
-            THE 13<br />
-            <span style={{ color: 'var(--color-moss-green)', WebkitTextStroke: '1px var(--color-sunburst-orange)' }}>WAY.</span>
+            TSOO<span style={{ color: 'var(--color-sunburst-orange)' }}>13</span>
           </h2>
         </motion.div>
       </div>
