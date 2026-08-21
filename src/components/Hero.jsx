@@ -104,14 +104,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, delay: 0.2, ease }}
           >
-            <span
-              className="blob blob--yellow"
-              style={{ width: 118, height: 118, top: -34, left: -34, zIndex: 2 }}
-            />
-            <span
-              className="blob blob--lime"
-              style={{ width: 62, height: 62, bottom: 46, left: -26, zIndex: 2 }}
-            />
+            <span className="blob blob--yellow hero__dot hero__dot--a" />
+            <span className="blob blob--lime hero__dot hero__dot--b" />
 
             <div className="hero__frame">
               <img

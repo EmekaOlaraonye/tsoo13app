@@ -153,7 +153,7 @@ const TheJourney = ({ standalone = false }) => {
           eyebrow="The journey"
           dot="var(--c-lime)"
           title={<>How we got <span className="t-red">from there</span> to here.</>}
-          lede="Five stops. Hover any photograph to open the chapter."
+          lede="Five stops, from one plot of soil to a name people ask for."
         />
 
         <div className="tl" ref={railRef}>
