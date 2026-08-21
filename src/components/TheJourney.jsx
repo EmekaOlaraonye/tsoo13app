@@ -1,282 +1,176 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useIsMobile } from '../hooks/useIsMobile';
+import { useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import Reveal from './ui/Reveal';
+import SectionHead from './ui/SectionHead';
+import { Blob } from './ui/Blobs';
+import { Plus, Arrow } from './ui/Icons';
 
-const chapters = [
+/**
+ * Origin -> Evolution -> Growth -> Today -> What's next.
+ * Farming is step one of the story, not the identity of the brand.
+ */
+const steps = [
   {
     id: 'origin',
-    label: 'Origin',
-    eyebrow: 'The Beginning',
-    heading: 'FROM OUR\nFAMILY\nTO YOURS.',
-    body: 'It started with soil in Mookane Village and a simple belief: Botswana deserved better tomatoes. We called it Tsoo...13 — a family operation, hand-picked, honest. That name carried everything we believed in.',
-    quote: '"farming.creating.growing."',
+    stage: 'Origin',
+    year: '01',
+    title: 'It started\nwith farming.',
+    line: 'One plot of soil in Mookane Village and a family name on the box.',
+    reveal: 'Tsoo...13 — "from our family to yours". No warehouse, no logo, no plan beyond growing something people would come back for.',
+    tags: ['Mookane Village', 'Family run'],
     image: '/hero.png',
-    accent: 'var(--color-sunburst-orange)'
+    alt: 'Early morning inside the greenhouse at Mookane Village',
+    color: 'var(--c-lime)',
+    soft: 'var(--c-lime-soft)',
+    ink: true,
   },
   {
     id: 'adapt',
-    label: 'Adapt',
-    eyebrow: 'The Hustle',
-    heading: 'NOT ALL\nSEEDLINGS\nSURVIVE.',
-    body: 'When we lost seedlings, we didn\'t stop. We turned to cuttings — no seeds, just stems, roots, and care. Those cuttings flowered faster than the parent plant. Different start. Same 13 quality.',
-    quote: '"Boer maak \'n plan." — so do we.',
+    stage: 'Evolution',
+    year: '02',
+    title: 'The seedlings\ndidn’t make it.',
+    line: 'So we stopped buying seeds and started growing from cuttings.',
+    reveal: 'Stems, roots and patience instead. The cuttings flowered faster than the parent plant. Different start, same 13 quality — that became the way we solve everything.',
+    tags: ['Cuttings over seeds', 'Boer maak ’n plan'],
     image: '/cuttings.png',
-    accent: 'var(--color-golden-yellow)'
-  },
-  {
-    id: 'evolve',
-    label: 'Evolve',
-    eyebrow: 'The Rebrand',
-    heading: 'SAME SOIL.\nBIGGER\nVISION.',
-    body: 'Tsoo...13 grew into 13WAY. The name changed, the mission got sharper. Smart hands, smarter farming. Innovation growing right alongside our tomatoes — in the greenhouse, in the market, in the city.',
-    quote: '"Smart hands, smarter farming."',
-    image: '/tomatoes.png',
-    accent: '#4A7C2F'
+    alt: 'A tomato cutting rooting in a pot inside the greenhouse',
+    color: 'var(--c-yellow)',
+    soft: 'var(--c-yellow-soft)',
+    ink: true,
   },
   {
     id: 'reach',
-    label: 'Reach',
-    eyebrow: 'The Distribution',
-    heading: 'GABORONE\nASKED.\nWE SHOWED UP.',
-    body: 'Now on shelves at Food Lover\'s SquareMart and SuperSpar Acacia. Ask for it by name. A tomato a day keeps the flavour here to stay.',
-    quote: '"Taste the difference. #AskFor13"',
+    stage: 'Growth',
+    year: '03',
+    title: 'Then the city\ncalled.',
+    line: 'Gaborone asked for it. We packed crates and showed up.',
+    reveal: 'Food Lover’s SquareMart first, then SuperSpar Acacia. The bags went out stamped with a number instead of a brand — and people started asking for it by that number.',
+    tags: ['Food Lover’s SquareMart', 'SuperSpar Acacia'],
     image: '/tomatoes.png',
-    accent: 'var(--color-sunburst-orange)'
-  }
+    alt: 'Crates of Tsoo...13 tomatoes stacked at market',
+    color: 'var(--c-red)',
+    soft: 'var(--c-red-soft)',
+  },
+  {
+    id: 'today',
+    stage: 'Today',
+    year: '04',
+    title: 'One name.\nSharper vision.',
+    line: 'We came back to the name that meant family, and built a company around it.',
+    reveal: 'Tsoo...13 is a young team running growing, packing, brand and distribution ourselves — backed by leadership training from MCW and Aspire Leaders.',
+    tags: ['Youth run', 'Smart hands, smarter farming'],
+    image: '/lifestyle.png',
+    alt: 'The Tsoo...13 operation today',
+    color: 'var(--c-green-lt)',
+    soft: 'var(--c-green-soft)',
+  },
+  {
+    id: 'next',
+    stage: 'What’s next',
+    year: '05',
+    title: 'We’re not\ndone growing.',
+    line: 'More crops, more shelves, more young people running the show.',
+    reveal: 'The plan: widen the range beyond tomatoes, reach every major retailer in Botswana, and prove a company this young can be the one everybody asks for by name.',
+    tags: ['New crops', 'National reach'],
+    image: '/tomatoes.png',
+    alt: 'Fresh produce ready to move',
+    color: 'var(--c-red-deep)',
+    soft: 'var(--c-red-soft)',
+  },
 ];
 
-const ChapterCard = ({ chapter, index, isMobile }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ['5%', '-5%']);
-  const isEven = index % 2 === 0;
+const Step = ({ step, index }) => {
+  const side = index % 2 === 0 ? 'left' : 'right';
 
   return (
-    <div
-      ref={ref}
-      id={chapter.id}
-      style={{ minHeight: isMobile ? 'auto' : '90vh', display: 'flex', alignItems: 'center', padding: isMobile ? '3rem 0' : '6rem 0' }}
+    <Reveal
+      className={`tl__step tl__step--${side}`}
+      style={{ '--step': step.color, '--step-soft': step.soft }}
+      delay={0.05}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, margin: '-10%' }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-          gap: isMobile ? '2rem' : '5rem',
-          alignItems: 'center',
-          width: '100%'
-        }}
-      >
-        {/* Image side — always top on mobile */}
-        <div
-          style={{
-            order: isMobile ? 1 : isEven ? 2 : 1,
-            height: isMobile ? '240px' : 'clamp(380px, 55vh, 560px)',
-            borderRadius: '1.5rem',
-            overflow: 'hidden',
-            position: 'relative',
-          }}
-        >
-          <div style={{
-            position: 'absolute',
-            inset: '-2px',
-            borderRadius: '1.5rem',
-            background: `linear-gradient(135deg, ${chapter.accent}40, transparent)`,
-            zIndex: 1,
-            pointerEvents: 'none'
-          }} />
-          <motion.img
-            style={{ y: isMobile ? 0 : imgY, width: '100%', height: isMobile ? '100%' : '110%', objectFit: 'cover', objectPosition: 'center', marginTop: isMobile ? 0 : '-5%' }}
-            src={chapter.image}
-            alt={chapter.label}
-          />
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            background: `linear-gradient(to top, ${chapter.accent}20 0%, transparent 50%)`,
-            pointerEvents: 'none'
-          }} />
-          <div style={{
-            position: 'absolute',
-            bottom: '1.5rem',
-            left: '1.5rem',
-            zIndex: 2,
-            background: 'rgba(10,10,10,0.75)',
-            backdropFilter: 'blur(8px)',
-            border: `1px solid ${chapter.accent}50`,
-            borderRadius: '0.5rem',
-            padding: '0.4rem 0.9rem',
-            fontFamily: 'Anton, sans-serif',
-            fontSize: '0.75rem',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color: chapter.accent
-          }}>
-            {chapter.label}
-          </div>
-        </div>
+      <span className="tl__connector" aria-hidden="true" />
 
-        {/* Text side */}
-        <div style={{ order: isMobile ? 2 : isEven ? 1 : 2 }}>
-          <motion.p
-            initial={{ opacity: 0, x: isEven ? -20 : 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            style={{
-              fontSize: '0.75rem',
-              fontWeight: 700,
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-              color: chapter.accent,
-              marginBottom: '1.2rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem'
-            }}
-          >
-            <span style={{ fontFamily: 'Anton, sans-serif', fontSize: '1.4rem', opacity: 0.25 }}>
-              0{index + 1}
+      <span className="tl__node" style={{ color: step.ink ? 'var(--ink)' : 'var(--white)' }}>
+        {step.year}
+      </span>
+
+      <div className="tl__panel">
+        <p className="eyebrow" style={{ '--eyebrow-dot': step.color }}>{step.stage}</p>
+        <p className="tl__year" aria-hidden="true">{step.year}</p>
+        <h3 className="display display--md" style={{ whiteSpace: 'pre-line', margin: '0.4rem 0 0.9rem' }}>
+          {step.title}
+        </h3>
+        <p className="lede" style={{ maxWidth: '32ch', fontSize: '1.02rem' }}>{step.line}</p>
+        <div className="tl__tags" style={{ marginTop: '1.1rem' }}>
+          {step.tags.map((tag) => (
+            <span
+              key={tag}
+              className="chip"
+              style={{ '--chip-bg': step.soft, '--chip-fg': step.ink ? 'var(--ink-2)' : step.color }}
+            >
+              {tag}
             </span>
-            {chapter.eyebrow}
-          </motion.p>
-
-          <h2 style={{
-            fontFamily: 'Anton, sans-serif',
-            fontSize: isMobile ? 'clamp(2.2rem, 11vw, 3.5rem)' : 'clamp(2.8rem, 6vw, 5.5rem)',
-            textTransform: 'uppercase',
-            lineHeight: 0.92,
-            marginBottom: '1.5rem',
-            whiteSpace: 'pre-line',
-            color: 'var(--color-white)'
-          }}>
-            {chapter.heading}
-          </h2>
-
-          <p style={{
-            fontSize: isMobile ? '0.95rem' : '1.1rem',
-            lineHeight: 1.8,
-            color: 'rgba(255,255,255,0.68)',
-            marginBottom: '1.5rem'
-          }}>
-            {chapter.body}
-          </p>
-
-          <div style={{
-            borderLeft: `3px solid ${chapter.accent}`,
-            paddingLeft: '1.25rem',
-          }}>
-            <p style={{
-              fontStyle: 'italic',
-              color: chapter.accent,
-              fontSize: '1rem',
-              fontWeight: 600
-            }}>
-              {chapter.quote}
-            </p>
-          </div>
+          ))}
         </div>
-      </motion.div>
-    </div>
+      </div>
+
+      {/* Hover (or focus) the photograph to open the rest of the chapter */}
+      <div className="tl__media" tabIndex={0} role="group" aria-label={`${step.stage} — ${step.reveal}`}>
+        <img src={step.image} alt={step.alt} loading="lazy" />
+        <span className="tl__media-tint" aria-hidden="true" />
+        <span className="chip chip--float tl__hint" aria-hidden="true">
+          <Plus size={13} /> More
+        </span>
+        <div className="tl__reveal">
+          <p>{step.reveal}</p>
+        </div>
+      </div>
+    </Reveal>
   );
 };
 
-const TheJourney = () => {
-  const isMobile = useIsMobile();
-  const [activeChapter, setActiveChapter] = useState(0);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const idx = chapters.findIndex(c => c.id === entry.target.id);
-            if (idx !== -1) setActiveChapter(idx);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    chapters.forEach(c => {
-      const el = document.getElementById(c.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+const TheJourney = ({ standalone = false }) => {
+  const railRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: railRef,
+    offset: ['start 72%', 'end 60%'],
+  });
+  const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   return (
-    <section id="journey" style={{ background: 'var(--color-moss-green)', position: 'relative', overflow: 'hidden' }}>
-      {/* Decorative glows */}
-      <div style={{
-        position: 'absolute', top: '-80px', right: '-80px',
-        width: '450px', height: '450px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(253,184,19,0.12), transparent)',
-        pointerEvents: 'none'
-      }} />
-      <div style={{
-        position: 'absolute', bottom: '-100px', left: '-100px',
-        width: '500px', height: '500px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(227,123,40,0.08), transparent)',
-        pointerEvents: 'none'
-      }} />
+    <section
+      id="journey"
+      className={`section ${standalone ? 'section--top' : ''}`}
+      style={{ background: 'var(--white)' }}
+    >
+      <Blob color="soft-lime" size={430} top={-150} right="-12%" />
+      <Blob color="soft-red" size={300} bottom="12%" left="-10%" />
+      <Blob color="yellow" size={14} top="18%" left="8%" />
 
-      {/* Section header */}
-      <div className="container" style={{ paddingTop: isMobile ? '9rem' : '11rem', position: 'relative', zIndex: 1 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ marginBottom: '2rem' }}
-        >
-          <p style={{ color: 'var(--color-sunburst-orange)', fontWeight: 700, letterSpacing: '0.22em', fontSize: '0.75rem', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-            Documenting The Journey
-          </p>
-          <h2 style={{
-            fontFamily: 'Anton, sans-serif',
-            fontSize: isMobile ? 'clamp(2.8rem, 14vw, 5rem)' : 'clamp(3rem, 8vw, 7rem)',
-            textTransform: 'uppercase',
-            lineHeight: 0.88,
-            color: 'var(--color-white)'
-          }}>
-            TSOO<span style={{ color: 'var(--color-sunburst-orange)' }}>13</span>
-          </h2>
-        </motion.div>
-      </div>
+      <div className="wrap">
+        <SectionHead
+          eyebrow="The journey"
+          dot="var(--c-lime)"
+          title={<>How we got <span className="t-red">from there</span> to here.</>}
+          lede="Five stops. Hover any photograph to open the chapter."
+        />
 
-      {/* Sticky chapter indicator — desktop only */}
-      {!isMobile && (
-        <div style={{
-          position: 'sticky',
-          top: '50%',
-          float: 'right',
-          marginRight: '2rem',
-          transform: 'translateY(-50%)',
-          zIndex: 20,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.6rem',
-          pointerEvents: 'none'
-        }}>
-          {chapters.map((c, i) => (
-            <div key={c.id} style={{
-              width: i === activeChapter ? '30px' : '10px',
-              height: '2px',
-              background: i === activeChapter ? 'var(--color-sunburst-orange)' : 'rgba(255,255,255,0.2)',
-              borderRadius: '2px',
-              transition: 'all 0.4s ease',
-              marginLeft: 'auto'
-            }} />
+        <div className="tl" ref={railRef}>
+          <div className="tl__rail" aria-hidden="true">
+            <motion.div className="tl__rail-fill" style={{ scaleY: fill }} />
+          </div>
+
+          {steps.map((step, i) => (
+            <Step key={step.id} step={step} index={i} />
           ))}
         </div>
-      )}
 
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        {chapters.map((chapter, i) => (
-          <ChapterCard key={chapter.id} chapter={chapter} index={i} isMobile={isMobile} />
-        ))}
+        <Reveal style={{ textAlign: 'center', marginTop: '1rem' }}>
+          <Link to="/goods" className="btn btn--ink">
+            See what we grow <Arrow size={16} />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

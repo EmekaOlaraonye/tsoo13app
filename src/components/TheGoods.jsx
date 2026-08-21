@@ -1,287 +1,161 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { MapPin, ShoppingBag } from 'lucide-react';
-import { useIsMobile } from '../hooks/useIsMobile';
+import Reveal from './ui/Reveal';
+import SectionHead from './ui/SectionHead';
+import { Blob } from './ui/Blobs';
+import { Arrow, Pin } from './ui/Icons';
+import { RETAILERS } from '../siteConfig';
 
 const produce = [
   {
-    id: 1,
+    id: 'round',
     name: 'Tomatoes',
-    tagline: 'The juiciest tomatoes bursting with flavour.',
-    desc: 'Sun-ripened at Mookane Village. Zero shortcuts. Ask for it by name.',
-    badge: 'HOME GROWN',
+    tagline: 'Juicy, loud, unmistakable.',
+    desc: 'Sun-ripened at Mookane. Zero shortcuts, zero compromise.',
+    badge: 'Home grown',
     image: '/tomatoes.png',
-    accent: '#E85520'
+    color: 'var(--c-red)',
   },
   {
-    id: 2,
-    name: 'Cherry Tomatoes',
-    tagline: 'Tiny. Explosive. Addictive.',
-    desc: 'Small but they carry all the 13 quality you expect.',
-    badge: 'HAND PICKED',
+    id: 'cherry',
+    name: 'Cherry',
+    tagline: 'Tiny. Explosive.',
+    desc: 'Small format, full 13 quality. They rarely make it home whole.',
+    badge: 'Hand picked',
     image: '/cuttings.png',
-    accent: '#F5A623'
+    color: 'var(--c-yellow)',
   },
   {
-    id: 3,
-    name: 'Plum Tomatoes',
-    tagline: 'The chef\'s obsession.',
-    desc: 'Dense, rich, flavour that holds. At your table all year round.',
-    badge: '13 GROWN',
-    image: '/tomatoes.png',
-    accent: '#4A7C2F'
+    id: 'plum',
+    name: 'Plum',
+    tagline: 'The chef pick.',
+    desc: 'Dense and rich, with flavour that holds all the way through the pan.',
+    badge: '13 grown',
+    image: '/lifestyle.png',
+    color: 'var(--c-green-lt)',
   },
   {
-    id: 4,
-    name: 'Season\'s Blend',
-    tagline: 'Colors that sell themselves.',
-    desc: 'What\'s growing is what you get. Straight from the ground to you.',
-    badge: 'FRESH FROM 13',
+    id: 'blend',
+    name: "Season's blend",
+    tagline: 'Colour that sells itself.',
+    desc: "Whatever is at its best that week, straight from the ground to you.",
+    badge: 'Fresh from 13',
     image: '/hero.png',
-    accent: '#E85520'
-  }
-];
-
-const retailers = [
-  { name: "Food Lover's SquareMart", location: "Gaborone", icon: '🛒' },
-  { name: "SuperSpar Acacia", location: "Gaborone", icon: '🏪' },
-  { name: "Direct Farm", location: "Mookane Village", icon: '🌱' },
+    color: 'var(--c-lime)',
+  },
 ];
 
 const ProduceCard = ({ item, index }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-5%' }}
-    transition={{ duration: 0.7, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-    whileHover={{ y: -8 }}
-    style={{
-      borderRadius: '1.5rem',
-      overflow: 'hidden',
-      background: '#111',
-      border: '1px solid rgba(255,255,255,0.06)',
-      cursor: 'default',
-      position: 'relative'
-    }}
-  >
-    {/* Image */}
-    <div style={{ height: '260px', overflow: 'hidden', position: 'relative' }}>
-      <motion.img
-        whileHover={{ scale: 1.06 }}
-        transition={{ duration: 0.5 }}
-        src={item.image}
-        alt={item.name}
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-      />
-      {/* Gradient */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: `linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 55%)`
-      }} />
-      {/* Badge */}
-      <div style={{
-        position: 'absolute',
-        top: '1rem',
-        left: '1rem',
-        background: item.accent,
-        borderRadius: '999px',
-        padding: '0.3rem 0.9rem',
-        fontFamily: 'Anton, sans-serif',
-        fontSize: '0.65rem',
-        letterSpacing: '0.15em',
-        color: 'white'
-      }}>
-        {item.badge}
+  <Reveal delay={(index % 4) * 0.07}>
+    <article className="card" style={{ '--card-accent': item.color }}>
+      <div className="card__media">
+        <img className="card__img" src={item.image} alt={item.name} loading="lazy" />
+        <span className="card__wash" aria-hidden="true" />
+        <span
+          className="chip"
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            left: '1rem',
+            '--chip-bg': item.color,
+            '--chip-fg': item.color === 'var(--c-yellow)' || item.color === 'var(--c-lime)' ? 'var(--ink)' : 'var(--white)',
+          }}
+        >
+          {item.badge}
+        </span>
       </div>
-      {/* Name on image */}
-      <div style={{
-        position: 'absolute',
-        bottom: '1rem',
-        left: '1.25rem',
-        right: '1.25rem'
-      }}>
-        <h3 style={{
-          fontFamily: 'Anton, sans-serif',
-          fontSize: '1.6rem',
-          textTransform: 'uppercase',
-          lineHeight: 1,
-          color: 'white'
-        }}>
-          {item.name}
-        </h3>
-        <p style={{ color: item.accent, fontSize: '0.85rem', fontWeight: 600, marginTop: '0.2rem' }}>
-          {item.tagline}
-        </p>
+      <div className="card__body">
+        <h3 className="card__title">{item.name}</h3>
+        <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--ink)' }}>{item.tagline}</p>
+        <span className="card__rule" />
+        <p className="body-sm">{item.desc}</p>
       </div>
-    </div>
-
-    {/* Body */}
-    <div style={{
-      padding: '1.25rem 1.5rem 1.75rem',
-      borderTop: `1px solid ${item.accent}25`
-    }}>
-      <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.9rem', lineHeight: 1.65 }}>
-        {item.desc}
-      </p>
-    </div>
-  </motion.div>
+    </article>
+  </Reveal>
 );
 
-const TheGoods = () => {
-  const isMobile = useIsMobile();
-  return (
-  <section id="goods" className="section" style={{ background: 'var(--color-moss-green)', position: 'relative', overflow: 'hidden' }}>
-    {/* Decorative glows */}
-    <div style={{
-      position: 'absolute', top: '-80px', right: '-80px',
-      width: '450px', height: '450px', borderRadius: '50%',
-      background: 'radial-gradient(circle, rgba(253,184,19,0.12), transparent)',
-      pointerEvents: 'none'
-    }} />
-    <div style={{
-      position: 'absolute', bottom: '-100px', left: '-100px',
-      width: '500px', height: '500px', borderRadius: '50%',
-      background: 'radial-gradient(circle, rgba(227,123,40,0.08), transparent)',
-      pointerEvents: 'none'
-    }} />
+const TheGoods = ({ standalone = false }) => (
+  <section id="goods" className={`section ${standalone ? 'section--top' : ''}`}>
+    <Blob color="soft-red" size={420} top={-160} right="-12%" />
+    <Blob color="lime" size={18} top="18%" left="7%" />
+    <Blob color="soft-yellow" size={280} bottom="6%" left="-8%" />
 
-    <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        style={{ marginBottom: '4.5rem' }}
-      >
-        <p style={{
-          color: 'var(--color-sunburst-orange)',
-          fontWeight: 700,
-          letterSpacing: '0.22em',
-          fontSize: '0.75rem',
-          textTransform: 'uppercase',
-          marginBottom: '0.75rem'
-        }}>
-          Straight from the Ground
-        </p>
-        <h2 style={{
-          fontFamily: 'Anton, sans-serif',
-          fontSize: 'clamp(3rem, 8vw, 7rem)',
-          textTransform: 'uppercase',
-          lineHeight: 0.88,
-          color: 'var(--color-white)'
-        }}>
-          THE<br />
-          <span style={{ color: 'var(--color-sunburst-orange)' }}>GOODS.</span>
-        </h2>
-        <p style={{
-          marginTop: '1.5rem',
-          color: 'rgba(255,255,255,0.5)',
-          fontSize: '1rem',
-          maxWidth: '480px',
-          lineHeight: 1.7
-        }}>
-          Home grown. Hand picked quality. Always reliable. — This is what the 13 label means.
-        </p>
-      </motion.div>
+    <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+      <SectionHead
+        eyebrow="Straight from the ground"
+        dot="var(--c-red)"
+        title={<>The <span className="t-red">goods</span>.</>}
+        lede="Home grown. Hand picked. Always reliable. That is the whole of what the 13 on the bag means."
+      />
 
-      {/* Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-        gap: '1.5rem',
-        marginBottom: '6rem'
-      }}>
+      <div className="grid grid--4">
         {produce.map((item, i) => (
           <ProduceCard key={item.id} item={item} index={i} />
         ))}
       </div>
 
-      {/* Where to Find Us */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+      {/* Where to find us */}
+      <Reveal
+        delay={0.1}
         style={{
-          background: 'linear-gradient(135deg, #111 0%, #1A1A0D 100%)',
-          border: '1px solid rgba(227,123,40,0.2)',
-          borderRadius: '2rem',
-          padding: isMobile ? '2rem 1.5rem' : '3.5rem',
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : '1fr auto',
-          gap: isMobile ? '2rem' : '3rem',
-          alignItems: 'center'
+          marginTop: 'clamp(3rem, 6vw, 5rem)',
+          background: 'var(--c-lime-soft)',
+          borderRadius: 'var(--r-xl)',
+          padding: 'clamp(2rem, 5vw, 3.5rem)',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-            <MapPin size={16} color="var(--color-sunburst-orange)" />
-            <p style={{ color: 'var(--color-sunburst-orange)', fontWeight: 700, letterSpacing: '0.2em', fontSize: '0.75rem', textTransform: 'uppercase' }}>
-              Where to Find Us
+        <span className="blob blob--yellow" aria-hidden="true" style={{ width: 190, height: 190, top: -70, right: -50, opacity: 0.5 }} />
+        <span className="blob blob--red" aria-hidden="true" style={{ width: 14, height: 14, bottom: 40, right: 90 }} />
+
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            display: 'grid',
+            gap: 'clamp(1.75rem, 4vw, 3rem)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            alignItems: 'center',
+          }}
+        >
+          <div>
+            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
+              Where to find us
             </p>
+            <h3 className="display display--md">
+              Ask for 13<br />by name.
+            </h3>
           </div>
-          <h3 style={{
-            fontFamily: 'Anton, sans-serif',
-            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
-            textTransform: 'uppercase',
-            lineHeight: 0.95,
-            marginBottom: '2rem',
-            color: 'white'
-          }}>
-            ASK FOR 13<br />BY NAME.
-          </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-            {retailers.map(r => (
-              <div key={r.name} style={{
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '0.75rem',
-                padding: '0.75rem 1.25rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.6rem'
-              }}>
-                <span style={{ fontSize: '1.2rem' }}>{r.icon}</span>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+            {RETAILERS.map((r) => (
+              <div
+                key={r.name}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.85rem',
+                  background: 'var(--white)',
+                  borderRadius: 'var(--r-sm)',
+                  padding: '0.85rem 1.1rem',
+                  boxShadow: 'var(--shadow-sm)',
+                }}
+              >
+                <span style={{ color: 'var(--c-red)', display: 'flex' }}><Pin size={18} /></span>
                 <div>
-                  <p style={{ fontWeight: 700, fontSize: '0.85rem', color: 'white' }}>{r.name}</p>
-                  <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)' }}>{r.location}</p>
+                  <p style={{ fontWeight: 700, fontSize: '0.92rem' }}>{r.name}</p>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--ink-3)' }}>{r.location}</p>
                 </div>
               </div>
             ))}
+            <Link to="/contact-us" className="btn btn--red" style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}>
+              Order direct <Arrow size={16} />
+            </Link>
           </div>
         </div>
-
-        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-          <Link
-            to="/contact-us"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.7rem',
-              background: 'var(--color-sunburst-orange)',
-              color: 'white',
-              padding: '1rem 2rem',
-              borderRadius: '0.75rem',
-              fontFamily: 'Anton, sans-serif',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              fontSize: '0.9rem',
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.3s ease'
-            }}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--color-golden-yellow)'}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = 'var(--color-sunburst-orange)'}
-          >
-            <ShoppingBag size={18} />
-            Order Direct
-          </Link>
-        </motion.div>
-      </motion.div>
+      </Reveal>
     </div>
   </section>
-  );
-};
+);
 
 export default TheGoods;

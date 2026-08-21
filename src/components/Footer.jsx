@@ -1,104 +1,104 @@
-import React from 'react';
-import { useIsMobile } from '../hooks/useIsMobile';
+import { Link } from 'react-router-dom';
+import { Instagram, Arrow } from './ui/Icons';
+import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
 
-const InstagramIcon = ({ size = 16, color = 'currentColor' }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-    <circle cx="12" cy="12" r="4"/>
-    <circle cx="17.5" cy="6.5" r="1" fill={color} stroke="none"/>
-  </svg>
-);
+const columns = [
+  {
+    title: 'Explore',
+    links: [
+      { label: 'The Journey', to: '/journey' },
+      { label: 'The Goods', to: '/goods' },
+      { label: 'The Wins', to: '/wins' },
+    ],
+  },
+  {
+    title: 'More',
+    links: [
+      { label: 'The News', to: '/news' },
+      { label: 'Gallery', to: '/gallery' },
+      { label: 'Contact Us', to: '/contact-us' },
+    ],
+  },
+];
 
-const Footer = () => {
-  const isMobile = useIsMobile();
-  return (
-  <footer style={{
-    background: '#050505',
-    borderTop: '1px solid rgba(255,255,255,0.06)',
-    padding: '4rem 0 2rem'
-  }}>
-    <div className="container">
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : '1fr auto 1fr',
-        alignItems: 'center',
-        textAlign: isMobile ? 'center' : 'left',
-        marginBottom: '3rem',
-        gap: '2rem'
-      }}>
-        {/* Left: Bio */}
-        <div>
-          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.85rem', lineHeight: 1.7, maxWidth: '280px' }}>
-            Botswana's home of fresh tomatoes.<br />
-            farming · creating · growing 🌱
+const Footer = () => (
+  <footer className="foot">
+    <span className="blob" aria-hidden="true" style={{ width: 340, height: 340, top: -140, right: -110, background: 'rgba(190,195,49,.10)' }} />
+    <span className="blob" aria-hidden="true" style={{ width: 240, height: 240, bottom: -110, left: -80, background: 'rgba(216,72,31,.14)' }} />
+
+    <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+      <div
+        style={{
+          display: 'grid',
+          gap: 'clamp(2rem, 5vw, 4rem)',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+          marginBottom: 'clamp(2.5rem, 6vw, 4rem)',
+        }}
+      >
+        <div style={{ minWidth: 0 }}>
+          <p style={{ color: 'var(--white)', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.6rem' }}>
+            Botswana&apos;s home of fresh tomatoes.
           </p>
+          <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,.55)', maxWidth: '30ch' }}>
+            Farming, creating, growing — out of Mookane Village and onto shelves in Gaborone.
+          </p>
+
+          <div style={{ display: 'flex', gap: '0.4rem', marginTop: '1.5rem' }}>
+            {['var(--c-lime)', 'var(--c-yellow)', 'var(--c-red)', 'var(--c-green-lt)'].map((c) => (
+              <span key={c} style={{ width: 13, height: 13, borderRadius: '50%', background: c, display: 'block' }} />
+            ))}
+          </div>
         </div>
 
-        {/* Center: Wordmark */}
-        <div style={{ textAlign: 'center' }}>
-          <p style={{
-            fontFamily: 'Anton, sans-serif',
-            fontSize: 'clamp(3rem, 8vw, 6rem)',
-            textTransform: 'uppercase',
-            lineHeight: 0.9,
-            background: 'linear-gradient(to bottom, var(--color-white), var(--color-golden-yellow))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>
-            TSOO13
-          </p>
-          <p style={{ color: 'var(--color-sunburst-orange)', fontSize: '0.7rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginTop: '0.25rem' }}>
-            Mookane Village · Botswana
-          </p>
-        </div>
+        {columns.map((col) => (
+          <nav key={col.title} style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.42)', marginBottom: '0.3rem' }}>
+              {col.title}
+            </p>
+            {col.links.map((l) => (
+              <Link key={l.to} to={l.to} className="foot__link">{l.label}</Link>
+            ))}
+          </nav>
+        ))}
 
-        {/* Right: Social + hashtag */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: isMobile ? 'center' : 'flex-end', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
+          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', color: 'rgba(255,255,255,.42)' }}>
+            Follow
+          </p>
           <a
-            href="https://www.instagram.com/_13way_/"
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              color: 'rgba(255,255,255,0.55)',
-              textDecoration: 'none',
-              fontSize: '0.85rem',
-              transition: 'color 0.3s'
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-golden-yellow)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
+            className="btn btn--light"
+            style={{ padding: '0.7rem 1.25rem', fontSize: '0.85rem' }}
           >
-            <InstagramIcon size={16} />
-            @_13way_
+            <Instagram size={16} /> {INSTAGRAM_HANDLE} <Arrow size={14} />
           </a>
-          <p style={{
-            fontFamily: 'Anton, sans-serif',
-            fontSize: '1.1rem',
-            color: 'var(--color-sunburst-orange)',
-            letterSpacing: '0.05em'
-          }}>
+          <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--c-yellow)', letterSpacing: '0.02em' }}>
             #AskFor13
           </p>
         </div>
       </div>
 
-      {/* Divider */}
-      <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1.5rem' }} />
+      <p className="foot__word" aria-hidden="true">Tsoo...13</p>
 
-      {/* Bottom bar */}
-      <div style={{ display: 'flex', justifyContent: isMobile ? 'center' : 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', textAlign: 'center' }}>
-        <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.75rem' }}>
-          © 2025 TSOO13 · Formerly 13WAY · All rights reserved
-        </p>
-        <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.75rem' }}>
-          Home grown. Hand picked quality. Always reliable.
-        </p>
+      <hr style={{ height: 1, border: 0, background: 'rgba(255,255,255,.12)', margin: '2rem 0 1.25rem' }} />
+
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '0.75rem',
+          justifyContent: 'space-between',
+          fontSize: '0.78rem',
+          color: 'rgba(255,255,255,.4)',
+        }}
+      >
+        <p>&copy; {new Date().getFullYear()} Tsoo...13 &middot; Mookane Village, Botswana</p>
+        <p>Home grown. Hand picked. Always reliable.</p>
       </div>
     </div>
   </footer>
-  );
-};
+);
 
 export default Footer;

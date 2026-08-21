@@ -1,213 +1,159 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Arrow, Play } from './ui/Icons';
+import { Blob } from './ui/Blobs';
+import Marquee from './ui/Marquee';
+import logo from '../assets/tsoo13.png';
 
 const taglines = [
-  'farming.creating.growing.',
+  'farming. creating. growing.',
   '#askfor13',
-  'Smart hands, smarter farming.',
-  'Botswana\'s home of fresh tomatoes.',
-  'Home grown. Hand picked. Always reliable.',
-  'Different start. Same 13 quality.',
+  'home grown, hand picked',
+  'Mookane to Gaborone',
+  'different start, same 13 quality',
+  'youth run, Botswana built',
 ];
 
-const Ticker = () => {
-  const items = [...taglines, ...taglines];
-  return (
-    <div style={{
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      overflow: 'hidden',
-      background: 'var(--color-sunburst-orange)',
-      padding: '0.6rem 0',
-      zIndex: 10
-    }}>
-      <motion.div
-        animate={{ x: [0, '-50%'] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-        style={{ display: 'flex', gap: '4rem', whiteSpace: 'nowrap', width: 'max-content' }}
-      >
-        {items.map((t, i) => (
-          <span key={i} style={{
-            fontFamily: 'Anton, sans-serif',
-            fontSize: '0.85rem',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color: 'white'
-          }}>
-            {t} <span style={{ opacity: 0.5, margin: '0 0.5rem' }}>✦</span>
-          </span>
-        ))}
-      </motion.div>
-    </div>
-  );
-};
+const ease = [0.16, 1, 0.3, 1];
 
 const Hero = () => {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = '/hero.png';
-    img.onload = () => setLoaded(true);
-  }, []);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const frameY = useTransform(scrollYProgress, [0, 1], ['0%', '-9%']);
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+  const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
-    <section className="hero" style={{
-      position: 'relative',
-      height: '100vh',
-      width: '100vw',
-      overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#0D1A0A'
-    }}>
-      {/* Background */}
-      <motion.div
-        initial={{ scale: 1.08, opacity: 0 }}
-        animate={{ scale: loaded ? 1 : 1.08, opacity: loaded ? 0.55 : 0 }}
-        transition={{ duration: 2.2, ease: 'easeOut' }}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'url(/hero.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 30%',
-        }}
-      />
+    <section className="hero" ref={ref}>
+      {/* Colour moments on the white canvas.
+          These stay clear of the logo — its PNG carries a white background, and the
+          grid's stacking context stops mix-blend-mode from knocking it out. */}
+      <Blob color="soft-lime" size={520} top={-200} right="-10%" />
+      <Blob color="soft-yellow" size={320} bottom={-110} left="-8%" />
+      <Blob color="red" size={18} top="54%" left="3%" />
+      <Blob color="green" size={12} bottom="16%" left="12%" />
+      <Blob color="yellow" size={24} top="8%" right="40%" />
 
-      {/* Gradient overlays */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.85) 100%)',
-        pointerEvents: 'none'
-      }} />
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'radial-gradient(ellipse at 50% 60%, transparent 40%, rgba(10,10,10,0.7) 100%)',
-        pointerEvents: 'none'
-      }} />
+      <div className="wrap">
+        <div className="hero__grid">
+          {/* ---------- Left: the logo leads ---------- */}
+          <motion.div style={{ y: contentY, opacity: fade }}>
+            <motion.img
+              src={logo}
+              alt="Tsoo...13 — from our family to yours"
+              className="hero__logo"
+              initial={{ opacity: 0, scale: 0.92, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1, ease }}
+            />
 
-      {/* Formerly badge */}
-      <motion.div
-        initial={{ y: -16, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.7 }}
-        style={{
-          zIndex: 2,
-          marginBottom: '1.5rem',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.6rem',
-          background: 'rgba(255,255,255,0.06)',
-          backdropFilter: 'blur(8px)',
-          border: '1px solid rgba(255,255,255,0.12)',
-          borderRadius: '999px',
-          padding: '0.4rem 1.2rem',
-          fontSize: '0.7rem',
-          fontWeight: 700,
-          letterSpacing: '0.18em',
-          color: 'rgba(255,255,255,0.55)'
-        }}
-      >
-        <span style={{
-          width: '6px',
-          height: '6px',
-          borderRadius: '50%',
-          background: 'var(--color-sunburst-orange)',
-          display: 'inline-block'
-        }} />
-        FORMERLY 13WAY &nbsp;→&nbsp; NOW TSOO13
-      </motion.div>
+            <motion.h1
+              className="display hero__title"
+              style={{ marginTop: '0.4rem' }}
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.15, ease }}
+            >
+              <span className="t-green">Farming.</span><br />
+              <span className="t-red">Creating.</span><br />
+              <span className="mark" style={{ '--mark': 'var(--c-yellow)' }}>Growing.</span>
+            </motion.h1>
 
-      {/* Main heading */}
-      <div style={{ zIndex: 2, textAlign: 'center' }}>
-        <motion.h1
-          initial={{ scale: 0.85, opacity: 0, y: 20 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          style={{
-            fontFamily: 'Anton, sans-serif',
-            fontSize: 'clamp(6rem, 22vw, 18rem)',
-            lineHeight: 0.85,
-            textTransform: 'uppercase',
-            letterSpacing: '-0.01em',
-            color: 'var(--color-white)',
-            textShadow: '0 0 80px rgba(227,123,40,0.25)',
-          }}
-        >
-          TSOO13
-        </motion.h1>
+            <motion.p
+              className="lede"
+              style={{ marginTop: '1.6rem', maxWidth: '34ch' }}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.32, ease }}
+            >
+              A young Botswana company. It started in the soil at Mookane —
+              it hasn&apos;t stood still since.
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          style={{
-            marginTop: '1.5rem',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}
-        >
-          <p style={{
-            fontSize: 'clamp(0.9rem, 2.5vw, 1.3rem)',
-            fontWeight: 700,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: 'var(--color-golden-yellow)'
-          }}>
-            Botswana's Home of Fresh Tomatoes
-          </p>
-          <p style={{
-            fontSize: 'clamp(0.8rem, 1.8vw, 1rem)',
-            color: 'rgba(255,255,255,0.55)',
-            letterSpacing: '0.08em'
-          }}>
-            farming · creating · growing · Mookane Village → Gaborone
-          </p>
-        </motion.div>
+            <motion.div
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '2rem' }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.44, ease }}
+            >
+              <Link to="/journey" className="btn btn--red">
+                See how we got here <Arrow size={16} />
+              </Link>
+              <a href="#film" className="btn btn--ghost">
+                <Play size={15} /> Watch the film
+              </a>
+            </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ delay: 1.1, duration: 0.7 }}
-          style={{ display: 'inline-block', marginTop: '2.5rem' }}
-        >
-          <Link
-            to="/journey"
-            style={{
-              display: 'inline-block',
-              padding: '0.9rem 2.4rem',
-              background: 'var(--color-sunburst-orange)',
-              color: 'white',
-              fontFamily: 'Anton, sans-serif',
-              fontSize: '0.9rem',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              borderRadius: '0.5rem',
-              transition: 'all 0.3s ease',
-              textDecoration: 'none'
-            }}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--color-golden-yellow)'}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = 'var(--color-sunburst-orange)'}
+            <motion.div
+              className="hero__cue"
+              style={{ marginTop: '2.5rem' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.75 }}
+            >
+              <span className="hero__cue-line" />
+              Scroll — there&apos;s a story
+            </motion.div>
+          </motion.div>
+
+          {/* ---------- Right: the picture does the talking ---------- */}
+          <motion.div
+            style={{ position: 'relative', y: frameY }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.2, ease }}
           >
-            #AskFor13
-          </Link>
-        </motion.div>
+            <span
+              className="blob blob--yellow"
+              style={{ width: 118, height: 118, top: -34, left: -34, zIndex: 2 }}
+            />
+            <span
+              className="blob blob--lime"
+              style={{ width: 62, height: 62, bottom: 46, left: -26, zIndex: 2 }}
+            />
+
+            <div className="hero__frame">
+              <img
+                src="/tomatoes.png"
+                alt="Tsoo...13 tomatoes packed and stacked at market"
+                className="hero__img"
+                fetchPriority="high"
+              />
+              <span className="hero__frame-tint" />
+
+              <div style={{ position: 'absolute', top: '1.1rem', right: '1.1rem' }}>
+                <span className="chip chip--float">Mookane &rarr; Gaborone</span>
+              </div>
+
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '1.25rem',
+                  right: '1.25rem',
+                  bottom: '1.25rem',
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  justifyContent: 'space-between',
+                  gap: '1rem',
+                }}
+              >
+                <p
+                  className="display display--sm"
+                  style={{ color: 'var(--white)', textShadow: '0 2px 24px rgba(0,0,0,.5)' }}
+                >
+                  Ask for 13<br />by name.
+                </p>
+                <span className="chip" style={{ '--chip-bg': 'var(--c-red)', '--chip-fg': 'var(--white)' }}>
+                  On shelves now
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Ticker */}
-      <Ticker />
+      <Marquee items={taglines} bg="var(--c-red)" fg="var(--white)" speed="42s" />
     </section>
   );
 };

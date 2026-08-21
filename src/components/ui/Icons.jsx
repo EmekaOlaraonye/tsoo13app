@@ -1,0 +1,67 @@
+
+export const Instagram = ({ size = 18, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+    <rect x="2" y="2" width="20" height="20" rx="5.5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+export const Play = ({ size = 26, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" {...rest}>
+    <path d="M8.4 5.6a1 1 0 0 1 1.53-.85l8.1 5.15a1.2 1.2 0 0 1 0 2.03l-8.1 5.15a1 1 0 0 1-1.53-.85V5.6Z" />
+  </svg>
+);
+
+export const Arrow = ({ size = 17, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+    <path d="M7 17 17 7" />
+    <path d="M8 7h9v9" />
+  </svg>
+);
+
+export const ArrowDown = ({ size = 17, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+    <path d="M12 5v14" />
+    <path d="m5.5 12.5 6.5 6.5 6.5-6.5" />
+  </svg>
+);
+
+export const Close = ({ size = 20, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" {...rest}>
+    <path d="M6 6 18 18M18 6 6 18" />
+  </svg>
+);
+
+export const Plus = ({ size = 18, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" {...rest}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+export const Pin = ({ size = 18, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+    <path d="M20 10c0 5.4-8 12-8 12s-8-6.6-8-12a8 8 0 0 1 16 0Z" />
+    <circle cx="12" cy="10" r="2.8" />
+  </svg>
+);
+
+export const Star = ({ size = 18, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+    <path d="m12 3 2.7 5.6 6.1.85-4.4 4.3 1.05 6.1L12 17l-5.45 2.85L7.6 13.75 3.2 9.45l6.1-.85L12 3Z" />
+  </svg>
+);
+
+export const Send = ({ size = 18, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+    <path d="M21 3 10.5 13.5" />
+    <path d="M21 3 14.5 21l-4-7.5L3 9.5 21 3Z" />
+  </svg>
+);
+
+export const Check = ({ size = 20, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+    <circle cx="12" cy="12" r="9.2" />
+    <path d="m8 12.3 2.7 2.7L16 9.6" />
+  </svg>
+);

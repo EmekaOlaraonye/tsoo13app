@@ -1,6 +1,5 @@
-import React from 'react';
 import TheGoods from '../components/TheGoods';
 
-const Goods = () => <TheGoods />;
+const Goods = () => <TheGoods standalone />;
 
 export default Goods;
