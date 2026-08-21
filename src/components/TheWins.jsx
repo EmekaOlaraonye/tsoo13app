@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
@@ -116,29 +116,21 @@ const WinCard = ({ item, index }) => {
             {item.body}
           </p>
 
-          <AnimatePresence initial={false}>
-            {open && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                style={{ overflow: 'hidden' }}
+          <div className={`collapse ${open ? 'is-open' : ''}`}>
+            <div>
+              <p
+                style={{
+                  fontSize: '0.94rem',
+                  lineHeight: 1.7,
+                  paddingTop: '0.9rem',
+                  borderTop: `1px solid ${item.fg === 'var(--white)' ? 'rgba(255,255,255,.25)' : 'var(--line)'}`,
+                  color: item.fg === 'var(--white)' ? 'rgba(255,255,255,.88)' : 'var(--ink-2)',
+                }}
               >
-                <p
-                  style={{
-                    fontSize: '0.94rem',
-                    lineHeight: 1.7,
-                    paddingTop: '0.9rem',
-                    borderTop: `1px solid ${item.fg === 'var(--white)' ? 'rgba(255,255,255,.25)' : 'var(--line)'}`,
-                    color: item.fg === 'var(--white)' ? 'rgba(255,255,255,.88)' : 'var(--ink-2)',
-                  }}
-                >
-                  {item.detail}
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                {item.detail}
+              </p>
+            </div>
+          </div>
 
           <div style={{ marginTop: 'auto', paddingTop: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
             {item.tags ? (

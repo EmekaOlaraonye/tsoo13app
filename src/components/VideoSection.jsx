@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from './ui/Reveal';
 import { Blob } from './ui/Blobs';
 import { Play, Close } from './ui/Icons';
@@ -20,25 +19,14 @@ const Lightbox = ({ onClose }) => {
   }, [handleKey]);
 
   return (
-    <motion.div
+    <div
       className="lightbox"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={VIDEO.title}
     >
-      <motion.div
-        className="lightbox__frame"
-        initial={{ scale: 0.94, y: 18 }}
-        animate={{ scale: 1, y: 0 }}
-        exit={{ scale: 0.94, y: 18 }}
-        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="lightbox__frame" onClick={(e) => e.stopPropagation()}>
         <button className="lightbox__close" onClick={onClose} aria-label="Close video">
           <Close size={19} />
         </button>
@@ -70,8 +58,8 @@ const Lightbox = ({ onClose }) => {
             </div>
           </div>
         )}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 
@@ -142,9 +130,7 @@ const VideoSection = () => {
         </Reveal>
       </div>
 
-      <AnimatePresence>
-        {open && <Lightbox onClose={() => setOpen(false)} />}
-      </AnimatePresence>
+      {open && <Lightbox onClose={() => setOpen(false)} />}
     </section>
   );
 };

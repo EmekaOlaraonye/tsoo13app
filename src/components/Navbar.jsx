@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Arrow } from './ui/Icons';
 
 const links = [
@@ -10,6 +10,8 @@ const links = [
   { label: 'News', to: '/news', dot: 'var(--c-green-lt)' },
   { label: 'Gallery', to: '/gallery', dot: 'var(--c-red)' },
 ];
+
+const sheetLinks = [...links, { label: 'Contact Us', to: '/contact-us', dot: 'var(--c-red)' }];
 
 /** The top-left wordmark. The full logo lives on the homepage, not up here. */
 export const Wordmark = ({ className = 'nav__mark' }) => (
@@ -77,49 +79,32 @@ const Navbar = () => {
         )}
       </header>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="sheet"
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="blob blob--soft-lime" style={{ width: 300, height: 300, top: -90, right: -80 }} />
-            <span className="blob blob--soft-red" style={{ width: 220, height: 220, bottom: -70, left: -60 }} />
+      {/* Always mounted; visibility and pointer-events are class-driven. */}
+      <div className={`sheet ${open ? 'is-open' : ''}`} aria-hidden={!open}>
+        <span className="blob blob--soft-lime" style={{ width: 300, height: 300, top: -90, right: -80 }} />
+        <span className="blob blob--soft-red" style={{ width: 220, height: 220, bottom: -70, left: -60 }} />
 
-            {[...links, { label: 'Contact Us', to: '/contact-us', dot: 'var(--c-red)' }].map((link, i) => (
-              <motion.div
-                key={link.to}
-                initial={{ opacity: 0, x: -18 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.06 + i * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                style={{ position: 'relative', zIndex: 1 }}
-              >
-                <NavLink
-                  to={link.to}
-                  className={({ isActive }) => `sheet__link ${isActive ? 'is-active' : ''}`}
-                  style={{ '--dot': link.dot }}
-                  onClick={() => setOpen(false)}
-                >
-                  <i /> {link.label}
-                </NavLink>
-              </motion.div>
-            ))}
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="eyebrow"
-              style={{ '--eyebrow-dot': 'var(--c-yellow)', marginTop: '2rem', position: 'relative', zIndex: 1 }}
+        {sheetLinks.map((link, i) => (
+          <div className="sheet__item" key={link.to} style={{ '--i': i }}>
+            <NavLink
+              to={link.to}
+              className={({ isActive }) => `sheet__link ${isActive ? 'is-active' : ''}`}
+              style={{ '--dot': link.dot }}
+              onClick={() => setOpen(false)}
+              tabIndex={open ? 0 : -1}
             >
-              #AskFor13
-            </motion.p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <i /> {link.label}
+            </NavLink>
+          </div>
+        ))}
+
+        <p
+          className="eyebrow sheet__item"
+          style={{ '--eyebrow-dot': 'var(--c-yellow)', '--i': sheetLinks.length, marginTop: '2rem' }}
+        >
+          #AskFor13
+        </p>
+      </div>
     </>
   );
 };

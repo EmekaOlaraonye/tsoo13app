@@ -466,26 +466,40 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 @media (min-width: 920px) { .nav__cta { display: inline-flex; padding: 0.6rem 1.3rem; font-size: 0.85rem; } }
 
 .nav__burger {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
+  flex: none;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
+  /* Flex column, not grid: grid stretched the three bars across the whole
+     circle instead of stacking them into a compact icon. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
   background: var(--white);
   border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.25s var(--ease);
   z-index: 220;
 }
+
+.nav__burger:hover { border-color: var(--line-strong); }
+.nav__burger:active { transform: scale(0.93); }
+
+/* Open state flips to the brand red so the control reads as "on" */
+.nav__burger.is-open { background: var(--c-red); border-color: var(--c-red); }
+.nav__burger.is-open span { background: var(--white); }
 
 @media (min-width: 920px) { .nav__burger { display: none; } }
 
 .nav__burger span {
   display: block;
-  width: 18px;
+  width: 17px;
   height: 2px;
   border-radius: 2px;
   background: var(--ink);
-  transition: transform 0.35s var(--ease), opacity 0.2s;
+  transition: transform 0.35s var(--ease), opacity 0.2s, background-color 0.35s var(--ease);
 }
 
 .nav__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -502,6 +516,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   background: linear-gradient(90deg, var(--c-lime), var(--c-yellow) 45%, var(--c-red));
 }
 
+/* Driven by a class rather than mount/unmount, so it can never strand an
+   invisible full-screen layer over the page. */
 .sheet {
   position: fixed;
   inset: 0;
@@ -513,6 +529,41 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   justify-content: center;
   gap: 0.2rem;
   overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-16px);
+  transition: opacity 0.3s var(--ease), transform 0.32s var(--ease), visibility 0s linear 0.32s;
+}
+
+.sheet.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition: opacity 0.3s var(--ease), transform 0.32s var(--ease), visibility 0s;
+}
+
+/* The links are visible by default and the stagger is layered on as an
+   animation. If the animation never runs, the menu still reads correctly —
+   the opposite arrangement would hide the navigation on any failure. */
+.sheet__item {
+  position: relative;
+  z-index: 1;
+}
+
+.sheet.is-open .sheet__item {
+  animation: sheet-item-in 0.42s var(--ease) both;
+  animation-delay: calc(60ms + var(--i, 0) * 50ms);
+}
+
+@keyframes sheet-item-in {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet.is-open .sheet__item { animation: none; }
 }
 
 .sheet__link {
@@ -1198,3 +1249,25 @@ textarea.input { resize: vertical; min-height: 130px; }
 .hero__dot { z-index: 2; }
 .hero__dot--a { width: clamp(64px, 13vw, 118px); aspect-ratio: 1; height: auto; top: clamp(-34px, -4vw, -18px); left: clamp(-34px, -4vw, -18px); }
 .hero__dot--b { width: clamp(38px, 7vw, 62px); aspect-ratio: 1; height: auto; bottom: clamp(28px, 5vw, 46px); left: clamp(-26px, -3vw, -14px); }
+
+/* Collapsible detail rows (Wins cards). The 0fr -> 1fr grid trick animates to
+   the content's natural height without needing JS measurement. */
+.collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.42s var(--ease), opacity 0.3s var(--ease);
+}
+
+.collapse.is-open { grid-template-rows: 1fr; opacity: 1; }
+.collapse > * { overflow: hidden; min-height: 0; }
+
+/* Video lightbox entry */
+.lightbox { animation: lb-fade 0.25s var(--ease) both; }
+.lightbox__frame { animation: lb-pop 0.38s var(--ease) both; }
+
+@keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lb-pop {
+  from { opacity: 0; transform: translateY(18px) scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
