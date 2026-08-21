@@ -48,7 +48,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* position: relative (no visible effect on the root) satisfies framer-motion's
+   useScroll, which otherwise warns that its default scroll container (this
+   element) needs a non-static position to measure offsets reliably. */
+html { scroll-behavior: smooth; position: relative; }
 
 body {
   font-family: var(--font-sans);
@@ -261,39 +264,21 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 
 /* --------------------------------------------------------------------------
-   Marquee
+   Hero badges
    -------------------------------------------------------------------------- */
 
-.marquee {
-  overflow: hidden;
-  padding: 0.85rem 0;
-  background: var(--marquee-bg, var(--c-red));
-  color: var(--marquee-fg, var(--white));
-}
-
-.marquee__track {
+.hero__badges {
   display: flex;
-  width: max-content;
-  animation: marquee-slide var(--marquee-speed, 34s) linear infinite;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  padding-bottom: clamp(2.25rem, 4vw, 3.25rem);
+  position: relative;
+  z-index: 1;
 }
 
-.marquee:hover .marquee__track { animation-play-state: paused; }
-
-.marquee__item {
-  font-family: var(--font-display);
-  font-size: 0.92rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 2.25rem;
-  padding-right: 2.25rem;
-}
-
-.marquee__dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0.55; flex: none; }
-
-@keyframes marquee-slide { to { transform: translateX(-50%); } }
+.hero__badge { gap: 0.4rem; }
+.hero__badge svg { flex: none; }
 
 /* --------------------------------------------------------------------------
    Cards
@@ -387,7 +372,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .nav {
   position: fixed;
   inset: 0 0 auto 0;
-  z-index: 200;
+  z-index: 215;
   height: var(--nav-h);
   display: flex;
   align-items: center;
@@ -481,7 +466,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
   transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.25s var(--ease);
-  z-index: 220;
 }
 
 .nav__burger:hover { border-color: var(--line-strong); }
@@ -650,40 +634,31 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   pointer-events: none;
 }
 
-.hero__cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-.hero__cue-line {
-  width: 46px;
-  height: 2px;
-  background: var(--line);
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero__cue-line::after {
-  content: '';
+.hero__frame-scrim {
   position: absolute;
-  inset: 0;
-  background: var(--c-red);
-  border-radius: 2px;
-  animation: cue 2.6s var(--ease) infinite;
+  inset: auto 0 0 0;
+  height: 45%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent);
+  pointer-events: none;
 }
 
-@keyframes cue {
-  0% { transform: scaleX(0); transform-origin: left; }
-  45% { transform: scaleX(1); transform-origin: left; }
-  55% { transform: scaleX(1); transform-origin: right; }
-  100% { transform: scaleX(0); transform-origin: right; }
+.hero__cue {
+  display: flex;
+  justify-content: center;
+  color: var(--ink);
+  padding: 0.75rem 0 2.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__cue-arrow {
+  opacity: 0.3;
+  animation: cue-bounce 1.8s var(--ease) infinite;
+}
+
+@keyframes cue-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.25; }
+  50% { transform: translateY(8px); opacity: 0.55; }
 }
 
 /* --------------------------------------------------------------------------

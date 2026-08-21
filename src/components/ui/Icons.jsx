@@ -27,6 +27,12 @@ export const ArrowDown = ({ size = 17, ...rest }) => (
   </svg>
 );
 
+export const ChevronDown = ({ size = 17, ...rest }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" {...rest}>
+    <path d="m5.5 9 6.5 6.5L18.5 9" />
+  </svg>
+);
+
 export const Close = ({ size = 20, ...rest }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" {...rest}>
     <path d="M6 6 18 18M18 6 6 18" />

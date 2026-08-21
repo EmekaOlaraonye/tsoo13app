@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Arrow } from './ui/Icons';
@@ -23,6 +23,8 @@ export const Wordmark = ({ className = 'nav__mark' }) => (
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const sheetRef = useRef(null);
+  const burgerRef = useRef(null);
 
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 26, restDelta: 0.001 });
@@ -38,6 +40,23 @@ const Navbar = () => {
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  // A sheet link can still hold focus the instant it closes (link click, Escape).
+  // aria-hidden on an element with focus inside it is invalid, so hand focus
+  // back to the button that controls the sheet.
+  useEffect(() => {
+    if (open) return;
+    if (sheetRef.current?.contains(document.activeElement)) {
+      burgerRef.current?.focus();
+    }
   }, [open]);
 
   return (
@@ -65,6 +84,7 @@ const Navbar = () => {
           </Link>
 
           <button
+            ref={burgerRef}
             className={`nav__burger ${open ? 'is-open' : ''}`}
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -80,7 +100,7 @@ const Navbar = () => {
       </header>
 
       {/* Always mounted; visibility and pointer-events are class-driven. */}
-      <div className={`sheet ${open ? 'is-open' : ''}`} aria-hidden={!open}>
+      <div ref={sheetRef} className={`sheet ${open ? 'is-open' : ''}`} aria-hidden={!open}>
         <span className="blob blob--soft-lime" style={{ width: 300, height: 300, top: -90, right: -80 }} />
         <span className="blob blob--soft-red" style={{ width: 220, height: 220, bottom: -70, left: -60 }} />
 

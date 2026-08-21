@@ -1,9 +1,8 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Arrow, Play } from './ui/Icons';
+import { Arrow, ChevronDown, Play, Check } from './ui/Icons';
 import { Blob } from './ui/Blobs';
-import Marquee from './ui/Marquee';
 import logo from '../assets/tsoo13.png';
 
 const taglines = [
@@ -13,6 +12,13 @@ const taglines = [
   'Mookane to Gaborone',
   'different start, same 13 quality',
   'youth run, Botswana built',
+];
+
+const badgeTones = [
+  { bg: 'var(--c-red-soft)', fg: 'var(--c-red-deep)' },
+  { bg: 'var(--c-green-soft)', fg: 'var(--c-green)' },
+  { bg: 'var(--c-yellow-soft)', fg: 'var(--c-yellow-ink)' },
+  { bg: 'var(--c-lime-soft)', fg: 'var(--c-lime-ink)' },
 ];
 
 const ease = [0.16, 1, 0.3, 1];
@@ -32,7 +38,7 @@ const Hero = () => {
       <Blob color="soft-lime" size={520} top={-200} right="-10%" />
       <Blob color="soft-yellow" size={320} bottom={-110} left="-8%" />
       <Blob color="red" size={18} top="54%" left="3%" />
-      <Blob color="green" size={12} bottom="16%" left="12%" />
+      <Blob color="green" size={12} bottom="6%" left="7%" />
       <Blob color="yellow" size={24} top="8%" right="40%" />
 
       <div className="wrap">
@@ -84,17 +90,6 @@ const Hero = () => {
                 <Play size={15} /> Watch the film
               </a>
             </motion.div>
-
-            <motion.div
-              className="hero__cue"
-              style={{ marginTop: '2.5rem' }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.75 }}
-            >
-              <span className="hero__cue-line" />
-              Scroll — there&apos;s a story
-            </motion.div>
           </motion.div>
 
           {/* ---------- Right: the picture does the talking ---------- */}
@@ -115,6 +110,7 @@ const Hero = () => {
                 fetchPriority="high"
               />
               <span className="hero__frame-tint" />
+              <span className="hero__frame-scrim" />
 
               <div style={{ position: 'absolute', top: '1.1rem', right: '1.1rem' }}>
                 <span className="chip chip--float">Mookane &rarr; Gaborone</span>
@@ -123,9 +119,9 @@ const Hero = () => {
               <div
                 style={{
                   position: 'absolute',
-                  left: '1.25rem',
-                  right: '1.25rem',
-                  bottom: '1.25rem',
+                  left: '1.5rem',
+                  right: '1.5rem',
+                  bottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'flex-end',
                   justifyContent: 'space-between',
@@ -145,9 +141,38 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
-      </div>
 
-      <Marquee items={taglines} bg="var(--c-red)" fg="var(--white)" speed="42s" />
+        <motion.div
+          className="hero__cue"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.75 }}
+          aria-hidden="true"
+        >
+          <ChevronDown size={22} className="hero__cue-arrow" />
+        </motion.div>
+
+        <motion.div
+          className="hero__badges"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.55, ease }}
+        >
+          {taglines.map((text, i) => {
+            const tone = badgeTones[i % badgeTones.length];
+            return (
+              <span
+                key={text}
+                className="chip hero__badge"
+                style={{ '--chip-bg': tone.bg, '--chip-fg': tone.fg }}
+              >
+                <Check size={12} />
+                {text}
+              </span>
+            );
+          })}
+        </motion.div>
+      </div>
     </section>
   );
 };
