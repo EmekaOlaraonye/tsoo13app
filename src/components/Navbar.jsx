@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Arrow } from './ui/Icons';
 
@@ -25,6 +25,16 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const sheetRef = useRef(null);
   const burgerRef = useRef(null);
+  const { pathname } = useLocation();
+
+  // Already home: Link won't remount the page, so Layout's scroll-to-top
+  // effect never fires. Glide there ourselves instead.
+  const handleHomeClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 26, restDelta: 0.001 });
@@ -63,7 +73,7 @@ const Navbar = () => {
     <>
       <header className={`nav ${scrolled || open ? 'nav--solid' : ''}`}>
         <div className="nav__inner">
-          <Link to="/" aria-label="Tsoo...13 — home">
+          <Link to="/" aria-label="Tsoo...13 — home" onClick={handleHomeClick}>
             <Wordmark />
           </Link>
 

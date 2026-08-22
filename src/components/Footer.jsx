@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Arrow } from './ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
+import askFor13Badge from '../assets/askfor13.png';
 
 const columns = [
   {
@@ -74,9 +75,7 @@ const Footer = () => (
           >
             <Instagram size={16} /> {INSTAGRAM_HANDLE} <Arrow size={14} />
           </a>
-          <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--c-yellow)', letterSpacing: '0.02em' }}>
-            #AskFor13
-          </p>
+          <img src={askFor13Badge} alt="#AskFor13" style={{ width: 92, height: 92 }} />
         </div>
       </div>
 

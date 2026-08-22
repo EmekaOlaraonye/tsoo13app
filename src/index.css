@@ -600,8 +600,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 
 .hero__logo {
-  width: clamp(196px, 27vw, 252px);
-  margin-left: -0.6rem;
+  width: clamp(410px, 56vw, 525px);
+  max-width: 100%;
+  margin-left: -1rem;
   mix-blend-mode: multiply;
 }
 

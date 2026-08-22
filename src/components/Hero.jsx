@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Arrow, ChevronDown, Play, Check } from './ui/Icons';
 import { Blob } from './ui/Blobs';
-import logo from '../assets/tsoo13.png';
+import logo from '../assets/13logo.png';
 
 const taglines = [
   'farming. creating. growing.',
@@ -56,7 +56,7 @@ const Hero = () => {
 
             <motion.h1
               className="display hero__title"
-              style={{ marginTop: '0.4rem' }}
+              style={{ marginTop: '0.75rem' }}
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.15, ease }}
