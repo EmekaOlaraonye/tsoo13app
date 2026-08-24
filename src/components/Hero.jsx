@@ -61,7 +61,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.15, ease }}
             >
-              <span className="t-green">Farminng.</span><br />
+              <span className="t-green">Farming.</span><br />
               <span className="t-red">Creating.</span><br />
               <span className="mark" style={{ '--mark': 'var(--c-yellow)' }}>Growing.</span>
             </motion.h1>
