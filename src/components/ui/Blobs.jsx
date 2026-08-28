@@ -3,10 +3,10 @@
  * The colour circles that carry the brand across the white canvas.
  * Each section gets its own arrangement so the pages feel distinct but related.
  */
-export const Blob = ({ color = 'red', size = 200, top, right, bottom, left, opacity = 1, ring = false, style }) => (
+export const Blob = ({ color = 'red', size = 200, top, right, bottom, left, opacity = 1, ring = false, style, className = '' }) => (
   <span
     aria-hidden="true"
-    className={ring ? 'blob blob--ring' : `blob blob--${color}`}
+    className={`${ring ? 'blob blob--ring' : `blob blob--${color}`} ${className}`.trim()}
     style={{
       width: size,
       height: size,

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
+import { Tomato } from './ui/Tomato';
 import { Arrow, Pin } from './ui/Icons';
 import { RETAILERS } from '../siteConfig';
 
@@ -78,12 +79,15 @@ const TheGoods = ({ standalone = false }) => (
     <Blob color="soft-red" size={420} top={-160} right="-12%" />
     <Blob color="lime" size={18} top="18%" left="7%" />
     <Blob color="soft-yellow" size={280} bottom="6%" left="-8%" />
+    <Tomato color="var(--c-red)" size={110} top={90} right="8%" opacity={0.16} rotate={18} />
+    <Tomato color="var(--c-green-lt)" size={80} bottom="14%" left="4%" opacity={0.18} rotate={-20} outline />
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <SectionHead
         eyebrow="Straight from the ground"
         dot="var(--c-red)"
-        title={<>The <span className="t-red">goods</span>.</>}
+        variant="right"
+        title={<>The <span className="t-green">goods</span>.</>}
         lede="Home grown. Hand picked. Always reliable. That is the whole of what the 13 on the bag means."
       />
 
@@ -122,7 +126,7 @@ const TheGoods = ({ standalone = false }) => (
             <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
               Where to find us
             </p>
-            <h3 className="display display--md">
+            <h3 className="display display--md" style={{ color: 'var(--c-red)' }}>
               Ask for 13<br />by name.
             </h3>
           </div>

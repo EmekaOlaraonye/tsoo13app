@@ -78,6 +78,8 @@ const Explore = () => (
       <SectionHead
         eyebrow="There's more"
         dot="var(--c-yellow)"
+        color="var(--c-yellow-ink)"
+        variant="fade"
         title={<>Dive <span className="t-red">deeper</span>.</>}
         lede="Four ways into the rest of it."
       />

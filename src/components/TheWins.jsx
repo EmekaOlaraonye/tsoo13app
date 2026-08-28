@@ -3,7 +3,9 @@ import { motion } from 'framer-motion';
 import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
-import { Plus, Star } from './ui/Icons';
+import { Tomato } from './ui/Tomato';
+import { Plus, Star, Arrow } from './ui/Icons';
+import { Link } from 'react-router-dom';
 
 const wins = [
   {
@@ -13,7 +15,7 @@ const wins = [
     body: 'When the usual method fails, we build another one. That habit is the actual product.',
     detail: 'Losing a season of seedlings could have ended it. Instead it produced our cuttings method — faster to flower, cheaper to run, and entirely ours. Every problem since has been treated the same way.',
     tags: ['#innovationinthefield', '#smartfarming'],
-    bg: 'var(--c-red)',
+    bg: 'var(--c-red-muted)',
     fg: 'var(--white)',
     wide: true,
   },
@@ -174,11 +176,15 @@ const TheWins = ({ standalone = false }) => (
     <Blob color="soft-yellow" size={400} top={-150} left="-12%" />
     <Blob color="red" size={15} top="20%" right="10%" />
     <Blob color="lime" size={22} bottom="12%" left="8%" />
+    <Tomato color="var(--c-yellow-ink)" size={110} top="10%" right="4%" opacity={0.16} rotate={14} outline />
+    <Tomato color="var(--c-red)" size={90} bottom="4%" left="6%" opacity={0.14} rotate={-10} />
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <SectionHead
         eyebrow="In the spotlight"
         dot="var(--c-yellow)"
+        color="var(--c-yellow-ink)"
+        variant="scale"
         title={<>The <span className="t-red">wins</span>.</>}
         lede="Proof that a young company can be taken seriously. Open a card for the full story."
       />
@@ -188,6 +194,39 @@ const TheWins = ({ standalone = false }) => (
           <WinCard key={item.id} item={item} index={i} />
         ))}
       </div>
+
+      {/* A closing beat so the page feels like it lands somewhere, not just stops after the grid */}
+      <Reveal
+        variant="scale"
+        delay={0.1}
+        style={{
+          marginTop: 'clamp(3rem, 6vw, 5rem)',
+          background: 'var(--ink)',
+          borderRadius: 'var(--r-xl)',
+          padding: 'clamp(2.25rem, 5vw, 3.5rem)',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <span className="blob blob--yellow" aria-hidden="true" style={{ width: 220, height: 220, top: -90, left: -70, opacity: 0.18 }} />
+        <span className="blob blob--red" aria-hidden="true" style={{ width: 160, height: 160, bottom: -70, right: -50, opacity: 0.22 }} />
+
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <span style={{ color: 'var(--c-yellow)', display: 'inline-flex', marginBottom: '1rem' }}>
+            <Star size={30} />
+          </span>
+          <h3 className="display display--md" style={{ color: 'var(--white)', marginBottom: '0.75rem' }}>
+            Still counting.
+          </h3>
+          <p className="body-sm" style={{ color: 'rgba(255,255,255,.7)', maxWidth: '36ch', margin: '0 auto 1.75rem' }}>
+            Every credential, every crate, every retailer that says yes — it all goes on the pile. This page gets longer.
+          </p>
+          <Link to="/journey" className="btn btn--yellow">
+            See how we got here <Arrow size={16} />
+          </Link>
+        </div>
+      </Reveal>
     </div>
   </section>
 );

@@ -11,6 +11,7 @@
   --c-red: #D8481F;
   --c-red-deep: #BC5216;
   --c-red-soft: #FCE9E2;
+  --c-red-muted: #D2643D;
   --c-yellow: #FDB71B;
   --c-yellow-ink: #A5720A;
   --c-yellow-soft: #FFF4DA;
@@ -242,6 +243,19 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .btn--light { background: rgba(255, 255, 255, 0.16); color: var(--white); border: 1.5px solid rgba(255, 255, 255, 0.4); }
 .btn--light:hover { background: var(--white); color: var(--ink); }
 
+/* Social brand marks — the one place on the site that borrows colour from
+   outside the Tsoo...13 palette, since these buttons are literally the
+   Facebook/Instagram identity. */
+.btn--facebook { background: #1877F2; color: var(--white); box-shadow: 0 12px 26px -14px rgba(24, 119, 242, 0.7); }
+.btn--facebook:hover { background: #0C63D4; }
+
+.btn--instagram {
+  background: linear-gradient(45deg, #FEDA75 0%, #FA7E1E 22%, #D62976 45%, #962FBF 68%, #4F5BD5 100%);
+  color: var(--white);
+  box-shadow: 0 12px 26px -14px rgba(214, 41, 118, 0.6);
+}
+.btn--instagram:hover { filter: brightness(1.08); }
+
 .chip {
   display: inline-flex;
   align-items: center;
@@ -406,13 +420,18 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   text-transform: uppercase;
   display: inline-flex;
   align-items: baseline;
-  color: var(--ink);
-  transition: color 0.3s;
+  color: var(--c-green);
+  transition: color 0.3s, font-size 0.4s var(--ease);
 }
 
-.nav__mark:hover { color: var(--c-green); }
+.nav__mark:hover { color: var(--c-green-lt); }
+
 .nav__mark em { font-style: normal; color: var(--c-lime); letter-spacing: 0.08em; padding: 0 0.06em; }
 .nav__mark b { font-weight: 400; color: var(--c-red); }
+
+/* The logo mark used on every page except the homepage. */
+.nav__mark--img { height: 32px; width: auto; transition: opacity 0.3s; }
+.nav__mark--img:hover { opacity: 0.75; }
 
 .nav__links { display: none; align-items: center; gap: 2rem; }
 
@@ -599,10 +618,17 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: 3.5rem; }
 }
 
+/* Below 960px the grid drops to one column and the photo that this blob sits
+   behind moves away — left as-is it collides with the logo instead. */
+@media (max-width: 959px) {
+  .hero__blob--top { width: 150px !important; height: 150px !important; top: -55px !important; right: -55px !important; opacity: 0.6; }
+}
+
 .hero__logo {
+  display: block;
   width: clamp(350px, 48vw, 445px);
   max-width: 100%;
-  margin-left: -1rem;
+  margin-inline: auto;
   mix-blend-mode: multiply;
 }
 
@@ -739,6 +765,32 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .tl__step--left .tl__panel .eyebrow { flex-direction: row-reverse; }
   .tl__step--left .tl__panel .lede { margin-left: auto; }
   .tl__step--left .tl__panel .tl__tags { justify-content: flex-end; }
+}
+
+/* The journey's final chapter — "Beyond" — breaks the alternating rhythm
+   on purpose: full-width, gradient-backed, more expansive than the four
+   stops before it. */
+.tl__step--final .tl__panel {
+  background: linear-gradient(135deg, var(--c-red-deep), var(--c-yellow));
+  border-radius: var(--r-xl);
+  padding: clamp(2rem, 5vw, 3.25rem);
+}
+.tl__step--final .tl__panel .eyebrow { color: rgba(255, 255, 255, 0.75); }
+.tl__step--final .tl__panel .eyebrow::before { background: var(--white); }
+.tl__step--final .tl__panel h3.display { color: var(--white); }
+.tl__step--final .tl__panel .lede { color: rgba(255, 255, 255, 0.88); }
+.tl__step--final .tl__panel .tl__year { color: rgba(255, 255, 255, 0.3); }
+.tl__step--final .tl__panel .chip { --chip-bg: rgba(255, 255, 255, 0.2); --chip-fg: var(--white); }
+
+@media (min-width: 900px) {
+  .tl__step--final .tl__panel,
+  .tl__step--final .tl__media {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+  .tl__step--final .tl__panel .eyebrow,
+  .tl__step--final .tl__panel .tl__tags { justify-content: center; }
+  .tl__step--final .tl__media { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
 }
 
 .tl__year {
@@ -1178,7 +1230,18 @@ textarea.input { resize: vertical; min-height: 130px; }
    ========================================================================== */
 
 @media (max-width: 640px) {
-  :root { --nav-h: 66px; }
+  :root {
+    --nav-h: 66px;
+    /* Large curves read as generous on desktop and as clutter on a phone —
+       shrink the tokens themselves so every card/frame that uses them
+       adapts automatically instead of overlapping content. */
+    --r-lg: 1.25rem;
+    --r-xl: 1.5rem;
+  }
+
+  /* No decorative circle should be able to outgrow the viewport and
+     cover text or buttons underneath it. */
+  .blob { max-width: 58vw; max-height: 58vw; }
 
   .wrap { padding: 0 1.25rem; }
   .nav__inner { padding: 0 1.25rem; }
@@ -1219,6 +1282,7 @@ textarea.input { resize: vertical; min-height: 130px; }
   .display--md { font-size: 1.75rem; }
   .btn { padding: 0.72rem 1.15rem; font-size: 0.84rem; gap: 0.45rem; }
   .nav__mark { font-size: 1.25rem; }
+  .nav__mark--img { height: 26px; }
 }
 
 /* Circles that ride the hero photograph, scaled to the viewport */

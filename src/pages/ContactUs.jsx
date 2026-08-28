@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Reveal from '../components/ui/Reveal';
 import { Blob } from '../components/ui/Blobs';
-import { Instagram, Send, Check, Pin, Arrow } from '../components/ui/Icons';
-import { INSTAGRAM_URL, INSTAGRAM_HANDLE, RETAILERS } from '../siteConfig';
+import { Tomato } from '../components/ui/Tomato';
+import { Instagram, Facebook, Send, Check, Pin, Mail, Phone, Arrow } from '../components/ui/Icons';
+import { INSTAGRAM_URL, INSTAGRAM_HANDLE, FACEBOOK_URL, FACEBOOK_HANDLE, SALES_EMAIL, PHONE_NUMBERS, RETAILERS } from '../siteConfig';
 
 const audiences = [
   { value: 'chef', label: 'Chef / Restaurant' },
@@ -25,6 +26,7 @@ const ContactUs = () => {
       <Blob color="soft-yellow" size={440} top={-160} right="-12%" />
       <Blob color="red" size={16} top="20%" left="7%" />
       <Blob color="soft-green" size={300} bottom="2%" left="-10%" />
+      <Tomato color="var(--c-red)" size={90} bottom="8%" right="6%" opacity={0.13} rotate={-15} outline />
 
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div
@@ -36,13 +38,13 @@ const ContactUs = () => {
           }}
         >
           {/* Left */}
-          <Reveal>
+          <Reveal variant="left">
             <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1.1rem' }}>
               Don&apos;t sleep on this
             </p>
-            <h1 className="display display--lg">
+            <h1 className="display display--lg" style={{ color: 'var(--c-red)' }}>
               Get in<br />
-              the <span className="mark" style={{ '--mark': 'var(--c-yellow)' }}>loop</span>.
+              the <span className="mark" style={{ '--mark': 'var(--c-yellow)', color: 'var(--ink)' }}>loop</span>.
             </h1>
             <p className="lede" style={{ marginTop: '1.4rem', maxWidth: '34ch' }}>
               Chef, retailer, distributor, or just someone who cares what ends up on the
@@ -50,15 +52,41 @@ const ContactUs = () => {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', margin: '2rem 0' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.7rem' }}>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--instagram"
+                >
+                  <Instagram size={16} /> {INSTAGRAM_HANDLE} <Arrow size={14} />
+                </a>
+                <a
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--facebook"
+                >
+                  <Facebook size={16} /> {FACEBOOK_HANDLE} <Arrow size={14} />
+                </a>
+              </div>
               <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn--ghost"
-                style={{ alignSelf: 'flex-start' }}
+                href={`mailto:${SALES_EMAIL}`}
+                style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.92rem', color: 'var(--ink-2)', fontWeight: 600 }}
               >
-                <Instagram size={16} /> {INSTAGRAM_HANDLE} <Arrow size={14} />
+                <span style={{ color: 'var(--c-red)', display: 'flex' }}><Mail size={17} /></span>
+                {SALES_EMAIL}
               </a>
+              {PHONE_NUMBERS.map((number) => (
+                <a
+                  key={number}
+                  href={`tel:${number.replace(/\s+/g, '')}`}
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.92rem', color: 'var(--ink-2)', fontWeight: 600 }}
+                >
+                  <span style={{ color: 'var(--c-yellow-ink)', display: 'flex' }}><Phone size={17} /></span>
+                  {number}
+                </a>
+              ))}
               <p style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.92rem', color: 'var(--ink-2)', fontWeight: 600 }}>
                 <span style={{ color: 'var(--c-green-lt)', display: 'flex' }}><Pin size={17} /></span>
                 Mookane Village, Botswana
@@ -80,7 +108,7 @@ const ContactUs = () => {
           </Reveal>
 
           {/* Right */}
-          <Reveal delay={0.12}>
+          <Reveal variant="right" delay={0.12}>
             {submitted ? (
               <motion.div
                 initial={{ scale: 0.94, opacity: 0 }}
@@ -100,7 +128,7 @@ const ContactUs = () => {
                   <span style={{ color: 'var(--c-red)', display: 'inline-flex', marginBottom: '1.25rem' }}>
                     <Check size={48} />
                   </span>
-                  <h2 className="display display--md" style={{ marginBottom: '0.75rem' }}>
+                  <h2 className="display display--md" style={{ marginBottom: '0.75rem', color: 'var(--c-green)' }}>
                     You&apos;re in the loop.
                   </h2>
                   <p className="body-sm" style={{ maxWidth: '30ch', margin: '0 auto' }}>

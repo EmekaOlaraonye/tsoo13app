@@ -20,6 +20,7 @@ const InstagramSection = () => (
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <Reveal
+        variant="left"
         style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -33,9 +34,9 @@ const InstagramSection = () => (
           <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
             The story continues
           </p>
-          <h2 className="display display--lg">
+          <h2 className="display display--lg" style={{ color: 'var(--c-red)' }}>
             Follow our<br />
-            <span className="t-red">journey</span> daily.
+            <span className="t-green">journey</span> daily.
           </h2>
           <p className="lede" style={{ marginTop: '1.2rem', maxWidth: '34ch' }}>
             The website is the edit. Instagram is the raw footage — every harvest,
@@ -47,7 +48,7 @@ const InstagramSection = () => (
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn--red"
+          className="btn btn--instagram"
         >
           <Instagram size={17} /> {INSTAGRAM_HANDLE} <Arrow size={15} />
         </a>

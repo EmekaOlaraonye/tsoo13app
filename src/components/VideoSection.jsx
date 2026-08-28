@@ -74,6 +74,7 @@ const VideoSection = () => {
 
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <Reveal
+          variant="right"
           style={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -87,9 +88,9 @@ const VideoSection = () => {
             <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
               Meet us properly
             </p>
-            <h2 className="display display--lg">
+            <h2 className="display display--lg" style={{ color: 'var(--c-red)' }}>
               Two minutes<br />
-              with <span className="t-red">Tsoo...13</span>.
+              with <span className="t-green">Tsoo...13</span>.
             </h2>
           </div>
           <p className="lede" style={{ maxWidth: '30ch' }}>

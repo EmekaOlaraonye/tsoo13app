@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Arrow } from './ui/Icons';
+import logoMark from '../assets/13icon.png';
 
 const links = [
   { label: 'Journey', to: '/journey', dot: 'var(--c-lime)' },
@@ -13,12 +14,19 @@ const links = [
 
 const sheetLinks = [...links, { label: 'Contact Us', to: '/contact-us', dot: 'var(--c-red)' }];
 
-/** The top-left wordmark. The full logo lives on the homepage, not up here. */
-export const Wordmark = ({ className = 'nav__mark' }) => (
-  <span className={className}>
-    Tsoo<em>...</em><b>13</b>
-  </span>
-);
+/**
+ * The top-left wordmark. The homepage already has the full hero logo below
+ * it, so the navbar stays plain text there; every other page gets the small
+ * logo mark instead, since there's nothing else on screen carrying the brand.
+ */
+export const Wordmark = ({ isHome = false }) =>
+  isHome ? (
+    <span className="nav__mark">
+      Tsoo<em>...</em><b>13</b>
+    </span>
+  ) : (
+    <img src={logoMark} alt="Tsoo...13" className="nav__mark nav__mark--img" />
+  );
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -26,6 +34,7 @@ const Navbar = () => {
   const sheetRef = useRef(null);
   const burgerRef = useRef(null);
   const { pathname } = useLocation();
+  const isHome = pathname === '/';
 
   // Already home: Link won't remount the page, so Layout's scroll-to-top
   // effect never fires. Glide there ourselves instead.
@@ -74,7 +83,7 @@ const Navbar = () => {
       <header className={`nav ${scrolled || open ? 'nav--solid' : ''}`}>
         <div className="nav__inner">
           <Link to="/" aria-label="Tsoo...13 — home" onClick={handleHomeClick}>
-            <Wordmark />
+            <Wordmark isHome={isHome} />
           </Link>
 
           <nav className="nav__links">

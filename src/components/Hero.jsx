@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Arrow, ChevronDown, Play, Check } from './ui/Icons';
 import { Blob } from './ui/Blobs';
-import logo from '../assets/13logo.png';
+import logo from '../assets/13icon.png';
 
 const taglines = [
   'farming. creating. growing.',
   '#askfor13',
   'home grown, hand picked',
-  'Mookane to Gaborone',
+  'Mookane → Gaborone → beyond',
   'different start, same 13 quality',
   'youth run, Botswana built',
 ];
@@ -35,7 +35,10 @@ const Hero = () => {
       {/* Colour moments on the white canvas.
           These stay clear of the logo — its PNG carries a white background, and the
           grid's stacking context stops mix-blend-mode from knocking it out. */}
-      <Blob color="soft-lime" size={520} top={-200} right="-10%" />
+      {/* Sized to sit behind the tomato photo in the two-column layout — once
+          the grid collapses to one column that photo moves away, so this
+          needs to shrink out of the logo's way instead (see .hero__blob--top). */}
+      <Blob color="soft-lime" size={520} top={-200} right="-10%" className="hero__blob--top" />
       <Blob color="soft-yellow" size={320} bottom={-110} left="-8%" />
       <Blob color="red" size={18} top="54%" left="3%" />
       <Blob color="green" size={12} bottom="6%" left="7%" />
@@ -113,7 +116,7 @@ const Hero = () => {
               <span className="hero__frame-scrim" />
 
               <div style={{ position: 'absolute', top: '1.1rem', right: '1.1rem' }}>
-                <span className="chip chip--float">Mookane &rarr; Gaborone</span>
+                <span className="chip chip--float">Mookane &rarr; Gaborone &rarr; beyond</span>
               </div>
 
               <div

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Reveal from './ui/Reveal';
 import { Blob } from './ui/Blobs';
+import { Tomato } from './ui/Tomato';
 import { Arrow } from './ui/Icons';
 
 const pillars = [
@@ -70,6 +71,7 @@ const WhoWeAre = () => (
     <Blob color="soft-green" size={380} top={-140} left="-10%" />
     <Blob color="red" size={13} top="16%" right="12%" />
     <Blob color="lime" size={20} bottom="14%" left="7%" />
+    <Tomato color="var(--c-green-lt)" size={130} top={40} right="6%" opacity={0.14} rotate={-12} outline />
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <div
@@ -81,14 +83,14 @@ const WhoWeAre = () => (
           marginBottom: 'clamp(2.5rem, 5vw, 4rem)',
         }}
       >
-        <Reveal>
+        <Reveal variant="left">
           <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-green-lt)', marginBottom: '1.1rem' }}>
             Who we are
           </p>
-          <h2 className="display display--lg">
+          <h2 className="display display--lg" style={{ color: 'var(--c-green)' }}>
             Not a farm.<br />
             A young company<br />
-            that <span className="mark" style={{ '--mark': 'var(--c-lime)' }}>started</span> on one.
+            that <span className="mark" style={{ '--mark': 'var(--c-lime)', color: 'var(--ink)' }}>started</span> on one.
           </h2>
         </Reveal>
 

@@ -4,6 +4,11 @@
 
 export const INSTAGRAM_URL = 'https://www.instagram.com/_13way_/';
 export const INSTAGRAM_HANDLE = '@_13way_';
+export const FACEBOOK_URL = 'https://www.facebook.com/share/1BjkxxYZkf/?mibextid=wwXIfr';
+export const FACEBOOK_HANDLE = '13Way';
+
+export const SALES_EMAIL = 'sales@tsoo13.co.bw';
+export const PHONE_NUMBERS = ['+267 72706511', '+267 78312782'];
 
 /**
  * The intro film.

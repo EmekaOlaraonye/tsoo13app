@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Instagram, Arrow } from './ui/Icons';
-import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
+import { Instagram, Facebook, Mail, Phone, Arrow } from './ui/Icons';
+import { INSTAGRAM_URL, INSTAGRAM_HANDLE, FACEBOOK_URL, FACEBOOK_HANDLE, SALES_EMAIL, PHONE_NUMBERS } from '../siteConfig';
 import askFor13Badge from '../assets/askfor13.png';
 
 const columns = [
@@ -41,7 +41,7 @@ const Footer = () => (
             Botswana&apos;s home of fresh tomatoes.
           </p>
           <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,.55)', maxWidth: '30ch' }}>
-            Farming, creating, growing — out of Mookane Village and onto shelves in Gaborone.
+            Farming, creating, growing — out of Mookane Village, onto shelves in Gaborone, and beyond.
           </p>
 
           <div style={{ display: 'flex', gap: '0.4rem', marginTop: '1.5rem' }}>
@@ -50,6 +50,25 @@ const Footer = () => (
             ))}
           </div>
         </div>
+
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.42)', marginBottom: '0.3rem' }}>
+            Get in touch
+          </p>
+          <a href={`mailto:${SALES_EMAIL}`} className="foot__link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Mail size={14} /> {SALES_EMAIL}
+          </a>
+          {PHONE_NUMBERS.map((number) => (
+            <a
+              key={number}
+              href={`tel:${number.replace(/\s+/g, '')}`}
+              className="foot__link"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+            >
+              <Phone size={14} /> {number}
+            </a>
+          ))}
+        </nav>
 
         {columns.map((col) => (
           <nav key={col.title} style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
@@ -70,10 +89,19 @@ const Footer = () => (
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn--light"
+            className="btn btn--instagram"
             style={{ padding: '0.7rem 1.25rem', fontSize: '0.85rem' }}
           >
             <Instagram size={16} /> {INSTAGRAM_HANDLE} <Arrow size={14} />
+          </a>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn--facebook"
+            style={{ padding: '0.7rem 1.25rem', fontSize: '0.85rem' }}
+          >
+            <Facebook size={16} /> {FACEBOOK_HANDLE} <Arrow size={14} />
           </a>
           <img src={askFor13Badge} alt="#AskFor13" style={{ width: 92, height: 92 }} />
         </div>

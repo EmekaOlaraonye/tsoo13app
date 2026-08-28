@@ -4,6 +4,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
+import { Tomato } from './ui/Tomato';
 import { Plus, Arrow } from './ui/Icons';
 
 /**
@@ -66,17 +67,19 @@ const steps = [
     soft: 'var(--c-green-soft)',
   },
   {
-    id: 'next',
-    stage: 'What’s next',
+    id: 'beyond',
+    stage: 'Beyond',
     year: '05',
-    title: 'We’re not\ndone growing.',
-    line: 'More crops, more shelves, more young people running the show.',
-    reveal: 'The plan: widen the range beyond tomatoes, reach every major retailer in Botswana, and prove a company this young can be the one everybody asks for by name.',
-    tags: ['New crops', 'National reach'],
+    title: 'Mookane.\nGaborone.\nBeyond.',
+    line: 'More crops, more shelves, more young people running the show — the destination keeps moving.',
+    reveal: 'The plan: widen the range beyond tomatoes, reach every major retailer in Botswana, and prove a company this young can be the one everybody asks for by name — wherever that takes us next.',
+    tags: ['New crops', 'National reach', 'And beyond'],
     image: '/tomatoes.png',
     alt: 'Fresh produce ready to move',
-    color: 'var(--c-red-deep)',
-    soft: 'var(--c-red-soft)',
+    color: 'var(--c-yellow)',
+    soft: 'var(--c-yellow-soft)',
+    ink: true,
+    final: true,
   },
 ];
 
@@ -85,8 +88,9 @@ const Step = ({ step, index }) => {
 
   return (
     <Reveal
-      className={`tl__step tl__step--${side}`}
+      className={`tl__step tl__step--${side} ${step.final ? 'tl__step--final' : ''}`}
       style={{ '--step': step.color, '--step-soft': step.soft }}
+      variant={step.final ? 'scale' : 'up'}
       delay={0.05}
     >
       <span className="tl__connector" aria-hidden="true" />
@@ -107,7 +111,11 @@ const Step = ({ step, index }) => {
             <span
               key={tag}
               className="chip"
-              style={{ '--chip-bg': step.soft, '--chip-fg': step.ink ? 'var(--ink-2)' : step.color }}
+              style={
+                step.final
+                  ? { '--chip-bg': 'rgba(255,255,255,.2)', '--chip-fg': 'var(--white)' }
+                  : { '--chip-bg': step.soft, '--chip-fg': step.ink ? 'var(--ink-2)' : step.color }
+              }
             >
               {tag}
             </span>
@@ -142,18 +150,23 @@ const TheJourney = ({ standalone = false }) => {
     <section
       id="journey"
       className={`section ${standalone ? 'section--top' : ''}`}
-      style={{ background: 'var(--white)' }}
+      style={{ background: 'radial-gradient(120% 70% at 15% 0%, var(--c-yellow-soft) 0%, var(--white) 55%)' }}
     >
       <Blob color="soft-lime" size={430} top={-150} right="-12%" />
       <Blob color="soft-red" size={300} bottom="12%" left="-10%" />
+      <Blob color="yellow" size={220} top="30%" left="-6%" opacity={0.4} />
       <Blob color="yellow" size={14} top="18%" left="8%" />
+      <Tomato color="var(--c-yellow-ink)" size={100} top="8%" right="6%" opacity={0.15} rotate={10} outline />
+      <Tomato color="var(--c-lime)" size={90} bottom="6%" right="10%" opacity={0.16} rotate={-16} />
 
       <div className="wrap">
         <SectionHead
           eyebrow="The journey"
           dot="var(--c-lime)"
+          color="var(--c-green)"
+          variant="left"
           title={<>How we got <span className="t-red">from there</span> to here.</>}
-          lede="Five stops, from one plot of soil to a name people ask for."
+          lede="Five stops, from one plot of soil to wherever comes next."
         />
 
         <div className="tl" ref={railRef}>

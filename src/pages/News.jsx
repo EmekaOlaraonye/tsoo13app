@@ -1,6 +1,7 @@
 import Reveal from '../components/ui/Reveal';
 import SectionHead from '../components/ui/SectionHead';
 import { Blob } from '../components/ui/Blobs';
+import { Tomato } from '../components/ui/Tomato';
 import { Arrow } from '../components/ui/Icons';
 import { INSTAGRAM_URL } from '../siteConfig';
 
@@ -94,11 +95,13 @@ const News = () => (
     <Blob color="soft-lime" size={430} top={-150} right="-12%" />
     <Blob color="red" size={15} top="16%" left="8%" />
     <Blob color="soft-yellow" size={300} bottom="4%" left="-9%" />
+    <Tomato color="var(--c-green-lt)" size={100} top="6%" left="4%" opacity={0.14} rotate={8} outline />
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <SectionHead
         eyebrow="Fresh off the vine"
         dot="var(--c-green-lt)"
+        color="var(--c-green)"
         title={<>The <span className="t-red">news</span>.</>}
         lede="Retail drops, recognitions and notes from the field."
       />

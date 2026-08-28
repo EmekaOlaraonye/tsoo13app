@@ -16,8 +16,7 @@ const photos = [
 ];
 
 const Gallery = () => (
-  <section className="section section--top">
-    <Blob color="soft-red" size={420} top={-160} left="-12%" />
+  <section className="section section--top" style={{ background: 'radial-gradient(90% 60% at 85% 0%, var(--c-red-soft) 0%, var(--white) 60%)' }}>
     <Blob color="yellow" size={18} top="18%" right="9%" />
     <Blob color="soft-lime" size={320} bottom="2%" right="-10%" />
 
@@ -25,6 +24,7 @@ const Gallery = () => (
       <SectionHead
         eyebrow="The journey, documented"
         dot="var(--c-red)"
+        variant="left"
         title={<>In the <span className="t-green">field</span>.</>}
         lede="Hover a frame to read it."
       />
@@ -44,7 +44,7 @@ const Gallery = () => (
       </div>
 
       <Reveal delay={0.15} style={{ textAlign: 'center', marginTop: '3rem' }}>
-        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn btn--red">
+        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn btn--instagram">
           <Instagram size={17} /> More on {INSTAGRAM_HANDLE} <Arrow size={15} />
         </a>
       </Reveal>
