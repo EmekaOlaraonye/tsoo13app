@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Arrow, ChevronDown, Play, Check } from './ui/Icons';
 import { Blob } from './ui/Blobs';
-import logo from '../assets/13icon.png';
+import logo from '../assets/cleartsoo-cropped.png';
 
 const taglines = [
   'farming. creating. growing.',
@@ -40,38 +40,26 @@ const Hero = () => {
           needs to shrink out of the logo's way instead (see .hero__blob--top). */}
       <Blob color="soft-lime" size={520} top={-200} right="-10%" className="hero__blob--top" />
       <Blob color="soft-yellow" size={320} bottom={-110} left="-8%" />
-      <Blob color="red" size={18} top="54%" left="3%" />
+      <Blob color="red" size={18} top="54%" left="3%" className="hero__accent" />
       <Blob color="green" size={12} bottom="6%" left="7%" />
-      <Blob color="yellow" size={24} top="8%" right="40%" />
+      <Blob color="yellow" size={24} top="8%" right="40%" className="hero__accent" />
 
       <div className="wrap">
         <div className="hero__grid">
           {/* ---------- Left: the logo leads ---------- */}
-          <motion.div style={{ y: contentY, opacity: fade }}>
+          <motion.div className="hero__intro" style={{ y: contentY, opacity: fade }}>
             <motion.img
               src={logo}
-              alt="Tsoo...13 — from our family to yours"
+              alt="Tsoo...13"
               className="hero__logo"
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1, ease }}
             />
 
-            <motion.h1
-              className="display hero__title"
-              style={{ marginTop: '0.75rem' }}
-              initial={{ opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.15, ease }}
-            >
-              <span className="t-green">Farming.</span><br />
-              <span className="t-red">Creating.</span><br />
-              <span className="mark" style={{ '--mark': 'var(--c-yellow)' }}>Growing.</span>
-            </motion.h1>
-
             <motion.p
               className="lede"
-              style={{ marginTop: '1.6rem', maxWidth: '34ch' }}
+              style={{ marginTop: '2rem', maxWidth: '34ch' }}
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.32, ease }}
