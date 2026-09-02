@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Outfit:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Outfit:wght@300..900&display=swap');
 
 /* ==========================================================================
    TSOO...13 — design system
@@ -32,7 +32,7 @@
   --line-strong: rgba(20, 21, 15, 0.16);
 
   /* Type */
-  --font-display: 'Baloo 2', 'Arial Rounded MT Bold', sans-serif;
+  --font-display: 'Shrikhand', 'Arial Black', sans-serif;
   --font-sans: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Motion + shape */
@@ -108,12 +108,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
    Typography
    -------------------------------------------------------------------------- */
 
+/* Shrikhand is a slanted display face with a tall x-height — it needs more
+   room between stacked lines than a upright rounded sans would. */
 .display {
   font-family: var(--font-display);
   text-transform: uppercase;
-  line-height: 0.88;
-  letter-spacing: -0.005em;
-  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: 0;
+  font-weight: 400;
 }
 
 .display--xl { font-size: clamp(3rem, 9.5vw, 7.5rem); }
@@ -349,7 +351,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .card__title {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   text-transform: uppercase;
   font-size: 1.5rem;
   line-height: 0.98;
@@ -396,7 +398,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .flow__num {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 0.85rem;
   color: var(--c-red);
   letter-spacing: 0.06em;
@@ -421,7 +423,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   display: grid;
   place-items: center;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 0.95rem;
 }
 
@@ -495,7 +497,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .nav__mark {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 1.4rem;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -652,7 +654,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .sheet__link {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: clamp(2rem, 10vw, 3.2rem);
   text-transform: uppercase;
   line-height: 1.1;
@@ -829,7 +831,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   display: grid;
   place-items: center;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 0.95rem;
   color: var(--white);
   background: var(--step, var(--c-red));
@@ -889,7 +891,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .tl__year {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: clamp(2.8rem, 7vw, 4.8rem);
   line-height: 0.82;
   color: var(--step-soft, var(--c-red-soft));
@@ -1179,7 +1181,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .foot__word {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   text-transform: uppercase;
   font-size: clamp(3.2rem, 16vw, 11rem);
   line-height: 0.82;
@@ -1239,7 +1241,7 @@ textarea.input { resize: vertical; min-height: 130px; }
    Misc
    -------------------------------------------------------------------------- */
 
-.stat__num { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 0.9; }
+.stat__num { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 0.9; }
 .stat__label { font-size: 0.78rem; color: var(--ink-3); font-weight: 600; letter-spacing: 0.05em; margin-top: 0.35rem; }
 
 .rule { height: 1px; background: var(--line); border: 0; }
