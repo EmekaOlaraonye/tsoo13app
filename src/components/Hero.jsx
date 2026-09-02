@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Arrow, ChevronDown, Play, Check } from './ui/Icons';
 import { Blob } from './ui/Blobs';
-import logo from '../assets/cleartsoo-cropped.png';
+import { Tomato } from './ui/Tomato';
+import logo from '../assets/13logotx-cropped.png';
 
 const taglines = [
   'farming. creating. growing.',
   '#askfor13',
   'home grown, hand picked',
-  'Mookane → Gaborone → beyond',
+  'Mookane → you',
   'different start, same 13 quality',
   'youth run, Botswana built',
 ];
@@ -40,9 +41,10 @@ const Hero = () => {
           needs to shrink out of the logo's way instead (see .hero__blob--top). */}
       <Blob color="soft-lime" size={520} top={-200} right="-10%" className="hero__blob--top" />
       <Blob color="soft-yellow" size={320} bottom={-110} left="-8%" />
-      <Blob color="red" size={18} top="54%" left="3%" className="hero__accent" />
+      <Tomato color="var(--c-red)" size={46} top="52%" left="0%" opacity={0.55} rotate={-14} outline className="hero__accent" />
       <Blob color="green" size={12} bottom="6%" left="7%" />
-      <Blob color="yellow" size={24} top="8%" right="40%" className="hero__accent" />
+      <Blob color="yellow" ring size={30} top="8%" right="40%" className="hero__accent" />
+      <Tomato color="var(--c-green-lt)" size={150} bottom="0%" left="20%" opacity={0.07} rotate={9} outline className="hero__accent" />
 
       <div className="wrap">
         <div className="hero__grid">
@@ -91,7 +93,9 @@ const Hero = () => {
             transition={{ duration: 1.1, delay: 0.2, ease }}
           >
             <span className="blob blob--yellow hero__dot hero__dot--a" />
+            <span className="blob blob--red hero__dot hero__dot--a2" />
             <span className="blob blob--lime hero__dot hero__dot--b" />
+            <span className="blob blob--ring hero__dot hero__dot--b2" style={{ borderColor: 'var(--c-yellow)' }} />
 
             <div className="hero__frame">
               <img
@@ -104,7 +108,7 @@ const Hero = () => {
               <span className="hero__frame-scrim" />
 
               <div style={{ position: 'absolute', top: '1.1rem', right: '1.1rem' }}>
-                <span className="chip chip--float">Mookane &rarr; Gaborone &rarr; beyond</span>
+                <span className="chip chip--float">Mookane &rarr; You</span>
               </div>
 
               <div

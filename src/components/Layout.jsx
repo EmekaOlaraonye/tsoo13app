@@ -5,11 +5,20 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 
 const Layout = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (hash) {
+      // The target section mounts with this same navigation, so it isn't in
+      // the DOM on the very first paint — wait a tick before scrolling to it.
+      const id = hash.slice(1);
+      const raf = requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      return () => cancelAnimationFrame(raf);
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return (
     <>

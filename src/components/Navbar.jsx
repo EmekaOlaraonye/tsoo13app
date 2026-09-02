@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Arrow } from './ui/Icons';
 import logoMark from '../assets/13icon.png';
+import dotsThirteen from '../assets/13nb-cropped.png';
 
 const links = [
   { label: 'Journey', to: '/journey', dot: 'var(--c-lime)' },
@@ -15,15 +16,13 @@ const links = [
 const sheetLinks = [...links, { label: 'Contact Us', to: '/contact-us', dot: 'var(--c-red)' }];
 
 /**
- * The top-left wordmark. The homepage already has the full hero logo below
- * it, so the navbar stays plain text there; every other page gets the small
- * logo mark instead, since there's nothing else on screen carrying the brand.
+ * The top-left wordmark. The homepage gets the "...13" mark since the full
+ * hero logo is already below it; every other page gets the small sun icon
+ * instead, since there's nothing else on screen carrying the brand.
  */
 export const Wordmark = ({ isHome = false }) =>
   isHome ? (
-    <span className="nav__mark">
-      Tsoo<em>...</em><b>13</b>
-    </span>
+    <img src={dotsThirteen} alt="Tsoo...13" className="nav__mark nav__mark--img nav__mark--img-13" />
   ) : (
     <img src={logoMark} alt="Tsoo...13" className="nav__mark nav__mark--img" />
   );

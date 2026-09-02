@@ -6,17 +6,21 @@ import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import { Plus, Arrow } from './ui/Icons';
+import ProcessFlow from './ProcessFlow';
+import MeetTheFamily from './MeetTheFamily';
+import SeeTheFarm from './SeeTheFarm';
 
 /**
- * Origin -> Evolution -> Growth -> Today -> What's next.
- * Farming is step one of the story, not the identity of the brand.
+ * The start -> First harvest -> Getting real -> The storm -> We built again -> The comeback.
+ * Farming is step one of the story, not the identity of the brand — but the
+ * story only means anything if the low point is actually in it.
  */
 const steps = [
   {
-    id: 'origin',
-    stage: 'Origin',
+    id: 'start',
+    stage: 'The Start',
     year: '01',
-    title: 'It started\nwith farming.',
+    title: 'It started\nwith a farm.',
     line: 'One plot of soil in Mookane Village and a family name on the box.',
     reveal: 'Tsoo...13 — "from our family to yours". No warehouse, no logo, no plan beyond growing something people would come back for.',
     tags: ['Mookane Village', 'Family run'],
@@ -27,58 +31,71 @@ const steps = [
     ink: true,
   },
   {
-    id: 'adapt',
-    stage: 'Evolution',
+    id: 'harvest',
+    stage: 'First Harvest',
     year: '02',
-    title: 'The seedlings\ndidn’t make it.',
-    line: 'So we stopped buying seeds and started growing from cuttings.',
-    reveal: 'Stems, roots and patience instead. The cuttings flowered faster than the parent plant. Different start, same 13 quality — that became the way we solve everything.',
-    tags: ['Cuttings over seeds', 'Boer maak ’n plan'],
-    image: '/cuttings.png',
-    alt: 'A tomato cutting rooting in a pot inside the greenhouse',
+    title: 'Then came the\nfirst harvest.',
+    line: 'The crop came in, and it was real — proof the idea actually worked.',
+    reveal: 'No machinery to speak of, just early mornings and a plot that finally paid off. Nothing about the business was certain yet — but the farming part, at least, was no longer a maybe.',
+    tags: ['First crop', 'Proof it worked'],
+    image: '/tomatoes.png',
+    alt: 'The first crates of tomatoes from Mookane Village',
     color: 'var(--c-yellow)',
     soft: 'var(--c-yellow-soft)',
     ink: true,
   },
   {
-    id: 'reach',
-    stage: 'Growth',
+    id: 'real',
+    stage: 'Getting Real',
     year: '03',
-    title: 'Then the city\ncalled.',
-    line: 'Gaborone asked for it. We packed crates and showed up.',
-    reveal: 'Food Lover’s SquareMart first, then SuperSpar Acacia. The bags went out stamped with a number instead of a brand — and people started asking for it by that number.',
-    tags: ['Food Lover’s SquareMart', 'SuperSpar Acacia'],
-    image: '/tomatoes.png',
-    alt: 'Crates of Tsoo...13 tomatoes stacked at market',
+    title: 'Then things\ngot real.',
+    line: 'Demand outgrew the plot fast — more hands, more hours, more learned the hard way.',
+    reveal: 'Growing enough to eat is one thing. Growing enough to sell, pack and deliver on time is another. This is where farming quietly turned into a business, whether we were ready or not.',
+    tags: ['Scaling up', 'Learning fast'],
+    image: '/cuttings.png',
+    alt: 'Tending rows of seedlings as the operation grew',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
   },
   {
-    id: 'today',
-    stage: 'Today',
+    id: 'storm',
+    stage: 'The Storm',
     year: '04',
-    title: 'One name.\nSharper vision.',
-    line: 'We came back to the name that meant family, and built a company around it.',
-    reveal: 'Tsoo...13 is a young team running growing, packing, brand and distribution ourselves — backed by leadership training from MCW and Aspire Leaders.',
-    tags: ['Youth run', 'Smart hands, smarter farming'],
-    image: '/lifestyle.png',
-    alt: 'The Tsoo...13 operation today',
+    title: 'Then the\nstorm hit.',
+    line: 'A whole season of seedlings didn’t make it. It could have ended right there.',
+    reveal: 'Losing a run of seedlings was the closest this ever came to stopping. Instead of just buying more seed and hoping, we asked a harder question — was there a better way to grow at all?',
+    tags: ['Seedling loss', 'The lowest point'],
+    image: '/cuttings.png',
+    alt: 'The seedlings that did not make it',
     color: 'var(--c-green-lt)',
     soft: 'var(--c-green-soft)',
   },
   {
-    id: 'beyond',
-    stage: 'Beyond',
+    id: 'rebuild',
+    stage: 'We Built Again',
     year: '05',
-    title: 'Mookane.\nGaborone.\nBeyond.',
-    line: 'More crops, more shelves, more young people running the show — the destination keeps moving.',
-    reveal: 'The plan: widen the range beyond tomatoes, reach every major retailer in Botswana, and prove a company this young can be the one everybody asks for by name — wherever that takes us next.',
-    tags: ['New crops', 'National reach', 'And beyond'],
-    image: '/tomatoes.png',
-    alt: 'Fresh produce ready to move',
+    title: 'So we\nbuilt again.',
+    line: 'No more seeds. Stems, roots and patience — and this time, a plan behind it too.',
+    reveal: 'The cuttings method came directly out of that failure: faster to flower, cheaper to run, entirely ours. MCW and Aspire Leaders followed soon after — this time, we built the operation to actually last.',
+    tags: ['Cuttings over seeds', 'MCW & Aspire Leaders'],
+    image: '/lifestyle.png',
+    alt: 'The cuttings method, rebuilt from the ground up',
     color: 'var(--c-yellow)',
     soft: 'var(--c-yellow-soft)',
     ink: true,
+  },
+  {
+    id: 'comeback',
+    stage: 'The Comeback',
+    year: '06',
+    title: 'This is\nthe comeback.',
+    line: 'Food Lover’s SquareMart. SuperSpar Acacia. A name people ask for instead of a brand.',
+    reveal: 'Tsoo...13 is a young team running growing, packing, brand and distribution ourselves. Mookane to Gaborone, and the destination keeps moving — this is still only the start of it.',
+    tags: ['On shelves now', 'Youth run'],
+    image: '/tomatoes.png',
+    alt: 'Tsoo...13 tomatoes on shelves today',
+    color: 'var(--c-red)',
+    soft: 'var(--c-red-soft)',
     final: true,
   },
 ];
@@ -166,7 +183,7 @@ const TheJourney = ({ standalone = false }) => {
           color="var(--c-green)"
           variant="left"
           title={<>How we got <span className="t-red">from there</span> to here.</>}
-          lede="Five stops, from one plot of soil to wherever comes next."
+          lede="Six stops, from one plot of soil to wherever comes next — storm included."
         />
 
         <div className="tl" ref={railRef}>
@@ -179,7 +196,11 @@ const TheJourney = ({ standalone = false }) => {
           ))}
         </div>
 
-        <Reveal style={{ textAlign: 'center', marginTop: '1rem' }}>
+        <ProcessFlow />
+        <MeetTheFamily />
+        <SeeTheFarm />
+
+        <Reveal style={{ textAlign: 'center', marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
           <Link to="/goods" className="btn btn--ink">
             See what we grow <Arrow size={16} />
           </Link>

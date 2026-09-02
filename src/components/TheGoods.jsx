@@ -91,6 +91,44 @@ const TheGoods = ({ standalone = false }) => (
         lede="Home grown. Hand picked. Always reliable. That is the whole of what the 13 on the bag means."
       />
 
+      <Reveal
+        variant="scale"
+        style={{
+          position: 'relative',
+          borderRadius: 'var(--r-xl)',
+          overflow: 'hidden',
+          aspectRatio: '21 / 9',
+          marginBottom: 'clamp(2.5rem, 5vw, 4rem)',
+          boxShadow: 'var(--shadow-lg)',
+        }}
+      >
+        <img
+          src="/tomatoes.png"
+          alt="Tsoo...13 tomatoes packed and ready to move"
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        <span
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(100deg, rgba(20,21,15,.82) 0%, rgba(20,21,15,.4) 45%, rgba(20,21,15,.05) 75%)',
+          }}
+        />
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: 'clamp(1.5rem, 5vw, 3.5rem)' }}>
+          <div>
+            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.75)', marginBottom: '1rem' }}>
+              The product
+            </p>
+            <h3 className="display display--lg" style={{ color: 'var(--white)', maxWidth: '11ch' }}>
+              Grown here.<br />Packed here.<br />
+              <span style={{ color: 'var(--c-yellow)' }}>Going somewhere.</span>
+            </h3>
+          </div>
+        </div>
+      </Reveal>
+
       <div className="grid grid--4">
         {produce.map((item, i) => (
           <ProduceCard key={item.id} item={item} index={i} />
