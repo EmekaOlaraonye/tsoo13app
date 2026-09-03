@@ -28,14 +28,7 @@ const Footer = () => (
     <span className="blob" aria-hidden="true" style={{ width: 240, height: 240, bottom: -110, left: -80, background: 'rgba(216,72,31,.14)' }} />
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-      <div
-        style={{
-          display: 'grid',
-          gap: 'clamp(2rem, 5vw, 4rem)',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
-          marginBottom: 'clamp(2.5rem, 6vw, 4rem)',
-        }}
-      >
+      <div className="foot__grid">
         <div style={{ minWidth: 0 }}>
           <p style={{ color: 'var(--white)', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.6rem' }}>
             Botswana&apos;s home of fresh tomatoes.

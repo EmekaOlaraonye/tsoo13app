@@ -24,6 +24,39 @@ const badgeTones = [
 
 const ease = [0.16, 1, 0.3, 1];
 
+/**
+ * The "..." of Tsoo...13, drawn as three tomatoes — the brand's two motifs
+ * folded into one mark. They drift on a stagger, so the gutter beside the
+ * logo reads as a deliberate detail rather than a stray dot.
+ */
+const ellipsisTomatoes = [
+  { size: 40, color: 'var(--c-red)', rotate: -12, opacity: 0.9, drift: -10, duration: 5.2 },
+  { size: 28, color: 'var(--c-yellow)', rotate: 9, opacity: 0.85, drift: -7, duration: 4.4 },
+  { size: 20, color: 'var(--c-lime-ink)', rotate: -6, opacity: 0.7, drift: -5, duration: 6, outline: true },
+];
+
+const TomatoEllipsis = () => (
+  <div className="hero__vine hero__accent" aria-hidden="true">
+    {ellipsisTomatoes.map((t, i) => (
+      <motion.span
+        key={t.size}
+        style={{ display: 'block', width: t.size, height: t.size, marginLeft: i * 6 }}
+        animate={{ y: [0, t.drift, 0] }}
+        transition={{ duration: t.duration, delay: i * 0.45, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <Tomato
+          color={t.color}
+          size={t.size}
+          rotate={t.rotate}
+          opacity={t.opacity}
+          outline={t.outline}
+          style={{ position: 'relative' }}
+        />
+      </motion.span>
+    ))}
+  </div>
+);
+
 const Hero = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -41,7 +74,7 @@ const Hero = () => {
           needs to shrink out of the logo's way instead (see .hero__blob--top). */}
       <Blob color="soft-lime" size={520} top={-200} right="-10%" className="hero__blob--top" />
       <Blob color="soft-yellow" size={320} bottom={-110} left="-8%" />
-      <Tomato color="var(--c-red)" size={46} top="52%" left="0%" opacity={0.55} rotate={-14} outline className="hero__accent" />
+      <TomatoEllipsis />
       <Blob color="green" size={12} bottom="6%" left="7%" />
       <Blob color="yellow" ring size={30} top="8%" right="40%" className="hero__accent" />
       <Tomato color="var(--c-green-lt)" size={150} bottom="0%" left="20%" opacity={0.07} rotate={9} outline className="hero__accent" />
