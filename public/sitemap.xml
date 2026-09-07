@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tsoo13.co.bw/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tsoo13.co.bw/journey</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsoo13.co.bw/goods</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsoo13.co.bw/wins</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tsoo13.co.bw/news</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tsoo13.co.bw/gallery</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tsoo13.co.bw/contact-us</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>

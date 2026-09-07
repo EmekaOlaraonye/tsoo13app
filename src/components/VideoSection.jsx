@@ -33,7 +33,7 @@ const Lightbox = ({ onClose }) => {
 
         {VIDEO.youtubeId ? (
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO.youtubeId}?autoplay=1&rel=0`}
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO.youtubeId}?autoplay=1&rel=0${VIDEO.startAt ? `&start=${VIDEO.startAt}` : ''}`}
             title={VIDEO.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
             allowFullScreen
@@ -86,16 +86,16 @@ const VideoSection = () => {
         >
           <div>
             <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
-              Meet us properly
+              Under the tunnels
             </p>
             <h2 className="display display--lg" style={{ color: 'var(--c-red)' }}>
-              Two minutes<br />
-              with <span className="t-green">Tsoo...13</span>.
+              How the<br />
+              crop <span className="t-green">grows</span>.
             </h2>
           </div>
-          <p className="lede" style={{ maxWidth: '30ch' }}>
-            The people, the greenhouse, the crates going out at sunrise. Everything the
-            words on this page can&apos;t do.
+          <p className="lede" style={{ maxWidth: '32ch' }}>
+            Tunnel houses, side rollups, controlled airflow — the growing method behind
+            a crop that turns up the same every week.
           </p>
         </Reveal>
 
@@ -120,15 +120,33 @@ const VideoSection = () => {
                   {hasFilm ? VIDEO.runtime : 'Coming soon'}
                 </span>
                 <p className="display display--sm" style={{ marginTop: '0.85rem', color: 'var(--white)' }}>
-                  From the soil up.
+                  Inside the tunnels.
                 </p>
               </div>
+              {/* Credit, not a location line — this is someone else's footage. */}
               <p style={{ fontSize: '0.84rem', fontWeight: 600, color: 'rgba(255,255,255,.82)' }}>
-                Mookane Village, Botswana
+                {VIDEO.credit ? `Video: ${VIDEO.credit}` : 'Mookane Village, Botswana'}
               </p>
             </div>
           </div>
         </Reveal>
+
+        {VIDEO.credit && (
+          <Reveal delay={0.16}>
+            <p style={{ fontSize: '0.82rem', color: 'var(--ink-3)', marginTop: '1rem' }}>
+              Footage courtesy of{' '}
+              <a
+                href={VIDEO.creditUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--c-red)', fontWeight: 600, textDecoration: 'underline' }}
+              >
+                {VIDEO.credit}
+              </a>
+              . Our own film is still in production.
+            </p>
+          </Reveal>
+        )}
       </div>
 
       {open && <Lightbox onClose={() => setOpen(false)} />}

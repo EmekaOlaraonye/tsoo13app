@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tsoo13.co.bw/sitemap.xml
