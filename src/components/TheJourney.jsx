@@ -176,7 +176,11 @@ const TheJourney = ({ standalone = false }) => {
       <Tomato color="var(--c-yellow-ink)" size={100} top="8%" right="6%" opacity={0.15} rotate={10} outline />
       <Tomato color="var(--c-lime)" size={90} bottom="6%" right="10%" opacity={0.16} rotate={-16} />
 
-      <div className="wrap">
+      {/* Lifted above the decorative blobs, which are positioned with z-index 0
+          and so paint over any unpositioned content. The timeline itself was
+          immune (its panels and media are each positioned), but the plain
+          sections below it were not. Every other section does the same. */}
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <SectionHead
           as={standalone ? 'h1' : 'h2'}
           eyebrow="The journey"
