@@ -6,7 +6,7 @@ import Reveal from './Reveal';
  * The title colour defaults to the section's own dot colour (never black),
  * so each page's heading feels tied to its surrounding colour language.
  */
-const SectionHead = ({ eyebrow, dot = 'var(--c-red)', color, title, lede, align = 'left', size = 'lg', variant = 'up', children }) => (
+const SectionHead = ({ eyebrow, dot = 'var(--c-red)', color, title, lede, align = 'left', size = 'lg', variant = 'up', as: Heading = 'h2', children }) => (
   <Reveal
     variant={variant}
     style={{
@@ -25,9 +25,11 @@ const SectionHead = ({ eyebrow, dot = 'var(--c-red)', color, title, lede, align 
         {eyebrow}
       </p>
     )}
-    <h2 className={`display display--${size}`} style={{ maxWidth: '17ch', color: color || dot }}>
+    {/* `as="h1"` on whichever head is the page's own title — every route needs
+        exactly one h1, and these sections double as both page and section heads. */}
+    <Heading className={`display display--${size}`} style={{ maxWidth: '17ch', color: color || dot }}>
       {title}
-    </h2>
+    </Heading>
     {lede && <p className="lede" style={{ marginInline: align === 'center' ? 'auto' : undefined }}>{lede}</p>}
     {children}
   </Reveal>

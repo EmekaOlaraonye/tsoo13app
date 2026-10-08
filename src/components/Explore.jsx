@@ -10,7 +10,7 @@ const destinations = [
     to: '/goods',
     category: 'Produce',
     desc: 'Home grown, hand picked, and where to find it.',
-    image: '/tomatoes.png',
+    image: '/farm/retail-shelf.jpg',
     color: 'var(--c-red)',
   },
   {
@@ -18,7 +18,7 @@ const destinations = [
     to: '/wins',
     category: 'Recognition',
     desc: 'Credentials, movements and the odd spotlight.',
-    image: '/lifestyle.png',
+    image: '/farm/training-group.jpg',
     color: 'var(--c-yellow)',
   },
   {
@@ -26,7 +26,7 @@ const destinations = [
     to: '/news',
     category: 'Dispatches',
     desc: 'Retail drops and fresh notes from the field.',
-    image: '/cuttings.png',
+    image: '/farm/packing-table.jpg',
     color: 'var(--c-green-lt)',
   },
   {
@@ -34,7 +34,7 @@ const destinations = [
     to: '/gallery',
     category: 'In the field',
     desc: 'The journey, documented in photographs.',
-    image: '/hero.png',
+    image: '/farm/tunnels-sunset.jpg',
     color: 'var(--c-lime)',
   },
 ];

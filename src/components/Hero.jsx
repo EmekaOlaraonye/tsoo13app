@@ -80,6 +80,10 @@ const Hero = () => {
       <Tomato color="var(--c-green-lt)" size={150} bottom="0%" left="20%" opacity={0.07} rotate={9} outline className="hero__accent" />
 
       <div className="wrap">
+        {/* The homepage title is carried by the logo image, so the h1 every
+            page needs lives here — read by crawlers and screen readers only. */}
+        <h1 className="sr-only">Tsoo...13 — farming, creating, growing in Mookane Village, Botswana</h1>
+
         <div className="hero__grid">
           {/* ---------- Left: the logo leads ---------- */}
           <motion.div className="hero__intro" style={{ y: contentY, opacity: fade }}>
@@ -113,7 +117,7 @@ const Hero = () => {
                 See how we got here <Arrow size={16} />
               </Link>
               <a href="#film" className="btn btn--ghost">
-                <Play size={15} /> Watch the film
+                <Play size={15} /> See how it grows
               </a>
             </motion.div>
           </motion.div>
@@ -132,8 +136,8 @@ const Hero = () => {
 
             <div className="hero__frame">
               <img
-                src="/tomatoes.png"
-                alt="Tsoo...13 tomatoes packed and stacked at market"
+                src="/farm/packed-punnets.jpg"
+                alt="Tsoo...13 tomatoes packed into branded punnets"
                 className="hero__img"
                 fetchPriority="high"
               />

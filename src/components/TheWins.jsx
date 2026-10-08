@@ -181,6 +181,7 @@ const TheWins = ({ standalone = false }) => (
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <SectionHead
+        as={standalone ? 'h1' : 'h2'}
         eyebrow="In the spotlight"
         dot="var(--c-yellow)"
         color="var(--c-yellow-ink)"

@@ -16,7 +16,7 @@ const stories = [
     date: 'June 2025',
     title: 'Now on the shelf at SuperSpar Acacia.',
     body: 'Gaborone asked, so we packed the crates and showed up. Fresh Tsoo...13 tomatoes now sit alongside our run at Food Lover’s SquareMart — ask for it by name.',
-    image: '/tomatoes.png',
+    image: '/farm/retail-shelf.jpg',
     color: 'var(--c-red)',
     lead: true,
   },
@@ -26,7 +26,7 @@ const stories = [
     date: 'April 2025',
     title: 'Selected for the Aspire Leaders Programme.',
     body: 'One of Africa’s most competitive Harvard-affiliated accelerators, and a room full of founders building at a bigger scale.',
-    image: '/lifestyle.png',
+    image: '/farm/training-group.jpg',
     color: 'var(--c-yellow)',
   },
   {
@@ -35,7 +35,7 @@ const stories = [
     date: 'January 2025',
     title: 'Cuttings over seeds.',
     body: 'Losing a run of seedlings forced a new method: no seeds, just stems, roots and patience. They flowered faster than the parent plant.',
-    image: '/cuttings.png',
+    image: '/farm/planting-cocobag.jpg',
     color: 'var(--c-green-lt)',
   },
   {
@@ -44,7 +44,7 @@ const stories = [
     date: 'November 2024',
     title: 'MCW leadership cohort graduation.',
     body: 'Building leaders who build things — the operation now runs on more than instinct.',
-    image: '/hero.png',
+    image: '/farm/greenhouse-visit.jpg',
     color: 'var(--c-lime)',
   },
   {
@@ -53,7 +53,7 @@ const stories = [
     date: 'September 2024',
     title: 'Nine months in: a season on the ground.',
     body: 'From Mookane Village soil to city shelves — a look back at the first full growing season.',
-    image: '/cuttings.png',
+    image: '/farm/rows-at-sunset.jpg',
     color: 'var(--c-red)',
   },
 ];
@@ -145,7 +145,7 @@ const InterviewCard = () => (
   <Reveal>
     <div className="card" style={{ '--card-accent': 'var(--c-yellow-ink)', opacity: 0.85 }}>
       <div className="card__media">
-        <img className="card__img" src="/lifestyle.png" alt="" loading="lazy" />
+        <img className="card__img" src="/farm/visitors-field.jpg" alt="" loading="lazy" />
         <span className="card__wash" aria-hidden="true" />
         <span
           className="chip"
@@ -191,6 +191,7 @@ const News = () => {
 
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <SectionHead
+          as="h1"
           eyebrow="Fresh off the vine"
           dot="var(--c-green-lt)"
           color="var(--c-green)"

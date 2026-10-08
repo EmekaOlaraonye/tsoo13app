@@ -13,7 +13,7 @@ const produce = [
     tagline: 'Juicy, loud, unmistakable.',
     desc: 'Sun-ripened at Mookane. Zero shortcuts, zero compromise.',
     badge: 'Home grown',
-    image: '/tomatoes.png',
+    image: '/farm/tomatoes-on-vine.jpg',
     color: 'var(--c-red)',
   },
   {
@@ -22,7 +22,7 @@ const produce = [
     tagline: 'Tiny. Explosive.',
     desc: 'Small format, full 13 quality. They rarely make it home whole.',
     badge: 'Hand picked',
-    image: '/cuttings.png',
+    image: '/farm/hydroponic-truss.jpg',
     color: 'var(--c-yellow)',
   },
   {
@@ -31,7 +31,7 @@ const produce = [
     tagline: 'The chef pick.',
     desc: 'Dense and rich, with flavour that holds all the way through the pan.',
     badge: '13 grown',
-    image: '/lifestyle.png',
+    image: '/farm/packed-punnets.jpg',
     color: 'var(--c-green-lt)',
   },
   {
@@ -40,7 +40,7 @@ const produce = [
     tagline: 'Colour that sells itself.',
     desc: "Whatever is at its best that week, straight from the ground to you.",
     badge: 'Fresh from 13',
-    image: '/hero.png',
+    image: '/farm/cabbage-crates.jpg',
     color: 'var(--c-lime)',
   },
 ];
@@ -84,6 +84,7 @@ const TheGoods = ({ standalone = false }) => (
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <SectionHead
+        as={standalone ? 'h1' : 'h2'}
         eyebrow="Straight from the ground"
         dot="var(--c-red)"
         variant="right"
@@ -103,8 +104,8 @@ const TheGoods = ({ standalone = false }) => (
         }}
       >
         <img
-          src="/tomatoes.png"
-          alt="Tsoo...13 tomatoes packed and ready to move"
+          src="/farm/retail-shelf.jpg"
+          alt="Packed Tsoo...13 tomatoes on a retail shelf"
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
@@ -113,7 +114,7 @@ const TheGoods = ({ standalone = false }) => (
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(100deg, rgba(20,21,15,.82) 0%, rgba(20,21,15,.4) 45%, rgba(20,21,15,.05) 75%)',
+            background: 'linear-gradient(100deg, rgba(20,21,15,.88) 0%, rgba(20,21,15,.6) 45%, rgba(20,21,15,.18) 80%)',
           }}
         />
         <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: 'clamp(1.5rem, 5vw, 3.5rem)' }}>

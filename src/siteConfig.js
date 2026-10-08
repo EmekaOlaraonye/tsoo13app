@@ -38,7 +38,7 @@ export const VIDEO = {
      AgriTunnels' logo, email and phone number, which would turn this panel
      into an advert for them. The on-screen `credit` keeps it honest about
      whose footage plays. */
-  poster: '/hero.png',
+  poster: '/farm/tunnel-interior.jpg',
   title: 'Agritunnels at work',
   runtime: '3 MIN',
   /** Shown on screen. Leave null for our own footage. */

@@ -3,10 +3,10 @@ import Reveal from './ui/Reveal';
 import { Arrow } from './ui/Icons';
 
 const shots = [
-  { src: '/hero.png', caption: 'First light in the greenhouse' },
-  { src: '/cuttings.png', caption: 'Cuttings, rooting and ready' },
-  { src: '/lifestyle.png', caption: 'The operation, day to day' },
-  { src: '/tomatoes.png', caption: 'Crates, packed and moving' },
+  { src: '/farm/tunnel-interior.jpg', caption: 'Inside the tunnels' },
+  { src: '/farm/cocobag-drip.jpg', caption: 'Coco-coir and drip line' },
+  { src: '/farm/packing-table.jpg', caption: 'Packing day' },
+  { src: '/farm/farm-gate.jpg', caption: 'The gate at Mookane' },
 ];
 
 const SeeTheFarm = () => (

@@ -4,12 +4,12 @@ import { Instagram, Arrow } from './ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
 
 const posts = [
-  { src: '/tomatoes.png', caption: 'Crate day. Ask for 13 by name.' },
-  { src: '/cuttings.png', caption: 'No seeds. Stems, roots and patience.' },
-  { src: '/hero.png', caption: '6am in the greenhouse.' },
-  { src: '/lifestyle.png', caption: 'Straight from the ground to you.' },
-  { src: '/tomatoes.png', caption: 'SuperSpar Acacia restock.' },
-  { src: '/cuttings.png', caption: 'Season two, day one.' },
+  { src: '/farm/harvest-pile.jpg', caption: "A morning's picking." },
+  { src: '/farm/cocobag-drip.jpg', caption: 'Coco-coir and drip line.' },
+  { src: '/farm/tunnels-sunset.jpg', caption: 'Tunnels at last light.' },
+  { src: '/farm/packed-punnets.jpg', caption: 'Packed and ready to go.' },
+  { src: '/farm/team-in-field.jpg', caption: '#AskFor13, out in the rows.' },
+  { src: '/farm/young-plants.jpg', caption: 'Season two, day one.' },
 ];
 
 const InstagramSection = () => (
