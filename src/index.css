@@ -35,6 +35,9 @@
   --font-display: 'Shrikhand', 'Arial Black', sans-serif;
   --font-sans: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
+  /* The tomato silhouette, reused as a mask wherever the motif is wanted. */
+  --tomato-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 22c9-9 21-11 27-6 4 3 4 8 0 12 10 2 18 11 18 24 0 20-19 36-45 36S5 72 5 52c0-13 8-22 18-24-4-4-4-9 0-12 6-5 18-3 27 6Z' fill='%23000'/%3E%3C/svg%3E");
+
   /* Motion + shape */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --r-sm: 0.75rem;
@@ -134,13 +137,27 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   gap: 0.6rem;
 }
 
+/* The eyebrow marker is the brand's tomato, not a generic dot — it appears
+   on every section head across the site, so the motif earns its keep. A
+   mask (rather than an inline SVG) keeps the per-section --eyebrow-dot
+   colour working, and it degrades to a plain square nowhere: browsers
+   without mask support simply get the coloured block, so a radius is kept
+   as the fallback shape. */
 .eyebrow::before {
   content: '';
-  width: 9px;
-  height: 9px;
+  width: 11px;
+  height: 11px;
+  flex: none;
   border-radius: 50%;
   background: var(--eyebrow-dot, var(--c-red));
-  flex: none;
+}
+
+@supports (mask-image: url('')) or (-webkit-mask-image: url('')) {
+  .eyebrow::before {
+    border-radius: 0;
+    -webkit-mask: var(--tomato-mask) center / contain no-repeat;
+    mask: var(--tomato-mask) center / contain no-repeat;
+  }
 }
 
 .lede {
@@ -462,6 +479,111 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 
 .family__role { font-weight: 700; font-size: 1.02rem; }
+
+/* Team photographs above the role cards. Both source images are portrait,
+   so these frames stay upright — a wide banner crop cut the people off at
+   the waist. object-position favours the top so faces survive the crop. */
+.family__shots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 720px) {
+  .family__shots { grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+}
+
+.family__shot {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.family__shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+.family__shot-cap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.85rem;
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+  background: linear-gradient(to top, rgba(20, 21, 15, 0.82), transparent 55%);
+}
+
+/* Evidence strip on the Wins page */
+.proof { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+
+@media (min-width: 720px) { .proof { grid-template-columns: repeat(4, 1fr); gap: 1.1rem; } }
+
+.proof__item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.proof__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+
+.proof__item:hover img { transform: scale(1.06); }
+
+.proof__cap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.85rem;
+  color: var(--white);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.35;
+  background: linear-gradient(to top, rgba(20, 21, 15, 0.82), transparent 58%);
+}
+
+/* Photograph at the head of each "who we are" pillar card */
+.pillar__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  flex: none;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.pillar__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.pillar__num {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.93);
+  padding: 0.18rem 0.55rem;
+  border-radius: 99px;
+}
 
 .farm-strip {
   display: grid;
@@ -1359,21 +1481,34 @@ textarea.input { resize: vertical; min-height: 130px; }
 .mosaic__item--tall { grid-row: span 2; }
 .mosaic__item--wide { grid-column: span 2; }
 
-/* A hand-placed, scattered feel — each tile gets its own gentle tilt, lift
-   and corner shape instead of one uniform grid of identical rectangles. */
+/* A hand-placed, scattered feel. The tilt still cycles positionally — it
+   only needs to look unplanned — but the SHAPE is now chosen per photograph
+   in Gallery.jsx, so a circle lands on a close-up rather than wherever the
+   fourth slot happens to fall. */
 .mosaic__item:nth-child(4n+1) { transform: rotate(-1.6deg) translateY(6px); }
 .mosaic__item:nth-child(4n+2) { transform: rotate(1.4deg) translateY(-8px); }
 .mosaic__item:nth-child(4n+3) { transform: rotate(-1deg) translateY(-4px); }
 .mosaic__item:nth-child(4n+4) { transform: rotate(2deg) translateY(5px); }
 
-/* Organic and circular corners only suit a roughly square tile — stretched
-   across a wide or tall span they'd distort into an exaggerated oval, so
-   those keep plain rounded corners (still tilted) instead. */
-.mosaic__item:nth-child(4n+1):not(.mosaic__item--wide):not(.mosaic__item--tall) { border-radius: 50%; }
-.mosaic__item:nth-child(4n+2):not(.mosaic__item--wide):not(.mosaic__item--tall) { border-radius: 46% 54% 52% 48% / 50% 46% 54% 50%; }
-.mosaic__item:nth-child(4n+3):not(.mosaic__item--wide):not(.mosaic__item--tall) { border-radius: var(--r-sm) var(--r-xl) var(--r-sm) var(--r-xl); }
-.mosaic__item:nth-child(4n):not(.mosaic__item--wide):not(.mosaic__item--tall) { border-radius: var(--r-xl) var(--r-sm) var(--r-xl) var(--r-sm); }
+/* Circular and organic crops suit a subject with a clear centre; a wide or
+   tall span stretches them into a distorted oval, so those stay rounded. */
+.mosaic__item--round:not(.mosaic__item--wide):not(.mosaic__item--tall) { border-radius: 50%; }
+.mosaic__item--blob:not(.mosaic__item--wide):not(.mosaic__item--tall) { border-radius: 46% 54% 52% 48% / 50% 46% 54% 50%; }
+.mosaic__item--leaf { border-radius: var(--r-sm) var(--r-xl) var(--r-sm) var(--r-xl); }
+.mosaic__item--petal { border-radius: var(--r-xl) var(--r-sm) var(--r-xl) var(--r-sm); }
 .mosaic__item--wide, .mosaic__item--tall { border-radius: var(--r-xl); }
+
+/* The round and organic crops curve away from the bottom corners, so a
+   bottom-aligned caption would be clipped by the very shape that defines
+   them. Centre it and wash the whole tile instead. */
+.mosaic__item--round .mosaic__cap,
+.mosaic__item--blob .mosaic__cap {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.75rem;
+  background: rgba(20, 21, 15, 0.62);
+}
 
 .mosaic__cap {
   position: absolute;
@@ -1387,19 +1522,6 @@ textarea.input { resize: vertical; min-height: 130px; }
   background: linear-gradient(to top, rgba(20, 21, 15, 0.85), transparent 62%);
   opacity: 0;
   transition: opacity 0.4s var(--ease);
-}
-
-/* On the circular and organic tiles the visible shape curves away from the
-   bottom corners, so a bottom-aligned caption gets clipped by the very
-   border-radius that makes the shape. Centre it and wash the whole tile
-   instead, so the text stays inside the curve. */
-.mosaic__item:nth-child(4n+1):not(.mosaic__item--wide):not(.mosaic__item--tall) .mosaic__cap,
-.mosaic__item:nth-child(4n+2):not(.mosaic__item--wide):not(.mosaic__item--tall) .mosaic__cap {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem 1.75rem;
-  background: rgba(20, 21, 15, 0.62);
 }
 
 .mosaic__item:hover .mosaic__cap { opacity: 1; }
