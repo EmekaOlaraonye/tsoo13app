@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 /**
  * Scroll reveal. Every animation on the site funnels through here so the
@@ -16,7 +16,11 @@ const VARIANTS = {
 
 const Reveal = ({ children, delay = 0, y = 22, once = true, variant = 'up', className, style, as = 'div' }) => {
   const MotionTag = motion[as] || motion.div;
-  const initial = (VARIANTS[variant] || VARIANTS.up)(y);
+  // The CSS reduced-motion block can't reach Framer Motion — it animates
+  // inline transforms in JS, not CSS transitions. So opt out here too:
+  // content still appears, it just doesn't travel to get there.
+  const reduced = useReducedMotion();
+  const initial = reduced ? { opacity: 0 } : (VARIANTS[variant] || VARIANTS.up)(y);
   const animate = { opacity: 1, x: 0, y: 0, scale: 1 };
 
   return (
@@ -26,7 +30,7 @@ const Reveal = ({ children, delay = 0, y = 22, once = true, variant = 'up', clas
       initial={initial}
       whileInView={animate}
       viewport={{ once, margin: '-12% 0px -8% 0px' }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={reduced ? { duration: 0.2, delay: 0 } : { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </MotionTag>

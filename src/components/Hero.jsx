@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { Arrow, ChevronDown, Play, Check } from './ui/Icons';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
@@ -35,14 +35,18 @@ const ellipsisTomatoes = [
   { size: 20, color: 'var(--c-lime-ink)', rotate: -6, opacity: 0.7, drift: -5, duration: 6, outline: true },
 ];
 
-const TomatoEllipsis = () => (
+const TomatoEllipsis = () => {
+  // An endless loop is exactly what reduced-motion users are asking to avoid,
+  // so the mark simply holds still for them.
+  const reduced = useReducedMotion();
+  return (
   <div className="hero__vine hero__accent" aria-hidden="true">
     {ellipsisTomatoes.map((t, i) => (
       <motion.span
         key={t.size}
         style={{ display: 'block', width: t.size, height: t.size, marginLeft: i * 6 }}
-        animate={{ y: [0, t.drift, 0] }}
-        transition={{ duration: t.duration, delay: i * 0.45, repeat: Infinity, ease: 'easeInOut' }}
+        animate={reduced ? undefined : { y: [0, t.drift, 0] }}
+        transition={reduced ? undefined : { duration: t.duration, delay: i * 0.45, repeat: Infinity, ease: 'easeInOut' }}
       >
         <Tomato
           color={t.color}
@@ -55,14 +59,17 @@ const TomatoEllipsis = () => (
       </motion.span>
     ))}
   </div>
-);
+  );
+};
 
 const Hero = () => {
   const ref = useRef(null);
+  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const frameY = useTransform(scrollYProgress, [0, 1], ['0%', '-9%']);
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+  // Scroll-linked parallax is motion too — flatten it rather than halve it.
+  const frameY = useTransform(scrollYProgress, [0, 1], reduced ? ['0%', '0%'] : ['0%', '-9%']);
+  const contentY = useTransform(scrollYProgress, [0, 1], reduced ? ['0%', '0%'] : ['0%', '18%']);
+  const fade = useTransform(scrollYProgress, [0, 0.85], reduced ? [1, 1] : [1, 0]);
 
   return (
     <section className="hero" ref={ref}>

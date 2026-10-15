@@ -9,6 +9,8 @@ const pillars = [
     n: '01',
     title: 'We grow it',
     body: 'Greenhouse, cuttings, whatever the season demands. If the usual way stops working, we find another one.',
+    image: '/farm/tunnel-interior.jpg',
+    alt: 'Rows of plants growing inside a shade-net tunnel',
     color: 'var(--c-lime)',
     soft: 'var(--c-lime-soft)',
   },
@@ -16,6 +18,8 @@ const pillars = [
     n: '02',
     title: 'We move it',
     body: 'Picked, packed and driven from Mookane to Gaborone shelves — no middle-man diluting the quality.',
+    image: '/farm/harvest-crate.jpg',
+    alt: 'Harvested tomatoes crated and ready to move',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
   },
@@ -23,6 +27,8 @@ const pillars = [
     n: '03',
     title: 'We build it',
     body: 'The brand, the standard, the ambition. Run by young people who want this to be more than a farm.',
+    image: '/farm/farm-gate.jpg',
+    alt: 'The Tsoo...13 logo painted on the farm gate at Mookane Village',
     color: 'var(--c-yellow)',
     soft: 'var(--c-yellow-soft)',
   },
@@ -38,26 +44,13 @@ const PillarCard = ({ item, index }) => (
   <Reveal delay={index * 0.08}>
     <article
       className="card"
-      style={{ '--card-accent': item.color, padding: '1.9rem 1.7rem 2rem', overflow: 'hidden' }}
+      style={{ '--card-accent': item.color, overflow: 'hidden' }}
     >
-      <span
-        className="blob"
-        aria-hidden="true"
-        style={{
-          width: 150,
-          height: 150,
-          top: -60,
-          right: -50,
-          background: item.soft,
-        }}
-      />
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-        <span
-          className="display"
-          style={{ fontSize: '1.05rem', color: item.color, letterSpacing: '0.08em' }}
-        >
-          {item.n}
-        </span>
+      <div className="pillar__media">
+        <img src={item.image} alt={item.alt} loading="lazy" />
+        <span className="pillar__num" style={{ color: item.color }}>{item.n}</span>
+      </div>
+      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '0.85rem', padding: '1.5rem 1.7rem 2rem' }}>
         <h3 className="card__title" style={{ fontSize: '1.75rem' }}>{item.title}</h3>
         <span className="card__rule" />
         <p className="body-sm">{item.body}</p>

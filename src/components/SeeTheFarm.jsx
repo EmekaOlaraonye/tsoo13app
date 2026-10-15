@@ -36,7 +36,7 @@ const SeeTheFarm = () => (
 
     <div className="farm-strip">
       {shots.map((shot, i) => (
-        <Reveal key={shot.src + i} delay={(i % 4) * 0.06} className="farm-strip__item">
+        <Reveal key={shot.src + i} delay={(i % 4) * 0.06} variant="scale" className="farm-strip__item">
           <img src={shot.src} alt={shot.caption} loading="lazy" />
           <span className="farm-strip__cap">{shot.caption}</span>
         </Reveal>

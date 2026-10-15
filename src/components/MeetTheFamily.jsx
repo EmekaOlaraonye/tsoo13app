@@ -39,6 +39,21 @@ const MeetTheFamily = () => (
       </p>
     </Reveal>
 
+    {/* Photographs of the team at work, kept separate from the role cards —
+        we can't yet say which person holds which role, so nothing here
+        implies it. Both shots are portrait, hence the upright frames. */}
+    <div className="family__shots">
+      {[
+        { src: '/farm/team-in-field.jpg', cap: 'Out in the rows at Mookane Village' },
+        { src: '/farm/team-member.jpg', cap: 'Wearing the 13' },
+      ].map((shot, i) => (
+        <Reveal key={shot.src} delay={0.08 + i * 0.06} variant="scale" className="family__shot">
+          <img src={shot.src} alt={shot.cap} loading="lazy" />
+          <span className="family__shot-cap">{shot.cap}</span>
+        </Reveal>
+      ))}
+    </div>
+
     <div className="grid grid--4" style={{ marginTop: '2rem' }}>
       {roles.map((item, i) => (
         <RoleCard key={item.role} item={item} index={i} />

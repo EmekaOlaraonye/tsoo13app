@@ -196,6 +196,23 @@ const TheWins = ({ standalone = false }) => (
         ))}
       </div>
 
+      {/* The cards above are deliberately typographic, so the evidence goes
+          here instead — photographs of the work the page is claiming credit
+          for, rather than decoration. */}
+      <div className="proof" style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
+        {[
+          { src: '/farm/training-group.jpg', cap: 'Farmers on an open day at the farm' },
+          { src: '/farm/greenhouse-visit.jpg', cap: 'Walking visitors through the tunnels' },
+          { src: '/farm/training-session.jpg', cap: 'Sharing the method, not guarding it' },
+          { src: '/farm/solar-pump.jpg', cap: 'Solar on the pump house' },
+        ].map((shot, i) => (
+          <Reveal key={shot.src} delay={(i % 4) * 0.06} variant="scale" className="proof__item">
+            <img src={shot.src} alt={shot.cap} loading="lazy" />
+            <span className="proof__cap">{shot.cap}</span>
+          </Reveal>
+        ))}
+      </div>
+
       {/* A closing beat so the page feels like it lands somewhere, not just stops after the grid */}
       <Reveal
         variant="scale"
