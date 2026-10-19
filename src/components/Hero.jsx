@@ -5,6 +5,7 @@ import { Arrow, ChevronDown, Play, Check } from './ui/Icons';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import logo from '../assets/13logotx-cropped.png';
+import Photo from './ui/Photo';
 
 const taglines = [
   'farming. creating. growing.',
@@ -142,11 +143,11 @@ const Hero = () => {
             <span className="blob blob--ring hero__dot hero__dot--b2" style={{ borderColor: 'var(--c-yellow)' }} />
 
             <div className="hero__frame">
-              <img
+              <Photo
                 src="/farm/packed-punnets.jpg"
                 alt="Tsoo...13 tomatoes packed into branded punnets"
                 className="hero__img"
-                fetchPriority="high"
+                eager
               />
               <span className="hero__frame-tint" />
               <span className="hero__frame-scrim" />

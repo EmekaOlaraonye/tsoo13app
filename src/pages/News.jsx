@@ -4,8 +4,10 @@ import Reveal from '../components/ui/Reveal';
 import SectionHead from '../components/ui/SectionHead';
 import { Blob } from '../components/ui/Blobs';
 import { Tomato } from '../components/ui/Tomato';
+import Band from '../components/ui/Band';
 import { Arrow, Play } from '../components/ui/Icons';
 import { INSTAGRAM_URL, VIDEO } from '../siteConfig';
+import Photo from '../components/ui/Photo';
 
 const CATEGORIES = ['All', 'Events', 'Company updates', 'Articles', 'Videos', 'Interviews'];
 
@@ -68,7 +70,7 @@ const NewsCard = ({ item, index }) => (
       style={{ '--card-accent': item.color }}
     >
       <div className="card__media">
-        <img className="card__img" src={item.image} alt="" loading="lazy" />
+        <Photo className="card__img" src={item.image} alt="" />
         <span className="card__wash" aria-hidden="true" />
         <span className="card__arrow" aria-hidden="true"><Arrow size={16} /></span>
         <span
@@ -99,7 +101,7 @@ const VideoCard = () => (
   <Reveal className="is-lead">
     <Link to="/#film" className="card" style={{ '--card-accent': 'var(--c-red)' }}>
       <div className="card__media">
-        <img className="card__img" src={VIDEO.poster} alt="" loading="lazy" />
+        <Photo className="card__img" src={VIDEO.poster} alt="" />
         <span className="card__wash" aria-hidden="true" />
         <span
           aria-hidden="true"
@@ -145,7 +147,7 @@ const InterviewCard = () => (
   <Reveal>
     <div className="card" style={{ '--card-accent': 'var(--c-yellow-ink)', opacity: 0.85 }}>
       <div className="card__media">
-        <img className="card__img" src="/farm/visitors-field.jpg" alt="" loading="lazy" />
+        <Photo className="card__img" src="/farm/visitors-field.jpg" alt="" />
         <span className="card__wash" aria-hidden="true" />
         <span
           className="chip"
@@ -221,7 +223,15 @@ const News = () => {
           ))}
         </Reveal>
 
-        <div className="news-grid">
+        <Band
+          image="/farm/maize-under-net.jpg"
+          alt="Maize and other crops growing under netting at the farm"
+          kicker="Still growing"
+          line="Tomatoes are where it started, not where it stops."
+          align="left"
+        />
+
+        <div className="news-grid" style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
           {items.map((item, i) => {
             if (item.kind === 'video') return <VideoCard key={item.id} />;
             if (item.kind === 'interview') return <InterviewCard key={item.id} />;

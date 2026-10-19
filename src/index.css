@@ -406,7 +406,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   transition: background-color 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease);
 }
 
-.card:hover .card__arrow { background: var(--card-accent, var(--c-red)); color: var(--white); transform: scale(1.08); }
+.card:hover .card__arrow,
+.card:focus-visible .card__arrow { background: var(--card-accent, var(--c-red)); color: var(--white); transform: scale(1.08); }
 
 .grid { display: grid; gap: 1.25rem; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
@@ -1331,7 +1332,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   transition: opacity 0.4s var(--ease);
 }
 
-.ig__tile:hover .ig__overlay { opacity: 1; }
+.ig__tile:hover .ig__overlay,
+.ig__tile:focus-visible .ig__overlay { opacity: 1; }
 .ig__overlay span { font-size: 0.74rem; font-weight: 600; line-height: 1.35; }
 
 /* --------------------------------------------------------------------------
@@ -1524,7 +1526,8 @@ textarea.input { resize: vertical; min-height: 130px; }
   transition: opacity 0.4s var(--ease);
 }
 
-.mosaic__item:hover .mosaic__cap { opacity: 1; }
+.mosaic__item:hover .mosaic__cap,
+.mosaic__item:focus-within .mosaic__cap { opacity: 1; }
 
 /* ==========================================================================
    Touch devices
@@ -1633,4 +1636,53 @@ textarea.input { resize: vertical; min-height: 130px; }
 @keyframes lb-pop {
   from { opacity: 0; transform: translateY(18px) scale(0.94); }
   to { opacity: 1; transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Full-bleed photographic band
+   One dark moment per page, so a long scroll of white gets some rhythm.
+   -------------------------------------------------------------------------- */
+
+.band {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(260px, 38vw, 420px);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  box-shadow: var(--shadow-md);
+}
+
+.band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.band__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 21, 15, 0.45) 0%, rgba(20, 21, 15, 0.72) 100%);
+}
+
+.band__inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  /* A ch measure here would be sized by the body font, while the line
+     inside is display type several times larger — which wrapped the quote
+     into a narrow column. Measure in rem and let balance do the rest. */
+  max-width: min(92%, 44rem);
+  text-align: center;
+}
+
+.band--left .band__inner { text-align: left; justify-self: start; max-width: min(92%, 34rem); }
+
+.band__kicker { color: rgba(255, 255, 255, 0.72); margin-bottom: 1rem; justify-content: center; }
+.band--left .band__kicker { justify-content: flex-start; }
+
+.band__line { color: var(--white); text-wrap: balance; }
+
+.band__attr {
+  margin-top: 1rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
 }

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Reveal from './ui/Reveal';
 import { Arrow } from './ui/Icons';
+import Photo from './ui/Photo';
 
 const shots = [
   { src: '/farm/tunnel-interior.jpg', caption: 'Inside the tunnels' },
@@ -37,7 +38,7 @@ const SeeTheFarm = () => (
     <div className="farm-strip">
       {shots.map((shot, i) => (
         <Reveal key={shot.src + i} delay={(i % 4) * 0.06} variant="scale" className="farm-strip__item">
-          <img src={shot.src} alt={shot.caption} loading="lazy" />
+          <Photo src={shot.src} alt={shot.caption} />
           <span className="farm-strip__cap">{shot.caption}</span>
         </Reveal>
       ))}

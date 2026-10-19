@@ -3,6 +3,7 @@ import Reveal from './ui/Reveal';
 import { Blob } from './ui/Blobs';
 import { Play, Close } from './ui/Icons';
 import { VIDEO, INSTAGRAM_URL } from '../siteConfig';
+import Photo from './ui/Photo';
 
 const hasFilm = Boolean(VIDEO.src || VIDEO.youtubeId);
 
@@ -108,7 +109,7 @@ const VideoSection = () => {
             onClick={() => setOpen(true)}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(true); } }}
           >
-            <img className="vid__poster" src={VIDEO.poster} alt="" loading="lazy" />
+            <Photo className="vid__poster" src={VIDEO.poster} alt="" />
             <span className="vid__scrim" aria-hidden="true" />
             <span className="vid__play" aria-hidden="true">
               <Play size={30} />

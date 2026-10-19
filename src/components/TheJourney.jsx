@@ -9,6 +9,8 @@ import { Plus, Arrow } from './ui/Icons';
 import ProcessFlow from './ProcessFlow';
 import MeetTheFamily from './MeetTheFamily';
 import SeeTheFarm from './SeeTheFarm';
+import Band from './ui/Band';
+import Photo from './ui/Photo';
 
 /**
  * The start -> First harvest -> Getting real -> The storm -> We built again -> The comeback.
@@ -142,7 +144,7 @@ const Step = ({ step, index }) => {
 
       {/* Hover (or focus) the photograph to open the rest of the chapter */}
       <div className="tl__media" tabIndex={0} role="group" aria-label={`${step.stage} — ${step.reveal}`}>
-        <img src={step.image} alt={step.alt} loading="lazy" />
+        <Photo src={step.image} alt={step.alt} />
         <span className="tl__media-tint" aria-hidden="true" />
         <span className="chip chip--float tl__hint" aria-hidden="true">
           <Plus size={13} /> More
@@ -200,6 +202,15 @@ const TheJourney = ({ standalone = false }) => {
             <Step key={step.id} step={step} index={i} />
           ))}
         </div>
+
+        <Band
+          image="/farm/training-demo.jpg"
+          alt="Farmers gathered at an open day on the farm"
+          kicker="Open days at Mookane"
+          line="A farmer's best friend is another farmer."
+          attribution="— from our own open-day invitation"
+          quote
+        />
 
         <ProcessFlow />
         <MeetTheFamily />

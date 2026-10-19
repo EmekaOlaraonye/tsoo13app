@@ -5,6 +5,7 @@ import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import { Arrow, Pin } from './ui/Icons';
 import { RETAILERS } from '../siteConfig';
+import Photo from './ui/Photo';
 
 const produce = [
   {
@@ -49,7 +50,7 @@ const ProduceCard = ({ item, index }) => (
   <Reveal delay={(index % 4) * 0.07}>
     <article className="card" style={{ '--card-accent': item.color }}>
       <div className="card__media">
-        <img className="card__img" src={item.image} alt={item.name} loading="lazy" />
+        <Photo className="card__img" src={item.image} alt={item.name} />
         <span className="card__wash" aria-hidden="true" />
         <span
           className="chip"
@@ -103,10 +104,9 @@ const TheGoods = ({ standalone = false }) => (
           boxShadow: 'var(--shadow-lg)',
         }}
       >
-        <img
+        <Photo
           src="/farm/retail-shelf.jpg"
           alt="Packed Tsoo...13 tomatoes on a retail shelf"
-          loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <span

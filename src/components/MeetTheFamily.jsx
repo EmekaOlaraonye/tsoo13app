@@ -1,4 +1,5 @@
 import Reveal from './ui/Reveal';
+import Photo from './ui/Photo';
 
 /**
  * "From our family to yours" is on the logo for a reason. Real photos and
@@ -48,7 +49,7 @@ const MeetTheFamily = () => (
         { src: '/farm/team-member.jpg', cap: 'Wearing the 13' },
       ].map((shot, i) => (
         <Reveal key={shot.src} delay={0.08 + i * 0.06} variant="scale" className="family__shot">
-          <img src={shot.src} alt={shot.cap} loading="lazy" />
+          <Photo src={shot.src} alt={shot.cap} />
           <span className="family__shot-cap">{shot.cap}</span>
         </Reveal>
       ))}

@@ -3,6 +3,7 @@ import Reveal from './ui/Reveal';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import { Arrow } from './ui/Icons';
+import Photo from './ui/Photo';
 
 const pillars = [
   {
@@ -47,7 +48,7 @@ const PillarCard = ({ item, index }) => (
       style={{ '--card-accent': item.color, overflow: 'hidden' }}
     >
       <div className="pillar__media">
-        <img src={item.image} alt={item.alt} loading="lazy" />
+        <Photo src={item.image} alt={item.alt} />
         <span className="pillar__num" style={{ color: item.color }}>{item.n}</span>
       </div>
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '0.85rem', padding: '1.5rem 1.7rem 2rem' }}>

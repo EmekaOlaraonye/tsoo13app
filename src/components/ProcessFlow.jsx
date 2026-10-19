@@ -1,4 +1,5 @@
 import Reveal from './ui/Reveal';
+import Photo from './ui/Photo';
 
 /**
  * The short version of the journey timeline — how one tomato actually gets
@@ -32,7 +33,7 @@ const ProcessFlow = () => (
       {steps.map((step, i) => (
         <Reveal key={step.n} delay={(i % 4) * 0.06} className="flow__item">
           <div className="flow__media">
-            <img src={step.image} alt={step.alt} loading="lazy" />
+            <Photo src={step.image} alt={step.alt} />
             <span className="flow__num">{step.n}</span>
           </div>
           <p className="flow__label">{step.label}</p>

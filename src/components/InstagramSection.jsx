@@ -2,6 +2,7 @@ import Reveal from './ui/Reveal';
 import { Blob } from './ui/Blobs';
 import { Instagram, Arrow } from './ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
+import Photo from './ui/Photo';
 
 const posts = [
   { src: '/farm/harvest-pile.jpg', caption: "A morning's picking." },
@@ -64,7 +65,7 @@ const InstagramSection = () => (
               className="ig__tile"
               aria-label={`Instagram: ${post.caption}`}
             >
-              <img src={post.src} alt="" loading="lazy" />
+              <Photo src={post.src} alt="" />
               <span className="ig__overlay">
                 <Instagram size={16} />
                 <span>{post.caption}</span>

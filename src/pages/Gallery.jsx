@@ -1,8 +1,10 @@
 import Reveal from '../components/ui/Reveal';
 import SectionHead from '../components/ui/SectionHead';
 import { Blob } from '../components/ui/Blobs';
+import Band from '../components/ui/Band';
 import { Instagram, Arrow } from '../components/ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
+import Photo from '../components/ui/Photo';
 
 /**
  * Real photographs from the farm at Mookane Village. Captions describe only
@@ -37,6 +39,26 @@ const photos = [
   { src: '/farm/tunnel-tour.jpg', caption: 'Walking farmers through the tunnels', shape: 'wide' },
   { src: '/farm/reservoir-fill.jpg', caption: 'Filling the reservoir', shape: 'blob' },
   { src: '/farm/cabbage-field.jpg', caption: 'Not only tomatoes', shape: 'petal' },
+
+  // Building the place — the infrastructure years
+  { src: '/farm/bare-field.jpg', caption: 'Before any of it', shape: 'leaf' },
+  { src: '/farm/breaking-ground.jpg', caption: 'Breaking ground', shape: 'petal' },
+  { src: '/farm/poles-delivered.jpg', caption: 'Poles on the sand, waiting', shape: 'round' },
+  { src: '/farm/pipe-delivery.jpg', caption: 'Pipe arriving by bakkie', shape: 'tall' },
+  { src: '/farm/pipe-fittings.jpg', caption: 'Fittings in the trench', shape: 'blob' },
+  { src: '/farm/power-line.jpg', caption: 'Getting power to the plot', shape: 'leaf' },
+  { src: '/farm/water-source.jpg', caption: 'The water it runs on', shape: 'petal' },
+  { src: '/farm/drip-lines.jpg', caption: 'Drip line through the rows', shape: 'wide' },
+
+  // What comes up
+  { src: '/farm/young-field.jpg', caption: 'A few weeks in', shape: 'wide' },
+  { src: '/farm/tomato-rows.jpg', caption: 'Staked and climbing', shape: 'leaf' },
+  { src: '/farm/irrigated-rows.jpg', caption: 'Watered down the row', shape: 'petal' },
+  { src: '/farm/flood-irrigation.jpg', caption: 'Flooding the beds', shape: 'tall' },
+  { src: '/farm/greens-rows.jpg', caption: 'Greens, row on row', shape: 'wide' },
+  { src: '/farm/leafy-rows.jpg', caption: 'Another crop, another season', shape: 'blob' },
+  { src: '/farm/field-walk.jpg', caption: 'Walking the field together', shape: 'leaf' },
+  { src: '/farm/training-day.jpg', caption: 'Open day, out on the land', shape: 'petal' },
 ];
 
 const Gallery = () => (
@@ -62,11 +84,18 @@ const Gallery = () => (
             variant="scale"
             className={`mosaic__item ${photo.shape ? `mosaic__item--${photo.shape}` : ''}`}
           >
-            <img src={photo.src} alt={photo.caption} loading="lazy" />
+            <Photo src={photo.src} alt={photo.caption} />
             <span className="mosaic__cap">{photo.caption}</span>
           </Reveal>
         ))}
       </div>
+
+      <Band
+        image="/farm/rows-at-sunset.jpg"
+        alt="Open field rows at Mookane Village at sunset"
+        kicker="Mookane Village"
+        line="Every frame on this page was taken on the farm."
+      />
 
       <Reveal delay={0.15} style={{ textAlign: 'center', marginTop: '3rem' }}>
         <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn btn--instagram">

@@ -3,6 +3,7 @@ import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
 import { Arrow } from './ui/Icons';
+import Photo from './ui/Photo';
 
 const destinations = [
   {
@@ -43,7 +44,7 @@ const DestinationCard = ({ item, index }) => (
   <Reveal delay={(index % 4) * 0.07}>
     <Link to={item.to} className="card" style={{ '--card-accent': item.color }}>
       <div className="card__media">
-        <img className="card__img" src={item.image} alt="" loading="lazy" />
+        <Photo className="card__img" src={item.image} alt="" />
         <span className="card__wash" aria-hidden="true" />
         <span className="card__arrow" aria-hidden="true"><Arrow size={16} /></span>
         <span
