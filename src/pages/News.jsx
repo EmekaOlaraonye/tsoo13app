@@ -224,10 +224,10 @@ const News = () => {
         </Reveal>
 
         <Band
-          image="/farm/maize-under-net.jpg"
-          alt="Maize and other crops growing under netting at the farm"
-          kicker="Still growing"
-          line="Tomatoes are where it started, not where it stops."
+          image="/farm/tunnels-sunset.jpg"
+          alt="Shade-net tunnels at Mookane Village at last light"
+          kicker="Mookane Village"
+          line="The number travels further than any logo."
           align="left"
         />
 

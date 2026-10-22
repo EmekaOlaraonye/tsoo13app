@@ -7,12 +7,18 @@ import { Arrow, Pin } from './ui/Icons';
 import { RETAILERS } from '../siteConfig';
 import Photo from './ui/Photo';
 
+/**
+ * All four are tomatoes — these are the varieties and formats, not a mixed
+ * produce list. The first card used to read "Tomatoes", which made it the
+ * odd one out beside Cherry and Plum (both of which are, of course, also
+ * tomatoes); its id was `round` all along.
+ */
 const produce = [
   {
     id: 'round',
-    name: 'Tomatoes',
+    name: 'Round',
     tagline: 'Juicy, loud, unmistakable.',
-    desc: 'Sun-ripened at Mookane. Zero shortcuts, zero compromise.',
+    desc: 'The everyday tomato. Sun-ripened at Mookane. Zero shortcuts, zero compromise.',
     badge: 'Home grown',
     image: '/farm/tomatoes-on-vine.jpg',
     color: 'var(--c-red)',
@@ -39,9 +45,9 @@ const produce = [
     id: 'blend',
     name: "Season's blend",
     tagline: 'Colour that sells itself.',
-    desc: "Whatever is at its best that week, straight from the ground to you.",
+    desc: 'Whichever varieties are at their best that week, packed together and straight to you.',
     badge: 'Fresh from 13',
-    image: '/farm/cabbage-crates.jpg',
+    image: '/farm/harvest-pile.jpg',
     color: 'var(--c-lime)',
   },
 ];

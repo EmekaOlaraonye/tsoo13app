@@ -1686,3 +1686,132 @@ textarea.input { resize: vertical; min-height: 130px; }
   font-weight: 600;
   color: rgba(255, 255, 255, 0.72);
 }
+
+/* --------------------------------------------------------------------------
+   Gallery chapters + lightbox
+   -------------------------------------------------------------------------- */
+
+.chapter { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
+.chapter:first-of-type { margin-top: 0; }
+
+.chapter__head { margin-bottom: clamp(1.25rem, 3vw, 2rem); }
+.chapter__title { color: var(--c-green); margin-top: 0.6rem; }
+
+.chapter__rule {
+  display: block;
+  width: 54px;
+  height: 4px;
+  border-radius: 99px;
+  margin-top: 1rem;
+  background: linear-gradient(90deg, var(--c-lime), var(--c-yellow) 50%, var(--c-red));
+}
+
+/* The tile is a button now, so every photograph is reachable by keyboard and
+   the caption finally has a real focus path. */
+.mosaic__btn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: inherit;
+}
+
+.mosaic__btn img { border-radius: inherit; }
+
+.mosaic__zoom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  flex: none;
+}
+
+.mosaic__cap { gap: 0.25rem; }
+
+/* --- viewer --- */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(10, 10, 8, 0.97);
+  backdrop-filter: blur(6px);
+  animation: lb-fade 0.25s var(--ease) both;
+}
+
+.lb__figure {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  max-height: 100%;
+  min-width: 0;
+  animation: lb-pop 0.38s var(--ease) both;
+}
+
+.lb__figure img {
+  max-width: 100%;
+  max-height: min(76vh, 900px);
+  width: auto;
+  border-radius: var(--r-md);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.9);
+}
+
+.lb__cap {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.lb__count { color: rgba(255, 255, 255, 0.45); font-size: 0.8rem; }
+
+.lb__close { position: absolute; top: clamp(1rem, 3vw, 2rem); right: clamp(1rem, 3vw, 2rem); z-index: 2; }
+
+.lb__nav {
+  width: clamp(40px, 6vw, 54px);
+  height: clamp(40px, 6vw, 54px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.3s, transform 0.3s var(--ease);
+  flex: none;
+}
+
+.lb__nav:hover { background: var(--c-red); transform: scale(1.08); }
+.lb__nav--prev svg { transform: rotate(-135deg); }
+.lb__nav--next svg { transform: rotate(45deg); }
+
+/* On a phone the controls move below the photograph. Both arrows are placed
+   explicitly — left to their own auto-placement they land in the same cell
+   and come out in the wrong order. */
+@media (max-width: 640px) {
+  .lb {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    row-gap: 1.25rem;
+  }
+  .lb__figure { grid-row: 1; grid-column: 1 / -1; }
+  .lb__nav--prev { grid-row: 2; grid-column: 1; justify-self: center; }
+  .lb__nav--next { grid-row: 2; grid-column: 2; justify-self: center; }
+}
