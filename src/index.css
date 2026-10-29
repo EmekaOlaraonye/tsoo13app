@@ -1872,3 +1872,9 @@ textarea.input { resize: vertical; min-height: 130px; }
 .reel__play svg { position: relative; z-index: 1; margin-left: 4px; }
 .reel__play:hover { background: rgba(20, 21, 15, 0.1); }
 .reel__play:hover::before { transform: scale(1.08); }
+
+/* The storm clip arrived at 296x642 — narrower than the 9:16 the reel frame
+   assumes. Matching the frame to the source keeps object-fit: cover from
+   cropping the top and bottom away, which is where the structures are. */
+.reel--storm .reel__frame { aspect-ratio: 296 / 642; max-width: 300px; }
+.reel--storm .reel__title { color: var(--c-green); }

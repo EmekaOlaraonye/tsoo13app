@@ -11,51 +11,59 @@ import MeetTheFamily from './MeetTheFamily';
 import SeeTheFarm from './SeeTheFarm';
 import Band from './ui/Band';
 import Photo from './ui/Photo';
+import StormFilm from './ui/StormFilm';
 
 /**
- * The start -> First harvest -> Getting real -> The storm -> We built again -> The comeback.
- * Farming is step one of the story, not the identity of the brand — but the
- * story only means anything if the low point is actually in it.
+ * Open field -> under net -> the tunnels -> the storm -> rebuilding.
+ *
+ * This is the sequence as the farm tells it, and it is a sequence of growing
+ * systems, each one an answer to what beat the last. The storm is the hinge:
+ * it hit at the peak, in 2025, and the structures came down. Farming is step
+ * one of the story, not the identity of the brand — but the story only means
+ * anything if the low point is actually in it.
+ *
+ * The photographs are captioned as shade net throughout, which is what we can
+ * confirm of them. The stage names below come from the farm's own account.
  */
 const steps = [
   {
-    id: 'start',
-    stage: 'The Start',
+    id: 'field',
+    stage: 'The Open Field',
     year: '01',
-    title: 'It started\nwith a farm.',
-    line: 'One plot of soil in Mookane Village and a family name on the box.',
-    reveal: 'Tsoo...13 — "from our family to yours". No warehouse, no logo, no plan beyond growing something people would come back for.',
+    title: 'It started in\nthe open field.',
+    line: 'One plot of soil at Mookane, and the weather got a vote in everything.',
+    reveal: 'Floods, frost, pests, sun — in the open there was nothing between the crop and whatever the season did next. Enough came through to prove people would buy it. Not nearly enough to build on.',
     tags: ['Mookane Village', 'Family run'],
-    image: '/farm/rows-wide.jpg',
-    alt: 'Rows of young plants under the shade net',
+    image: '/farm/in-the-veld.jpg',
+    alt: 'Standing out in the open veld at Mookane',
     color: 'var(--c-lime)',
     soft: 'var(--c-lime-soft)',
     ink: true,
   },
   {
-    id: 'harvest',
-    stage: 'First Harvest',
+    id: 'nets',
+    stage: 'Under Net',
     year: '02',
-    title: 'Then came the\nfirst harvest.',
-    line: 'The crop came in, and it was real — proof the idea actually worked.',
-    reveal: 'No machinery to speak of, just early mornings and a plot that finally paid off. Nothing about the business was certain yet — but the farming part, at least, was no longer a maybe.',
-    tags: ['First crop', 'Proof it worked'],
-    image: '/farm/harvesting.jpg',
-    alt: 'Picking tomatoes under the shade net',
+    title: 'So we moved\nunder net.',
+    line: 'Under shade net, and off the soil entirely — grown in bags instead.',
+    reveal: 'Going soilless took the ground out of the equation: no soil-borne disease, water and feed measured to the plant rather than poured at it. The net took the worst of the sun off. Rain and frost still found their way in.',
+    tags: ['Shade net', 'Soilless'],
+    image: '/farm/bags-young.jpg',
+    alt: 'Young plants growing in their bags, up off the ground',
     color: 'var(--c-yellow)',
     soft: 'var(--c-yellow-soft)',
     ink: true,
   },
   {
-    id: 'real',
-    stage: 'Getting Real',
+    id: 'tunnels',
+    stage: 'The Tunnels',
     year: '03',
-    title: 'Then things\ngot real.',
-    line: 'Demand outgrew the plot fast — more hands, more hours, more learned the hard way.',
-    reveal: 'Growing enough to eat is one thing. Growing enough to sell, pack and deliver on time is another. This is where farming quietly turned into a business, whether we were ready or not.',
-    tags: ['Scaling up', 'Learning fast'],
-    image: '/farm/beds-prepared.jpg',
-    alt: 'Beds shaped and lined, ready to plant',
+    title: 'Then the\ngreenhouse tunnels.',
+    line: 'Fully enclosed, and the best this farm has run — rows at full height, Gaborone shelves.',
+    reveal: 'This was the peak. The crop under cover from planting to picking, the packhouse busy, and Tsoo...13 bags going out to Food Lover’s SquareMart and SuperSpar Acacia.',
+    tags: ['Full enclosure', 'On the shelf'],
+    image: '/farm/rows-mature.jpg',
+    alt: 'Rows at full height, carrying fruit',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
   },
@@ -64,36 +72,22 @@ const steps = [
     stage: 'The Storm',
     year: '04',
     title: 'Then the\nstorm hit.',
-    line: 'A whole season of seedlings didn’t make it. It could have ended right there.',
-    reveal: 'Losing a run of seedlings was the closest this ever came to stopping. Instead of just buying more seed and hoping, we asked a harder question — was there a better way to grow at all?',
-    tags: ['Seedling loss', 'The lowest point'],
-    image: '/farm/truss-wall.jpg',
-    alt: 'Trusses carrying up the plant',
+    line: 'At the peak of it, in 2025, the structures came down.',
+    reveal: 'Everything built to keep the weather out was, in one afternoon, the thing the weather took. It was filmed as it happened — the clip is further down this page.',
+    tags: ['2025', 'The lowest point'],
+    image: '/film/tsoo13-storm-poster.jpg',
+    alt: 'Structures flattened across the yard in the rain',
     color: 'var(--c-green-lt)',
     soft: 'var(--c-green-soft)',
   },
   {
     id: 'rebuild',
-    stage: 'We Built Again',
+    stage: 'Rebuilding',
     year: '05',
-    title: 'So we\nbuilt again.',
-    line: 'No more seeds. Stems, roots and patience — and this time, a plan behind it too.',
-    reveal: 'The cuttings method came directly out of that failure: faster to flower, cheaper to run, entirely ours. MCW and Aspire Leaders followed soon after — this time, we built the operation to actually last.',
-    tags: ['Cuttings over seeds', 'MCW & Aspire Leaders'],
-    image: '/farm/bags-young.jpg',
-    alt: 'Young plants in their grow bags',
-    color: 'var(--c-yellow)',
-    soft: 'var(--c-yellow-soft)',
-    ink: true,
-  },
-  {
-    id: 'comeback',
-    stage: 'The Comeback',
-    year: '06',
-    title: 'This is\nthe comeback.',
-    line: 'Food Lover’s SquareMart. SuperSpar Acacia. A name people ask for instead of a brand.',
-    reveal: 'Tsoo...13 is a young team running growing, packing, brand and distribution ourselves. Mookane to Gaborone, and the destination keeps moving — this is still only the start of it.',
-    tags: ['On shelves now', 'Youth run'],
+    title: 'Now we\nbuild it back.',
+    line: 'Still picking, still packing, still on the shelf — and putting the structures back up at the same time.',
+    reveal: 'Supply has not stopped: bags still go to Gaborone while the rebuild runs alongside them. Everything learned out in the field, under the net and inside the tunnels goes into what gets built this time.',
+    tags: ['Rebuilding', 'Still supplying'],
     image: '/farm/retail-shelf.jpg',
     alt: 'Bags of Tsoo...13 tomatoes on the shelf',
     color: 'var(--c-red)',
@@ -190,7 +184,7 @@ const TheJourney = ({ standalone = false }) => {
           color="var(--c-green)"
           variant="left"
           title={<>How we got <span className="t-red">from there</span> to here.</>}
-          lede="Six stops, from one plot of soil to wherever comes next — storm included."
+          lede="Five stops, from one plot of open soil to a rebuild — by way of the afternoon it all came down."
         />
 
         <div className="tl" ref={railRef}>
@@ -202,6 +196,8 @@ const TheJourney = ({ standalone = false }) => {
             <Step key={step.id} step={step} index={i} />
           ))}
         </div>
+
+        <StormFilm />
 
         <Band
           image="/farm/nets-from-road.jpg"

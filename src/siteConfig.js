@@ -62,3 +62,20 @@ export const RETAILERS = [
   { name: 'SuperSpar Acacia', location: 'Gaborone' },
   { name: 'Direct from the farm', location: 'Mookane Village' },
 ];
+
+/**
+ * The storm, filmed as it happened.
+ *
+ * Two phone videos cut into one run. There is no photograph of the collapse
+ * in the set, so this is the only record of it. They arrived at 296x642 —
+ * small, and left that way, because upscaling would only make the
+ * compression visible. The audio is the rain and is kept.
+ *
+ * Rebuild with scripts/build-storm.sh.
+ */
+export const STORM = {
+  src: '/film/tsoo13-storm.mp4',
+  poster: '/film/tsoo13-storm-poster.jpg',
+  runtime: '1 min 10',
+  year: '2025',
+};
