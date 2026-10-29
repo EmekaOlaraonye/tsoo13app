@@ -25,19 +25,19 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
  */
 const chapters = [
   {
-    id: 'tunnels',
+    id: 'shade-nets',
     kicker: 'Chapter one',
-    title: 'The tunnels go up.',
+    title: 'The shade nets go up.',
     photos: [
-      { src: '/farm/tunnels-exterior.jpg', caption: 'The tunnels from outside', shape: 'wide' },
-      { src: '/farm/tunnels-from-road.jpg', caption: 'Seen from the track', shape: 'wide' },
-      { src: '/farm/tunnel-edge.jpg', caption: 'Where the netting meets the veld', shape: 'leaf' },
+      { src: '/farm/nets-exterior.jpg', caption: 'The shade nets from outside', shape: 'wide' },
+      { src: '/farm/nets-from-road.jpg', caption: 'Seen from the track', shape: 'wide' },
+      { src: '/farm/net-edge.jpg', caption: 'Where the netting meets the veld', shape: 'leaf' },
       { src: '/farm/beds-empty.jpg', caption: 'Empty beds, waiting', shape: 'wide' },
       { src: '/farm/beds-ready.jpg', caption: 'Shaped and mulched', shape: 'petal' },
       { src: '/farm/beds-prepared.jpg', caption: 'Lined and ready to plant', shape: 'tall' },
       { src: '/farm/beds-lined.jpg', caption: 'Mulch down the length of it', shape: 'petal' },
-      { src: '/farm/tunnel-frame.jpg', caption: 'Looking up at the frame', shape: 'leaf' },
-      { src: '/farm/tunnels-distance.jpg', caption: 'From across the yard', shape: 'leaf' },
+      { src: '/farm/net-frame.jpg', caption: 'Looking up at the frame', shape: 'leaf' },
+      { src: '/farm/nets-distance.jpg', caption: 'From across the yard', shape: 'leaf' },
     ],
   },
   {
@@ -61,7 +61,7 @@ const chapters = [
     kicker: 'Chapter three',
     title: 'Planted out.',
     photos: [
-      { src: '/farm/tunnel-new-bags.jpg', caption: 'A tunnel freshly laid out', shape: 'wide' },
+      { src: '/farm/net-new-bags.jpg', caption: 'A net freshly laid out', shape: 'wide' },
       { src: '/farm/placing-bags.jpg', caption: 'Setting out the bags', shape: 'leaf' },
       { src: '/farm/planting-bags.jpg', caption: 'Bag by bag down the row', shape: 'petal' },
       { src: '/farm/planting-row.jpg', caption: 'Working the line', shape: 'tall' },
@@ -79,15 +79,15 @@ const chapters = [
       { src: '/farm/rows-young.jpg', caption: 'Coming up', shape: 'leaf' },
       { src: '/farm/rows-receding.jpg', caption: 'All the way down', shape: 'petal' },
       { src: '/farm/rows-avenue.jpg', caption: 'An avenue of plants', shape: 'leaf' },
-      { src: '/farm/rows-staggered.jpg', caption: 'Staggered through the tunnel', shape: 'petal' },
-      { src: '/farm/tunnel-mature.jpg', caption: 'Full height', shape: 'tall' },
+      { src: '/farm/rows-staggered.jpg', caption: 'Staggered down the net', shape: 'petal' },
+      { src: '/farm/net-mature.jpg', caption: 'Full height', shape: 'tall' },
       { src: '/farm/fruit-in-bags.jpg', caption: 'Carrying fruit', shape: 'wide' },
       { src: '/farm/plant-laden.jpg', caption: 'Loaded', shape: 'leaf' },
       { src: '/farm/plant-full.jpg', caption: 'A plant in full', shape: 'petal' },
       { src: '/farm/truss-wall.jpg', caption: 'Trusses all the way up', shape: 'leaf' },
       { src: '/farm/rows-mature.jpg', caption: 'Shoulder height', shape: 'petal' },
       { src: '/farm/rows-fruiting.jpg', caption: 'Fruit down both sides', shape: 'leaf' },
-      { src: '/farm/plant-in-tunnel.jpg', caption: 'One plant, full span', shape: 'tall' },
+      { src: '/farm/plant-in-net.jpg', caption: 'One plant, full span', shape: 'tall' },
       { src: '/farm/row-walk.jpg', caption: 'Walking the row', shape: 'petal' },
     ],
   },
@@ -144,7 +144,7 @@ const chapters = [
       { src: '/farm/team-lineup.jpg', caption: 'The team', shape: 'tall' },
       { src: '/farm/team-morning.jpg', caption: 'Before the heat', shape: 'leaf' },
       { src: '/farm/team-group.jpg', caption: 'Gathered', shape: 'petal' },
-      { src: '/farm/two-smiling.jpg', caption: 'A good day', shape: 'tall' },
+      { src: '/farm/two-smiling.jpg', caption: 'Setho Mokgadi, the face of 13', shape: 'tall' },
       { src: '/farm/pair-at-wall.jpg', caption: 'Two of the crew', shape: 'leaf' },
       { src: '/farm/in-the-veld.jpg', caption: 'Out on the land', shape: 'petal' },
       { src: '/farm/walking-out.jpg', caption: 'Heading out', shape: 'round' },
@@ -227,7 +227,7 @@ const Gallery = () => {
 
         <Band
           image="/farm/fruit-in-bags.jpg"
-          alt="Tomato plants carrying fruit in grow bags under the tunnel"
+          alt="Tomato plants carrying fruit in grow bags under the shade nets"
           kicker="Mookane Village"
           line="Every frame on this page was taken on the farm."
         />

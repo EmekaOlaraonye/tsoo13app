@@ -46,7 +46,7 @@ const stories = [
     date: 'November 2024',
     title: 'MCW leadership cohort graduation.',
     body: 'Building leaders who build things — the operation now runs on more than instinct.',
-    image: '/farm/tunnel-mature.jpg',
+    image: '/farm/net-mature.jpg',
     color: 'var(--c-lime)',
   },
   {
@@ -55,7 +55,7 @@ const stories = [
     date: 'September 2024',
     title: 'Nine months in: a season on the ground.',
     body: 'From Mookane Village soil to city shelves — a look back at the first full growing season.',
-    image: '/farm/tunnels-sunset.jpg',
+    image: '/farm/nets-sunset.jpg',
     color: 'var(--c-red)',
   },
 ];

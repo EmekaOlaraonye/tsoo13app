@@ -27,7 +27,7 @@ const steps = [
     reveal: 'Tsoo...13 — "from our family to yours". No warehouse, no logo, no plan beyond growing something people would come back for.',
     tags: ['Mookane Village', 'Family run'],
     image: '/farm/rows-wide.jpg',
-    alt: 'Rows of young plants under the tunnel',
+    alt: 'Rows of young plants under the shade net',
     color: 'var(--c-lime)',
     soft: 'var(--c-lime-soft)',
     ink: true,
@@ -41,7 +41,7 @@ const steps = [
     reveal: 'No machinery to speak of, just early mornings and a plot that finally paid off. Nothing about the business was certain yet — but the farming part, at least, was no longer a maybe.',
     tags: ['First crop', 'Proof it worked'],
     image: '/farm/harvesting.jpg',
-    alt: 'Picking tomatoes in the tunnel',
+    alt: 'Picking tomatoes under the shade net',
     color: 'var(--c-yellow)',
     soft: 'var(--c-yellow-soft)',
     ink: true,
@@ -204,8 +204,8 @@ const TheJourney = ({ standalone = false }) => {
         </div>
 
         <Band
-          image="/farm/tunnels-from-road.jpg"
-          alt="The tunnels at Mookane Village seen from the track"
+          image="/farm/nets-from-road.jpg"
+          alt="The shade nets at Mookane Village seen from the track"
           kicker="Open days at Mookane"
           line="A farmer's best friend is another farmer."
           attribution="— from our own open-day invitation"

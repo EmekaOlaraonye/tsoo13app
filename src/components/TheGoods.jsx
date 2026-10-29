@@ -8,47 +8,42 @@ import { RETAILERS } from '../siteConfig';
 import Photo from './ui/Photo';
 
 /**
- * All four are tomatoes — these are the varieties and formats, not a mixed
- * produce list. The first card used to read "Tomatoes", which made it the
- * odd one out beside Cherry and Plum (both of which are, of course, also
- * tomatoes); its id was `round` all along.
+ * There is one crop here, not four. Every photograph in the set — the
+ * trusses, the packhouse pile, the crates, the retail shelf — shows the same
+ * large round tomato, so the old Cherry / Plum / Season's blend split was a
+ * product line the farm does not have. These cards are the one tomato and the
+ * ways it actually reaches someone.
  */
 const produce = [
   {
-    id: 'round',
-    name: 'Round',
-    tagline: 'Juicy, loud, unmistakable.',
-    desc: 'The everyday tomato. Sun-ripened at Mookane. Zero shortcuts, zero compromise.',
+    id: 'tomato',
+    name: 'The tomato',
+    tagline: 'Round, full size, ripened on the plant.',
+    desc: 'One crop, carried the whole way at Mookane — seedling, bag, truss, crate. Zero shortcuts, zero compromise.',
     badge: 'Home grown',
-    image: '/farm/green-truss-dew.jpg',
+    image: '/farm/ripening-in-hand.jpg',
+    alt: 'A ripe tomato held on the truss, still attached to the plant',
     color: 'var(--c-red)',
   },
   {
-    id: 'cherry',
-    name: 'Cherry',
-    tagline: 'Tiny. Explosive.',
-    desc: 'Small format, full 13 quality. They rarely make it home whole.',
-    badge: 'Hand picked',
-    image: '/farm/truss-closeup.jpg',
+    id: 'bag',
+    name: 'The 13 bag',
+    tagline: 'Look for the number.',
+    desc: 'Graded and packed by hand at the farm, then straight to the shelf. Produced in Botswana, borehole water used for irrigation — it says so on the front.',
+    badge: 'Hand packed',
+    image: '/farm/bag-in-hand.jpg',
+    alt: 'A Tsoo...13 bag of tomatoes, the 13 printed across the front',
     color: 'var(--c-yellow)',
   },
   {
-    id: 'plum',
-    name: 'Plum',
-    tagline: 'The chef pick.',
-    desc: 'Dense and rich, with flavour that holds all the way through the pan.',
-    badge: '13 grown',
-    image: '/farm/bag-in-hand.jpg',
-    color: 'var(--c-green-lt)',
-  },
-  {
-    id: 'blend',
-    name: "Season's blend",
-    tagline: 'Colour that sells itself.',
-    desc: 'Whichever varieties are at their best that week, packed together and straight to you.',
-    badge: 'Fresh from 13',
+    id: 'direct',
+    name: 'From the farm',
+    tagline: 'Closest to the source.',
+    desc: 'Come to Mookane Village and buy it where it grows, before it travels anywhere at all.',
+    badge: 'At Mookane',
     image: '/farm/bag-over-pile.jpg',
-    color: 'var(--c-lime)',
+    alt: 'A hand holding a 13 bag above a pile of freshly picked tomatoes',
+    color: 'var(--c-green-lt)',
   },
 ];
 
@@ -56,7 +51,7 @@ const ProduceCard = ({ item, index }) => (
   <Reveal delay={(index % 4) * 0.07}>
     <article className="card" style={{ '--card-accent': item.color }}>
       <div className="card__media">
-        <Photo className="card__img" src={item.image} alt={item.name} />
+        <Photo className="card__img" src={item.image} alt={item.alt} />
         <span className="card__wash" aria-hidden="true" />
         <span
           className="chip"
@@ -96,7 +91,7 @@ const TheGoods = ({ standalone = false }) => (
         dot="var(--c-red)"
         variant="right"
         title={<>The <span className="t-green">goods</span>.</>}
-        lede="Home grown. Hand picked. Always reliable. That is the whole of what the 13 on the bag means."
+        lede="One tomato, grown and packed at Mookane. Home grown, hand picked, always reliable — that is the whole of what the 13 on the bag means."
       />
 
       <Reveal

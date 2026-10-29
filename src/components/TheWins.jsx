@@ -203,8 +203,8 @@ const TheWins = ({ standalone = false }) => (
       <div className="proof" style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
         {[
           { src: '/farm/team-lineup.jpg', cap: 'The team at Mookane Village' },
-          { src: '/farm/tunnel-mature.jpg', cap: 'A tunnel in full production' },
-          { src: '/farm/two-smiling.jpg', cap: 'A good day in the rows' },
+          { src: '/farm/net-mature.jpg', cap: 'A shade net in full production' },
+          { src: '/farm/two-smiling.jpg', cap: 'Setho Mokgadi, the face of 13' },
           { src: '/farm/retail-shelf.jpg', cap: 'On the shelf in Gaborone' },
         ].map((shot, i) => (
           <Reveal key={shot.src} delay={(i % 4) * 0.06} variant="scale" className="proof__item">

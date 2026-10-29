@@ -11,7 +11,7 @@ const steps = [
   { n: '01', label: 'Seedlings', body: 'Cuttings started, not bought seed — roots before anything else.', image: '/farm/planting-row.jpg', alt: 'Planting out along the row' },
   { n: '02', label: 'Greenhouse', body: 'Planted out and given the conditions to actually thrive.', image: '/farm/beds-prepared.jpg', alt: 'Beds shaped and lined, ready to plant' },
   { n: '03', label: 'Care', body: 'Watered, watched and tended, day in and day out.', image: '/farm/gloved-work.jpg', alt: 'Working the stem by hand' },
-  { n: '04', label: 'Harvest', body: 'Picked by hand, at the moment it is ready — not before.', image: '/farm/harvesting.jpg', alt: 'Picking in the tunnel' },
+  { n: '04', label: 'Harvest', body: 'Picked by hand, at the moment it is ready — not before.', image: '/farm/harvesting.jpg', alt: 'Picking under the shade nets' },
   { n: '05', label: 'Packing', body: 'Bagged and stamped with the number, not a logo.', image: '/farm/sorting-indoors.jpg', alt: 'Sorting and bagging under the shed' },
   { n: '06', label: 'Delivery', body: 'Mookane to Gaborone, the same day it is packed.', image: '/farm/crate-of-bags.jpg', alt: 'A crate of bagged tomatoes, ready' },
   { n: '07', label: 'Shelves', body: 'Food Lover’s SquareMart, SuperSpar Acacia — and counting.', image: '/farm/retail-shelf.jpg', alt: 'Bags of Tsoo...13 on the shelf' },
