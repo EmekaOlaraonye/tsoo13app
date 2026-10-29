@@ -42,6 +42,21 @@ export const VIDEO = {
   creditUrl: null,
 };
 
+/**
+ * The vertical reel — every portrait clip from the folder, three seconds
+ * each, in one run. Shot on a phone, so it is shown upright rather than
+ * cropped into a widescreen panel.
+ *
+ * Rebuild with scripts/build-reel.sh.
+ */
+export const REEL = {
+  src: '/film/tsoo13-reel.mp4',
+  poster: '/film/tsoo13-reel-poster.jpg',
+  runtime: '1 min 54',
+  blurb:
+    'Every upright clip from the farm, three seconds apiece — hands on the trusses, trays going down the row, bags coming off the shelf.',
+};
+
 export const RETAILERS = [
   { name: "Food Lover's SquareMart", location: 'Gaborone' },
   { name: 'SuperSpar Acacia', location: 'Gaborone' },

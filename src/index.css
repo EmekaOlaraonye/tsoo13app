@@ -1815,3 +1815,60 @@ textarea.input { resize: vertical; min-height: 130px; }
   .lb__nav--prev { grid-row: 2; grid-column: 1; justify-self: center; }
   .lb__nav--next { grid-row: 2; grid-column: 2; justify-self: center; }
 }
+
+/* --------------------------------------------------------------------------
+   Vertical reel — the phone-shot footage, shown the shape it was filmed
+   -------------------------------------------------------------------------- */
+
+.reel {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+@media (min-width: 860px) {
+  .reel { grid-template-columns: 1fr minmax(260px, 340px); }
+}
+
+.reel__title { color: var(--c-green); }
+.reel__meta { margin-top: 1.25rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+
+.reel__frame {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-lg);
+  justify-self: center;
+  width: 100%;
+  max-width: 340px;
+}
+
+.reel__frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.reel__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 21, 15, 0.25);
+  color: var(--white);
+  transition: background 0.3s;
+}
+
+.reel__play::before {
+  content: '';
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.7);
+  transition: transform 0.35s var(--ease);
+}
+
+.reel__play svg { position: relative; z-index: 1; margin-left: 4px; }
+.reel__play:hover { background: rgba(20, 21, 15, 0.1); }
+.reel__play:hover::before { transform: scale(1.08); }

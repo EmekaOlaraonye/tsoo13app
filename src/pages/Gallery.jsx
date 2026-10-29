@@ -5,6 +5,7 @@ import { Blob } from '../components/ui/Blobs';
 import Band from '../components/ui/Band';
 import Photo from '../components/ui/Photo';
 import Lightbox from '../components/ui/Lightbox';
+import Reel from '../components/ui/Reel';
 import { Instagram, Arrow, Plus } from '../components/ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
 
@@ -34,6 +35,9 @@ const chapters = [
       { src: '/farm/beds-empty.jpg', caption: 'Empty beds, waiting', shape: 'wide' },
       { src: '/farm/beds-ready.jpg', caption: 'Shaped and mulched', shape: 'petal' },
       { src: '/farm/beds-prepared.jpg', caption: 'Lined and ready to plant', shape: 'tall' },
+      { src: '/farm/beds-lined.jpg', caption: 'Mulch down the length of it', shape: 'petal' },
+      { src: '/farm/tunnel-frame.jpg', caption: 'Looking up at the frame', shape: 'leaf' },
+      { src: '/farm/tunnels-distance.jpg', caption: 'From across the yard', shape: 'leaf' },
     ],
   },
   {
@@ -48,6 +52,8 @@ const chapters = [
       { src: '/farm/seedling-planted.jpg', caption: 'Into the bag it goes', shape: 'blob' },
       { src: '/farm/root-ball.jpg', caption: 'What the roots look like', shape: 'petal' },
       { src: '/farm/roots-gloved.jpg', caption: 'Pulled and checked', shape: 'leaf' },
+      { src: '/farm/root-ball-held.jpg', caption: 'A whole root ball', shape: 'round' },
+      { src: '/farm/seedlings-carried.jpg', caption: 'Carrying trays down the row', shape: 'tall' },
     ],
   },
   {
@@ -61,6 +67,7 @@ const chapters = [
       { src: '/farm/planting-row.jpg', caption: 'Working the line', shape: 'tall' },
       { src: '/farm/pipe-and-bags.jpg', caption: 'Pipe in, bags down', shape: 'leaf' },
       { src: '/farm/bags-young.jpg', caption: 'First leaves up', shape: 'petal' },
+      { src: '/farm/rows-planted.jpg', caption: 'Planted and watered in', shape: 'leaf' },
     ],
   },
   {
@@ -78,6 +85,10 @@ const chapters = [
       { src: '/farm/plant-laden.jpg', caption: 'Loaded', shape: 'leaf' },
       { src: '/farm/plant-full.jpg', caption: 'A plant in full', shape: 'petal' },
       { src: '/farm/truss-wall.jpg', caption: 'Trusses all the way up', shape: 'leaf' },
+      { src: '/farm/rows-mature.jpg', caption: 'Shoulder height', shape: 'petal' },
+      { src: '/farm/rows-fruiting.jpg', caption: 'Fruit down both sides', shape: 'leaf' },
+      { src: '/farm/plant-in-tunnel.jpg', caption: 'One plant, full span', shape: 'tall' },
+      { src: '/farm/row-walk.jpg', caption: 'Walking the row', shape: 'petal' },
     ],
   },
   {
@@ -94,6 +105,9 @@ const chapters = [
       { src: '/farm/ripening-in-hand.jpg', caption: 'Turning', shape: 'blob' },
       { src: '/farm/ripe-in-hand.jpg', caption: 'Ready', shape: 'round' },
       { src: '/farm/gloved-work.jpg', caption: 'Working the stem', shape: 'leaf' },
+      { src: '/farm/flower-truss.jpg', caption: 'Flowering', shape: 'round' },
+      { src: '/farm/truss-held.jpg', caption: 'A truss in the hand', shape: 'blob' },
+      { src: '/farm/stem-in-hand.jpg', caption: 'Checking the stem', shape: 'petal' },
     ],
   },
   {
@@ -115,6 +129,11 @@ const chapters = [
       { src: '/farm/shelf-wide.jpg', caption: 'Among the rest', shape: 'petal' },
       { src: '/farm/at-the-shelf.jpg', caption: 'Checking the shelf', shape: 'wide' },
       { src: '/farm/for-sale-board.jpg', caption: 'Cooked and served', shape: 'leaf' },
+      { src: '/farm/plated.jpg', caption: 'On the plate', shape: 'round' },
+      { src: '/farm/shelf-stocking.jpg', caption: 'Stocking the shelf', shape: 'petal' },
+      { src: '/farm/shelf-reaching.jpg', caption: 'Reaching for the 13', shape: 'leaf' },
+      { src: '/farm/season-end.jpg', caption: 'End of the season', shape: 'petal' },
+      { src: '/farm/spent-vines.jpg', caption: 'Cleared and ready to start again', shape: 'leaf' },
     ],
   },
   {
@@ -129,6 +148,9 @@ const chapters = [
       { src: '/farm/pair-at-wall.jpg', caption: 'Two of the crew', shape: 'leaf' },
       { src: '/farm/in-the-veld.jpg', caption: 'Out on the land', shape: 'petal' },
       { src: '/farm/walking-out.jpg', caption: 'Heading out', shape: 'round' },
+      { src: '/farm/team-at-dusk.jpg', caption: 'Last light', shape: 'leaf' },
+      { src: '/farm/team-row.jpg', caption: 'Lined up', shape: 'petal' },
+      { src: '/farm/pair-outside.jpg', caption: 'Two of the crew, outside', shape: 'leaf' },
     ],
   },
 ];
@@ -200,6 +222,8 @@ const Gallery = () => {
             </div>
           </section>
         ))}
+
+        <Reel />
 
         <Band
           image="/farm/fruit-in-bags.jpg"
