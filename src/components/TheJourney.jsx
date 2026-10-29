@@ -26,8 +26,8 @@ const steps = [
     line: 'One plot of soil in Mookane Village and a family name on the box.',
     reveal: 'Tsoo...13 — "from our family to yours". No warehouse, no logo, no plan beyond growing something people would come back for.',
     tags: ['Mookane Village', 'Family run'],
-    image: '/farm/field-rows-open.jpg',
-    alt: 'Open-field rows of young plants at Mookane Village',
+    image: '/farm/rows-wide.jpg',
+    alt: 'Rows of young plants under the tunnel',
     color: 'var(--c-lime)',
     soft: 'var(--c-lime-soft)',
     ink: true,
@@ -40,8 +40,8 @@ const steps = [
     line: 'The crop came in, and it was real — proof the idea actually worked.',
     reveal: 'No machinery to speak of, just early mornings and a plot that finally paid off. Nothing about the business was certain yet — but the farming part, at least, was no longer a maybe.',
     tags: ['First crop', 'Proof it worked'],
-    image: '/farm/wheelbarrows-harvest.jpg',
-    alt: 'Wheelbarrows of harvested tomatoes coming out of the field',
+    image: '/farm/harvesting.jpg',
+    alt: 'Picking tomatoes in the tunnel',
     color: 'var(--c-yellow)',
     soft: 'var(--c-yellow-soft)',
     ink: true,
@@ -54,8 +54,8 @@ const steps = [
     line: 'Demand outgrew the plot fast — more hands, more hours, more learned the hard way.',
     reveal: 'Growing enough to eat is one thing. Growing enough to sell, pack and deliver on time is another. This is where farming quietly turned into a business, whether we were ready or not.',
     tags: ['Scaling up', 'Learning fast'],
-    image: '/farm/irrigation-trench.jpg',
-    alt: 'Irrigation main line being laid across the farm',
+    image: '/farm/beds-prepared.jpg',
+    alt: 'Beds shaped and lined, ready to plant',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
   },
@@ -67,8 +67,8 @@ const steps = [
     line: 'A whole season of seedlings didn’t make it. It could have ended right there.',
     reveal: 'Losing a run of seedlings was the closest this ever came to stopping. Instead of just buying more seed and hoping, we asked a harder question — was there a better way to grow at all?',
     tags: ['Seedling loss', 'The lowest point'],
-    image: '/farm/staked-rows.jpg',
-    alt: 'Staked rows in open field',
+    image: '/farm/truss-wall.jpg',
+    alt: 'Trusses carrying up the plant',
     color: 'var(--c-green-lt)',
     soft: 'var(--c-green-soft)',
   },
@@ -80,8 +80,8 @@ const steps = [
     line: 'No more seeds. Stems, roots and patience — and this time, a plan behind it too.',
     reveal: 'The cuttings method came directly out of that failure: faster to flower, cheaper to run, entirely ours. MCW and Aspire Leaders followed soon after — this time, we built the operation to actually last.',
     tags: ['Cuttings over seeds', 'MCW & Aspire Leaders'],
-    image: '/farm/tunnel-grow-bags.jpg',
-    alt: 'Rows of grow bags under shade net',
+    image: '/farm/bags-young.jpg',
+    alt: 'Young plants in their grow bags',
     color: 'var(--c-yellow)',
     soft: 'var(--c-yellow-soft)',
     ink: true,
@@ -95,7 +95,7 @@ const steps = [
     reveal: 'Tsoo...13 is a young team running growing, packing, brand and distribution ourselves. Mookane to Gaborone, and the destination keeps moving — this is still only the start of it.',
     tags: ['On shelves now', 'Youth run'],
     image: '/farm/retail-shelf.jpg',
-    alt: 'Packed Tsoo...13 tomatoes on a retail shelf',
+    alt: 'Bags of Tsoo...13 tomatoes on the shelf',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
     final: true,
@@ -204,8 +204,8 @@ const TheJourney = ({ standalone = false }) => {
         </div>
 
         <Band
-          image="/farm/training-demo.jpg"
-          alt="Farmers gathered at an open day on the farm"
+          image="/farm/tunnels-from-road.jpg"
+          alt="The tunnels at Mookane Village seen from the track"
           kicker="Open days at Mookane"
           line="A farmer's best friend is another farmer."
           attribution="— from our own open-day invitation"

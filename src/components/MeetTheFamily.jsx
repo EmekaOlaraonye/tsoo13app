@@ -45,8 +45,8 @@ const MeetTheFamily = () => (
         implies it. Both shots are portrait, hence the upright frames. */}
     <div className="family__shots">
       {[
-        { src: '/farm/team-in-field.jpg', cap: 'Out in the rows at Mookane Village' },
-        { src: '/farm/team-member.jpg', cap: 'Wearing the 13' },
+        { src: '/farm/team-lineup.jpg', cap: 'The team at Mookane Village' },
+        { src: '/farm/two-smiling.jpg', cap: 'A good day in the rows' },
       ].map((shot, i) => (
         <Reveal key={shot.src} delay={0.08 + i * 0.06} variant="scale" className="family__shot">
           <Photo src={shot.src} alt={shot.cap} />

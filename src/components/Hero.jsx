@@ -144,8 +144,8 @@ const Hero = () => {
 
             <div className="hero__frame">
               <Photo
-                src="/farm/packed-punnets.jpg"
-                alt="Tsoo...13 tomatoes packed into branded punnets"
+                src="/farm/bag-in-hand.jpg"
+                alt="A bag of Tsoo...13 tomatoes, the 13 printed on the front"
                 className="hero__img"
                 eager
               />

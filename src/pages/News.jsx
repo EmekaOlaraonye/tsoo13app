@@ -28,7 +28,7 @@ const stories = [
     date: 'April 2025',
     title: 'Selected for the Aspire Leaders Programme.',
     body: 'One of Africa’s most competitive Harvard-affiliated accelerators, and a room full of founders building at a bigger scale.',
-    image: '/farm/training-group.jpg',
+    image: '/farm/team-lineup.jpg',
     color: 'var(--c-yellow)',
   },
   {
@@ -37,7 +37,7 @@ const stories = [
     date: 'January 2025',
     title: 'Cuttings over seeds.',
     body: 'Losing a run of seedlings forced a new method: no seeds, just stems, roots and patience. They flowered faster than the parent plant.',
-    image: '/farm/planting-cocobag.jpg',
+    image: '/farm/planting-row.jpg',
     color: 'var(--c-green-lt)',
   },
   {
@@ -46,7 +46,7 @@ const stories = [
     date: 'November 2024',
     title: 'MCW leadership cohort graduation.',
     body: 'Building leaders who build things — the operation now runs on more than instinct.',
-    image: '/farm/greenhouse-visit.jpg',
+    image: '/farm/tunnel-mature.jpg',
     color: 'var(--c-lime)',
   },
   {
@@ -55,7 +55,7 @@ const stories = [
     date: 'September 2024',
     title: 'Nine months in: a season on the ground.',
     body: 'From Mookane Village soil to city shelves — a look back at the first full growing season.',
-    image: '/farm/rows-at-sunset.jpg',
+    image: '/farm/tunnels-sunset.jpg',
     color: 'var(--c-red)',
   },
 ];
@@ -147,7 +147,7 @@ const InterviewCard = () => (
   <Reveal>
     <div className="card" style={{ '--card-accent': 'var(--c-yellow-ink)', opacity: 0.85 }}>
       <div className="card__media">
-        <Photo className="card__img" src="/farm/visitors-field.jpg" alt="" />
+        <Photo className="card__img" src="/farm/pair-at-wall.jpg" alt="" />
         <span className="card__wash" aria-hidden="true" />
         <span
           className="chip"
@@ -224,8 +224,8 @@ const News = () => {
         </Reveal>
 
         <Band
-          image="/farm/tunnels-sunset.jpg"
-          alt="Shade-net tunnels at Mookane Village at last light"
+          image="/farm/at-the-shelf.jpg"
+          alt="Tsoo...13 tomatoes being checked on a supermarket shelf"
           kicker="Mookane Village"
           line="The number travels further than any logo."
           align="left"

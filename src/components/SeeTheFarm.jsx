@@ -4,10 +4,10 @@ import { Arrow } from './ui/Icons';
 import Photo from './ui/Photo';
 
 const shots = [
-  { src: '/farm/tunnel-interior.jpg', caption: 'Inside the tunnels' },
-  { src: '/farm/cocobag-drip.jpg', caption: 'Coco-coir and drip line' },
-  { src: '/farm/packing-table.jpg', caption: 'Packing day' },
-  { src: '/farm/farm-gate.jpg', caption: 'The gate at Mookane' },
+  { src: '/farm/tunnel-mature.jpg', caption: 'Inside the tunnels' },
+  { src: '/farm/seedling-planted.jpg', caption: 'A seedling into its bag' },
+  { src: '/farm/sorting-indoors.jpg', caption: 'Sorting under the shed' },
+  { src: '/farm/tunnels-exterior.jpg', caption: 'The tunnels at Mookane' },
 ];
 
 const SeeTheFarm = () => (

@@ -5,12 +5,12 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
 import Photo from './ui/Photo';
 
 const posts = [
-  { src: '/farm/harvest-pile.jpg', caption: "A morning's picking." },
-  { src: '/farm/cocobag-drip.jpg', caption: 'Coco-coir and drip line.' },
+  { src: '/farm/bag-over-pile.jpg', caption: "A morning's picking." },
+  { src: '/farm/seedling-planted.jpg', caption: 'Into the bag it goes.' },
   { src: '/farm/tunnels-sunset.jpg', caption: 'Tunnels at last light.' },
-  { src: '/farm/packed-punnets.jpg', caption: 'Packed and ready to go.' },
-  { src: '/farm/team-in-field.jpg', caption: '#AskFor13, out in the rows.' },
-  { src: '/farm/young-plants.jpg', caption: 'Season two, day one.' },
+  { src: '/farm/bag-in-hand.jpg', caption: 'Ask for the 13 on the bag.' },
+  { src: '/farm/team-group.jpg', caption: 'The crew, before the heat.' },
+  { src: '/farm/bags-young.jpg', caption: 'First leaves up.' },
 ];
 
 const InstagramSection = () => (

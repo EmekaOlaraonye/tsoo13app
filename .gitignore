@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Source media — originals live outside the repo (near 1GB)
+src/tsoo13/
+src/pictures/

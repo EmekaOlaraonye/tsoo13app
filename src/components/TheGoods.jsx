@@ -20,7 +20,7 @@ const produce = [
     tagline: 'Juicy, loud, unmistakable.',
     desc: 'The everyday tomato. Sun-ripened at Mookane. Zero shortcuts, zero compromise.',
     badge: 'Home grown',
-    image: '/farm/tomatoes-on-vine.jpg',
+    image: '/farm/green-truss-dew.jpg',
     color: 'var(--c-red)',
   },
   {
@@ -29,7 +29,7 @@ const produce = [
     tagline: 'Tiny. Explosive.',
     desc: 'Small format, full 13 quality. They rarely make it home whole.',
     badge: 'Hand picked',
-    image: '/farm/hydroponic-truss.jpg',
+    image: '/farm/truss-closeup.jpg',
     color: 'var(--c-yellow)',
   },
   {
@@ -38,7 +38,7 @@ const produce = [
     tagline: 'The chef pick.',
     desc: 'Dense and rich, with flavour that holds all the way through the pan.',
     badge: '13 grown',
-    image: '/farm/packed-punnets.jpg',
+    image: '/farm/bag-in-hand.jpg',
     color: 'var(--c-green-lt)',
   },
   {
@@ -47,7 +47,7 @@ const produce = [
     tagline: 'Colour that sells itself.',
     desc: 'Whichever varieties are at their best that week, packed together and straight to you.',
     badge: 'Fresh from 13',
-    image: '/farm/harvest-pile.jpg',
+    image: '/farm/bag-over-pile.jpg',
     color: 'var(--c-lime)',
   },
 ];
@@ -112,7 +112,7 @@ const TheGoods = ({ standalone = false }) => (
       >
         <Photo
           src="/farm/retail-shelf.jpg"
-          alt="Packed Tsoo...13 tomatoes on a retail shelf"
+          alt="Bags of Tsoo...13 tomatoes on a supermarket shelf"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <span

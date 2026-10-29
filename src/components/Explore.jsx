@@ -19,7 +19,7 @@ const destinations = [
     to: '/wins',
     category: 'Recognition',
     desc: 'Credentials, movements and the odd spotlight.',
-    image: '/farm/training-group.jpg',
+    image: '/farm/team-lineup.jpg',
     color: 'var(--c-yellow)',
   },
   {
@@ -27,7 +27,7 @@ const destinations = [
     to: '/news',
     category: 'Dispatches',
     desc: 'Retail drops and fresh notes from the field.',
-    image: '/farm/packing-table.jpg',
+    image: '/farm/sorting-indoors.jpg',
     color: 'var(--c-green-lt)',
   },
   {
