@@ -41,11 +41,11 @@ ffmpeg -v error -y -ss 34 -i "$SRC/flood2.mp4" -frames:v 1 -q:v 3 \
 # Landscape still for the timeline panel, which is 16:11. Taken at 27.5s, the
 # one stretch with the collapsed frames right across the shot and no doorway
 # edge in the way. Cropped to the band holding the structures, then doubled
-# and sharpened: the source is only 296px wide and the panel renders wider
-# than that, so it is better to upscale deliberately than to let the browser
-# do it.
+# and sharpened 4x: the source is only 296px wide and the panel wants over
+# 1000px on a retina screen. Nothing here invents detail that is not in the
+# footage — it only means lanczos does the enlarging rather than the browser.
 ffmpeg -v error -y -ss 27.5 -i "$SRC/flood2.mp4" -frames:v 1 \
-  -vf "crop=iw:iw*11/16:0:118,scale=iw*2:ih*2:flags=lanczos,unsharp=5:5:0.8" \
+  -vf "crop=iw:iw*11/16:0:118,scale=iw*4:ih*4:flags=lanczos,unsharp=5:5:0.6" \
   -q:v 3 "$OUT/tsoo13-storm-still.jpg"
 
 echo "built $OUT/tsoo13-storm.mp4"
