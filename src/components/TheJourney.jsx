@@ -36,6 +36,8 @@ const steps = [
     tags: ['Mookane Village', 'Family run'],
     image: '/farm/in-the-veld.jpg',
     alt: 'Standing out in the open veld at Mookane',
+    // A tall portrait in a 16:11 panel: centred, cover takes her head off.
+    focus: 'center 24%',
     color: 'var(--c-lime)',
     soft: 'var(--c-lime-soft)',
     ink: true,
@@ -75,7 +77,7 @@ const steps = [
     line: 'At the peak of it, in 2025, the structures came down.',
     reveal: 'Everything built to keep the weather out was, in one afternoon, the thing the weather took. It was filmed as it happened — the clip is further down this page.',
     tags: ['2025', 'The lowest point'],
-    image: '/film/tsoo13-storm-poster.jpg',
+    image: '/film/tsoo13-storm-still.jpg',
     alt: 'Structures flattened across the yard in the rain',
     color: 'var(--c-green-lt)',
     soft: 'var(--c-green-soft)',
@@ -138,7 +140,7 @@ const Step = ({ step, index }) => {
 
       {/* Hover (or focus) the photograph to open the rest of the chapter */}
       <div className="tl__media" tabIndex={0} role="group" aria-label={`${step.stage} — ${step.reveal}`}>
-        <Photo src={step.image} alt={step.alt} />
+        <Photo src={step.image} alt={step.alt} style={step.focus ? { objectPosition: step.focus } : undefined} />
         <span className="tl__media-tint" aria-hidden="true" />
         <span className="chip chip--float tl__hint" aria-hidden="true">
           <Plus size={13} /> More

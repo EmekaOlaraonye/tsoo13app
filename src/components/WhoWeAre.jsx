@@ -9,7 +9,7 @@ const pillars = [
   {
     n: '01',
     title: 'We grow it',
-    body: 'Greenhouse, cuttings, whatever the season demands. If the usual way stops working, we find another one.',
+    body: 'Under cover and out of the soil — grown in bags, fed to the plant. Cuttings instead of seed. If the usual way stops working, we find another one.',
     image: '/farm/net-mature.jpg',
     alt: 'Tomato plants growing in bags inside the shade net',
     color: 'var(--c-lime)',
