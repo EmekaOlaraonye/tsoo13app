@@ -144,7 +144,7 @@ const chapters = [
       { src: '/farm/team-lineup.jpg', caption: 'The team', shape: 'tall' },
       { src: '/farm/team-morning.jpg', caption: 'Before the heat', shape: 'leaf' },
       { src: '/farm/team-group.jpg', caption: 'Gathered', shape: 'petal' },
-      { src: '/farm/two-smiling.jpg', caption: 'Setho Mokgadi, the face of 13', shape: 'tall' },
+      { src: '/farm/two-smiling.jpg', caption: 'Setho Mokgadi, managing director', shape: 'tall' },
       { src: '/farm/pair-at-wall.jpg', caption: 'Two of the crew', shape: 'leaf' },
       { src: '/farm/in-the-veld.jpg', caption: 'Out on the land', shape: 'petal' },
       { src: '/farm/walking-out.jpg', caption: 'Heading out', shape: 'round' },

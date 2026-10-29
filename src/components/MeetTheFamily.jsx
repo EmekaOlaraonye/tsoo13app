@@ -3,9 +3,9 @@ import Photo from './ui/Photo';
 
 /**
  * "From our family to yours" is on the logo for a reason. Setho Mokgadi is
- * named here because she is the face of the business; the rest of the names
- * go in once they're confirmed. Until then this introduces the business by
- * what each part of it actually does, and claims nothing it can't back.
+ * named here as managing director; the rest of the names go in once they're
+ * confirmed. The role cards below stay deliberately unattributed — we know
+ * Setho's title, not who holds the other three.
  */
 const roles = [
   { role: 'Growing', body: 'Hands in the soil every day — the shade nets, the cuttings, the early starts.', color: 'var(--c-lime)', soft: 'var(--c-lime-soft)' },
@@ -36,8 +36,9 @@ const MeetTheFamily = () => (
         Meet the family.
       </h3>
       <p className="lede" style={{ maxWidth: '46ch' }}>
-        Setho Mokgadi is the face of the business. The rest of the names are
-        still to come — until then, here&apos;s who actually does what.
+        Setho Mokgadi is the managing director and the face of the business.
+        The rest of the names are still to come — until then, here&apos;s who
+        actually does what.
       </p>
     </Reveal>
 
@@ -47,7 +48,7 @@ const MeetTheFamily = () => (
     <div className="family__shots">
       {[
         { src: '/farm/team-lineup.jpg', cap: 'The team at Mookane Village', alt: 'The Tsoo...13 team lined up at Mookane Village' },
-        { src: '/farm/two-smiling.jpg', cap: 'Setho Mokgadi, the face of 13', alt: 'Setho Mokgadi holding up a tomato in the rows, a colleague behind her' },
+        { src: '/farm/two-smiling.jpg', cap: 'Setho Mokgadi, managing director', alt: 'Setho Mokgadi, managing director, holding up a tomato in the rows, a colleague behind her' },
       ].map((shot, i) => (
         <Reveal key={shot.src} delay={0.08 + i * 0.06} variant="scale" className="family__shot">
           <Photo src={shot.src} alt={shot.alt} />

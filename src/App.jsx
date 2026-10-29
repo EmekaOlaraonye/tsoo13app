@@ -1,13 +1,21 @@
+import { lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Journey from './pages/Journey';
-import Wins from './pages/Wins';
-import Goods from './pages/Goods';
-import News from './pages/News';
-import Gallery from './pages/Gallery';
-import ContactUs from './pages/ContactUs';
+
+/**
+ * Home stays in the main bundle: it is the landing page, so making it wait on
+ * a second request would cost exactly the people we least want to keep
+ * waiting. The other six are split out and fetched when first visited —
+ * Layout renders the Suspense boundary so the navbar and footer stay put.
+ */
+const Journey = lazy(() => import('./pages/Journey'));
+const Wins = lazy(() => import('./pages/Wins'));
+const Goods = lazy(() => import('./pages/Goods'));
+const News = lazy(() => import('./pages/News'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const ContactUs = lazy(() => import('./pages/ContactUs'));
 
 function App() {
   return (

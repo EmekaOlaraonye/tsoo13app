@@ -204,7 +204,7 @@ const TheWins = ({ standalone = false }) => (
         {[
           { src: '/farm/team-lineup.jpg', cap: 'The team at Mookane Village' },
           { src: '/farm/net-mature.jpg', cap: 'A shade net in full production' },
-          { src: '/farm/two-smiling.jpg', cap: 'Setho Mokgadi, the face of 13' },
+          { src: '/farm/two-smiling.jpg', cap: 'Setho Mokgadi, managing director' },
           { src: '/farm/retail-shelf.jpg', cap: 'On the shelf in Gaborone' },
         ].map((shot, i) => (
           <Reveal key={shot.src} delay={(i % 4) * 0.06} variant="scale" className="proof__item">

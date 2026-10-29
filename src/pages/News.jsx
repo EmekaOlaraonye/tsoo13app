@@ -142,13 +142,32 @@ const VideoCard = () => (
   </Reveal>
 );
 
-/** No interview has run yet — say so plainly instead of inventing one. */
+/**
+ * UNCCD Podcast Series, episode 4, 12 February 2021. The UN Convention to
+ * Combat Desertification interviewed Thato Mokgadi about starting Tsoo...13;
+ * their page describes her as its founder. The page carries no audio player
+ * of its own, so this links to the page rather than promising a stream.
+ */
+const INTERVIEW = {
+  url: 'https://www.unccd.int/news-stories/podcasts/unccd-podcast-series-episode-4',
+  date: 'February 2021',
+  title: 'Nine questions, on the UNCCD podcast.',
+  body: 'The UN Convention to Combat Desertification gave the fourth episode of its podcast series to Thato Mokgadi — the first steps of starting a business, where to find money and where to put it, leaving corporate work for agribusiness, and finding staff and mentors out in the rural areas.',
+};
+
 const InterviewCard = () => (
   <Reveal>
-    <div className="card" style={{ '--card-accent': 'var(--c-yellow-ink)', opacity: 0.85 }}>
+    <a
+      href={INTERVIEW.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="card"
+      style={{ '--card-accent': 'var(--c-yellow-ink)' }}
+    >
       <div className="card__media">
         <Photo className="card__img" src="/farm/pair-at-wall.jpg" alt="" />
         <span className="card__wash" aria-hidden="true" />
+        <span className="card__arrow" aria-hidden="true"><Arrow size={16} /></span>
         <span
           className="chip"
           style={{
@@ -163,12 +182,13 @@ const InterviewCard = () => (
         </span>
       </div>
       <div className="card__body">
-        <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow-ink)' }}>Coming soon</p>
-        <h3 className="card__title">Nothing published yet.</h3>
+        <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow-ink)' }}>{INTERVIEW.date}</p>
+        <h3 className="card__title">{INTERVIEW.title}</h3>
         <span className="card__rule" />
-        <p className="body-sm">First interview lands here once it&apos;s recorded — check back, or follow along on Instagram.</p>
+        <p className="body-sm">{INTERVIEW.body}</p>
+        <p className="body-sm" style={{ marginTop: '0.6rem', color: 'var(--ink-3)' }}>Listen at unccd.int</p>
       </div>
-    </div>
+    </a>
   </Reveal>
 );
 
