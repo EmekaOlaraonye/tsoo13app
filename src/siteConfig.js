@@ -16,34 +16,30 @@ export const PHONE_NUMBERS = ['+267 72706511', '+267 78312782'];
 /**
  * The film section.
  *
- * To swap in a different film, do ONE of these:
- *   1. Drop the file at `public/intro.mp4` and set `src: '/intro.mp4'`, or
- *   2. Paste the YouTube id (the part after `watch?v=`) into `youtubeId`.
+ * This is our own footage now — cut from the farm clips into one 49-second
+ * run, in the order the work actually happens: prepared beds, planting out,
+ * the rows filling, then fruit. It is silent on purpose; the source clips
+ * were shot separately and their audio does not cut together.
+ *
+ * Rebuild it with scripts/build-film.sh after adding or re-ordering clips.
+ *
+ * To swap in a different film instead:
+ *   1. Replace the file at `public/film/tsoo13-film.mp4`, or
+ *   2. Clear `src` and paste a YouTube id into `youtubeId`.
  *
  * With neither set, the section still shows the poster and play interaction,
- * and the lightbox says the film is coming.
- *
- * NOTE: what is embedded here is NOT our own footage — it is AgriTunnels'
- * video of tunnel houses at work, embedded (which needs no permission) and
- * credited on screen via `credit`. The copy in VideoSection is written to
- * match that. When Tsoo...13's own film exists, replace the id, clear
- * `credit` and `startAt`, and the section can go back to first-person.
+ * and the lightbox says the film is coming. Set `credit` only when the
+ * footage is someone else's.
  */
 export const VIDEO = {
-  src: null,
-  youtubeId: 'RKr6qiwzphA',
-  /** Seconds to open at — 2:08 is the "side rollup" moment. null = from the top. */
-  startAt: 128,
-  /* Our own greenhouse shot, not the YouTube thumbnail — that frame carries
-     AgriTunnels' logo, email and phone number, which would turn this panel
-     into an advert for them. The on-screen `credit` keeps it honest about
-     whose footage plays. */
-  poster: '/farm/tunnel-mature.jpg',
-  title: 'Agritunnels at work',
-  runtime: '3 MIN',
-  /** Shown on screen. Leave null for our own footage. */
-  credit: 'AgriTunnels',
-  creditUrl: 'https://www.youtube.com/@agritunnels9526',
+  src: '/film/tsoo13-film.mp4',
+  youtubeId: null,
+  startAt: null,
+  poster: '/film/tsoo13-film-poster.jpg',
+  title: 'From bare beds to fruit',
+  runtime: '49 SEC',
+  credit: null,
+  creditUrl: null,
 };
 
 export const RETAILERS = [

@@ -87,16 +87,16 @@ const VideoSection = () => {
         >
           <div>
             <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
-              Under the tunnels
+              Two minutes on the farm
             </p>
             <h2 className="display display--lg" style={{ color: 'var(--c-red)' }}>
-              How the<br />
-              crop <span className="t-green">grows</span>.
+              From bare beds<br />
+              to <span className="t-green">fruit</span>.
             </h2>
           </div>
           <p className="lede" style={{ maxWidth: '32ch' }}>
-            Tunnel houses, side rollups, controlled airflow — the growing method behind
-            a crop that turns up the same every week.
+            Fifty seconds at Mookane, in the order the work happens — beds shaped,
+            seedlings planted out, the rows filling, then fruit.
           </p>
         </Reveal>
 
@@ -121,10 +121,10 @@ const VideoSection = () => {
                   {hasFilm ? VIDEO.runtime : 'Coming soon'}
                 </span>
                 <p className="display display--sm" style={{ marginTop: '0.85rem', color: 'var(--white)' }}>
-                  Inside the tunnels.
+                  From the soil up.
                 </p>
               </div>
-              {/* Credit, not a location line — this is someone else's footage. */}
+              {/* A credit only when the footage belongs to someone else. */}
               <p style={{ fontSize: '0.84rem', fontWeight: 600, color: 'rgba(255,255,255,.82)' }}>
                 {VIDEO.credit ? `Video: ${VIDEO.credit}` : 'Mookane Village, Botswana'}
               </p>

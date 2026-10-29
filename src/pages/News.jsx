@@ -131,10 +131,10 @@ const VideoCard = () => (
       </div>
       <div className="card__body">
         <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)' }}>{VIDEO.runtime}</p>
-        <h3 className="card__title">Inside the growing tunnels.</h3>
+        <h3 className="card__title">From bare beds to fruit.</h3>
         <span className="card__rule" />
         <p className="body-sm">
-          Tunnel houses and side rollups — the growing method, on the homepage.
+          Fifty seconds at Mookane, start to finish — on the homepage.
           {VIDEO.credit ? ` Footage by ${VIDEO.credit}.` : ''}
         </p>
       </div>
