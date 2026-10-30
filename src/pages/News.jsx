@@ -16,8 +16,8 @@ const stories = [
     id: 'squaremart',
     category: 'Events',
     date: 'June 2025',
-    title: 'Onto the shelf in Gaborone.',
-    body: 'Gaborone asked, so we packed the crates and showed up — bags of Tsoo...13 on a city shelf for the first time. Ask for it by name.',
+    title: 'The first crates into Gaborone.',
+    body: 'Gaborone asked, so we packed the crates and drove them in ourselves — the first time Tsoo...13 bags went to the city under their own number.',
     image: '/farm/crate-of-bags.jpg',
     color: 'var(--c-red)',
   },
@@ -53,7 +53,7 @@ const stories = [
     category: 'Articles',
     date: 'September 2024',
     title: 'Nine months in: a season on the ground.',
-    body: 'From Mookane Village soil to city shelves — a look back at the first full growing season.',
+    body: 'From bare ground at Mookane Village to full crates — a look back at the first complete growing season.',
     image: '/farm/tunnels-sunset.jpg',
     color: 'var(--c-red)',
   },
@@ -272,7 +272,7 @@ const News = () => {
           dot="var(--c-green-lt)"
           color="var(--c-green)"
           title={<>The <span className="t-red">news</span>.</>}
-          lede="Retail drops, recognitions, notes from the field — and the film."
+          lede="Press, recognitions, notes from the field — and the film."
         />
 
         <Reveal

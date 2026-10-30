@@ -3,7 +3,7 @@ import Photo from './ui/Photo';
 
 /**
  * The short version of the journey timeline — how one tomato actually gets
- * from the ground to a shelf. Sits inside the Journey page, right after the
+ * from the ground to the person who eats it. Sits inside the Journey page, right after the
  * long-form story. Each stage is shown with a photograph of that stage
  * actually happening on the farm.
  */
@@ -22,7 +22,7 @@ const ProcessFlow = () => (
   <div className="flow" style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
     <Reveal>
       <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
-        Start to shelf
+        Start to finish
       </p>
       <h3 className="display display--md" style={{ color: 'var(--c-green)', marginBottom: '0.5rem' }}>
         How one tomato<br />gets to you.

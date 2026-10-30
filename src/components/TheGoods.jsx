@@ -9,7 +9,7 @@ import Photo from './ui/Photo';
 
 /**
  * There is one crop here, not four. Every photograph in the set — the
- * trusses, the packhouse pile, the crates, the retail shelf — shows the same
+ * trusses, the packhouse pile, the crates, the run into town — shows the same
  * large round tomato, so the old Cherry / Plum / Season's blend split was a
  * product line the farm does not have. These cards are the one tomato and the
  * ways it actually reaches someone.
@@ -29,7 +29,7 @@ const produce = [
     id: 'bag',
     name: 'The 13 bag',
     tagline: 'Look for the number.',
-    desc: 'Graded and packed by hand at the farm, then straight to the shelf. Produced in Botswana, borehole water used for irrigation — it says so on the front.',
+    desc: 'Graded and packed by hand at the farm, then driven in ourselves. Produced in Botswana, borehole water used for irrigation — it says so on the front.',
     badge: 'Hand packed',
     image: '/farm/bag-in-hand.jpg',
     alt: 'A Tsoo...13 bag of tomatoes, the 13 printed across the front',

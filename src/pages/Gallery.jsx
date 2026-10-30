@@ -14,7 +14,11 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
  * what is actually in the frame.
  *
  * The set is grouped into chapters rather than shown as one long wall — in
- * order they tell the farm's own sequence, from bare ground to the shelf.
+ * order they tell the farm's own sequence, from bare ground to town.
+ *
+ * The shelf photographs in 'Out the gate, into town' stay: they happened,
+ * and their captions describe what is in the frame rather than claiming
+ * where the tomatoes are this week. The prose elsewhere no longer does.
  *
  * `shape` is chosen per photograph so the crop suits the subject:
  *   round — a single subject with a clear centre
@@ -154,13 +158,13 @@ const chapters = [
     title: 'Out the gate, into town.',
     photos: [
       { src: '/farm/dispatch.jpg', caption: 'Dispatch', shape: 'wide' },
-      { src: '/farm/retail-shelf.jpg', caption: 'On the shelf', shape: 'tall' },
+      { src: '/farm/retail-shelf.jpg', caption: 'Back when we were on the shelf', shape: 'tall' },
       { src: '/farm/shelf-full.jpg', caption: 'Faced up', shape: 'leaf' },
       { src: '/farm/shelf-wide.jpg', caption: 'Among the rest', shape: 'petal' },
-      { src: '/farm/at-the-shelf.jpg', caption: 'Checking the shelf', shape: 'wide' },
+      { src: '/farm/at-the-shelf.jpg', caption: 'Checking the facing', shape: 'wide' },
       { src: '/farm/for-sale-board.jpg', caption: 'Cooked and served', shape: 'leaf' },
       { src: '/farm/plated.jpg', caption: 'On the plate', shape: 'round' },
-      { src: '/farm/shelf-stocking.jpg', caption: 'Stocking the shelf', shape: 'petal' },
+      { src: '/farm/shelf-stocking.jpg', caption: 'Stocking up', shape: 'petal' },
       { src: '/farm/shelf-reaching.jpg', caption: 'Reaching for the 13', shape: 'leaf' },
     ],
   },

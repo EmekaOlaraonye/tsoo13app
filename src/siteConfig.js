@@ -54,7 +54,7 @@ export const REEL = {
   poster: '/film/tsoo13-reel-poster.jpg',
   runtime: '1 min 54',
   blurb:
-    'Every upright clip from the farm, three seconds apiece — hands on the trusses, trays going down the row, bags coming off the shelf.',
+    'Every upright clip from the farm, three seconds apiece — hands on the trusses, trays going down the row, crates going onto the bakkie.',
 };
 
 /**

@@ -96,7 +96,7 @@ const ContactUs = () => {
             <hr className="rule" style={{ margin: '1.75rem 0' }} />
 
             <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-lime)', marginBottom: '1rem' }}>
-              Or find us on a shelf
+              Or come and find us
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {RETAILERS.map((r) => (

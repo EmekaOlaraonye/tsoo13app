@@ -26,7 +26,7 @@ const destinations = [
     label: 'The News',
     to: '/news',
     category: 'Dispatches',
-    desc: 'Retail drops and fresh notes from the field.',
+    desc: 'Press, recognitions and notes from the field.',
     image: '/farm/sorting-indoors.jpg',
     color: 'var(--c-green-lt)',
   },

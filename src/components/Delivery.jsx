@@ -55,9 +55,8 @@ const Delivery = () => (
       </h3>
       <p className="lede" style={{ maxWidth: '52ch' }}>
         Packed at Mookane, loaded onto the bakkie and driven in ourselves — no
-        agent, no depot, nobody in between deciding what arrives. The crates go
-        in through the receiving door and the bags are on the shelf the same day
-        they were packed.
+        agent, no depot, nobody in between deciding what arrives. What was picked
+        in the morning is in town by the afternoon, the same day it was packed.
       </p>
     </Reveal>
 
