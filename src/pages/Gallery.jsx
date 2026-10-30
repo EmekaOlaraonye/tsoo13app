@@ -151,7 +151,7 @@ const chapters = [
   },
   {
     id: 'shelf',
-    title: 'Onto the shelf.',
+    title: 'Out the gate, into town.',
     photos: [
       { src: '/farm/dispatch.jpg', caption: 'Dispatch', shape: 'wide' },
       { src: '/farm/retail-shelf.jpg', caption: 'On the shelf', shape: 'tall' },

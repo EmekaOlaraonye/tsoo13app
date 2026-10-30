@@ -18,9 +18,8 @@ const stories = [
     date: 'June 2025',
     title: 'Onto the shelf in Gaborone.',
     body: 'Gaborone asked, so we packed the crates and showed up — bags of Tsoo...13 on a city shelf for the first time. Ask for it by name.',
-    image: '/farm/retail-shelf.jpg',
+    image: '/farm/crate-of-bags.jpg',
     color: 'var(--c-red)',
-    lead: true,
   },
   {
     id: 'aspire',
@@ -255,8 +254,8 @@ const News = () => {
         </Reveal>
 
         <Band
-          image="/farm/at-the-shelf.jpg"
-          alt="Tsoo...13 tomatoes being checked on a supermarket shelf"
+          image="/farm/roadside-stall.jpg"
+          alt="Crates of Tsoo...13 bags at a roadside stall in town"
           kicker="Mookane Village"
           line="The number travels further than any logo."
           align="left"

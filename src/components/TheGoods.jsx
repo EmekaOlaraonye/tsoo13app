@@ -79,7 +79,7 @@ const ProduceCard = ({ item, index }) => (
 const TheGoods = ({ standalone = false }) => (
   <section id="goods" className={`section ${standalone ? 'section--top' : ''}`}>
     <Blob color="soft-red" size={420} top={-160} right="-12%" />
-    <Blob color="lime" size={18} top="18%" left="7%" />
+    <Blob color="lime" size={18} top="13%" left="58%" />
     <Blob color="soft-yellow" size={280} bottom="6%" left="-8%" />
     <Tomato color="var(--c-red)" size={110} top={90} right="8%" opacity={0.16} rotate={18} />
     <Tomato color="var(--c-green-lt)" size={80} bottom="14%" left="4%" opacity={0.18} rotate={-20} outline />
@@ -106,8 +106,8 @@ const TheGoods = ({ standalone = false }) => (
         }}
       >
         <Photo
-          src="/farm/retail-shelf.jpg"
-          alt="Bags of Tsoo...13 tomatoes on a supermarket shelf"
+          src="/farm/dispatch.jpg"
+          alt="Crates of Tsoo...13 bags loaded on the bakkie, ready to go out"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <span

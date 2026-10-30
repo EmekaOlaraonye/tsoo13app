@@ -10,8 +10,8 @@ const destinations = [
     label: 'The Goods',
     to: '/goods',
     category: 'Produce',
-    desc: 'Home grown, hand picked, and where to find it.',
-    image: '/farm/retail-shelf.jpg',
+    desc: 'Home grown, hand picked, and how to get hold of it.',
+    image: '/farm/bag-over-pile.jpg',
     color: 'var(--c-red)',
   },
   {
