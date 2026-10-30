@@ -35,7 +35,7 @@ const SeeTheFarm = () => (
       </Link>
     </Reveal>
 
-    <div className="farm-strip">
+    <div className="farm-strip farm-strip--hero">
       {shots.map((shot, i) => (
         <Reveal key={shot.src + i} delay={(i % 4) * 0.06} variant="scale" className="farm-strip__item">
           <Photo src={shot.src} alt={shot.caption} />

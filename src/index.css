@@ -1949,3 +1949,43 @@ textarea.input { resize: vertical; min-height: 130px; }
 /* Four tiles rather than three: a slightly smaller ceiling so the row still
    fits on one line at desktop widths. */
 .dlv__row--four { grid-template-columns: repeat(auto-fit, minmax(170px, 258px)); }
+
+/* --------------------------------------------------------------------------
+   Journey rhythm — washes, edge-to-edge bands, a mosaic, a mirrored player
+   -------------------------------------------------------------------------- */
+
+/* The journey used to be one 9,000px section on a single wash with no
+   full-bleed moment in it. It is several sections now, alternating. */
+.jr-wash { background: linear-gradient(180deg, var(--c-lime-soft) 0%, var(--white) 70%); }
+.jr-wash--warm { background: linear-gradient(180deg, var(--white) 0%, var(--c-yellow-soft) 100%); }
+
+/* Outside a .wrap this is already page-width; it only needs its corners and
+   margins dropped. No 100vw trick, which would overflow by a scrollbar. */
+.band--bleed {
+  border-radius: 0;
+  margin-top: 0;
+  box-shadow: none;
+  min-height: clamp(300px, 40vw, 460px);
+}
+
+/* One of the four photo rows breaks step: a hero frame with three beside it,
+   instead of a fourth identical strip of equal squares. */
+@media (min-width: 720px) {
+  .farm-strip--hero {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: repeat(2, clamp(130px, 15vw, 190px));
+  }
+  .farm-strip--hero .farm-strip__item { aspect-ratio: auto; }
+  .farm-strip--hero .farm-strip__item:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; }
+  .farm-strip--hero .farm-strip__item:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .farm-strip--hero .farm-strip__item:nth-child(3) { grid-column: 3; grid-row: 1; }
+  .farm-strip--hero .farm-strip__item:nth-child(4) { grid-column: 2 / span 2; grid-row: 2; }
+}
+
+/* The storm clip and the montage were both copy-left, media-right. The
+   second one mirrors so the page stops repeating itself. */
+@media (min-width: 860px) {
+  .reel--flip { grid-template-columns: minmax(260px, 420px) 1fr; }
+  .reel--flip .reel__copy { order: 2; }
+  .reel--flip .reel__frame { order: 1; }
+}

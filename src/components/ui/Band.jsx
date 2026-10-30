@@ -8,10 +8,11 @@ import Photo from './Photo';
  *
  * `quote` renders larger and in quotation marks; `kicker` is the small
  * label above it; `attribution` sits underneath when the line is someone's
- * actual words.
+ * actual words. `bleed` drops the corners and the margins so the band runs
+ * the full width of the page — for that it has to sit outside a .wrap.
  */
-const Band = ({ image, alt, kicker, line, attribution, quote = false, align = 'center' }) => (
-  <Reveal variant="fade" className={`band band--${align}`}>
+const Band = ({ image, alt, kicker, line, attribution, quote = false, align = 'center', bleed = false }) => (
+  <Reveal variant="fade" className={`band band--${align}${bleed ? ' band--bleed' : ''}`}>
     <Photo src={image} alt={alt} className="band__img" />
     <span className="band__scrim" aria-hidden="true" />
     <div className="band__inner">

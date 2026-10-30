@@ -12,6 +12,7 @@ import Montage from './ui/Montage';
 import MeetTheFamily from './MeetTheFamily';
 import SeeTheFarm from './SeeTheFarm';
 import Photo from './ui/Photo';
+import Band from './ui/Band';
 import StormFilm from './ui/StormFilm';
 
 /**
@@ -163,6 +164,7 @@ const TheJourney = ({ standalone = false }) => {
   const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   return (
+    <>
     <section
       id="journey"
       className={`section ${standalone ? 'section--top' : ''}`}
@@ -200,13 +202,49 @@ const TheJourney = ({ standalone = false }) => {
           ))}
         </div>
 
-        <StormFilm />
+      </div>
+    </section>
 
+    {/* Edge to edge, and the first change of gear on the page. */}
+    <Band
+      bleed
+      image="/farm/rows-avenue.jpg"
+      alt="Looking down the rows inside a tunnel, three people working"
+      kicker="Mookane Village"
+      line="Open ground, then net, then tunnels. The tomato never changed."
+    />
+
+    <section className="section section--tight jr-wash">
+      <Blob color="soft-red" size={320} top="6%" right="-9%" />
+      <Tomato color="var(--c-red)" size={90} bottom="10%" left="4%" opacity={0.12} rotate={-12} outline />
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+        <StormFilm />
         <ProcessFlow />
+      </div>
+    </section>
+
+    <section className="section section--tight">
+      <Blob color="soft-lime" size={340} bottom="4%" left="-10%" />
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <Delivery />
         <MeetTheFamily />
         <SeeTheFarm />
+      </div>
+    </section>
 
+    {/* The line the farm liked, given the room it deserves. */}
+    <Band
+      bleed
+      image="/farm/team-at-dusk.jpg"
+      alt="The team standing out on the farm at dusk"
+      kicker="No stock photography"
+      line="Every frame on this page was taken on this farm."
+      align="left"
+    />
+
+    <section className="section section--tight jr-wash jr-wash--warm">
+      <Blob color="soft-yellow" size={300} top="8%" left="-8%" />
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <Montage />
 
         <Reveal style={{ textAlign: 'center', marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
@@ -216,6 +254,7 @@ const TheJourney = ({ standalone = false }) => {
         </Reveal>
       </div>
     </section>
+  </>
   );
 };
 

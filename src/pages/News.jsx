@@ -58,6 +58,29 @@ const stories = [
     color: 'var(--c-red)',
   },
   {
+    id: 'unveiling',
+    category: 'Events',
+    date: 'July 2021',
+    title: 'The farm is unveiled at Mookane.',
+    body: 'Mmegi covered the unveiling of the smart tomato farm at Mookane, with the Local Enterprise Authority\u2019s chief executive Racious Moatshe speaking at it. The same piece put national horticulture at about 40% of what the country eats.',
+    image: '/farm/farm-gate.jpg',
+    url: 'https://www.mmegi.bw/business/horticulture-far-from-filling-national-demand/news',
+    color: 'var(--c-yellow)',
+  },
+  {
+    id: 'patriot',
+    category: 'Articles',
+    // No date: the post is behind a Facebook login, so the headline — which
+    // is in the paper's own URL — is all that can be stated for certain.
+    // The eyebrow carries the masthead instead of a date we cannot verify.
+    date: 'The Patriot on Sunday',
+    title: '\u201cTsoo 13 Farm thrives\u201d.',
+    body: 'The Patriot on Sunday ran the farm under that headline, opening on Tsoo...13 as a commercial tomato production farm at Mookane. Read it on their page.',
+    image: '/farm/press-clipping.jpg',
+    url: 'https://www.facebook.com/ThePatriotOnSunday/posts/tsoo-13-farm-thrivestsoo-13-a-commercial-tomato-production-farm-situated-in-mook/4161274043961300/',
+    color: 'var(--c-green-lt)',
+  },
+  {
     id: 'glf',
     category: 'Events',
     date: 'June 2021',

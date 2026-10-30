@@ -20,7 +20,7 @@ const Montage = () => {
   };
 
   return (
-    <div className="reel reel--montage">
+    <div className="reel reel--montage reel--flip">
       <Reveal variant="left" className="reel__copy">
         <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow-ink)', marginBottom: '1rem' }}>
           2025, end to end
