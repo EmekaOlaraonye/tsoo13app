@@ -130,7 +130,7 @@ const chapters = [
   {
     id: 'packed',
     kicker: 'Chapter seven',
-    title: 'Picked, packed, sold.',
+    title: 'Picked and packed.',
     photos: [
       { src: '/farm/harvesting.jpg', caption: 'Picking', shape: 'tall' },
       { src: '/farm/sorting-indoors.jpg', caption: 'Sorting under the shed', shape: 'leaf' },
@@ -140,7 +140,14 @@ const chapters = [
       { src: '/farm/bags-stacked.jpg', caption: 'Stacked for the run', shape: 'leaf' },
       { src: '/farm/crate-of-bags.jpg', caption: 'A crate, ready', shape: 'petal' },
       { src: '/farm/crate-carried.jpg', caption: 'Out to the vehicle', shape: 'leaf' },
-      { src: '/farm/dispatch.jpg', caption: 'Dispatch', shape: 'petal' },
+    ],
+  },
+  {
+    id: 'shelf',
+    kicker: 'Chapter eight',
+    title: 'Onto the shelf.',
+    photos: [
+      { src: '/farm/dispatch.jpg', caption: 'Dispatch', shape: 'wide' },
       { src: '/farm/retail-shelf.jpg', caption: 'On the shelf', shape: 'tall' },
       { src: '/farm/shelf-full.jpg', caption: 'Faced up', shape: 'leaf' },
       { src: '/farm/shelf-wide.jpg', caption: 'Among the rest', shape: 'petal' },
@@ -153,7 +160,7 @@ const chapters = [
   },
   {
     id: 'people',
-    kicker: 'Chapter eight',
+    kicker: 'Chapter nine',
     title: 'The people who do it.',
     photos: [
       { src: '/farm/team-lineup.jpg', caption: 'The team', shape: 'tall' },
@@ -170,7 +177,7 @@ const chapters = [
   },
   {
     id: 'storm',
-    kicker: 'Chapter nine',
+    kicker: 'Chapter ten',
     title: 'And then the storm.',
     photos: [
       { src: '/farm/storm-aftermath.jpg', caption: 'The frame folded over a crop still carrying fruit', shape: 'wide' },

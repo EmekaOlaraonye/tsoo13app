@@ -58,12 +58,23 @@ const stories = [
     image: '/farm/tunnels-sunset.jpg',
     color: 'var(--c-red)',
   },
+  {
+    id: 'glf',
+    category: 'Events',
+    date: 'June 2021',
+    title: 'On the programme at GLF Africa.',
+    body: 'The Global Landscapes Forum listed Thato Mokgadi as a speaker at its Africa digital conference, Restoring Africa’s Drylands — billed, in their words, as a “Fashion Designer turned Agripreneur”.',
+    image: '/farm/in-the-veld.jpg',
+    url: 'https://events.globallandscapesforum.org/speaker/thato-mokgadi/',
+    color: 'var(--c-lime)',
+  },
 ];
 
+/** A story with a source of its own links there; the rest go to Instagram. */
 const NewsCard = ({ item, index }) => (
   <Reveal delay={(index % 2) * 0.08} className={item.lead ? 'is-lead' : undefined}>
     <a
-      href={INSTAGRAM_URL}
+      href={item.url || INSTAGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
       className="card"
