@@ -87,6 +87,17 @@ const stories = [
     url: 'https://events.globallandscapesforum.org/speaker/thato-mokgadi/',
     color: 'var(--c-lime)',
   },
+  {
+    id: 'agrobiz',
+    category: 'Articles',
+    // Not online anywhere — everything here is read off the photograph of
+    // the page itself, which is the image on the card.
+    date: 'May 2016',
+    title: 'Before the tunnels: Brahmans, and a farmer’s day.',
+    body: 'Mmegi’s AgroBiz pages ran the family under “Mokgadi family shares farming experience”, years before the first tunnel went up. The company was Tsoo 13 Red Brahmans and Horticultural Produce then — cattle alongside the vegetables — and the brothers Alpheus and Sonny Mokgadi were hosting Mookane Farmer’s Day on their own ground that June, put together with three other cattle breeders from the village.',
+    image: '/farm/press-clipping.jpg',
+    color: 'var(--c-red)',
+  },
 ];
 
 /** A story with a source of its own links there; the rest go to Instagram. */
