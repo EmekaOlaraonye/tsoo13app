@@ -6,6 +6,13 @@ import Photo from './ui/Photo';
  * named here as managing director; the rest of the names go in once they're
  * confirmed. The role cards below stay deliberately unattributed — we know
  * Setho's title, not who holds the other three.
+ *
+ * Two Mokgadis appear across this site and they are not the same person:
+ * Setho runs it now, and Thato is the one in every press item we hold — the
+ * GLF listing, the UNCCD podcast, the 2016 clipping. Their photographs make
+ * that plain, so the second paragraph below says it outright rather than
+ * leaving a reader to work out why the names differ. Nothing here states how
+ * the two are related, because nothing we have on file says.
  */
 const roles = [
   { role: 'Growing', body: 'Hands on the crop every day — the tunnels, the cuttings, the early starts.', color: 'var(--c-lime)', soft: 'var(--c-lime-soft)' },
@@ -39,6 +46,12 @@ const MeetTheFamily = () => (
         Setho Mokgadi is the managing director and the face of the business.
         The rest of the names are still to come — until then, here&apos;s who
         actually does what.
+      </p>
+      <p className="body-sm" style={{ maxWidth: '52ch', marginTop: '1rem' }}>
+        The name in the older press is Thato Mokgadi’s — the Global Landscapes
+        Forum programme, the UNCCD’s podcast, and the papers from back when
+        the company was Tsoo 13 Red Brahmans and Horticultural Produce. Three
+        generations have farmed this ground.
       </p>
     </Reveal>
 
