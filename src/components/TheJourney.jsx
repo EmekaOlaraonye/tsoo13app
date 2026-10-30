@@ -8,11 +8,9 @@ import { Tomato } from './ui/Tomato';
 import { Plus, Arrow } from './ui/Icons';
 import ProcessFlow from './ProcessFlow';
 import Delivery from './Delivery';
-import OpenDay from './OpenDay';
 import Montage from './ui/Montage';
 import MeetTheFamily from './MeetTheFamily';
 import SeeTheFarm from './SeeTheFarm';
-import Band from './ui/Band';
 import Photo from './ui/Photo';
 import StormFilm from './ui/StormFilm';
 
@@ -203,17 +201,6 @@ const TheJourney = ({ standalone = false }) => {
         </div>
 
         <StormFilm />
-
-        <OpenDay />
-
-        <Band
-          image="/farm/tunnels-from-road.jpg"
-          alt="The greenhouse tunnels at Mookane Village seen from the track"
-          kicker="A Day the 13 Way"
-          line="A farmer's best friend is another farmer."
-          attribution="— from our own open-day invitation"
-          quote
-        />
 
         <ProcessFlow />
         <Delivery />

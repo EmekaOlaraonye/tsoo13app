@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
+import Band from './ui/Band';
+import OpenDay from './OpenDay';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import { Plus, Star, Arrow } from './ui/Icons';
@@ -213,6 +215,17 @@ const TheWins = ({ standalone = false }) => (
           </Reveal>
         ))}
       </div>
+
+      <Band
+        image="/farm/tunnels-from-road.jpg"
+        alt="The greenhouse tunnels at Mookane Village seen from the track"
+        kicker="A Day the 13 Way"
+        line="A farmer's best friend is another farmer."
+        attribution="— from our own open-day invitation"
+        quote
+      />
+
+      <OpenDay />
 
       {/* A closing beat so the page feels like it lands somewhere, not just stops after the grid */}
       <Reveal
