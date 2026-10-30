@@ -18,7 +18,7 @@ const pillars = [
   {
     n: '02',
     title: 'We move it',
-    body: 'Picked, packed and driven from Mookane to Gaborone shelves — no middle-man diluting the quality.',
+    body: 'Picked, packed and driven the hundred-odd kilometres in ourselves — no middle-man diluting the quality.',
     image: '/farm/crate-of-bags.jpg',
     alt: 'Bagged tomatoes crated and ready to move',
     color: 'var(--c-red)',
@@ -37,7 +37,7 @@ const pillars = [
 
 const stats = [
   { num: '13', label: 'The name people ask for', color: 'var(--c-red)' },
-  { num: '3', label: 'Places to find us', color: 'var(--c-green-lt)' },
+  { num: '2021', label: 'Opening the gate to other farmers', color: 'var(--c-green-lt)' },
   { num: '100%', label: 'Botswana grown', color: 'var(--c-lime-ink)' },
 ];
 
@@ -90,7 +90,7 @@ const WhoWeAre = () => (
 
         <Reveal delay={0.12}>
           <p className="lede">
-            Farming taught us the standard. Everything since — the brand, the shelves,
+            Farming taught us the standard. Everything since — the brand, the packing,
             the way we solve problems — is what we built on top of it.
           </p>
 

@@ -34,7 +34,7 @@ const Footer = () => (
             Botswana&apos;s home of fresh tomatoes.
           </p>
           <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,.55)', maxWidth: '30ch' }}>
-            Farming, creating, growing — out of Mookane Village, onto shelves in Gaborone, and beyond.
+            Farming, creating, growing — out of Mookane Village, and not finished yet.
           </p>
 
           <div style={{ display: 'flex', gap: '0.4rem', marginTop: '1.5rem' }}>

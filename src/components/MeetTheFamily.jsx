@@ -10,7 +10,7 @@ import Photo from './ui/Photo';
 const roles = [
   { role: 'Growing', body: 'Hands on the crop every day — the tunnels, the cuttings, the early starts.', color: 'var(--c-lime)', soft: 'var(--c-lime-soft)' },
   { role: 'Packing & logistics', body: 'Getting every crate from Mookane to Gaborone, on time, every time.', color: 'var(--c-red)', soft: 'var(--c-red-soft)' },
-  { role: 'Brand & sales', body: 'The number on the bag, the shelves it ends up on, the people who ask for it.', color: 'var(--c-yellow-ink)', soft: 'var(--c-yellow-soft)' },
+  { role: 'Brand & sales', body: 'The number on the bag, and the people who learn to ask for it by name.', color: 'var(--c-yellow-ink)', soft: 'var(--c-yellow-soft)' },
   { role: 'Leadership', body: 'Trained through MCW and Aspire Leaders — running the business, not just the field.', color: 'var(--c-green-lt)', soft: 'var(--c-green-soft)' },
 ];
 
