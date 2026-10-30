@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import Reveal from './Reveal';
+import Photo from './Photo';
 import { Play } from './Icons';
 import { STORM } from '../../siteConfig';
 
@@ -10,6 +11,8 @@ import { STORM } from '../../siteConfig';
  * rather than blown up to fill a widescreen panel. Unlike the film and the
  * reel this one has sound — it is the rain — so it starts muted and the
  * controls let people turn it up if they want it.
+ *
+ * The two photographs below it are the morning after.
  */
 const StormFilm = () => {
   const videoRef = useRef(null);
@@ -53,6 +56,15 @@ const StormFilm = () => {
           </button>
         )}
       </Reveal>
+
+      <div className="stills__row">
+        {STORM.stills.map((shot, i) => (
+          <Reveal key={shot.src} variant="scale" delay={0.08 + i * 0.06} className="dlv__tile">
+            <Photo src={shot.src} alt={shot.alt} />
+            <span className="dlv__cap">{shot.caption}</span>
+          </Reveal>
+        ))}
+      </div>
     </div>
   );
 };

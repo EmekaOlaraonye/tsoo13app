@@ -57,10 +57,15 @@ export const REEL = {
     'Every upright clip from the farm, three seconds apiece — hands on the trusses, trays going down the row, bags coming off the shelf.',
 };
 
+/**
+ * Deliberately no shop names: supply is being rebuilt and we are not back
+ * on those shelves yet, so naming them would promise something that is not
+ * true this week. Put the names back when it is.
+ */
 export const RETAILERS = [
-  { name: "Food Lover's SquareMart", location: 'Gaborone' },
-  { name: 'SuperSpar Acacia', location: 'Gaborone' },
   { name: 'Direct from the farm', location: 'Mookane Village' },
+  { name: 'Wholesale and retail', location: 'Gaborone' },
+  { name: 'Ask for 13 by name', location: 'Wherever you find it' },
 ];
 
 /**
@@ -78,6 +83,23 @@ export const STORM = {
   poster: '/film/tsoo13-storm-poster.jpg',
   runtime: '1 min 10',
   year: '2025',
+  /**
+   * The morning after. These two were filed as 'end of season' and
+   * 'cleared and ready to start again', which they are not — the fruit is
+   * still ripe on the plants. Nobody clears a season with a crop on it.
+   */
+  stills: [
+    {
+      src: '/farm/storm-aftermath.jpg',
+      caption: 'The frame folded over a crop still carrying fruit',
+      alt: 'A collapsed tunnel frame bent across rows of tomato plants still carrying ripe fruit',
+    },
+    {
+      src: '/farm/storm-wreckage.jpg',
+      caption: 'Bags on their sides, netting down, tomatoes ripe',
+      alt: 'Grow bags knocked over and torn netting lying across flattened tomato plants',
+    },
+  ],
 };
 
 /**
@@ -108,4 +130,19 @@ export const DELIVERY = {
       alt: 'Stacked crates of bagged tomatoes being wheeled across the paving',
     },
   ],
+};
+
+/**
+ * 2025 cut into one run — the farm's own year-in-review.
+ *
+ * Near square (720x768) because that is how it was edited. The source was
+ * 16.6 MB; scripts/build-montage.sh brings it down to about 8.5 and leaves
+ * the resolution alone.
+ */
+export const MONTAGE = {
+  src: '/film/tsoo13-montage.mp4',
+  poster: '/film/tsoo13-montage-poster.jpg',
+  runtime: '1 min 28',
+  blurb:
+    'Planting, picking, packing, the open days, the storm and the start of the rebuild — the year as it ran, cut together by us.',
 };

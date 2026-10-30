@@ -1926,3 +1926,22 @@ textarea.input { resize: vertical; min-height: 130px; }
   background: linear-gradient(to top, rgba(20, 21, 15, 0.85), transparent);
   pointer-events: none;
 }
+
+/* The storm's aftermath photographs sit under both columns of the reel grid. */
+.stills__row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(0.9rem, 2vw, 1.25rem);
+  margin-top: 0.5rem;
+}
+
+/* The montage was cut near square, so it gets a frame to match rather than
+   being cropped into the upright one the reel and the storm clip use. */
+.reel--montage .reel__frame { aspect-ratio: 720 / 768; max-width: 420px; }
+.reel--montage .reel__title { color: var(--c-yellow-ink); }
+
+/* A poster has to be read, so it is shown whole rather than cropped to fill
+   the tile the way a photograph is. */
+.dlv__tile--whole { background: var(--c-lime-soft); }
+.dlv__tile--whole img { object-fit: contain; }

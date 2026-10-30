@@ -35,7 +35,7 @@ const destinations = [
     to: '/gallery',
     category: 'In the field',
     desc: 'The journey, documented in photographs.',
-    image: '/farm/nets-sunset.jpg',
+    image: '/farm/tunnels-sunset.jpg',
     color: 'var(--c-lime)',
   },
 ];

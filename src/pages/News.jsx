@@ -16,8 +16,8 @@ const stories = [
     id: 'squaremart',
     category: 'Events',
     date: 'June 2025',
-    title: 'Now on the shelf at SuperSpar Acacia.',
-    body: 'Gaborone asked, so we packed the crates and showed up. Fresh Tsoo...13 tomatoes now sit alongside our run at Food Lover’s SquareMart — ask for it by name.',
+    title: 'Onto the shelf in Gaborone.',
+    body: 'Gaborone asked, so we packed the crates and showed up — bags of Tsoo...13 on a city shelf for the first time. Ask for it by name.',
     image: '/farm/retail-shelf.jpg',
     color: 'var(--c-red)',
     lead: true,
@@ -46,7 +46,7 @@ const stories = [
     date: 'November 2024',
     title: 'MCW leadership cohort graduation.',
     body: 'Building leaders who build things — the operation now runs on more than instinct.',
-    image: '/farm/net-mature.jpg',
+    image: '/farm/tunnel-mature.jpg',
     color: 'var(--c-lime)',
   },
   {
@@ -55,7 +55,7 @@ const stories = [
     date: 'September 2024',
     title: 'Nine months in: a season on the ground.',
     body: 'From Mookane Village soil to city shelves — a look back at the first full growing season.',
-    image: '/farm/nets-sunset.jpg',
+    image: '/farm/tunnels-sunset.jpg',
     color: 'var(--c-red)',
   },
 ];

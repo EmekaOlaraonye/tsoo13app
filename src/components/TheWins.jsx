@@ -203,7 +203,7 @@ const TheWins = ({ standalone = false }) => (
       <div className="proof" style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
         {[
           { src: '/farm/team-lineup.jpg', cap: 'The team at Mookane Village' },
-          { src: '/farm/net-mature.jpg', cap: 'A shade net in full production' },
+          { src: '/farm/tunnel-mature.jpg', cap: 'A tunnel in full production' },
           { src: '/farm/two-smiling.jpg', cap: 'Setho Mokgadi, managing director' },
           { src: '/farm/retail-shelf.jpg', cap: 'On the shelf in Gaborone' },
         ].map((shot, i) => (

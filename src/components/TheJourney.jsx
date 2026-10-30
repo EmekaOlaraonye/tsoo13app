@@ -8,6 +8,8 @@ import { Tomato } from './ui/Tomato';
 import { Plus, Arrow } from './ui/Icons';
 import ProcessFlow from './ProcessFlow';
 import Delivery from './Delivery';
+import OpenDay from './OpenDay';
+import Montage from './ui/Montage';
 import MeetTheFamily from './MeetTheFamily';
 import SeeTheFarm from './SeeTheFarm';
 import Band from './ui/Band';
@@ -23,8 +25,7 @@ import StormFilm from './ui/StormFilm';
  * one of the story, not the identity of the brand — but the story only means
  * anything if the low point is actually in it.
  *
- * The photographs are captioned as shade net throughout, which is what we can
- * confirm of them. The stage names below come from the farm's own account.
+ * The structures in the photographs are greenhouse tunnels, per the farm.
  */
 const steps = [
   {
@@ -32,13 +33,11 @@ const steps = [
     stage: 'The Open Field',
     year: '01',
     title: 'It started in\nthe open field.',
-    line: 'One plot of soil at Mookane, and the weather got a vote in everything.',
-    reveal: 'Floods, frost, pests, sun — in the open there was nothing between the crop and whatever the season did next. Enough came through to prove people would buy it. Not nearly enough to build on.',
-    tags: ['Mookane Village', 'Family run'],
-    image: '/farm/in-the-veld.jpg',
-    alt: 'Standing out in the open veld at Mookane',
-    // A tall portrait in a 16:11 panel: centred, cover takes her head off.
-    focus: 'center 24%',
+    line: 'Rows straight into the ground at Mookane, and the weather got a vote in everything.',
+    reveal: 'Floods, frost, pests, sun — in the open there was nothing between the crop and whatever the season did next. Fires were lit through the night against the frost. Enough came through to prove people would buy it. Not nearly enough to build on.',
+    tags: ['Mookane Village', 'Open ground'],
+    image: '/farm/field-rows.jpg',
+    alt: 'Rows of tomatoes growing in the open field at Mookane',
     color: 'var(--c-lime)',
     soft: 'var(--c-lime-soft)',
     ink: true,
@@ -63,7 +62,7 @@ const steps = [
     year: '03',
     title: 'Then the\ngreenhouse tunnels.',
     line: 'Fully enclosed, and the best this farm has run — rows at full height, Gaborone shelves.',
-    reveal: 'This was the peak. The crop under cover from planting to picking, the packhouse busy, and Tsoo...13 bags going out to Food Lover’s SquareMart and SuperSpar Acacia.',
+    reveal: 'This was the peak. The crop under cover from planting to picking, the packhouse busy, and Tsoo...13 bags leaving Mookane for Gaborone every week.',
     tags: ['Full enclosure', 'On the shelf'],
     image: '/farm/rows-mature.jpg',
     alt: 'Rows at full height, carrying fruit',
@@ -202,10 +201,12 @@ const TheJourney = ({ standalone = false }) => {
 
         <StormFilm />
 
+        <OpenDay />
+
         <Band
-          image="/farm/nets-from-road.jpg"
-          alt="The shade nets at Mookane Village seen from the track"
-          kicker="Open days at Mookane"
+          image="/farm/tunnels-from-road.jpg"
+          alt="The greenhouse tunnels at Mookane Village seen from the track"
+          kicker="A Day the 13 Way"
           line="A farmer's best friend is another farmer."
           attribution="— from our own open-day invitation"
           quote
@@ -215,6 +216,8 @@ const TheJourney = ({ standalone = false }) => {
         <Delivery />
         <MeetTheFamily />
         <SeeTheFarm />
+
+        <Montage />
 
         <Reveal style={{ textAlign: 'center', marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
           <Link to="/goods" className="btn btn--ink">

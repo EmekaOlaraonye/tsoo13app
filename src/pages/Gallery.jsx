@@ -25,24 +25,40 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
  */
 const chapters = [
   {
-    id: 'shade-nets',
+    id: 'open-field',
     kicker: 'Chapter one',
-    title: 'The shade nets go up.',
+    title: 'It began in the open.',
     photos: [
-      { src: '/farm/nets-exterior.jpg', caption: 'The shade nets from outside', shape: 'wide' },
-      { src: '/farm/nets-from-road.jpg', caption: 'Seen from the track', shape: 'wide' },
-      { src: '/farm/net-edge.jpg', caption: 'Where the netting meets the veld', shape: 'leaf' },
+      { src: '/farm/field-rows.jpg', caption: 'Rows straight into the ground', shape: 'wide' },
+      { src: '/farm/field-late.jpg', caption: 'Open ground, late light', shape: 'wide' },
+      { src: '/farm/field-leafy.jpg', caption: 'Leafy and coming on', shape: 'leaf' },
+      { src: '/farm/field-planted.jpg', caption: 'Out on the beds', shape: 'tall' },
+      { src: '/farm/pipe-work.jpg', caption: 'Laying the irrigation by hand', shape: 'tall' },
+      { src: '/farm/flood-channel.jpg', caption: 'The water that came through', shape: 'tall' },
+      { src: '/farm/frost-fires.jpg', caption: 'Fires lit against the frost, before dawn', shape: 'wide' },
+      { src: '/farm/farm-gate.jpg', caption: 'The name on the fence', shape: 'wide' },
+      { src: '/farm/in-the-veld.jpg', caption: 'Out on the land at Mookane', shape: 'tall' },
+    ],
+  },
+  {
+    id: 'tunnels',
+    kicker: 'Chapter two',
+    title: 'The tunnels go up.',
+    photos: [
+      { src: '/farm/tunnels-exterior.jpg', caption: 'The tunnels from outside', shape: 'wide' },
+      { src: '/farm/tunnels-from-road.jpg', caption: 'Seen from the track', shape: 'wide' },
+      { src: '/farm/tunnel-edge.jpg', caption: 'Where the netting meets the veld', shape: 'leaf' },
       { src: '/farm/beds-empty.jpg', caption: 'Empty beds, waiting', shape: 'wide' },
       { src: '/farm/beds-ready.jpg', caption: 'Shaped and mulched', shape: 'petal' },
       { src: '/farm/beds-prepared.jpg', caption: 'Lined and ready to plant', shape: 'tall' },
       { src: '/farm/beds-lined.jpg', caption: 'Mulch down the length of it', shape: 'petal' },
-      { src: '/farm/net-frame.jpg', caption: 'Looking up at the frame', shape: 'leaf' },
-      { src: '/farm/nets-distance.jpg', caption: 'From across the yard', shape: 'leaf' },
+      { src: '/farm/tunnel-frame.jpg', caption: 'Looking up at the frame', shape: 'leaf' },
+      { src: '/farm/tunnels-distance.jpg', caption: 'From across the yard', shape: 'leaf' },
     ],
   },
   {
     id: 'seedlings',
-    kicker: 'Chapter two',
+    kicker: 'Chapter three',
     title: 'It starts as a seedling.',
     photos: [
       { src: '/farm/nursery-trays.jpg', caption: 'The nursery, under cover', shape: 'wide' },
@@ -58,10 +74,10 @@ const chapters = [
   },
   {
     id: 'planting',
-    kicker: 'Chapter three',
+    kicker: 'Chapter four',
     title: 'Planted out.',
     photos: [
-      { src: '/farm/net-new-bags.jpg', caption: 'A net freshly laid out', shape: 'wide' },
+      { src: '/farm/tunnel-new-bags.jpg', caption: 'A tunnel freshly laid out', shape: 'wide' },
       { src: '/farm/placing-bags.jpg', caption: 'Setting out the bags', shape: 'leaf' },
       { src: '/farm/planting-bags.jpg', caption: 'Bag by bag down the row', shape: 'petal' },
       { src: '/farm/planting-row.jpg', caption: 'Working the line', shape: 'tall' },
@@ -72,28 +88,28 @@ const chapters = [
   },
   {
     id: 'growing',
-    kicker: 'Chapter four',
+    kicker: 'Chapter five',
     title: 'Growing on.',
     photos: [
       { src: '/farm/rows-wide.jpg', caption: 'Row on row under cover', shape: 'wide' },
       { src: '/farm/rows-young.jpg', caption: 'Coming up', shape: 'leaf' },
       { src: '/farm/rows-receding.jpg', caption: 'All the way down', shape: 'petal' },
       { src: '/farm/rows-avenue.jpg', caption: 'An avenue of plants', shape: 'leaf' },
-      { src: '/farm/rows-staggered.jpg', caption: 'Staggered down the net', shape: 'petal' },
-      { src: '/farm/net-mature.jpg', caption: 'Full height', shape: 'tall' },
+      { src: '/farm/rows-staggered.jpg', caption: 'Staggered down the tunnel', shape: 'petal' },
+      { src: '/farm/tunnel-mature.jpg', caption: 'Full height', shape: 'tall' },
       { src: '/farm/fruit-in-bags.jpg', caption: 'Carrying fruit', shape: 'wide' },
       { src: '/farm/plant-laden.jpg', caption: 'Loaded', shape: 'leaf' },
       { src: '/farm/plant-full.jpg', caption: 'A plant in full', shape: 'petal' },
       { src: '/farm/truss-wall.jpg', caption: 'Trusses all the way up', shape: 'leaf' },
       { src: '/farm/rows-mature.jpg', caption: 'Shoulder height', shape: 'petal' },
       { src: '/farm/rows-fruiting.jpg', caption: 'Fruit down both sides', shape: 'leaf' },
-      { src: '/farm/plant-in-net.jpg', caption: 'One plant, full span', shape: 'tall' },
+      { src: '/farm/plant-in-tunnel.jpg', caption: 'One plant, full span', shape: 'tall' },
       { src: '/farm/row-walk.jpg', caption: 'Walking the row', shape: 'petal' },
     ],
   },
   {
     id: 'close',
-    kicker: 'Chapter five',
+    kicker: 'Chapter six',
     title: 'Close enough to touch.',
     photos: [
       { src: '/farm/green-truss-dew.jpg', caption: 'Still green, still wet', shape: 'round' },
@@ -112,7 +128,7 @@ const chapters = [
   },
   {
     id: 'packed',
-    kicker: 'Chapter six',
+    kicker: 'Chapter seven',
     title: 'Picked, packed, sold.',
     photos: [
       { src: '/farm/harvesting.jpg', caption: 'Picking', shape: 'tall' },
@@ -132,13 +148,11 @@ const chapters = [
       { src: '/farm/plated.jpg', caption: 'On the plate', shape: 'round' },
       { src: '/farm/shelf-stocking.jpg', caption: 'Stocking the shelf', shape: 'petal' },
       { src: '/farm/shelf-reaching.jpg', caption: 'Reaching for the 13', shape: 'leaf' },
-      { src: '/farm/season-end.jpg', caption: 'End of the season', shape: 'petal' },
-      { src: '/farm/spent-vines.jpg', caption: 'Cleared and ready to start again', shape: 'leaf' },
     ],
   },
   {
     id: 'people',
-    kicker: 'Chapter seven',
+    kicker: 'Chapter eight',
     title: 'The people who do it.',
     photos: [
       { src: '/farm/team-lineup.jpg', caption: 'The team', shape: 'tall' },
@@ -151,6 +165,15 @@ const chapters = [
       { src: '/farm/team-at-dusk.jpg', caption: 'Last light', shape: 'leaf' },
       { src: '/farm/team-row.jpg', caption: 'Lined up', shape: 'petal' },
       { src: '/farm/pair-outside.jpg', caption: 'Two of the crew, outside', shape: 'leaf' },
+    ],
+  },
+  {
+    id: 'storm',
+    kicker: 'Chapter nine',
+    title: 'And then the storm.',
+    photos: [
+      { src: '/farm/storm-aftermath.jpg', caption: 'The frame folded over a crop still carrying fruit', shape: 'wide' },
+      { src: '/farm/storm-wreckage.jpg', caption: 'Bags on their sides, netting down, tomatoes ripe', shape: 'tall' },
     ],
   },
 ];
@@ -227,7 +250,7 @@ const Gallery = () => {
 
         <Band
           image="/farm/fruit-in-bags.jpg"
-          alt="Tomato plants carrying fruit in grow bags under the shade nets"
+          alt="Tomato plants carrying fruit in grow bags inside the tunnels"
           kicker="Mookane Village"
           line="Every frame on this page was taken on the farm."
         />
