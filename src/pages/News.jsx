@@ -70,13 +70,10 @@ const stories = [
   {
     id: 'patriot',
     category: 'Articles',
-    // No date: the post is behind a Facebook login, so the headline — which
-    // is in the paper's own URL — is all that can be stated for certain.
-    // The eyebrow carries the masthead instead of a date we cannot verify.
-    date: 'The Patriot on Sunday',
-    title: '\u201cTsoo 13 Farm thrives\u201d.',
-    body: 'The Patriot on Sunday ran the farm under that headline, opening on Tsoo...13 as a commercial tomato production farm at Mookane. Read it on their page.',
-    image: '/farm/press-clipping.jpg',
+    date: 'July 2021',
+    title: 'Thirty-eight people, where there were fourteen.',
+    body: 'The Patriot on Sunday covered a guided tour of the operation under the headline “Tsoo 13 Farm thrives”. It put the staff at 38, grown from the 14 the farm opened with — 90% of them women and young people — on ground the Mokgadi family has worked for three generations. The Assistant Minister of Investment, Trade and Industry, Molebatsi Molebatsi, called the work commendable: if Batswana walked a similar way, he said, they could go far.',
+    image: '/farm/minister-tour.jpg',
     url: 'https://www.facebook.com/ThePatriotOnSunday/posts/tsoo-13-farm-thrivestsoo-13-a-commercial-tomato-production-farm-situated-in-mook/4161274043961300/',
     color: 'var(--c-green-lt)',
   },
