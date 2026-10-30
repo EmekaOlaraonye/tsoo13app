@@ -79,3 +79,33 @@ export const STORM = {
   runtime: '1 min 10',
   year: '2025',
 };
+
+/**
+ * Getting it to town.
+ *
+ * There is a film of a delivery on the 13Way Instagram that is not in hand
+ * yet — the original was lost off the phone, and the copy has to come back
+ * out of an Instagram data export. Until it does, this section runs on the
+ * two photographs, which are a real delivery into a store receiving bay.
+ *
+ * To add the film: drop it in public/film, set `video`, `poster` and
+ * `runtime` below. It becomes the first tile in the row and nothing else
+ * needs touching.
+ */
+export const DELIVERY = {
+  video: null,
+  poster: null,
+  runtime: null,
+  stills: [
+    {
+      src: '/farm/dispatch.jpg',
+      caption: 'Crates off the bakkie at the receiving bay',
+      alt: 'Crates of Tsoo...13 bags on the back of the bakkie at a store receiving bay',
+    },
+    {
+      src: '/farm/crate-carried.jpg',
+      caption: 'In through the back, crate by crate',
+      alt: 'Stacked crates of bagged tomatoes being wheeled across the paving',
+    },
+  ],
+};

@@ -7,6 +7,7 @@ import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import { Plus, Arrow } from './ui/Icons';
 import ProcessFlow from './ProcessFlow';
+import Delivery from './Delivery';
 import MeetTheFamily from './MeetTheFamily';
 import SeeTheFarm from './SeeTheFarm';
 import Band from './ui/Band';
@@ -211,6 +212,7 @@ const TheJourney = ({ standalone = false }) => {
         />
 
         <ProcessFlow />
+        <Delivery />
         <MeetTheFamily />
         <SeeTheFarm />
 
