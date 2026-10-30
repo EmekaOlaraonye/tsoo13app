@@ -1938,7 +1938,7 @@ textarea.input { resize: vertical; min-height: 130px; }
 
 /* The montage was cut near square, so it gets a frame to match rather than
    being cropped into the upright one the reel and the storm clip use. */
-.reel--montage .reel__frame { aspect-ratio: 720 / 768; max-width: 420px; }
+.reel--montage .reel__frame { aspect-ratio: 720 / 692; max-width: 420px; }
 .reel--montage .reel__title { color: var(--c-yellow-ink); }
 
 /* A poster has to be read, so it is shown whole rather than cropped to fill

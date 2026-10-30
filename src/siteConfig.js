@@ -105,19 +105,17 @@ export const STORM = {
 /**
  * Getting it to town.
  *
- * There is a film of a delivery on the 13Way Instagram that is not in hand
- * yet — the original was lost off the phone, and the copy has to come back
- * out of an Instagram data export. Until it does, this section runs on the
- * two photographs, which are a real delivery into a store receiving bay.
- *
- * To add the film: drop it in public/film, set `video`, `poster` and
- * `runtime` below. It becomes the first tile in the row and nothing else
- * needs touching.
+ * The delivery film was lost off the phone, but it turned out not to be
+ * lost at all: the 2025 montage carries the same scene between 65s and
+ * 81s — crates of 13 bags at the roadside in town, traffic going past.
+ * scripts/build-delivery.sh cuts it out, crops past the collage's black
+ * bars and past the CapCut watermark, and drops the audio, which is
+ * the montage's backing track rather than anything from the day.
  */
 export const DELIVERY = {
-  video: null,
-  poster: null,
-  runtime: null,
+  video: '/film/tsoo13-delivery.mp4',
+  poster: '/film/tsoo13-delivery-poster.jpg',
+  runtime: '16 sec',
   stills: [
     {
       src: '/farm/dispatch.jpg',
