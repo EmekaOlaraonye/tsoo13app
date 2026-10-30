@@ -8,7 +8,7 @@ const posts = [
   { src: '/farm/bag-over-pile.jpg', caption: "A morning's picking." },
   { src: '/farm/seedling-planted.jpg', caption: 'Into the bag it goes.' },
   { src: '/farm/tunnels-sunset.jpg', caption: 'The tunnels at last light.' },
-  { src: '/farm/bag-in-hand.jpg', caption: 'Ask for the 13 on the bag.' },
+  { src: '/farm/roadside-stall.jpg', caption: 'Crates out. Ask for the 13.' },
   { src: '/farm/team-group.jpg', caption: 'The crew, before the heat.' },
   { src: '/farm/bags-young.jpg', caption: 'First leaves up.' },
 ];

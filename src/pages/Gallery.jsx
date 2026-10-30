@@ -23,10 +23,14 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
  *   tall  — upright subjects
  *   leaf / petal — alternating soft corners for everything else
  */
+const CHAPTER_WORDS = [
+  'one', 'two', 'three', 'four', 'five', 'six',
+  'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve',
+];
+
 const chapters = [
   {
     id: 'open-field',
-    kicker: 'Chapter one',
     title: 'It began in the open.',
     photos: [
       { src: '/farm/field-rows.jpg', caption: 'Rows straight into the ground', shape: 'wide' },
@@ -42,8 +46,16 @@ const chapters = [
     ],
   },
   {
+    id: 'under-net',
+    title: 'Under net, in the long bags.',
+    photos: [
+      { src: '/farm/net-house-rows.jpg', caption: 'Long bags down the length of the house', shape: 'wide' },
+      { src: '/farm/net-grower-bag.jpg', caption: 'One plant, one coco-coir bag', shape: 'tall' },
+      { src: '/farm/net-bags-laid.jpg', caption: 'Laying the bags out on the sheeting', shape: 'tall' },
+    ],
+  },
+  {
     id: 'tunnels',
-    kicker: 'Chapter two',
     title: 'The tunnels go up.',
     photos: [
       { src: '/farm/tunnels-exterior.jpg', caption: 'The tunnels from outside', shape: 'wide' },
@@ -59,7 +71,6 @@ const chapters = [
   },
   {
     id: 'seedlings',
-    kicker: 'Chapter three',
     title: 'It starts as a seedling.',
     photos: [
       { src: '/farm/nursery-trays.jpg', caption: 'The nursery, under cover', shape: 'wide' },
@@ -75,7 +86,6 @@ const chapters = [
   },
   {
     id: 'planting',
-    kicker: 'Chapter four',
     title: 'Planted out.',
     photos: [
       { src: '/farm/tunnel-new-bags.jpg', caption: 'A tunnel freshly laid out', shape: 'wide' },
@@ -89,7 +99,6 @@ const chapters = [
   },
   {
     id: 'growing',
-    kicker: 'Chapter five',
     title: 'Growing on.',
     photos: [
       { src: '/farm/rows-wide.jpg', caption: 'Row on row under cover', shape: 'wide' },
@@ -110,7 +119,6 @@ const chapters = [
   },
   {
     id: 'close',
-    kicker: 'Chapter six',
     title: 'Close enough to touch.',
     photos: [
       { src: '/farm/green-truss-dew.jpg', caption: 'Still green, still wet', shape: 'round' },
@@ -129,7 +137,6 @@ const chapters = [
   },
   {
     id: 'packed',
-    kicker: 'Chapter seven',
     title: 'Picked and packed.',
     photos: [
       { src: '/farm/harvesting.jpg', caption: 'Picking', shape: 'tall' },
@@ -144,7 +151,6 @@ const chapters = [
   },
   {
     id: 'shelf',
-    kicker: 'Chapter eight',
     title: 'Onto the shelf.',
     photos: [
       { src: '/farm/dispatch.jpg', caption: 'Dispatch', shape: 'wide' },
@@ -160,7 +166,6 @@ const chapters = [
   },
   {
     id: 'people',
-    kicker: 'Chapter nine',
     title: 'The people who do it.',
     photos: [
       { src: '/farm/team-lineup.jpg', caption: 'The team', shape: 'tall' },
@@ -177,7 +182,6 @@ const chapters = [
   },
   {
     id: 'storm',
-    kicker: 'Chapter ten',
     title: 'And then the storm.',
     photos: [
       { src: '/farm/storm-aftermath.jpg', caption: 'The frame folded over a crop still carrying fruit', shape: 'wide' },
@@ -223,7 +227,7 @@ const Gallery = () => {
         {chapters.map((chapter, ci) => (
           <section key={chapter.id} className="chapter" aria-labelledby={`ch-${chapter.id}`}>
             <Reveal variant="left" className="chapter__head">
-              <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-lime)' }}>{chapter.kicker}</p>
+              <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-lime)' }}>Chapter {CHAPTER_WORDS[ci]}</p>
               <h2 id={`ch-${chapter.id}`} className="display display--md chapter__title">{chapter.title}</h2>
               <span className="chapter__rule" aria-hidden="true" />
             </Reveal>
