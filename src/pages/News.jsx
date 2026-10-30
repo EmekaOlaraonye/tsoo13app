@@ -58,6 +58,19 @@ const stories = [
     color: 'var(--c-red)',
   },
   {
+    id: 'monitor',
+    category: 'Articles',
+    // The replica sits behind PressReader's paywall, so this card carries
+    // the headline, the byline and the standfirst and stops there — the
+    // rest of the piece is not ours to reprint.
+    date: 'July 2021',
+    title: '“Smart farming yields quality crops.”',
+    body: 'Pauline Dikuelo wrote the farm up in The Monitor on 12 July 2021, under the headline “Tsoo…13’s smart farming yields quality crops”. Smart farming is the future of agriculture because it yields better crops, the piece argued — and the duo behind Tsoo…13, Sonny and Thato Mokgadi, saw the potential and went that way.',
+    image: '/farm/tunnel-new-bags.jpg',
+    url: 'https://www.pressreader.com/botswana/the-monitor-4753/20210712/281681142879941',
+    color: 'var(--c-lime)',
+  },
+  {
     id: 'unveiling',
     category: 'Events',
     date: 'July 2021',
