@@ -34,6 +34,7 @@ const chapters = [
       { src: '/farm/field-leafy.jpg', caption: 'Leafy and coming on', shape: 'leaf' },
       { src: '/farm/field-planted.jpg', caption: 'Out on the beds', shape: 'tall' },
       { src: '/farm/pipe-work.jpg', caption: 'Laying the irrigation by hand', shape: 'tall' },
+      { src: '/farm/pipe-delivery.jpg', caption: 'A kilometre of pipe, off the back of the bakkie', shape: 'tall' },
       { src: '/farm/flood-channel.jpg', caption: 'The water that came through', shape: 'tall' },
       { src: '/farm/frost-fires.jpg', caption: 'Fires lit against the frost, before dawn', shape: 'wide' },
       { src: '/farm/farm-gate.jpg', caption: 'The name on the fence', shape: 'wide' },

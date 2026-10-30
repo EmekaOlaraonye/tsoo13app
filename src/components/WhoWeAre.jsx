@@ -9,7 +9,7 @@ const pillars = [
   {
     n: '01',
     title: 'We grow it',
-    body: 'Under cover and out of the soil — grown in bags, fed to the plant. Cuttings instead of seed. If the usual way stops working, we find another one.',
+    body: 'Hydroponic, under cover and out of the soil — every plant in its own bag, fed by drip. Cuttings instead of seed. If the usual way stops working, we find another one.',
     image: '/farm/tunnel-mature.jpg',
     alt: 'Tomato plants growing in bags inside the tunnel',
     color: 'var(--c-lime)',

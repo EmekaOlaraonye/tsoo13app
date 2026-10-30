@@ -19,7 +19,7 @@ const produce = [
     id: 'tomato',
     name: 'The tomato',
     tagline: 'Round, full size, ripened on the plant.',
-    desc: 'One crop, carried the whole way at Mookane — seedling, bag, truss, crate. Zero shortcuts, zero compromise.',
+    desc: 'One crop, carried the whole way at Mookane — seedling, bag, truss, crate. Grown hydroponically on borehole water, never in the ground.',
     badge: 'Home grown',
     image: '/farm/ripening-in-hand.jpg',
     alt: 'A ripe tomato held on the truss, still attached to the plant',

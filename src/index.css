@@ -1945,3 +1945,7 @@ textarea.input { resize: vertical; min-height: 130px; }
    the tile the way a photograph is. */
 .dlv__tile--whole { background: var(--c-lime-soft); }
 .dlv__tile--whole img { object-fit: contain; }
+
+/* Four tiles rather than three: a slightly smaller ceiling so the row still
+   fits on one line at desktop widths. */
+.dlv__row--four { grid-template-columns: repeat(auto-fit, minmax(170px, 258px)); }

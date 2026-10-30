@@ -1,5 +1,6 @@
 import Hero from '../components/Hero';
 import WhoWeAre from '../components/WhoWeAre';
+import Growing from '../components/Growing';
 import VideoSection from '../components/VideoSection';
 import Explore from '../components/Explore';
 import InstagramSection from '../components/InstagramSection';
@@ -12,6 +13,7 @@ const Home = () => (
   <>
     <Hero />
     <WhoWeAre />
+    <Growing />
     <VideoSection />
     <Explore />
     <InstagramSection />
