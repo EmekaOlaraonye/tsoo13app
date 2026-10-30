@@ -202,10 +202,10 @@ const TheWins = ({ standalone = false }) => (
           for, rather than decoration. */}
       <div className="proof" style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
         {[
-          { src: '/farm/team-lineup.jpg', cap: 'The team at Mookane Village' },
-          { src: '/farm/tunnel-mature.jpg', cap: 'A tunnel in full production' },
-          { src: '/farm/two-smiling.jpg', cap: 'Setho Mokgadi, managing director' },
-          { src: '/farm/retail-shelf.jpg', cap: 'On the shelf in Gaborone' },
+          { src: '/farm/training-group.jpg', cap: 'Farmers on an open day at the farm' },
+          { src: '/farm/greenhouse-visit.jpg', cap: 'Walking visitors through the tunnels' },
+          { src: '/farm/training-session.jpg', cap: 'Sharing the method, not guarding it' },
+          { src: '/farm/press-clipping.jpg', cap: '“Mokgadi family shares farming experience”' },
         ].map((shot, i) => (
           <Reveal key={shot.src} delay={(i % 4) * 0.06} variant="scale" className="proof__item">
             <Photo src={shot.src} alt={shot.cap} />

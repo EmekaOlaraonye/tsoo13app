@@ -24,6 +24,11 @@ const shots = [
     alt: 'Poster reading A Day the Tsoo...13 Way, 20/11/2021, Mookane Village, hydroponics and open field',
     whole: true,
   },
+  {
+    src: '/farm/packing-crowd.jpg',
+    caption: 'Everyone on the bagging at once',
+    alt: 'A crew of people bagging tomatoes into crates together under the shed',
+  },
 ];
 
 const OpenDay = () => (

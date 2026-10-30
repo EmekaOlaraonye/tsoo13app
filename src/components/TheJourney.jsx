@@ -61,11 +61,14 @@ const steps = [
     stage: 'The Tunnels',
     year: '03',
     title: 'Then the\ngreenhouse tunnels.',
-    line: 'Fully enclosed, and the best this farm has run — rows at full height, Gaborone shelves.',
+    line: 'Fully enclosed, and the best this farm has run — rows at full height, fruit the whole way down them.',
     reveal: 'This was the peak. The crop under cover from planting to picking, the packhouse busy, and Tsoo...13 bags leaving Mookane for Gaborone every week.',
-    tags: ['Full enclosure', 'On the shelf'],
-    image: '/farm/rows-mature.jpg',
-    alt: 'Rows at full height, carrying fruit',
+    tags: ['Full enclosure', 'Peak season'],
+    image: '/farm/tunnel-mature.jpg',
+    alt: 'Inside a greenhouse tunnel, the steel frame overhead and a crop carrying fruit below',
+    // Portrait in a 16:11 panel: sit high so the roof frame stays in shot
+    // above the crop, which is the whole point of this one.
+    focus: 'center 33%',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
   },
