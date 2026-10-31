@@ -41,8 +41,10 @@ const produce = [
     tagline: 'Closest to the source.',
     desc: 'Come to Mookane Village and buy it where it grows, before it travels anywhere at all.',
     badge: 'At Mookane',
-    image: '/farm/bag-over-pile.jpg',
-    alt: 'A hand holding a 13 bag above a pile of freshly picked tomatoes',
+    // Not a third photograph of a bag: the card is about coming to Mookane,
+    // so it shows the place rather than the packaging again.
+    image: '/farm/farm-gate.jpg',
+    alt: 'The Tsoo...13 frontage at Mookane Village, the sun logo on the poles',
     color: 'var(--c-green-lt)',
   },
 ];

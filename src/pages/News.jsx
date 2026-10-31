@@ -6,7 +6,7 @@ import { Blob } from '../components/ui/Blobs';
 import { Tomato } from '../components/ui/Tomato';
 import Band from '../components/ui/Band';
 import { Arrow, Play } from '../components/ui/Icons';
-import { INSTAGRAM_URL, VIDEO } from '../siteConfig';
+import { VIDEO } from '../siteConfig';
 import Photo from '../components/ui/Photo';
 
 const CATEGORIES = ['All', 'Events', 'Company updates', 'Articles', 'Videos', 'Interviews'];
@@ -68,6 +68,7 @@ const stories = [
     body: 'Pauline Dikuelo wrote the farm up in The Monitor on 12 July 2021, under the headline “Tsoo…13’s smart farming yields quality crops”. Smart farming is the future of agriculture because it yields better crops, the piece argued — and the duo behind Tsoo…13, Sonny and Thato Mokgadi, saw the potential and went that way.',
     image: '/farm/tunnel-new-bags.jpg',
     url: 'https://www.pressreader.com/botswana/the-monitor-4753/20210712/281681142879941',
+    source: 'The Monitor',
     color: 'var(--c-lime)',
   },
   {
@@ -78,6 +79,7 @@ const stories = [
     body: 'Mmegi covered the unveiling of the smart tomato farm at Mookane, with the Local Enterprise Authority\u2019s chief executive Racious Moatshe speaking at it. The same piece put national horticulture at about 40% of what the country eats.',
     image: '/farm/farm-gate.jpg',
     url: 'https://www.mmegi.bw/business/horticulture-far-from-filling-national-demand/news',
+    source: 'Mmegi',
     color: 'var(--c-yellow)',
   },
   {
@@ -88,6 +90,7 @@ const stories = [
     body: 'The Patriot on Sunday covered a guided tour of the operation under the headline “Tsoo 13 Farm thrives”. It put the staff at 38, grown from the 14 the farm opened with — 90% of them women and young people — on ground the Mokgadi family has worked for three generations. The Assistant Minister of Investment, Trade and Industry, Molebatsi Molebatsi, called the work commendable: if Batswana walked a similar way, he said, they could go far.',
     image: '/farm/minister-tour.jpg',
     url: 'https://www.facebook.com/ThePatriotOnSunday/posts/tsoo-13-farm-thrivestsoo-13-a-commercial-tomato-production-farm-situated-in-mook/4161274043961300/',
+    source: 'The Patriot on Sunday',
     color: 'var(--c-green-lt)',
   },
   {
@@ -98,6 +101,7 @@ const stories = [
     body: 'The Global Landscapes Forum listed Thato Mokgadi as a speaker at its Africa digital conference, Restoring Africa’s Drylands — billed, in their words, as a “Fashion Designer turned Agripreneur”.',
     image: '/farm/in-the-veld.jpg',
     url: 'https://events.globallandscapesforum.org/speaker/thato-mokgadi/',
+    source: 'Global Landscapes Forum',
     color: 'var(--c-lime)',
   },
   {
@@ -113,20 +117,29 @@ const stories = [
   },
 ];
 
-/** A story with a source of its own links there; the rest go to Instagram. */
-const NewsCard = ({ item, index }) => (
+/**
+ * A story is a link only when it has a source of its own to go to, and then
+ * the card names it. Everything else renders as plain card: no arrow, no
+ * hover lift, no cursor — because the alternative was sending a reader who
+ * clicked a 2016 newspaper clipping to an Instagram profile.
+ */
+const NewsCard = ({ item, index }) => {
+  const Tag = item.url ? 'a' : 'div';
+  const linkProps = item.url
+    ? { href: item.url, target: '_blank', rel: 'noopener noreferrer' }
+    : {};
+
+  return (
   <Reveal delay={(index % 2) * 0.08} className={item.lead ? 'is-lead' : undefined}>
-    <a
-      href={item.url || INSTAGRAM_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="card"
+    <Tag
+      {...linkProps}
+      className={`card${item.url ? '' : ' card--static'}`}
       style={{ '--card-accent': item.color }}
     >
       <div className="card__media">
         <Photo className="card__img" src={item.image} alt="" />
         <span className="card__wash" aria-hidden="true" />
-        <span className="card__arrow" aria-hidden="true"><Arrow size={16} /></span>
+        {item.url && <span className="card__arrow" aria-hidden="true"><Arrow size={16} /></span>}
         <span
           className="chip"
           style={{
@@ -145,10 +158,12 @@ const NewsCard = ({ item, index }) => (
         <h3 className="card__title">{item.title}</h3>
         <span className="card__rule" />
         <p className="body-sm">{item.body}</p>
+        {item.source && <p className="card__source">Read it at {item.source}</p>}
       </div>
-    </a>
+    </Tag>
   </Reveal>
-);
+  );
+};
 
 /** The video lives on the homepage film section — this card sends you there. */
 const VideoCard = () => (
@@ -240,6 +255,7 @@ const InterviewCard = () => (
         <h3 className="card__title">{INTERVIEW.title}</h3>
         <span className="card__rule" />
         <p className="body-sm">{INTERVIEW.body}</p>
+        <p className="card__source">Read it at the UNCCD</p>
         <p className="body-sm" style={{ marginTop: '0.6rem', color: 'var(--ink-3)' }}>Listen at unccd.int</p>
       </div>
     </a>

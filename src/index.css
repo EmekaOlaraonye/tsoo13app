@@ -409,6 +409,24 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .card:hover .card__arrow,
 .card:focus-visible .card__arrow { background: var(--card-accent, var(--c-red)); color: var(--white); transform: scale(1.08); }
 
+/* A card with nowhere to go: still a card, but it does not pretend to be a
+   link. No lift, no zoom, no pointer. */
+.card--static { cursor: default; }
+.card--static:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.card--static:hover .card__img { transform: none; }
+.card--static:hover .card__wash { opacity: 0; }
+.card--static:hover .card__rule { width: 46px; }
+
+/* Where a linked card actually sends you. */
+.card__source {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--c-red));
+}
+
 .grid { display: grid; gap: 1.25rem; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); }
