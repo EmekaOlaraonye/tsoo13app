@@ -427,6 +427,88 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   color: var(--card-accent, var(--c-red));
 }
 
+/* Keyboard users land on this before the navbar; it stays out of sight
+   until it is focused. */
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 300;
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--r-sm);
+  background: var(--ink);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: top 0.25s var(--ease);
+}
+.skip:focus { top: 0.75rem; }
+
+/* On the contact page the button reports where you are instead of
+   inviting you somewhere you already stand. */
+.nav__cta.is-here {
+  background: var(--c-green);
+  box-shadow: none;
+  cursor: default;
+}
+.nav__cta.is-here:hover { background: var(--c-green); }
+
+/* The site map on the 404. A list, not cards: it is a signpost, and it
+   should render instantly without waiting on a single photograph. */
+.notfound__map {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.notfound__row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--white);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.notfound__row:hover {
+  border-color: var(--dot, var(--c-red));
+  transform: translateX(5px);
+  box-shadow: var(--shadow-sm);
+}
+
+.notfound__row > i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--dot, var(--c-red));
+  flex: none;
+}
+
+.notfound__label {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.notfound__desc {
+  display: none;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+.notfound__arrow { color: var(--dot, var(--c-red)); display: flex; }
+
+@media (min-width: 720px) {
+  .notfound__row { grid-template-columns: auto 13rem 1fr auto; }
+  .notfound__desc { display: block; }
+}
+
 .grid { display: grid; gap: 1.25rem; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); }

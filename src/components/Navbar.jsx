@@ -107,8 +107,16 @@ const Navbar = () => {
             ))}
           </nav>
 
-          <Link to="/contact-us" className="btn btn--red nav__cta">
-            Get in touch <Arrow size={15} />
+          {/* Contact has no entry in the link row, so without this the
+              header says nothing about where you are on that page. */}
+          <Link
+            to="/contact-us"
+            className={`btn btn--red nav__cta${pathname === '/contact-us' ? ' is-here' : ''}`}
+            aria-current={pathname === '/contact-us' ? 'page' : undefined}
+          >
+            {pathname === '/contact-us'
+              ? 'You’re here'
+              : <>Get in touch <Arrow size={15} /></>}
           </Link>
 
           <button

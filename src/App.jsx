@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 /**
  * Home stays in the main bundle: it is the landing page, so making it wait on
@@ -29,6 +30,9 @@ function App() {
           <Route path="news" element={<News />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="contact-us" element={<ContactUs />} />
+          {/* Anything else: a real page that says so and lists the rest,
+              rather than the navbar and footer with a hole between them. */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

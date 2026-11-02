@@ -14,8 +14,28 @@ const RouteFallback = () => (
   </div>
 );
 
+/**
+ * Every page shared one title, so three open tabs were indistinguishable
+ * and so was the browser history. The page name leads, because that is the
+ * part a truncated tab actually shows.
+ */
+const TITLES = {
+  '/': 'Tsoo...13 — Farming. Creating. Growing.',
+  '/journey': 'The Journey — Tsoo...13',
+  '/goods': 'The Goods — Tsoo...13',
+  '/wins': 'The Wins — Tsoo...13',
+  '/news': 'The News — Tsoo...13',
+  '/gallery': 'Gallery — Tsoo...13',
+  '/contact-us': 'Contact Us — Tsoo...13',
+};
+
 const Layout = () => {
   const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    const clean = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+    document.title = TITLES[clean] || 'Page not found — Tsoo...13';
+  }, [pathname]);
 
   useEffect(() => {
     if (!hash) {
@@ -46,8 +66,11 @@ const Layout = () => {
 
   return (
     <>
+      {/* First stop for anyone on a keyboard: hidden until focused. */}
+      <a href="#main" className="skip">Skip to the content</a>
       <Navbar />
       <motion.main
+        id="main"
         key={pathname}
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}

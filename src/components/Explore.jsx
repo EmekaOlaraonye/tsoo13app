@@ -7,6 +7,16 @@ import Photo from './ui/Photo';
 
 const destinations = [
   {
+    // The biggest section on the site, and this grid used to omit it
+    // entirely — it was reachable only from the hero button above.
+    label: 'The Journey',
+    to: '/journey',
+    category: 'The story',
+    desc: 'Open field, then net, then tunnels, then the storm.',
+    image: '/farm/rows-avenue.jpg',
+    color: 'var(--c-lime)',
+  },
+  {
     label: 'The Goods',
     to: '/goods',
     category: 'Produce',
@@ -82,7 +92,7 @@ const Explore = () => (
         color="var(--c-yellow-ink)"
         variant="fade"
         title={<>Dive <span className="t-red">deeper</span>.</>}
-        lede="Four ways into the rest of it."
+        lede="Five ways into the rest of it."
       />
 
       <div className="grid grid--4">
