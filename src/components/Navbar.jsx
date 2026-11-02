@@ -81,8 +81,18 @@ const Navbar = () => {
     <>
       <header className={`nav ${scrolled || open ? 'nav--solid' : ''}`}>
         <div className="nav__inner">
-          <Link to="/" aria-label="Tsoo...13 — home" onClick={handleHomeClick}>
+          {/* On an inner page the mark is the only way back, and nothing
+              says so — it reads as decoration in the corner. Away from home it
+              gets a slow glow and, on hover or focus, the word itself. On the
+              homepage it stays quiet: you are already there. */}
+          <Link
+            to="/"
+            aria-label={isHome ? 'Tsoo...13 — back to the top' : 'Tsoo...13 — back to the home page'}
+            onClick={handleHomeClick}
+            className={`nav__home${isHome ? '' : ' nav__home--cta'}`}
+          >
             <Wordmark isHome={isHome} />
+            {!isHome && <span className="nav__home-hint" aria-hidden="true">Home</span>}
           </Link>
 
           <nav className="nav__links">

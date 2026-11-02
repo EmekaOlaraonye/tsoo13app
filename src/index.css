@@ -691,6 +691,84 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .nav__mark--img { height: 32px; width: auto; transition: opacity 0.3s; }
 .nav__mark--img:hover { opacity: 0.75; }
 
+/* The way back to the homepage. On the homepage this is an ordinary link
+   and gets nothing; everywhere else it has to invite the press, because a
+   mark in the corner does not read as a button to anyone who has not been
+   told. drop-shadow follows the icon's own alpha, so the sun glows rather
+   than a box around it. */
+.nav__home {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+}
+
+.nav__home--cta .nav__mark--img {
+  animation: navHomeGlow 3.4s ease-in-out infinite;
+  transition: transform 0.35s var(--ease), opacity 0.3s;
+}
+
+/* Hovering hands control back: the pulse stops where the pointer is. */
+.nav__home--cta:hover .nav__mark--img,
+.nav__home--cta:focus-visible .nav__mark--img {
+  animation: none;
+  transform: scale(1.1);
+  opacity: 1;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.95))
+          drop-shadow(0 0 10px rgba(228, 105, 31, 0.6));
+}
+
+/* Two halos, because one colour cannot carry both backgrounds: the white
+   reads against the cream hero, the red against the white bar once the
+   page is scrolled. The scale is what actually catches the eye — movement
+   survives any background a glow gets lost in. */
+@keyframes navHomeGlow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0))
+            drop-shadow(0 0 0 rgba(228, 105, 31, 0));
+  }
+  50% {
+    transform: scale(1.07);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 10px rgba(228, 105, 31, 0.6));
+  }
+}
+
+/* The word confirms what the glow is asking for. Held at opacity 0 rather
+   than display:none so revealing it never shifts the bar. */
+.nav__home-hint {
+  display: none;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-green);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+@media (min-width: 768px) { .nav__home-hint { display: inline; } }
+
+.nav__home--cta:hover .nav__home-hint,
+.nav__home--cta:focus-visible .nav__home-hint { opacity: 1; transform: none; }
+
+/* Someone who has asked for less motion still needs the affordance, so the
+   glow stops moving rather than disappearing. */
+@media (prefers-reduced-motion: reduce) {
+  .nav__home--cta .nav__mark--img {
+    animation: none;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 8px rgba(228, 105, 31, 0.55));
+  }
+  .nav__home--cta:hover .nav__mark--img,
+  .nav__home--cta:focus-visible .nav__mark--img { transform: none; }
+}
+
 .nav__links { display: none; align-items: center; gap: 2rem; }
 
 @media (min-width: 920px) { .nav__links { display: flex; } }
