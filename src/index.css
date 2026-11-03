@@ -610,6 +610,36 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .totop.is-on { transform: none; }
 }
 
+/* Closes the gap under the contact form, where the column beside it ran on
+   for another 348px. */
+.contact__place {
+  margin-top: 1.25rem;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+/* height:auto is needed: Photo puts the intrinsic height on the element as
+   an attribute, and that presentational hint otherwise beats the ratio. */
+.contact__place img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+
+.contact__place figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+
+.contact__place figcaption svg { color: var(--c-red); flex: none; }
+
+/* Five cards across, and only one of the titles runs to two lines — which
+   pushed its rule and body out of step with the rest of the row. Holding two
+   lines of space makes the row line up whatever the wording. */
+#explore .card__title { min-height: 2.1em; }
+
 .grid { display: grid; gap: 1.25rem; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); }

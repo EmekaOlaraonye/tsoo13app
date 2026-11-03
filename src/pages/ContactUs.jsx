@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Reveal from '../components/ui/Reveal';
+import Photo from '../components/ui/Photo';
 import { Blob } from '../components/ui/Blobs';
 import { Tomato } from '../components/ui/Tomato';
 import { Instagram, Facebook, Send, Check, Pin, Mail, Phone, Arrow } from '../components/ui/Icons';
@@ -178,6 +179,17 @@ const ContactUs = () => {
                 </button>
               </form>
             )}
+
+            {/* The form is shorter than the column beside it, which left a
+                hole above the footer. This is the gate you would actually
+                arrive at, so it closes the hole and answers the question. */}
+            <figure className="contact__place">
+              <Photo src="/farm/farm-gate.jpg" alt="The Tsoo...13 frontage at Mookane Village, the sun logo on the poles" />
+              <figcaption>
+                <Pin size={15} />
+                Mookane Village, Botswana — the gate you drive up to.
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
       </div>
