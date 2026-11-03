@@ -103,6 +103,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   overflow: hidden;
 }
 
+/* .section clips its decorative blobs with overflow:hidden, which also makes
+   it a scroll container and so stops position:sticky working inside it.
+   overflow:clip clips the same way without that side effect. The hidden
+   declaration stays first as the fallback: a browser that does not know clip
+   keeps the clipping and simply loses the stickiness. */
+.section--sticky { overflow: hidden; overflow: clip; }
+
 .section--paper { background: var(--paper); }
 .section--tight { padding: clamp(3rem, 7vw, 5.5rem) 0; }
 .section--top { padding-top: calc(var(--nav-h) + clamp(3rem, 8vw, 6rem)); }
@@ -507,6 +514,100 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 @media (min-width: 720px) {
   .notfound__row { grid-template-columns: auto 13rem 1fr auto; }
   .notfound__desc { display: block; }
+}
+
+/* Back to the top. Out of sight until a screen and a half down, so a short
+   page never shows it at all. */
+.totop {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 200;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--c-green);
+  color: var(--white);
+  box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(14px) scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), background-color 0.3s;
+}
+
+.totop.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.totop:hover { background: var(--c-green-lt); }
+.totop:focus-visible { outline: 3px solid var(--c-yellow); outline-offset: 3px; }
+
+/* The chapter index on the gallery: where you are, and one press to
+   anywhere else. Sticks directly under the navbar. */
+.chapnav {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 120;
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0.5rem;
+  padding: 0.55rem 0;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.chapnav__strip {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.15rem 0.1rem;
+}
+
+.chapnav__strip::-webkit-scrollbar { display: none; }
+
+/* A soft edge so it is obvious the row runs past the screen. Masked rather
+   than overlaid, so it works on whatever is behind it. */
+.chapnav__strip {
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 42px), transparent 100%);
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 42px), transparent 100%);
+}
+
+.chapnav__pill {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.chapnav__pill:hover { border-color: var(--c-green-lt); color: var(--ink); }
+
+.chapnav__pill.is-on {
+  background: var(--c-green);
+  border-color: var(--c-green);
+  color: var(--white);
+}
+
+.chapnav__n {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  opacity: 0.65;
+}
+
+.chapnav__pill.is-on .chapnav__n { opacity: 0.85; }
+
+@media (prefers-reduced-motion: reduce) {
+  .totop { transition: opacity 0.2s linear; transform: none; }
+  .totop.is-on { transform: none; }
 }
 
 .grid { display: grid; gap: 1.25rem; }

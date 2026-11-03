@@ -5,6 +5,7 @@ import { Blob } from '../components/ui/Blobs';
 import Band from '../components/ui/Band';
 import Photo from '../components/ui/Photo';
 import Lightbox from '../components/ui/Lightbox';
+import ChapterNav from '../components/ui/ChapterNav';
 import Reel from '../components/ui/Reel';
 import { Instagram, Arrow, Plus } from '../components/ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
@@ -36,6 +37,7 @@ const chapters = [
   {
     id: 'open-field',
     title: 'It began in the open.',
+    nav: 'Open field',
     photos: [
       { src: '/farm/field-rows.jpg', caption: 'Rows straight into the ground', shape: 'wide' },
       { src: '/farm/field-late.jpg', caption: 'Open ground, late light', shape: 'wide' },
@@ -52,6 +54,7 @@ const chapters = [
   {
     id: 'under-net',
     title: 'Under net, in the long bags.',
+    nav: 'Under net',
     photos: [
       { src: '/farm/net-house-rows.jpg', caption: 'Long bags down the length of the house', shape: 'wide' },
       { src: '/farm/net-grower-bag.jpg', caption: 'One plant, one coco-coir bag', shape: 'tall' },
@@ -61,6 +64,7 @@ const chapters = [
   {
     id: 'tunnels',
     title: 'The tunnels go up.',
+    nav: 'Tunnels',
     photos: [
       { src: '/farm/tunnels-exterior.jpg', caption: 'The tunnels from outside', shape: 'wide' },
       { src: '/farm/tunnels-from-road.jpg', caption: 'Seen from the track', shape: 'wide' },
@@ -76,6 +80,7 @@ const chapters = [
   {
     id: 'seedlings',
     title: 'It starts as a seedling.',
+    nav: 'Seedlings',
     photos: [
       { src: '/farm/nursery-trays.jpg', caption: 'The nursery, under cover', shape: 'wide' },
       { src: '/farm/seedling-beds.jpg', caption: 'Trays in the beds', shape: 'leaf' },
@@ -91,6 +96,7 @@ const chapters = [
   {
     id: 'planting',
     title: 'Planted out.',
+    nav: 'Planting',
     photos: [
       { src: '/farm/tunnel-new-bags.jpg', caption: 'A tunnel freshly laid out', shape: 'wide' },
       { src: '/farm/placing-bags.jpg', caption: 'Setting out the bags', shape: 'leaf' },
@@ -104,6 +110,7 @@ const chapters = [
   {
     id: 'growing',
     title: 'Growing on.',
+    nav: 'Growing on',
     photos: [
       { src: '/farm/rows-wide.jpg', caption: 'Row on row under cover', shape: 'wide' },
       { src: '/farm/rows-young.jpg', caption: 'Coming up', shape: 'leaf' },
@@ -124,6 +131,7 @@ const chapters = [
   {
     id: 'close',
     title: 'Close enough to touch.',
+    nav: 'Close up',
     photos: [
       { src: '/farm/green-truss-dew.jpg', caption: 'Still green, still wet', shape: 'round' },
       { src: '/farm/truss-closeup.jpg', caption: 'A truss up close', shape: 'blob' },
@@ -142,6 +150,7 @@ const chapters = [
   {
     id: 'packed',
     title: 'Picked and packed.',
+    nav: 'Packed',
     photos: [
       { src: '/farm/harvesting.jpg', caption: 'Picking', shape: 'tall' },
       { src: '/farm/sorting-indoors.jpg', caption: 'Sorting under the shed', shape: 'leaf' },
@@ -156,6 +165,7 @@ const chapters = [
   {
     id: 'shelf',
     title: 'Out the gate, into town.',
+    nav: 'Into town',
     photos: [
       { src: '/farm/dispatch.jpg', caption: 'Dispatch', shape: 'wide' },
       { src: '/farm/retail-shelf.jpg', caption: 'Back when we were on the shelf', shape: 'tall' },
@@ -171,6 +181,7 @@ const chapters = [
   {
     id: 'people',
     title: 'The people who do it.',
+    nav: 'The people',
     photos: [
       { src: '/farm/team-lineup.jpg', caption: 'The team', shape: 'tall' },
       { src: '/farm/team-morning.jpg', caption: 'Before the heat', shape: 'leaf' },
@@ -187,6 +198,7 @@ const chapters = [
   {
     id: 'storm',
     title: 'And then the storm.',
+    nav: 'The storm',
     photos: [
       { src: '/farm/storm-aftermath.jpg', caption: 'The frame folded over a crop still carrying fruit', shape: 'wide' },
       { src: '/farm/storm-wreckage.jpg', caption: 'Bags on their sides, netting down, tomatoes ripe', shape: 'tall' },
@@ -214,7 +226,7 @@ const Gallery = () => {
   const step = (d) => setOpen((i) => (i + d + all.length) % all.length);
 
   return (
-    <section className="section section--top" style={{ background: 'radial-gradient(90% 60% at 85% 0%, var(--c-red-soft) 0%, var(--white) 60%)' }}>
+    <section className="section section--top section--sticky" style={{ background: 'radial-gradient(90% 60% at 85% 0%, var(--c-red-soft) 0%, var(--white) 60%)' }}>
       <Blob color="yellow" size={18} top="18%" right="9%" />
       <Blob color="soft-lime" size={320} bottom="2%" right="-10%" />
 
@@ -228,8 +240,10 @@ const Gallery = () => {
           lede={`${all.length} photographs from Mookane Village, in the order it happened. Tap any frame to open it.`}
         />
 
+        <ChapterNav chapters={chapters} />
+
         {chapters.map((chapter, ci) => (
-          <section key={chapter.id} className="chapter" aria-labelledby={`ch-${chapter.id}`}>
+          <section key={chapter.id} id={`sec-${chapter.id}`} className="chapter" aria-labelledby={`ch-${chapter.id}`}>
             <Reveal variant="left" className="chapter__head">
               <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-lime)' }}>Chapter {CHAPTER_WORDS[ci]}</p>
               <h2 id={`ch-${chapter.id}`} className="display display--md chapter__title">{chapter.title}</h2>

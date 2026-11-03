@@ -5,6 +5,9 @@ import { Close, Arrow } from './Icons';
  * Full-size viewer for the gallery. Keyboard-complete: Escape closes,
  * left/right step through the whole set, and focus moves to the dialog on
  * open and back to the thumbnail that opened it on close.
+ *
+ * On a touch screen it also takes a horizontal swipe, because the arrows
+ * are a small target to hit a hundred times and nobody expects to tap them.
  */
 const Lightbox = ({ photos, index, onClose, onStep }) => {
   const closeRef = useRef(null);
@@ -18,6 +21,24 @@ const Lightbox = ({ photos, index, onClose, onStep }) => {
     },
     [onClose, onStep],
   );
+
+  // A swipe is horizontal travel over about a thumb's width; anything
+  // shorter, or mostly vertical, is a tap or a scroll attempt and is ignored.
+  const touch = useRef(null);
+
+  const onTouchStart = (e) => {
+    const t = e.changedTouches[0];
+    touch.current = { x: t.clientX, y: t.clientY };
+  };
+
+  const onTouchEnd = (e) => {
+    if (!touch.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touch.current.x;
+    const dy = t.clientY - touch.current.y;
+    touch.current = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) onStep(dx < 0 ? 1 : -1);
+  };
 
   useEffect(() => {
     document.addEventListener('keydown', handleKey);
@@ -44,7 +65,12 @@ const Lightbox = ({ photos, index, onClose, onStep }) => {
         <Arrow size={18} />
       </button>
 
-      <figure className="lb__figure" onClick={(e) => e.stopPropagation()}>
+      <figure
+        className="lb__figure"
+        onClick={(e) => e.stopPropagation()}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         <img src={photo.src} alt={photo.caption} />
         <figcaption className="lb__cap">
           <span>{photo.caption}</span>

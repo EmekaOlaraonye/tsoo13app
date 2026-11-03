@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import ToTop from './ui/ToTop';
 
 /**
  * Holds the page's height while a route chunk is in flight, so the footer
@@ -81,6 +82,7 @@ const Layout = () => {
         </Suspense>
       </motion.main>
       <Footer />
+      <ToTop />
     </>
   );
 };
