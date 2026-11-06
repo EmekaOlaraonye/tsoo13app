@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tsoo13.co.bw/</loc>
+    <loc>https://13way-app.vercel.app/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tsoo13.co.bw/journey</loc>
+    <loc>https://13way-app.vercel.app/journey</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tsoo13.co.bw/goods</loc>
+    <loc>https://13way-app.vercel.app/goods</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tsoo13.co.bw/wins</loc>
+    <loc>https://13way-app.vercel.app/team</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tsoo13.co.bw/news</loc>
+    <loc>https://13way-app.vercel.app/news</loc>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tsoo13.co.bw/gallery</loc>
+    <loc>https://13way-app.vercel.app/gallery</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tsoo13.co.bw/contact-us</loc>
+    <loc>https://13way-app.vercel.app/contact-us</loc>
     <priority>0.7</priority>
   </url>
 </urlset>

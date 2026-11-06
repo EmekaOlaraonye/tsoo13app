@@ -3,7 +3,7 @@
  */
 
 /** Canonical origin, no trailing slash. Used for absolute URLs in metadata. */
-export const SITE_URL = 'https://tsoo13.co.bw';
+export const SITE_URL = 'https://13way-app.vercel.app';
 
 export const INSTAGRAM_URL = 'https://www.instagram.com/_13way_/';
 export const INSTAGRAM_HANDLE = '@_13way_';
