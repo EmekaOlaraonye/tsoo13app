@@ -112,7 +112,7 @@ const WhoWeAre = () => (
       </div>
 
       <Reveal delay={0.2} style={{ marginTop: '2.5rem' }}>
-        <Link to="/wins" className="btn btn--ghost">
+        <Link to="/team" className="btn btn--ghost">
           What we&apos;ve got to show for it <Arrow size={16} />
         </Link>
       </Reveal>

@@ -8,7 +8,7 @@ import dotsThirteen from '../assets/13nb-cropped.png';
 const links = [
   { label: 'Journey', to: '/journey', dot: 'var(--c-lime)' },
   { label: 'Goods', to: '/goods', dot: 'var(--c-red)' },
-  { label: 'Wins', to: '/wins', dot: 'var(--c-yellow)' },
+  { label: 'Team', to: '/team', dot: 'var(--c-yellow)' },
   { label: 'News', to: '/news', dot: 'var(--c-green-lt)' },
   { label: 'Gallery', to: '/gallery', dot: 'var(--c-red)' },
 ];

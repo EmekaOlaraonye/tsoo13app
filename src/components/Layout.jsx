@@ -24,7 +24,7 @@ const TITLES = {
   '/': 'Tsoo...13 — Farming. Creating. Growing.',
   '/journey': 'The Journey — Tsoo...13',
   '/goods': 'The Goods — Tsoo...13',
-  '/wins': 'The Wins — Tsoo...13',
+  '/team': 'The Team — Tsoo...13',
   '/news': 'The News — Tsoo...13',
   '/gallery': 'Gallery — Tsoo...13',
   '/contact-us': 'Contact Us — Tsoo...13',

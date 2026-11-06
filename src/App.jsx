@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -12,7 +12,7 @@ import NotFound from './pages/NotFound';
  * Layout renders the Suspense boundary so the navbar and footer stay put.
  */
 const Journey = lazy(() => import('./pages/Journey'));
-const Wins = lazy(() => import('./pages/Wins'));
+const Team = lazy(() => import('./pages/Team'));
 const Goods = lazy(() => import('./pages/Goods'));
 const News = lazy(() => import('./pages/News'));
 const Gallery = lazy(() => import('./pages/Gallery'));
@@ -25,7 +25,11 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="journey" element={<Journey />} />
-          <Route path="wins" element={<Wins />} />
+          <Route path="team" element={<Team />} />
+          {/* /wins was a real page until the open days moved to News and
+              the credentials to the Team. Anyone holding the old link gets
+              taken to where its content went, not to the 404. */}
+          <Route path="wins" element={<Navigate to="/news" replace />} />
           <Route path="goods" element={<Goods />} />
           <Route path="news" element={<News />} />
           <Route path="gallery" element={<Gallery />} />

@@ -7,6 +7,8 @@ import Photo from '../components/ui/Photo';
 import Lightbox from '../components/ui/Lightbox';
 import ChapterNav from '../components/ui/ChapterNav';
 import Reel from '../components/ui/Reel';
+import Montage from '../components/ui/Montage';
+import FollowUs from '../components/FollowUs';
 import { Instagram, Arrow, Plus } from '../components/ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
 
@@ -186,7 +188,7 @@ const chapters = [
       { src: '/farm/team-lineup.jpg', caption: 'The team', shape: 'tall' },
       { src: '/farm/team-morning.jpg', caption: 'Before the heat', shape: 'leaf' },
       { src: '/farm/team-group.jpg', caption: 'Gathered', shape: 'petal' },
-      { src: '/farm/two-smiling.jpg', caption: 'Setho Mokgadi, managing director', shape: 'tall' },
+      { src: '/farm/two-smiling.jpg', caption: 'Out in the rows, mid-pick', shape: 'tall' },
       { src: '/farm/pair-at-wall.jpg', caption: 'Two of the crew', shape: 'leaf' },
       { src: '/farm/in-the-veld.jpg', caption: 'Out on the land', shape: 'petal' },
       { src: '/farm/walking-out.jpg', caption: 'Heading out', shape: 'round' },
@@ -226,6 +228,7 @@ const Gallery = () => {
   const step = (d) => setOpen((i) => (i + d + all.length) % all.length);
 
   return (
+    <>
     <section className="section section--top section--sticky" style={{ background: 'radial-gradient(90% 60% at 85% 0%, var(--c-red-soft) 0%, var(--white) 60%)' }}>
       <Blob color="yellow" size={18} top="18%" right="9%" />
       <Blob color="soft-lime" size={320} bottom="2%" right="-10%" />
@@ -276,6 +279,11 @@ const Gallery = () => {
           </section>
         ))}
 
+        {/* Moving pictures belong with the still ones. The 2025 recap came
+            off the journey page to sit here; the upright reel keeps it
+            company. */}
+        <Montage />
+
         <Reel />
 
         <Band
@@ -296,6 +304,11 @@ const Gallery = () => {
         <Lightbox photos={all} index={open} onClose={close} onStep={step} />
       )}
     </section>
+
+    {/* After the gallery, as Setho asked — all three channels, not just
+        the one. */}
+    <FollowUs />
+    </>
   );
 };
 

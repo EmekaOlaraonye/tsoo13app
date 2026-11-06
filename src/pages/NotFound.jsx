@@ -20,8 +20,8 @@ const everywhere = [
   { to: '/', label: 'Home', desc: 'The farm in short, and the film.', dot: 'var(--c-yellow)' },
   { to: '/journey', label: 'The Journey', desc: 'Open field, then net, then tunnels, then the storm.', dot: 'var(--c-lime)' },
   { to: '/goods', label: 'The Goods', desc: 'What we grow and how to get hold of it.', dot: 'var(--c-red)' },
-  { to: '/wins', label: 'The Wins', desc: 'Credentials, recognitions and the open days.', dot: 'var(--c-yellow)' },
-  { to: '/news', label: 'The News', desc: 'Press from 2016 onwards, each piece linked to its source.', dot: 'var(--c-green-lt)' },
+  { to: '/team', label: 'The Team', desc: 'Who grows it, packs it, drives it and sells it.', dot: 'var(--c-yellow)' },
+  { to: '/news', label: 'The News', desc: 'Press, open days and updates — each piece linked to its source.', dot: 'var(--c-green-lt)' },
   { to: '/gallery', label: 'Gallery', desc: 'Every photograph, in the order it happened.', dot: 'var(--c-red)' },
   { to: '/contact-us', label: 'Contact Us', desc: 'Phone, email, and where to find the farm.', dot: 'var(--c-lime)' },
 ];

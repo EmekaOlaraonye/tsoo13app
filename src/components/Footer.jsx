@@ -9,7 +9,7 @@ const columns = [
     links: [
       { label: 'The Journey', to: '/journey' },
       { label: 'The Goods', to: '/goods' },
-      { label: 'The Wins', to: '/wins' },
+      { label: 'The Team', to: '/team' },
     ],
   },
   {

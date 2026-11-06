@@ -5,6 +5,7 @@ import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import { Arrow, Pin } from './ui/Icons';
 import { RETAILERS } from '../siteConfig';
+import ProcessFlow from './ProcessFlow';
 import Photo from './ui/Photo';
 
 /**
@@ -29,7 +30,7 @@ const produce = [
     id: 'bag',
     name: 'The 13 bag',
     tagline: 'Look for the number.',
-    desc: 'Graded and packed by hand at the farm, then driven in ourselves. Produced in Botswana, borehole water used for irrigation — it says so on the front.',
+    desc: 'Produced in Botswana, borehole water used for irrigation — it says so on the front. Graded, bagged and picked by hand.',
     badge: 'Hand packed',
     image: '/farm/bag-in-hand.jpg',
     alt: 'A Tsoo...13 bag of tomatoes, the 13 printed across the front',
@@ -200,6 +201,10 @@ const TheGoods = ({ standalone = false }) => (
           </div>
         </div>
       </Reveal>
+
+      {/* Moved off the journey, which now ends at the band. This is the last
+          thing on the page by Setho's instruction — nothing follows it. */}
+      <ProcessFlow />
     </div>
   </section>
 );

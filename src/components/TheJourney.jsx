@@ -1,19 +1,13 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
-import { Plus, Arrow } from './ui/Icons';
-import ProcessFlow from './ProcessFlow';
-import Delivery from './Delivery';
-import Montage from './ui/Montage';
-import MeetTheFamily from './MeetTheFamily';
-import SeeTheFarm from './SeeTheFarm';
+import { Plus, Play } from './ui/Icons';
 import Photo from './ui/Photo';
 import Band from './ui/Band';
-import StormFilm from './ui/StormFilm';
+import { STORM } from '../siteConfig';
 
 /**
  * Open field -> under net -> the tunnels -> the storm -> rebuilding.
@@ -33,7 +27,7 @@ const steps = [
     year: '01',
     title: 'It started in\nthe open field.',
     line: 'Rows straight into the ground at Mookane, and the weather got a vote in everything.',
-    reveal: 'Floods, frost, pests, sun — in the open there was nothing between the crop and whatever the season did next. Fires were lit through the night against the frost. Enough came through to prove people would buy it. Not nearly enough to build on.',
+    reveal: 'Floods, frost, pests, sun — in the open there was nothing between the crop and whatever the season did next. Fires were lit through the night against the frost. Some seasons that worked and some it did not, and there was no way to tell which until it was over. Growing in the open meant farming the weather, not the crop.',
     tags: ['Mookane Village', 'Open ground'],
     image: '/farm/field-rows.jpg',
     alt: 'Rows of tomatoes growing in the open field at Mookane',
@@ -47,10 +41,10 @@ const steps = [
     year: '02',
     title: 'So we moved\nunder net.',
     line: 'Under shade net, and off the soil entirely — grown in bags instead.',
-    reveal: 'Long coco-coir grower bags down each row, and the ground out of the equation entirely: no soil-borne disease, water and feed measured to the plant rather than poured at it. The net took the worst of the sun off. Rain and frost still found their way in.',
+    reveal: 'Black net overhead, and the crop up out of the ground in long coco-coir bags — water and feed measured to each plant instead of poured at a field. The net knocked the worst of the sun back and the fruit set better for it. Rain and frost still found their way in.',
     tags: ['Shade net', 'Soilless'],
-    image: '/farm/net-house-rows.jpg',
-    alt: 'Long coco-coir grower bags running down a shade-net house on wooden poles',
+    image: '/farm/net-grower-bag.jpg',
+    alt: 'Tomatoes ripening under the black net, the plants running along long coco-coir grower bags',
     color: 'var(--c-yellow)',
     soft: 'var(--c-yellow-soft)',
     ink: true,
@@ -61,13 +55,10 @@ const steps = [
     year: '03',
     title: 'Then the\ngreenhouse tunnels.',
     line: 'Fully enclosed, and the best this farm has run — rows at full height, fruit the whole way down them.',
-    reveal: 'This was the peak. The crop under cover from planting to picking, the packhouse busy, and Tsoo...13 bags leaving Mookane for Gaborone every week.',
+    reveal: 'This was the peak. Plants standing in their own grow bags down the length of every house, the crop under cover from planting to picking, the packhouse busy, and Tsoo...13 bags leaving Mookane for market every week.',
     tags: ['Full enclosure', 'Peak season'],
-    image: '/farm/tunnel-mature.jpg',
-    alt: 'Inside a greenhouse tunnel, the steel frame overhead and a crop carrying fruit below',
-    // Portrait in a 16:11 panel: sit high so the roof frame stays in shot
-    // above the crop, which is the whole point of this one.
-    focus: 'center 33%',
+    image: '/farm/fruit-in-bags.jpg',
+    alt: 'Tomato plants heavy with fruit, each standing in its own grow bag down the row',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
   },
@@ -77,9 +68,15 @@ const steps = [
     year: '04',
     title: 'Then the\nstorm hit.',
     line: 'At the peak of it, in 2025, the structures came down.',
-    reveal: 'Everything built to keep the weather out was, in one afternoon, the thing the weather took. It was filmed as it happened — the clip is further down this page.',
+    reveal: 'Everything built to keep the weather out was, in one afternoon, the thing the weather took. Somebody kept filming.',
     tags: ['2025', 'The lowest point'],
     image: '/film/tsoo13-storm-still.jpg',
+    // The footage belongs to this beat, not to a section further down the
+    // page that most people never reached. Same panel, same frame — it
+    // just plays when you ask it to.
+    clip: STORM.src,
+    clipLabel: 'Watch the storm, as it happened',
+    clipRuntime: STORM.runtime,
     alt: 'Structures flattened across the yard in the rain',
     color: 'var(--c-green-lt)',
     soft: 'var(--c-green-soft)',
@@ -90,7 +87,7 @@ const steps = [
     year: '05',
     title: 'Now we\nbuild it back.',
     line: 'Still picking, still packing, still selling — and putting the structures back up at the same time.',
-    reveal: 'Supply has not stopped: bags still go out while the rebuild runs alongside them. Everything learned out in the field, under the net and inside the tunnels goes into what gets built this time.',
+    reveal: 'There is nothing to pick, pack or sell right now — this is the rebuild, and it is the whole of the work. Frames back up, houses re-skinned, bags relaid. Everything learned out in the field, under the net and inside the tunnels goes into what gets built this time.',
     tags: ['Rebuilding', 'Still supplying'],
     image: '/farm/tunnel-frame.jpg',
     alt: 'A new tunnel frame going up, a finished house standing behind it',
@@ -102,6 +99,13 @@ const steps = [
 
 const Step = ({ step, index }) => {
   const side = index % 2 === 0 ? 'left' : 'right';
+  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const play = () => {
+    setPlaying(true);
+    videoRef.current?.play().catch(() => {});
+  };
 
   return (
     <Reveal
@@ -140,16 +144,42 @@ const Step = ({ step, index }) => {
         </div>
       </div>
 
-      {/* Hover (or focus) the photograph to open the rest of the chapter */}
-      <div className="tl__media" tabIndex={0} role="group" aria-label={`${step.stage} — ${step.reveal}`}>
-        <Photo src={step.image} alt={step.alt} style={step.focus ? { objectPosition: step.focus } : undefined} />
-        <span className="tl__media-tint" aria-hidden="true" />
-        <span className="chip chip--float tl__hint" aria-hidden="true">
-          <Plus size={13} /> More
-        </span>
-        <div className="tl__reveal">
-          <p>{step.reveal}</p>
-        </div>
+      {/* Hover (or focus) the photograph to open the rest of the chapter.
+          A step with a clip swaps the photograph for the film in place, so
+          the panel keeps its shape and its position in the story. */}
+      <div className="tl__media" tabIndex={playing ? -1 : 0} role="group" aria-label={`${step.stage} — ${step.reveal}`}>
+        {playing ? (
+          <video
+            ref={videoRef}
+            src={step.clip}
+            poster={step.image}
+            controls
+            playsInline
+            className="tl__video"
+            onEnded={() => setPlaying(false)}
+          />
+        ) : (
+          <>
+            <Photo src={step.image} alt={step.alt} style={step.focus ? { objectPosition: step.focus } : undefined} />
+            <span className="tl__media-tint" aria-hidden="true" />
+            {step.clip ? (
+              <button type="button" className="tl__clip" onClick={play}>
+                <span className="tl__clip-play" aria-hidden="true"><Play size={18} /></span>
+                <span>
+                  {step.clipLabel}
+                  <em>{step.clipRuntime}</em>
+                </span>
+              </button>
+            ) : (
+              <span className="chip chip--float tl__hint" aria-hidden="true">
+                <Plus size={13} /> More
+              </span>
+            )}
+            <div className="tl__reveal">
+              <p>{step.reveal}</p>
+            </div>
+          </>
+        )}
       </div>
     </Reveal>
   );
@@ -205,7 +235,9 @@ const TheJourney = ({ standalone = false }) => {
       </div>
     </section>
 
-    {/* Edge to edge, and the first change of gear on the page. */}
+    {/* Setho's ending: the line the whole page has been making, and stop.
+        Everything that used to follow has moved — the flow to Goods, the
+        family to the Team page, the 2025 montage to the gallery — or gone. */}
     <Band
       bleed
       image="/farm/rows-avenue.jpg"
@@ -213,47 +245,6 @@ const TheJourney = ({ standalone = false }) => {
       kicker="Mookane Village"
       line="Open ground, then net, then tunnels. The tomato never changed."
     />
-
-    <section className="section section--tight jr-wash">
-      <Blob color="soft-red" size={320} top="6%" right="-9%" />
-      <Tomato color="var(--c-red)" size={90} bottom="10%" left="4%" opacity={0.12} rotate={-12} outline />
-      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-        <StormFilm />
-        <ProcessFlow />
-      </div>
-    </section>
-
-    <section className="section section--tight">
-      <Blob color="soft-lime" size={340} bottom="4%" left="-10%" />
-      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-        <Delivery />
-        <MeetTheFamily />
-        <SeeTheFarm />
-      </div>
-    </section>
-
-    {/* The line the farm liked, given the room it deserves. */}
-    <Band
-      bleed
-      image="/farm/team-at-dusk.jpg"
-      alt="The team standing out on the farm at dusk"
-      kicker="No stock photography"
-      line="Every frame on this page was taken on this farm."
-      align="left"
-    />
-
-    <section className="section section--tight jr-wash jr-wash--warm">
-      <Blob color="soft-yellow" size={300} top="8%" left="-8%" />
-      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-        <Montage />
-
-        <Reveal style={{ textAlign: 'center', marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
-          <Link to="/goods" className="btn btn--ink">
-            See what we grow <Arrow size={16} />
-          </Link>
-        </Reveal>
-      </div>
-    </section>
   </>
   );
 };

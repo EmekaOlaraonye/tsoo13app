@@ -640,6 +640,160 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
    lines of space makes the row line up whatever the wording. */
 #explore .card__title { min-height: 2.1em; }
 
+/* ---- Follow us: three channels, not one ------------------------------ */
+.follow__row {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.follow__card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.05rem 1.2rem;
+  border-radius: var(--r-md);
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.follow__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--chan, var(--c-red)); }
+
+.follow__icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--chan, var(--c-red));
+  color: var(--white);
+}
+
+.follow__text { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+.follow__label { font-family: var(--font-display); font-size: 1.02rem; text-transform: uppercase; }
+.follow__handle { font-size: 0.82rem; font-weight: 700; color: var(--chan, var(--c-red)); overflow-wrap: anywhere; }
+.follow__blurb { font-size: 0.82rem; color: var(--ink-3); }
+.follow__arrow { margin-left: auto; color: var(--chan, var(--c-red)); display: flex; flex: none; }
+
+.follow__card.btn--instagram { --chan: #C13584; }
+.follow__card.btn--facebook  { --chan: #1877F2; }
+.follow__card.btn--whatsapp  { --chan: #1DA851; }
+
+/* The follow cards borrow the brand button class names for their colour, but
+   none of the button layout — these rules win it back. */
+.follow__card.btn--instagram,
+.follow__card.btn--facebook,
+.follow__card.btn--whatsapp {
+  background: var(--white);
+  box-shadow: none;
+  justify-content: flex-start;
+  font-weight: 400;
+}
+
+/* ---- The Team -------------------------------------------------------- */
+.team__lead {
+  border-left: 4px solid var(--c-green);
+  padding-left: clamp(1rem, 3vw, 1.75rem);
+}
+
+/* Six of each, so an auto-fit grid lands them 4+2 at desktop width and
+   looks like a mistake. Fixed column counts give 3+3, 2+2+2, then stacked. */
+.team__skills,
+.team__shots {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.team__skills { gap: 1.25rem; }
+
+@media (min-width: 620px) {
+  .team__skills,
+  .team__shots { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 980px) {
+  .team__skills,
+  .team__shots { grid-template-columns: repeat(3, 1fr); }
+}
+
+.team__skills .family__card { height: 100%; }
+
+.team__shot {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.team__shot img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+
+.team__shot-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.2rem 1rem 0.95rem;
+  color: var(--white);
+  font-size: 0.86rem;
+  font-weight: 700;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
+}
+
+.team__cred {
+  position: relative;
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--cred, var(--c-lime));
+  height: 100%;
+}
+
+.team__cred-star { position: absolute; top: 1.2rem; right: 1.3rem; color: var(--cred, var(--c-lime)); display: flex; }
+
+/* ---- The storm clip, inside its timeline panel ----------------------- */
+.tl__video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+
+.tl__clip {
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 700;
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.tl__clip:hover { transform: translateY(-2px); background: var(--white); }
+.tl__clip em { display: block; font-style: normal; font-weight: 400; font-size: 0.76rem; color: var(--ink-3); }
+
+.tl__clip-play {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--c-red);
+  color: var(--white);
+}
+
 .grid { display: grid; gap: 1.25rem; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); }

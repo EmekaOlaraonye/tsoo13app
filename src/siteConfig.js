@@ -10,6 +10,13 @@ export const INSTAGRAM_HANDLE = '@_13way_';
 export const FACEBOOK_URL = 'https://www.facebook.com/share/1BjkxxYZkf/?mibextid=wwXIfr';
 export const FACEBOOK_HANDLE = '13Way';
 
+/**
+ * wa.me wants the number in full international form with no plus and no
+ * spaces. This is the first of the two numbers below, chosen by Setho.
+ */
+export const WHATSAPP_NUMBER = '+267 72706511';
+export const WHATSAPP_URL = 'https://wa.me/26772706511';
+
 export const SALES_EMAIL = 'sales@tsoo13.co.bw';
 export const PHONE_NUMBERS = ['+267 72706511', '+267 78312782'];
 

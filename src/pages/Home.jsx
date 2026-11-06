@@ -3,7 +3,7 @@ import WhoWeAre from '../components/WhoWeAre';
 import Growing from '../components/Growing';
 import VideoSection from '../components/VideoSection';
 import Explore from '../components/Explore';
-import InstagramSection from '../components/InstagramSection';
+import FollowUs from '../components/FollowUs';
 
 /**
  * The homepage is the whole story in order:
@@ -16,7 +16,7 @@ const Home = () => (
     <Growing />
     <VideoSection />
     <Explore />
-    <InstagramSection />
+    <FollowUs />
   </>
 );
 

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Reveal from '../components/ui/Reveal';
 import SectionHead from '../components/ui/SectionHead';
+import OpenDay from '../components/OpenDay';
 import { Blob } from '../components/ui/Blobs';
 import { Tomato } from '../components/ui/Tomato';
 import Band from '../components/ui/Band';
@@ -22,15 +23,6 @@ const stories = [
     color: 'var(--c-red)',
   },
   {
-    id: 'aspire',
-    category: 'Company updates',
-    date: 'April 2025',
-    title: 'Selected for the Aspire Leaders Programme.',
-    body: 'One of Africa’s most competitive Harvard-affiliated accelerators, and a room full of founders building at a bigger scale.',
-    image: '/farm/team-lineup.jpg',
-    color: 'var(--c-yellow)',
-  },
-  {
     id: 'cuttings',
     category: 'Articles',
     date: 'January 2025',
@@ -40,22 +32,23 @@ const stories = [
     color: 'var(--c-green-lt)',
   },
   {
-    id: 'mcw',
-    category: 'Company updates',
-    date: 'November 2024',
-    title: 'MCW leadership cohort graduation.',
-    body: 'Building leaders who build things — the operation now runs on more than instinct.',
-    image: '/farm/tunnel-mature.jpg',
+    id: 'opendays',
+    category: 'Events',
+    // Dated from the farm's own poster, which is the second photograph in
+    // the block further down this page.
+    date: 'November 2021',
+    title: 'A Day the 13 Way: we open the gate.',
+    body: 'Once in a while the farm stops being only ours for a day. Other growers come out to Mookane and we walk them through the whole of it — hydroponics, the open field, the spraying programmes, the layout, and the pitfalls we have already paid for. A farmer’s best friend is another farmer.',
+    image: '/farm/open-day-group.jpg',
     color: 'var(--c-lime)',
   },
   {
-    id: 'season',
-    category: 'Articles',
-    date: 'September 2024',
-    title: 'Nine months in: a season on the ground.',
-    body: 'From bare ground at Mookane Village to full crates — a look back at the first complete growing season.',
-    image: '/farm/tunnels-sunset.jpg',
-    color: 'var(--c-red)',
+    id: 'pusha',
+    category: 'Company updates',
+    title: 'Pusha BW.',
+    body: 'Every crate sold is a vote for a local grower, a local hustle, a local standard. Produced in Botswana, on borehole water, by people from the village it is grown in.',
+    image: '/farm/bags-crated.jpg',
+    color: 'var(--c-yellow)',
   },
   {
     id: 'monitor',
@@ -327,6 +320,13 @@ const News = () => {
             if (item.kind === 'interview') return <InterviewCard key={item.id} />;
             return <NewsCard key={item.id} item={item} index={i} />;
           })}
+        </div>
+
+        {/* The open-day photographs, brought across when the Wins page was
+            cut. They sit outside the filtered grid because they illustrate
+            one story rather than being a story of their own. */}
+        <div style={{ marginTop: 'clamp(3.5rem, 7vw, 6rem)' }}>
+          <OpenDay />
         </div>
       </div>
     </section>

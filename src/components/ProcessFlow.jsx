@@ -3,7 +3,7 @@ import Photo from './ui/Photo';
 
 /**
  * The short version of the journey timeline — how one tomato actually gets
- * from the ground to the person who eats it. Sits inside the Journey page, right after the
+ * from the ground to the shelf it ends up on. Sits inside the Journey page, right after the
  * long-form story. Each stage is shown with a photograph of that stage
  * actually happening on the farm.
  */
@@ -13,9 +13,9 @@ const steps = [
   { n: '03', label: 'Care', body: 'Watered, watched and tended, day in and day out.', image: '/farm/gloved-work.jpg', alt: 'Working the stem by hand' },
   { n: '04', label: 'Harvest', body: 'Picked by hand, at the moment it is ready — not before.', image: '/farm/harvesting.jpg', alt: 'Picking in the tunnel' },
   { n: '05', label: 'Packing', body: 'Bagged and stamped with the number, not a logo.', image: '/farm/sorting-indoors.jpg', alt: 'Sorting and bagging under the shed' },
-  { n: '06', label: 'Delivery', body: 'Mookane to Gaborone, the same day it is packed.', image: '/farm/crate-of-bags.jpg', alt: 'A crate of bagged tomatoes, ready' },
+  { n: '06', label: 'Delivery', body: 'Loaded and driven in ourselves, the same day it is packed.', image: '/farm/crate-of-bags.jpg', alt: 'A crate of bagged tomatoes, ready' },
   { n: '07', label: 'Selling', body: 'Out the gate and into town, under the number rather than a logo.', image: '/farm/roadside-stall.jpg', alt: 'Crates of Tsoo...13 bags at a roadside stall in town' },
-  { n: '08', label: 'Reviews', body: 'Ask for 13 by name, then tell us how it went.', image: '/farm/bag-in-hand.jpg', alt: 'The 13 printed on the bag' },
+  { n: '08', label: 'On the shelf', body: 'Faced up under the number, where someone reaches for it.', image: '/farm/retail-shelf.jpg', alt: 'Bags of Tsoo...13 tomatoes on the shelf' },
 ];
 
 const ProcessFlow = () => (
