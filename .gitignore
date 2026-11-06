@@ -29,3 +29,7 @@ src/tsoo13/
 src/pictures/
 src/tsooarchive/
 src/patriot/
+
+# Local secrets and keys
+.env.local
+.env

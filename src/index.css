@@ -813,6 +813,36 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   color: var(--white);
 }
 
+/* ---- Contact form states -------------------------------------------- */
+.form__error {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: var(--r-sm);
+  background: var(--c-red-soft);
+  border: 1px solid var(--c-red);
+  color: var(--ink);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.form__error a { color: var(--c-red); font-weight: 700; text-decoration: underline; }
+
+/* Shown in place of the submit button when no form key is configured, so
+   the page never offers a send that goes nowhere. */
+.form__offline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--r-md);
+  background: var(--c-yellow-soft);
+  border: 1px dashed var(--c-yellow-ink);
+}
+
+.form__offline-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.btn:disabled { opacity: 0.65; cursor: progress; }
+
 .grid { display: grid; gap: 1.25rem; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); }
