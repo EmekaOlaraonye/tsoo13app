@@ -29,7 +29,7 @@ const ProcessFlow = () => (
       </h3>
     </Reveal>
 
-    <div className="grid grid--4" style={{ marginTop: '2rem' }}>
+    <div className="flow__grid">
       {steps.map((step, i) => (
         <Reveal key={step.n} delay={(i % 4) * 0.06} className="flow__item">
           <div className="flow__media">

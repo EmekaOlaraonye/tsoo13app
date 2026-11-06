@@ -661,6 +661,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .follow__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--chan, var(--c-red)); }
 
+/* The blurbs wrap to different line counts, so without this the three cards
+   end at three different heights. The Reveal wrapper has to stretch too, or
+   the card has nothing to fill. */
+.follow__row > * { height: 100%; }
+.follow__card { height: 100%; align-items: flex-start; }
+.follow__icon { margin-top: 0.1rem; }
+.follow__arrow { align-self: center; }
+
 .follow__icon {
   flex: none;
   width: 44px;
@@ -722,6 +730,17 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 
 .team__skills .family__card { height: 100%; }
+
+/* Eight steps: an auto-fit grid put five on the first row and three on
+   the second, which reads as a wrap rather than a sequence. */
+.flow__grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 900px) { .flow__grid { grid-template-columns: repeat(4, 1fr); } }
 
 .team__shot {
   position: relative;
@@ -1520,7 +1539,19 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .tl__step--final .tl__media { grid-row: 2; }
   .tl__step--final .tl__panel .eyebrow,
   .tl__step--final .tl__panel .tl__tags { justify-content: center; }
+  /* text-align centres the words inside the block; the block itself is
+     max-width capped and was still sitting hard right. */
+  .tl__step--final .tl__panel .lede { margin-inline: auto; }
   .tl__step--final .tl__media { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
+  /* Full width across 1160px, this one ran to 800px tall and was mostly
+     empty sky. A letterbox keeps the frame and the people in it. */
+  .tl__step--final .tl__media { aspect-ratio: 21 / 9; height: auto; }
+  .tl__step--final .tl__media img { height: 100%; }
+  /* The node is pinned to the centre rail, which on a full-width panel
+     runs through the headline — it was sitting on the words. The ghost
+     numeral above already carries the number. */
+  .tl__step--final .tl__node,
+  .tl__step--final .tl__connector { display: none; }
 }
 
 .tl__year {

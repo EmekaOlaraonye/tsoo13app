@@ -86,11 +86,14 @@ const steps = [
     stage: 'Rebuilding',
     year: '05',
     title: 'Now we\nbuild it back.',
-    line: 'Still picking, still packing, still selling — and putting the structures back up at the same time.',
+    line: 'Frames back up, houses re-skinned, bags relaid. The whole of the work, right now.',
     reveal: 'There is nothing to pick, pack or sell right now — this is the rebuild, and it is the whole of the work. Frames back up, houses re-skinned, bags relaid. Everything learned out in the field, under the net and inside the tunnels goes into what gets built this time.',
-    tags: ['Rebuilding', 'Still supplying'],
+    tags: ['Rebuilding', 'In progress'],
     image: '/farm/tunnel-frame.jpg',
     alt: 'A new tunnel frame going up, a finished house standing behind it',
+    // Two thirds of this frame is sky; sit low so the steelwork and the
+    // people on it are what the letterbox actually shows.
+    focus: 'center 56%',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
     final: true,
