@@ -11,7 +11,9 @@ import NotFound from './pages/NotFound';
  * waiting. The other six are split out and fetched when first visited —
  * Layout renders the Suspense boundary so the navbar and footer stay put.
  */
+const Grows = lazy(() => import('./pages/Grows'));
 const Journey = lazy(() => import('./pages/Journey'));
+const Follow = lazy(() => import('./pages/Follow'));
 const Team = lazy(() => import('./pages/Team'));
 const Goods = lazy(() => import('./pages/Goods'));
 const News = lazy(() => import('./pages/News'));
@@ -24,7 +26,9 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="grows" element={<Grows />} />
           <Route path="journey" element={<Journey />} />
+          <Route path="follow" element={<Follow />} />
           <Route path="team" element={<Team />} />
           {/* /wins was a real page until the open days moved to News and
               the credentials to the Team. Anyone holding the old link gets

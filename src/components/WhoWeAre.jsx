@@ -112,7 +112,9 @@ const WhoWeAre = () => (
       </div>
 
       <Reveal delay={0.2} style={{ marginTop: '2.5rem' }}>
-        <Link to="/team" className="btn btn--ghost">
+        {/* The homepage ends here. This is the only way on, and it goes
+            to the half of the old homepage that now lives on its own. */}
+        <Link to="/grows" className="btn btn--red">
           What we&apos;ve got to show for it <Arrow size={16} />
         </Link>
       </Reveal>

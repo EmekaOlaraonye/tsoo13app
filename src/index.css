@@ -778,40 +778,31 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 /* ---- The storm clip, inside its timeline panel ----------------------- */
 .tl__video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
 
-.tl__clip {
-  position: absolute;
-  left: 0.9rem;
-  right: 0.9rem;
-  bottom: 0.9rem;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  text-align: left;
-  padding: 0.7rem 0.9rem;
-  border-radius: 99px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(8px);
-  color: var(--ink);
-  font-size: 0.86rem;
+/* The clip offered as a line of text under the beat. Underlined and in the
+   brand red so it reads as something you press, which a bare word does not. */
+.tl__cliplink {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+  padding: 0;
+  background: none;
+  color: var(--c-red);
   font-weight: 700;
-  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+  font-size: 0.95rem;
+  transition: color 0.25s var(--ease);
 }
 
-.tl__clip:hover { transform: translateY(-2px); background: var(--white); }
-.tl__clip em { display: block; font-style: normal; font-weight: 400; font-size: 0.76rem; color: var(--ink-3); }
-
-.tl__clip-play {
-  flex: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--c-red);
-  color: var(--white);
+.tl__cliplink > span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
 }
+
+.tl__cliplink:hover { color: var(--c-red-deep); }
+.tl__cliplink em { font-style: normal; font-weight: 400; font-size: 0.82rem; color: var(--ink-3); }
+.tl__cliplink:focus-visible { outline: 3px solid var(--c-yellow); outline-offset: 3px; border-radius: 4px; }
+
 
 /* ---- Contact form states -------------------------------------------- */
 .form__error {
@@ -1155,7 +1146,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 /* The word confirms what the glow is asking for. Held at opacity 0 rather
    than display:none so revealing it never shifts the bar. */
 .nav__home-hint {
-  display: none;
+  /* Shown at every width. The phone bar is only a mark and a burger, so
+     there is room, and a touch screen has no hover to fall back on. */
+  display: inline;
+  /* Shown at all times on an inner page, not on hover: people were not
+     clicking a mark they had no reason to read as a button. */
+  opacity: 1;
+  transform: none;
   font-family: var(--font-display);
   font-size: 0.76rem;
   font-weight: 400;
@@ -1163,15 +1160,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   text-transform: uppercase;
   color: var(--c-green);
   white-space: nowrap;
-  opacity: 0;
-  transform: translateX(-5px);
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  transition: color 0.3s var(--ease);
 }
 
-@media (min-width: 768px) { .nav__home-hint { display: inline; } }
-
 .nav__home--cta:hover .nav__home-hint,
-.nav__home--cta:focus-visible .nav__home-hint { opacity: 1; transform: none; }
+.nav__home--cta:focus-visible .nav__home-hint { color: var(--c-red); }
 
 /* Someone who has asked for less motion still needs the affordance, so the
    glow stops moving rather than disappearing. */

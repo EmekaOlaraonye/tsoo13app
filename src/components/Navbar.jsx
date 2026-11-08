@@ -6,6 +6,7 @@ import logoMark from '../assets/13icon.png';
 import dotsThirteen from '../assets/13nb-cropped.png';
 
 const links = [
+  { label: 'How it grows', to: '/grows', dot: 'var(--c-green-lt)' },
   { label: 'Journey', to: '/journey', dot: 'var(--c-lime)' },
   { label: 'Goods', to: '/goods', dot: 'var(--c-red)' },
   { label: 'Team', to: '/team', dot: 'var(--c-yellow)' },
@@ -13,7 +14,11 @@ const links = [
   { label: 'Gallery', to: '/gallery', dot: 'var(--c-red)' },
 ];
 
-const sheetLinks = [...links, { label: 'Contact Us', to: '/contact-us', dot: 'var(--c-red)' }];
+const sheetLinks = [
+  ...links,
+  { label: 'Follow Us', to: '/follow', dot: 'var(--c-yellow)' },
+  { label: 'Contact Us', to: '/contact-us', dot: 'var(--c-red)' },
+];
 
 /**
  * The top-left wordmark. The homepage gets the "...13" mark since the full

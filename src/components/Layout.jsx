@@ -22,7 +22,9 @@ const RouteFallback = () => (
  */
 const TITLES = {
   '/': 'Tsoo...13 — Farming. Creating. Growing.',
+  '/grows': 'How It Grows — Tsoo...13',
   '/journey': 'The Journey — Tsoo...13',
+  '/follow': 'Follow Us — Tsoo...13',
   '/goods': 'The Goods — Tsoo...13',
   '/team': 'The Team — Tsoo...13',
   '/news': 'The News — Tsoo...13',

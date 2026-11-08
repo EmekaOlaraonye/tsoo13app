@@ -1,22 +1,18 @@
 import Hero from '../components/Hero';
 import WhoWeAre from '../components/WhoWeAre';
-import Growing from '../components/Growing';
-import VideoSection from '../components/VideoSection';
-import Explore from '../components/Explore';
-import FollowUs from '../components/FollowUs';
 
 /**
- * The homepage is the whole story in order:
- * arrive -> who we are -> meet us on film -> go deeper -> follow along.
+ * The homepage is now short on purpose: arrive, find out who we are, and
+ * leave by your own choice rather than being pushed somewhere on landing.
+ *
+ * It ends at "we grow it, we move it, we build it". Everything that used to
+ * follow — the growing, the film, and the Dive deeper grid — is on /grows,
+ * and the follow strip is a page of its own.
  */
 const Home = () => (
   <>
     <Hero />
     <WhoWeAre />
-    <Growing />
-    <VideoSection />
-    <Explore />
-    <FollowUs />
   </>
 );
 

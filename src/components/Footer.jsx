@@ -7,6 +7,7 @@ const columns = [
   {
     title: 'Explore',
     links: [
+      { label: 'How it grows', to: '/grows' },
       { label: 'The Journey', to: '/journey' },
       { label: 'The Goods', to: '/goods' },
       { label: 'The Team', to: '/team' },
@@ -17,6 +18,7 @@ const columns = [
     links: [
       { label: 'The News', to: '/news' },
       { label: 'Gallery', to: '/gallery' },
+      { label: 'Follow Us', to: '/follow' },
       { label: 'Contact Us', to: '/contact-us' },
     ],
   },

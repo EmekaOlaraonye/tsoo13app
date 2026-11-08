@@ -58,8 +58,8 @@ const posts = [
   { src: '/farm/bags-young.jpg', caption: 'First leaves up.' },
 ];
 
-const FollowUs = () => (
-  <section className="section ig" id="follow">
+const FollowUs = ({ standalone = false }) => (
+  <section className={`section ig ${standalone ? 'section--top' : ''}`} id="follow">
     <Blob color="red" size={16} top="12%" left="7%" />
     <Blob color="green" size={22} top="22%" right="9%" />
     <Blob color="soft-red" size={280} bottom="-8%" left="-8%" opacity={0.7} />
@@ -69,10 +69,17 @@ const FollowUs = () => (
         <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
           The story continues
         </p>
-        <h2 className="display display--lg" style={{ color: 'var(--c-red)' }}>
-          Follow our<br />
-          <span className="t-green">journey</span> daily.
-        </h2>
+        {standalone ? (
+          <h1 className="display display--lg" style={{ color: 'var(--c-red)' }}>
+            Follow our<br />
+            <span className="t-green">journey</span> daily.
+          </h1>
+        ) : (
+          <h2 className="display display--lg" style={{ color: 'var(--c-red)' }}>
+            Follow our<br />
+            <span className="t-green">journey</span> daily.
+          </h2>
+        )}
         <p className="lede" style={{ marginTop: '1.2rem', maxWidth: '40ch' }}>
           The website is the edit. Everything else is the raw footage — every
           harvest, every rebuild day, every small win as it happens.

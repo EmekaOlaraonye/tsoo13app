@@ -1,10 +1,7 @@
-import { Link } from 'react-router-dom';
 import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
-import { Arrow, Pin } from './ui/Icons';
-import { RETAILERS } from '../siteConfig';
 import ProcessFlow from './ProcessFlow';
 import Photo from './ui/Photo';
 
@@ -139,68 +136,6 @@ const TheGoods = ({ standalone = false }) => (
           <ProduceCard key={item.id} item={item} index={i} />
         ))}
       </div>
-
-      {/* Where to find us */}
-      <Reveal
-        delay={0.1}
-        style={{
-          marginTop: 'clamp(3rem, 6vw, 5rem)',
-          background: 'var(--c-lime-soft)',
-          borderRadius: 'var(--r-xl)',
-          padding: 'clamp(2rem, 5vw, 3.5rem)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <span className="blob blob--yellow" aria-hidden="true" style={{ width: 190, height: 190, top: -70, right: -50, opacity: 0.5 }} />
-        <span className="blob blob--red" aria-hidden="true" style={{ width: 14, height: 14, bottom: 40, right: 90 }} />
-
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 1,
-            display: 'grid',
-            gap: 'clamp(1.75rem, 4vw, 3rem)',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            alignItems: 'center',
-          }}
-        >
-          <div>
-            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
-              Where to find us
-            </p>
-            <h3 className="display display--md" style={{ color: 'var(--c-red)' }}>
-              Ask for 13<br />by name.
-            </h3>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-            {RETAILERS.map((r) => (
-              <div
-                key={r.name}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.85rem',
-                  background: 'var(--white)',
-                  borderRadius: 'var(--r-sm)',
-                  padding: '0.85rem 1.1rem',
-                  boxShadow: 'var(--shadow-sm)',
-                }}
-              >
-                <span style={{ color: 'var(--c-red)', display: 'flex' }}><Pin size={18} /></span>
-                <div>
-                  <p style={{ fontWeight: 700, fontSize: '0.92rem' }}>{r.name}</p>
-                  <p style={{ fontSize: '0.78rem', color: 'var(--ink-3)' }}>{r.location}</p>
-                </div>
-              </div>
-            ))}
-            <Link to="/contact-us" className="btn btn--red" style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}>
-              Order direct <Arrow size={16} />
-            </Link>
-          </div>
-        </div>
-      </Reveal>
 
       {/* Moved off the journey, which now ends at the band. This is the last
           thing on the page by Setho's instruction — nothing follows it. */}

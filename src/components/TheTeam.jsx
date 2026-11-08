@@ -3,7 +3,6 @@ import SectionHead from './ui/SectionHead';
 import Photo from './ui/Photo';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
-import { Star } from './ui/Icons';
 
 /**
  * The Team.
@@ -13,7 +12,7 @@ import { Star } from './ui/Icons';
  * skills that happen to sit in one family, and the thing works because those
  * skills are practised, not because the titles are tidy.
  *
- * So: one name carries a title, Sunny Mokgadi as managing director, and
+ * So: one name carries a title, Sonny Mokgadi as managing director, and
  * nobody else does. The rest are captioned by what they are doing in the
  * photograph. Captions name only the people Setho has confirmed.
  */
@@ -40,12 +39,6 @@ const shots = [
   { src: '/farm/sorting-indoors.jpg', cap: 'Sorting and bagging under the shed', alt: 'Sorting and bagging tomatoes under the packing shed' },
 ];
 
-/** Both are real, dated and on file — the only two credentials we can show. */
-const credentials = [
-  { title: 'MCW Leadership', body: 'Management College of Warsaw. Leadership training behind the operation, not just the growing.', color: 'var(--c-lime)' },
-  { title: 'Aspire Leaders', body: 'Harvard-affiliated programme. Selected for one of Africa’s most competitive leadership accelerators.', color: 'var(--c-green-lt)' },
-];
-
 const TheTeam = () => (
   <section className="section section--top" id="team">
     <Blob color="soft-lime" size={400} top={-150} right="-12%" />
@@ -69,7 +62,7 @@ const TheTeam = () => (
             Who leads it
           </p>
           <h2 className="display display--md" style={{ color: 'var(--c-green)', marginBottom: '0.6rem' }}>
-            Sunny Mokgadi,<br />managing director.
+            Sonny Mokgadi,<br />managing director.
           </h2>
           <p className="lede" style={{ maxWidth: '50ch' }}>
             An agricultural background, and the one holding the whole of it
@@ -120,23 +113,6 @@ const TheTeam = () => (
         ))}
       </div>
 
-      <Reveal style={{ marginTop: 'clamp(2.5rem, 5vw, 4rem)' }}>
-        <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-lime)', marginBottom: '1rem' }}>
-          Trained for it
-        </p>
-      </Reveal>
-
-      <div className="grid grid--2" style={{ marginTop: '1rem' }}>
-        {credentials.map((c, i) => (
-          <Reveal key={c.title} delay={i * 0.08}>
-            <div className="team__cred" style={{ '--cred': c.color }}>
-              <span className="team__cred-star" aria-hidden="true"><Star size={17} /></span>
-              <p className="family__role">{c.title}</p>
-              <p className="body-sm">{c.body}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
     </div>
   </section>
 );

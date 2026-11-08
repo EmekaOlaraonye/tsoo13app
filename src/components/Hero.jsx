@@ -1,7 +1,6 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { Arrow, ChevronDown, Play, Check } from './ui/Icons';
+import { ChevronDown, Check } from './ui/Icons';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import logo from '../assets/13logotx-cropped.png';
@@ -115,19 +114,6 @@ const Hero = () => {
               it hasn&apos;t stood still since.
             </motion.p>
 
-            <motion.div
-              style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '2rem' }}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.44, ease }}
-            >
-              <Link to="/journey" className="btn btn--red">
-                See how we got here <Arrow size={16} />
-              </Link>
-              <a href="#film" className="btn btn--ghost">
-                <Play size={15} /> See how it grows
-              </a>
-            </motion.div>
           </motion.div>
 
           {/* ---------- Right: the picture does the talking ---------- */}

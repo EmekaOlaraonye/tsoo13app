@@ -40,8 +40,8 @@ const steps = [
   },
 ];
 
-const Growing = () => (
-  <section id="growing" className="section">
+const Growing = ({ standalone = false }) => (
+  <section id="growing" className={`section ${standalone ? 'section--top' : ''}`}>
     <Blob color="soft-lime" size={400} top={-140} left="-10%" />
     <Blob color="soft-yellow" size={280} bottom="8%" right="-8%" />
     <Blob color="lime" size={16} top="22%" right="9%" />
@@ -49,6 +49,7 @@ const Growing = () => (
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
       <SectionHead
+        as={standalone ? 'h1' : 'h2'}
         eyebrow="How it grows"
         dot="var(--c-lime)"
         color="var(--c-green)"

@@ -75,7 +75,7 @@ const steps = [
     // page that most people never reached. Same panel, same frame — it
     // just plays when you ask it to.
     clip: STORM.src,
-    clipLabel: 'Watch the storm, as it happened',
+    clipLabel: 'Click here for the clip',
     clipRuntime: STORM.runtime,
     alt: 'Structures flattened across the yard in the rain',
     color: 'var(--c-green-lt)',
@@ -96,7 +96,6 @@ const steps = [
     focus: 'center 56%',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
-    final: true,
   },
 ];
 
@@ -130,6 +129,13 @@ const Step = ({ step, index }) => {
           {step.title}
         </h3>
         <p className="lede" style={{ maxWidth: '32ch', fontSize: '1.02rem' }}>{step.line}</p>
+        {/* In the panel rather than over the photograph: the reveal layer it
+            used to sit in only appears on hover, which no touch screen has. */}
+        {step.clip && !playing && (
+          <button type="button" className="tl__cliplink" onClick={play}>
+            <span>{step.clipLabel}</span> <em>({step.clipRuntime})</em>
+          </button>
+        )}
         <div className="tl__tags" style={{ marginTop: '1.1rem' }}>
           {step.tags.map((tag) => (
             <span
@@ -165,19 +171,9 @@ const Step = ({ step, index }) => {
           <>
             <Photo src={step.image} alt={step.alt} style={step.focus ? { objectPosition: step.focus } : undefined} />
             <span className="tl__media-tint" aria-hidden="true" />
-            {step.clip ? (
-              <button type="button" className="tl__clip" onClick={play}>
-                <span className="tl__clip-play" aria-hidden="true"><Play size={18} /></span>
-                <span>
-                  {step.clipLabel}
-                  <em>{step.clipRuntime}</em>
-                </span>
-              </button>
-            ) : (
-              <span className="chip chip--float tl__hint" aria-hidden="true">
-                <Plus size={13} /> More
-              </span>
-            )}
+            <span className="chip chip--float tl__hint" aria-hidden="true">
+              {step.clip ? <><Play size={12} /> Clip</> : <><Plus size={13} /> More</>}
+            </span>
             <div className="tl__reveal">
               <p>{step.reveal}</p>
             </div>
