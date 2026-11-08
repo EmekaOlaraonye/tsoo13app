@@ -286,15 +286,29 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 /* Social brand marks — the one place on the site that borrows colour from
    outside the Tsoo...13 palette, since these buttons are literally the
    Facebook/Instagram identity. */
-.btn--facebook { background: #1877F2; color: var(--white); box-shadow: 0 12px 26px -14px rgba(24, 119, 242, 0.7); }
+/* The platforms' own colours, defined once. The follow cards used a flat
+   magenta for Instagram while the footer used the real gradient, so the
+   same logo appeared two different ways on one site. */
+:root {
+  --brand-instagram: linear-gradient(45deg, #FEDA75 0%, #FA7E1E 22%, #D62976 45%, #962FBF 68%, #4F5BD5 100%);
+  --brand-instagram-ink: #D62976;
+  --brand-facebook: #1877F2;
+  --brand-whatsapp: #25D366;
+  --brand-whatsapp-ink: #128C7E;
+}
+
+.btn--facebook { background: var(--brand-facebook); color: var(--white); box-shadow: 0 12px 26px -14px rgba(24, 119, 242, 0.7); }
 .btn--facebook:hover { background: #0C63D4; }
 
 .btn--instagram {
-  background: linear-gradient(45deg, #FEDA75 0%, #FA7E1E 22%, #D62976 45%, #962FBF 68%, #4F5BD5 100%);
+  background: var(--brand-instagram);
   color: var(--white);
   box-shadow: 0 12px 26px -14px rgba(214, 41, 118, 0.6);
 }
 .btn--instagram:hover { filter: brightness(1.08); }
+
+.btn--whatsapp { background: var(--brand-whatsapp); color: #06331B; box-shadow: 0 12px 26px -14px rgba(37, 211, 102, 0.7); }
+.btn--whatsapp:hover { background: #1EBE5B; }
 
 .chip {
   display: inline-flex;
@@ -640,66 +654,107 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
    lines of space makes the row line up whatever the wording. */
 #explore .card__title { min-height: 2.1em; }
 
-/* ---- Follow us: three channels, not one ------------------------------ */
+/* ---- Follow us -------------------------------------------------------
+   Three cards that were doing too much: a saturated fill, a coloured
+   handle and a coloured arrow each, all in different hues, next to each
+   other. Now the platform's colour appears once per card, on its own
+   glyph, and everything else is the site's own type and ink. */
 .follow__row {
   display: grid;
-  gap: 0.9rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
 }
 
+.follow__row > * { height: 100%; }
+
 .follow__card {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  padding: 1.05rem 1.2rem;
-  border-radius: var(--r-md);
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 1rem;
+  align-items: start;
+  /* Cards share the tallest height, so without this the rows stretch and a
+     card with a one-line blurb spaces itself differently from its neighbours. */
+  align-content: start;
+  padding: 1.35rem 1.4rem;
+  border-radius: var(--r-lg);
   background: var(--white);
   border: 1px solid var(--line);
   color: var(--ink);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 
-.follow__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--chan, var(--c-red)); }
+/* A hairline of the platform's colour along the top, so the card is
+   identifiable before you have read a word of it. */
+.follow__card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--chan-fill, var(--c-red));
+}
 
-/* The blurbs wrap to different line counts, so without this the three cards
-   end at three different heights. The Reveal wrapper has to stretch too, or
-   the card has nothing to fill. */
-.follow__row > * { height: 100%; }
-.follow__card { height: 100%; align-items: flex-start; }
-.follow__icon { margin-top: 0.1rem; }
-.follow__arrow { align-self: center; }
+.follow__card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--chan-ink, var(--c-red));
+}
 
 .follow__icon {
-  flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  grid-row: span 3;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
   display: grid;
   place-items: center;
-  background: var(--chan, var(--c-red));
+  background: var(--chan-fill, var(--c-red));
   color: var(--white);
+  box-shadow: 0 8px 18px -10px var(--chan-shadow, rgba(0, 0, 0, 0.4));
 }
 
-.follow__text { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
-.follow__label { font-family: var(--font-display); font-size: 1.02rem; text-transform: uppercase; }
-.follow__handle { font-size: 0.82rem; font-weight: 700; color: var(--chan, var(--c-red)); overflow-wrap: anywhere; }
-.follow__blurb { font-size: 0.82rem; color: var(--ink-3); }
-.follow__arrow { margin-left: auto; color: var(--chan, var(--c-red)); display: flex; flex: none; }
+.follow__text { display: contents; }
 
-.follow__card.btn--instagram { --chan: #C13584; }
-.follow__card.btn--facebook  { --chan: #1877F2; }
-.follow__card.btn--whatsapp  { --chan: #1DA851; }
+.follow__label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
 
-/* The follow cards borrow the brand button class names for their colour, but
-   none of the button layout — these rules win it back. */
-.follow__card.btn--instagram,
-.follow__card.btn--facebook,
-.follow__card.btn--whatsapp {
-  background: var(--white);
-  box-shadow: none;
-  justify-content: flex-start;
+.follow__handle {
+  font-family: var(--font-display);
   font-weight: 400;
+  font-size: 1.12rem;
+  line-height: 1.15;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  margin-top: 0.1rem;
 }
+
+.follow__blurb {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+
+.follow__arrow {
+  position: absolute;
+  top: 1.35rem;
+  right: 1.3rem;
+  display: flex;
+  color: var(--line-strong, var(--ink-3));
+  transition: color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.follow__card:hover .follow__arrow { color: var(--chan-ink, var(--c-red)); transform: translate(2px, -2px); }
+
+.follow__card--instagram { --chan-fill: var(--brand-instagram); --chan-ink: var(--brand-instagram-ink); --chan-shadow: rgba(214, 41, 118, 0.55); }
+.follow__card--facebook  { --chan-fill: var(--brand-facebook);  --chan-ink: var(--brand-facebook);      --chan-shadow: rgba(24, 119, 242, 0.5); }
+.follow__card--whatsapp  { --chan-fill: var(--brand-whatsapp);  --chan-ink: var(--brand-whatsapp-ink);  --chan-shadow: rgba(37, 211, 102, 0.5); }
 
 /* ---- The Team -------------------------------------------------------- */
 .team__lead {

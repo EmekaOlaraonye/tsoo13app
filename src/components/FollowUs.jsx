@@ -27,7 +27,7 @@ const channels = [
     label: 'Instagram',
     blurb: 'The raw footage, posted as it happens.',
     Icon: Instagram,
-    className: 'btn--instagram',
+    modifier: 'follow__card--instagram',
   },
   {
     key: 'facebook',
@@ -36,7 +36,7 @@ const channels = [
     label: 'Facebook',
     blurb: 'The longer posts, and the people who comment.',
     Icon: Facebook,
-    className: 'btn--facebook',
+    modifier: 'follow__card--facebook',
   },
   {
     key: 'whatsapp',
@@ -45,7 +45,7 @@ const channels = [
     label: 'WhatsApp',
     blurb: 'Straight through to the farm, no form in between.',
     Icon: WhatsApp,
-    className: 'btn--whatsapp',
+    modifier: 'follow__card--whatsapp',
   },
 ];
 
@@ -87,13 +87,13 @@ const FollowUs = ({ standalone = false }) => (
       </Reveal>
 
       <div className="follow__row">
-        {channels.map(({ key, url, handle, label, blurb, Icon, className }, i) => (
+        {channels.map(({ key, url, handle, label, blurb, Icon, modifier }, i) => (
           <Reveal key={key} delay={i * 0.07} variant="scale">
             <a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`follow__card ${className}`}
+              className={`follow__card ${modifier}`}
             >
               <span className="follow__icon"><Icon size={22} /></span>
               <span className="follow__text">
