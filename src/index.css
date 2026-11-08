@@ -834,6 +834,36 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .btn:disabled { opacity: 0.65; cursor: progress; }
 
+/* A 2025 clip sitting in the mosaic. Same frame as a photograph tile, so
+   the grid keeps its rhythm; the play badge is what tells them apart. */
+.mosaic__btn--clip { position: relative; display: block; width: 100%; height: 100%; }
+.mosaic__btn--clip video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--ink);
+}
+
+.mosaic__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--c-red);
+  box-shadow: 0 10px 26px -12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.35s var(--ease), background-color 0.3s var(--ease);
+  pointer-events: none;
+}
+
+.mosaic__btn--clip:hover .mosaic__play { transform: translate(-50%, -50%) scale(1.1); }
+
 .grid { display: grid; gap: 1.25rem; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); }

@@ -9,7 +9,7 @@ import ChapterNav from '../components/ui/ChapterNav';
 import Reel from '../components/ui/Reel';
 import Montage from '../components/ui/Montage';
 import FollowUs from '../components/FollowUs';
-import { Instagram, Arrow, Plus } from '../components/ui/Icons';
+import { Instagram, Arrow, Plus, Play } from '../components/ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
 
 /**
@@ -77,6 +77,8 @@ const chapters = [
       { src: '/farm/beds-lined.jpg', caption: 'Mulch down the length of it', shape: 'petal' },
       { src: '/farm/tunnel-frame.jpg', caption: 'Looking up at the frame', shape: 'leaf' },
       { src: '/farm/tunnels-distance.jpg', caption: 'From across the yard', shape: 'leaf' },
+      { kind: 'video', src: '/film/clips/frame-going-up.mp4', poster: '/film/clips/frame-going-up.jpg', caption: 'Half-skinned, going up', shape: 'wide' },
+      { kind: 'video', src: '/film/clips/roof-skin.mp4', poster: '/film/clips/roof-skin.jpg', caption: 'The roof going on', shape: 'wide' },
     ],
   },
   {
@@ -93,6 +95,7 @@ const chapters = [
       { src: '/farm/roots-gloved.jpg', caption: 'Pulled and checked', shape: 'leaf' },
       { src: '/farm/root-ball-held.jpg', caption: 'A whole root ball', shape: 'round' },
       { src: '/farm/seedlings-carried.jpg', caption: 'Carrying trays down the row', shape: 'tall' },
+      { kind: 'video', src: '/film/clips/trays-watered.mp4', poster: '/film/clips/trays-watered.jpg', caption: 'Trays getting their water', shape: 'wide' },
     ],
   },
   {
@@ -107,6 +110,7 @@ const chapters = [
       { src: '/farm/pipe-and-bags.jpg', caption: 'Pipe in, bags down', shape: 'leaf' },
       { src: '/farm/bags-young.jpg', caption: 'First leaves up', shape: 'petal' },
       { src: '/farm/rows-planted.jpg', caption: 'Planted and watered in', shape: 'leaf' },
+      { kind: 'video', src: '/film/clips/beds-in-rows.mp4', poster: '/film/clips/beds-in-rows.jpg', caption: 'Beds shaped, ready to plant', shape: 'wide' },
     ],
   },
   {
@@ -128,6 +132,8 @@ const chapters = [
       { src: '/farm/rows-fruiting.jpg', caption: 'Fruit down both sides', shape: 'leaf' },
       { src: '/farm/plant-in-tunnel.jpg', caption: 'One plant, full span', shape: 'tall' },
       { src: '/farm/row-walk.jpg', caption: 'Walking the row', shape: 'petal' },
+      { kind: 'video', src: '/film/clips/row-of-fruit.mp4', poster: '/film/clips/row-of-fruit.jpg', caption: 'Down the row, fruit set', shape: 'tall' },
+      { kind: 'video', src: '/film/clips/walking-the-row.mp4', poster: '/film/clips/walking-the-row.jpg', caption: 'Walking it, end to end', shape: 'tall' },
     ],
   },
   {
@@ -195,6 +201,7 @@ const chapters = [
       { src: '/farm/team-at-dusk.jpg', caption: 'Last light', shape: 'leaf' },
       { src: '/farm/team-row.jpg', caption: 'Lined up', shape: 'petal' },
       { src: '/farm/pair-outside.jpg', caption: 'Two of the crew, outside', shape: 'leaf' },
+      { kind: 'video', src: '/film/clips/working-the-wall.mp4', poster: '/film/clips/working-the-wall.jpg', caption: 'Working the wall', shape: 'wide' },
     ],
   },
   {
@@ -208,10 +215,57 @@ const chapters = [
   },
 ];
 
+/**
+ * A clip from the 2025 footage, sitting in the mosaic beside the stills.
+ *
+ * Setho liked the clips but not the compilation they were cut into, so they
+ * are spread through the chapters they belong to instead. Each one is short,
+ * silent and `preload="none"` behind its own poster frame, so a gallery of
+ * ninety photographs does not also download seven videos nobody pressed.
+ */
+const ClipTile = ({ clip }) => {
+  const videoRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+
+  const start = () => {
+    setPlaying(true);
+    videoRef.current?.play().catch(() => {});
+  };
+
+  return (
+    <button type="button" className="mosaic__btn mosaic__btn--clip" onClick={start} aria-label={`Play: ${clip.caption}`}>
+      <video
+        ref={videoRef}
+        src={clip.src}
+        poster={clip.poster}
+        preload="none"
+        muted
+        loop
+        playsInline
+        onPlay={() => setPlaying(true)}
+      />
+      {!playing && (
+        <>
+          <span className="mosaic__play" aria-hidden="true"><Play size={18} /></span>
+          <span className="mosaic__cap">
+            {clip.caption}
+            <span className="mosaic__zoom" aria-hidden="true"><Play size={11} /></span>
+          </span>
+        </>
+      )}
+    </button>
+  );
+};
+
 const Gallery = () => {
   // One flat list behind the chapters, so the lightbox can run start to
   // finish across the whole set rather than stopping at a chapter edge.
-  const all = useMemo(() => chapters.flatMap((c) => c.photos), []);
+  // Clips are left out of it: they play where they sit, and letting them
+  // into this array would throw every index in the viewer out of step.
+  const all = useMemo(
+    () => chapters.flatMap((c) => c.photos).filter((p) => p.kind !== 'video'),
+    [],
+  );
   const [open, setOpen] = useState(null);
   const lastTrigger = useRef(null);
 
@@ -261,6 +315,7 @@ const Gallery = () => {
                   variant="scale"
                   className={`mosaic__item mosaic__item--${photo.shape}`}
                 >
+                  {photo.kind === 'video' ? <ClipTile clip={photo} /> : (
                   <button
                     type="button"
                     className="mosaic__btn"
@@ -273,6 +328,7 @@ const Gallery = () => {
                       <span className="mosaic__zoom" aria-hidden="true"><Plus size={13} /></span>
                     </span>
                   </button>
+                  )}
                 </Reveal>
               ))}
             </div>
