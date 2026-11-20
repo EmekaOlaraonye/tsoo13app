@@ -26,12 +26,12 @@ import { Tomato } from './ui/Tomato';
  * and the cards were quietly listing different things on the same screen.
  */
 const skills = [
-  { skill: 'Cultivation', body: 'Careful, patient growing. The part that cannot be rushed, bought in or faked.', color: 'var(--c-lime)', soft: 'var(--c-lime-soft)' },
-  { skill: 'Harvest', body: 'A sharp eye on the truss — picked at the moment it is ready, by hand, every time.', color: 'var(--c-green-lt)', soft: 'var(--c-green-soft)' },
-  { skill: 'Packing', body: 'Meticulous. Graded and bagged at Mookane to the same standard, crate after crate.', color: 'var(--c-yellow-ink)', soft: 'var(--c-yellow-soft)' },
-  { skill: 'Logistics', body: 'Loaded and driven in ourselves, so what leaves the farm arrives fresh and on time.', color: 'var(--c-red)', soft: 'var(--c-red-soft)' },
-  { skill: 'Brand', body: 'The number on the bag, and telling our story honestly enough that people learn to ask for it.', color: 'var(--c-green)', soft: 'var(--c-green-soft)' },
-  { skill: 'Relationships', body: 'The conversations that turn a customer into a regular, and keep them one.', color: 'var(--c-red)', soft: 'var(--c-red-soft)' },
+  { n: '01', skill: 'Cultivation', body: 'Careful, patient growing. The part that cannot be rushed, bought in or faked.', ink: 'var(--c-lime-ink)', tint: 'rgba(141, 173, 30, 0.07)' },
+  { n: '02', skill: 'Harvest', body: 'A sharp eye on the truss — picked at the moment it is ready, by hand, every time.', ink: 'var(--c-green-lt)', tint: 'rgba(77, 136, 61, 0.07)' },
+  { n: '03', skill: 'Packing', body: 'Meticulous. Graded and bagged at Mookane to the same standard, crate after crate.', ink: 'var(--c-yellow-ink)', tint: 'rgba(214, 158, 31, 0.08)' },
+  { n: '04', skill: 'Logistics', body: 'Loaded and driven in ourselves, so what leaves the farm arrives fresh and on time.', ink: 'var(--c-red)', tint: 'rgba(214, 72, 31, 0.07)' },
+  { n: '05', skill: 'Brand', body: 'The number on the bag, and telling our story honestly enough that people learn to ask for it.', ink: 'var(--c-green)', tint: 'rgba(31, 92, 48, 0.07)' },
+  { n: '06', skill: 'Relationships', body: 'The conversations that turn a customer into a regular, and keep them one.', ink: 'var(--c-red-deep)', tint: 'rgba(168, 51, 20, 0.07)' },
 ];
 
 /**
@@ -112,56 +112,58 @@ const TheTeam = () => (
         </p>
       </Reveal>
 
-      <Reveal style={{ marginTop: 'clamp(2.5rem, 5vw, 4rem)' }}>
-        <div className="team__lead">
-          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-green)', marginBottom: '0.85rem' }}>
-            Who leads it
-          </p>
-          <h2 className="display display--md" style={{ color: 'var(--c-green)', marginBottom: '0.9rem' }}>
-            A great tomato is never<br />the work of one person.
-          </h2>
-          <p className="lede" style={{ maxWidth: '52ch' }}>
-            It starts long before harvest and does not end until it is on your
-            table. At TSOO&hellip;13, every crate carries the effort of a whole
-            team &mdash; each doing their part so the rest can do theirs.
-          </p>
-          <p className="body-sm" style={{ maxWidth: '54ch', marginTop: '1.1rem' }}>
-            Led with purpose by <strong>Sonny Mokgadi</strong>, our managing
-            director, who sets the standard. We work to grow it right, pick it
-            right and deliver it right, every single time.
-          </p>
-          {/* Restored at Setho's request. It was dropped when the page was
-              rebuilt on the copy from the 5 November notes, which did not
-              carry it. "Three generations" is the Patriot on Sunday's own
-              line about this ground, not ours. */}
-          <p className="body-sm" style={{ maxWidth: '54ch', marginTop: '1rem' }}>
-            Alongside him: Leiso Mokgadi, Mokgacha Mokgadi and Thato Mokgadi.
-            Three generations have farmed this ground.
-          </p>
-        </div>
-      </Reveal>
+      {/* The lead and Thato's photograph share a row. Apart, the text ran in
+          a narrow column with the right third of the page empty under it,
+          and the photograph then sat alone below with the same empty third
+          beside it — two half-used rows where one full one will do. */}
+      <div className="team__intro">
+        <Reveal variant="left">
+          <div className="team__lead">
+            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-green)', marginBottom: '0.85rem' }}>
+              Who leads it
+            </p>
+            <h2 className="display display--md" style={{ color: 'var(--c-green)', marginBottom: '0.9rem' }}>
+              A great tomato is never<br />the work of one person.
+            </h2>
+            <p className="lede">
+              It starts long before harvest and does not end until it is on
+              your table. At TSOO&hellip;13, every crate carries the effort of
+              a whole team &mdash; each doing their part so the rest can do
+              theirs.
+            </p>
+            <p className="body" style={{ marginTop: '1.1rem' }}>
+              Led with purpose by <strong>Sonny Mokgadi</strong>, our managing
+              director, who sets the standard. We work to grow it right, pick
+              it right and deliver it right, every single time.
+            </p>
+            {/* Restored at Setho's request. It was dropped when the page was
+                rebuilt on the copy from the 5 November notes, which did not
+                carry it. "Three generations" is the Patriot on Sunday's own
+                line about this ground, not ours. */}
+            <p className="body" style={{ marginTop: '1rem' }}>
+              Alongside him: Leiso Mokgadi, Mokgacha Mokgadi and Thato
+              Mokgadi. Three generations have farmed this ground.
+            </p>
+          </div>
+        </Reveal>
 
-      {/* Thato is named in the sentence above but is in none of the twenty
-          photographs in the team folder, so she had no face on this page.
-          This sits here rather than in either grid below on purpose: those
-          hold eight and twelve, which divide by both the two-column and the
-          four-column layouts, and a twenty-first tile would leave a ragged
-          row at every width. It is also the right place for it — directly
-          under the sentence that names her. */}
-      <Reveal
-        variant="scale"
-        className="team__shot team__shot--wide"
-        style={{ marginTop: 'clamp(1.5rem, 3vw, 2.25rem)' }}
-      >
-        <Photo
-          src="/farm/thato-at-mookane.jpg"
-          alt="Thato Mokgadi talking a group of visitors through the open field at Mookane"
-        />
-        <span className="team__shot-cap">
-          <b className="team__shot-who">Thato Mokgadi</b>
-          walking visitors through the open field
-        </span>
-      </Reveal>
+        {/* Thato is named in the sentence beside this and is in none of the
+            twenty photographs in the team folder, so without it the page
+            named her and showed her nowhere. It stays out of both tile grids
+            below: those hold eight and twelve, which divide by the
+            two-column and the four-column layouts, and a twenty-first tile
+            would leave a ragged row at every width. */}
+        <Reveal variant="scale" delay={0.1} className="team__shot team__shot--wide">
+          <Photo
+            src="/farm/thato-at-mookane.jpg"
+            alt="Thato Mokgadi talking a group of visitors through the open field at Mookane"
+          />
+          <span className="team__shot-cap">
+            <b className="team__shot-who">Thato Mokgadi</b>
+            walking visitors through the open field
+          </span>
+        </Reveal>
+      </div>
 
       <div style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
         <Shots shots={firstShots} />
@@ -185,19 +187,22 @@ const TheTeam = () => (
         </p>
       </Reveal>
 
-      <div className="team__skills">
-        {skills.map((item, i) => (
-          <Reveal key={item.skill} delay={(i % 3) * 0.07}>
-            <div className="family__card">
-              <span className="family__avatar" style={{ background: item.soft, color: item.color }}>
-                13
-              </span>
-              <p className="family__role">{item.skill}</p>
+      <Reveal>
+        <div className="chain">
+          {skills.map((item) => (
+            <div
+              key={item.skill}
+              className="chain__cell"
+              style={{ '--chain-ink': item.ink, '--chain-tint': item.tint }}
+            >
+              <span className="chain__n" aria-hidden="true">{item.n}</span>
+              <span className="chain__rule" aria-hidden="true" />
+              <p className="chain__skill">{item.skill}</p>
               <p className="body-sm">{item.body}</p>
             </div>
-          </Reveal>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Reveal>
 
       <Reveal style={{ marginTop: 'clamp(2.5rem, 5vw, 4rem)' }}>
         <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', marginBottom: '1rem' }}>

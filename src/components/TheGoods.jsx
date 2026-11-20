@@ -110,9 +110,13 @@ const TheGoods = ({ standalone = false }) => (
           boxShadow: 'var(--shadow-lg)',
         }}
       >
+        {/* A 21:9 frame wants a panoramic photograph. dispatch.jpg is
+            1050x1400 — portrait — so three quarters of it was cropped away
+            and what survived read as a dark cluttered crate. This one is
+            1400x646 and barely crops at all. */}
         <Photo
-          src="/farm/dispatch.jpg"
-          alt="Crates of TSOO...13 bags loaded on the bakkie, ready to go out"
+          src="/farm/rows-wide.jpg"
+          alt="Row on row of tomato plants under cover at Mookane"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <span
@@ -128,7 +132,7 @@ const TheGoods = ({ standalone = false }) => (
             <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.75)', marginBottom: '1rem' }}>
               The product
             </p>
-            <h3 className="display display--lg" style={{ color: 'var(--white)', maxWidth: '11ch' }}>
+            <h3 className="display display--lg" style={{ color: 'var(--white)', maxWidth: '16ch' }}>
               Grown here.<br />Packed here.<br />
               <span style={{ color: 'var(--c-yellow)' }}>Handed your way.</span>
             </h3>

@@ -392,8 +392,8 @@ const News = () => {
         </Reveal>
 
         <Band
-          image="/farm/roadside-stall.jpg"
-          alt="Crates of TSOO...13 bags at a roadside stall in town"
+          image="/farm/farm-gate.jpg"
+          alt="The TSOO...13 name on the fence at Mookane Village"
           kicker="Mookane Village"
           line="The number travels further than any logo."
           align="left"

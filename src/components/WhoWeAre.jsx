@@ -68,23 +68,19 @@ const WhoWeAre = () => (
     <Tomato color="var(--c-green-lt)" size={130} top={40} right="6%" opacity={0.14} rotate={-12} outline />
 
     <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-      <div
-        style={{
-          display: 'grid',
-          gap: 'clamp(1.75rem, 4vw, 3.5rem)',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          alignItems: 'end',
-          marginBottom: 'clamp(2.5rem, 5vw, 4rem)',
-        }}
-      >
+      {/* The headline is the biggest piece of type on the site and an even
+          split left it seven lines deep in a column it had outgrown. The
+          wider share goes to the words; the lede and the stats need less. */}
+      <div className="who__head">
         <Reveal variant="left">
           <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-green-lt)', marginBottom: '1.1rem' }}>
             Who we are
           </p>
-          <h2 className="display display--lg" style={{ color: 'var(--c-green)' }}>
+          <h2 className="display display--lg who__title" style={{ color: 'var(--c-green)' }}>
             Not a farm.<br />
             A young company<br />
-            that <span className="mark" style={{ '--mark': 'var(--c-lime)', color: 'var(--ink)' }}>started</span> on one.
+            that <span className="mark" style={{ '--mark': 'var(--c-lime)', color: 'var(--ink)' }}>started</span><br />
+            on one.
           </h2>
         </Reveal>
 

@@ -594,6 +594,27 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
    lines of space makes the row line up whatever the wording. */
 #explore .card__title { min-height: 2.1em; }
 
+/* The "who we are" opener. Deliberately uneven: the headline takes the
+   larger share because it is set in the display face at its largest, and the
+   lede beside it is ordinary running text that reads better narrow. */
+.who__head {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  grid-template-columns: 1fr;
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+@media (min-width: 900px) {
+  .who__head { grid-template-columns: 1.25fr 1fr; }
+}
+
+/* One notch down from display--lg. At full size the phrase "A young company"
+   did not fit the column and broke after "A YOUNG", and "that started on one"
+   broke after "ON" — type breaking mid-phrase reads as an accident rather
+   than a decision. This size lets each written line hold. */
+.who__title { font-size: clamp(2.3rem, 4.6vw, 3.5rem); }
+
 /* ---- Follow us -------------------------------------------------------
    Third attempt, and the first that stops treating these as adverts.
 
@@ -731,6 +752,20 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   padding-left: clamp(1rem, 3vw, 1.75rem);
 }
 
+/* Lead text and Thato's photograph side by side, so neither leaves a third
+   of the page empty beside it. Stacks below 900px, where there is no spare
+   width to share. */
+.team__intro {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .team__intro { grid-template-columns: 1fr 0.85fr; }
+}
+
 /* Six of each, so an auto-fit grid lands them 4+2 at desktop width and
    looks like a mistake. Fixed column counts give 3+3, 2+2+2, then stacked. */
 .team__skills,
@@ -742,6 +777,98 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 
 .team__skills { gap: 1.25rem; }
+
+/* ---- The chain of skills ---------------------------------------------
+   Setho asked, in the notes, for "a unique design for that section" and
+   got six ordinary cards. The paragraph above it says the thing the design
+   should have been saying all along: no single skill does it alone, each is
+   only as strong as the one beside it.
+
+   So they are not six separate cards any more. They are one panel divided
+   by hairlines, the way the follow channels are — the same idiom in both
+   places, which is what ties them together. Nothing floats; every cell
+   touches the next, and the rules between them are the join. */
+.chain {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Two then three. Six divides by both, so the lattice never leaves a short
+   last row at any width. */
+@media (min-width: 600px) { .chain { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .chain { grid-template-columns: repeat(3, 1fr); } }
+
+.chain__cell {
+  position: relative;
+  padding: clamp(1.3rem, 2.6vw, 1.75rem);
+  border-top: 1px solid var(--line);
+  transition: background-color 0.35s var(--ease);
+}
+
+.chain__cell:first-child { border-top: 0; }
+
+@media (min-width: 600px) {
+  .chain__cell { border-left: 1px solid var(--line); }
+  .chain__cell:nth-child(-n + 2) { border-top: 0; }
+  .chain__cell:nth-child(2n + 1) { border-left: 0; }
+}
+
+@media (min-width: 980px) {
+  .chain__cell:nth-child(-n + 3) { border-top: 0; }
+  .chain__cell:nth-child(2n + 1) { border-left: 1px solid var(--line); }
+  .chain__cell:nth-child(3n + 1) { border-left: 0; }
+}
+
+.chain__cell:hover { background: var(--chain-tint); }
+
+/* The numeral is the ornament. Large, outlined, set in the skill's own
+   colour and bled to the corner, so the eye reads the sequence before it
+   reads a word. */
+.chain__n {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.85rem;
+  font-family: var(--font-display);
+  font-size: 3.1rem;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.4px var(--chain-ink);
+  opacity: 0.32;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+
+.chain__cell:hover .chain__n { opacity: 0.6; }
+
+.chain__rule {
+  display: block;
+  width: 34px;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--chain-ink);
+  margin-bottom: 0.85rem;
+}
+
+.chain__skill {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+}
+
+/* The numeral is decorative and sits where long copy would run under it. */
+.chain__cell .body-sm { max-width: 30ch; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chain__cell, .chain__n { transition: none; }
+}
 
 /* Column counts are fixed rather than auto-fit, and they divide the number
    of items exactly: six skills (2 x 3, then 3 x 2) and three photographs per
@@ -790,7 +917,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
    so it reads as a single picture under the text, not a banner. */
 .team__shot--wide {
   max-width: 44rem;
+  width: 100%;
 }
+
+@media (min-width: 900px) { .team__shot--wide { max-width: none; } }
 
 .team__shot--wide img { aspect-ratio: 4 / 3; }
 

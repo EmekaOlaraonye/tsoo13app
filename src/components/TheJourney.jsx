@@ -239,8 +239,8 @@ const TheJourney = ({ standalone = false }) => {
         family to the Team page, the 2025 montage to the gallery — or gone. */}
     <Band
       bleed
-      image="/farm/rows-avenue.jpg"
-      alt="Looking down the rows inside a tunnel, three people working"
+      image="/farm/field-rows.jpg"
+      alt="Rows running straight into the open ground at Mookane"
       kicker="Mookane Village"
       line="Open ground, then net, then tunnels. The tomato never changed."
     />
