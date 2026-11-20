@@ -38,17 +38,21 @@ const skills = [
  * All twenty photographs from the team folder, in two blocks with the
  * paragraph about the skills between them.
  *
- * Captions say what someone is doing, not what they are called at work:
- * the name-to-face list has not come through, and a wrong name under a face
- * is worse than no name at all.
+ * A caption carries a name only where Setho has confirmed that exact
+ * photograph; everything else describes the work instead, because a wrong
+ * name under a face is worse than no name at all. Where two people are in
+ * frame the caption says which one is named, so the name cannot be read
+ * off onto the wrong person.
+ *
+ * To name another: add `who` to its entry here. Nothing else changes.
  */
 const firstShots = [
   { src: '/farm/team-thirteen-backs.jpg', cap: 'Thirteen on every back', alt: 'The crew standing together, the number 13 printed on the back of every overall' },
   { src: '/farm/team-outside-tunnel.jpg', cap: 'The crew, outside the tunnel', alt: 'The team gathered outside one of the greenhouse tunnels' },
-  { src: '/farm/team-crate-carry.jpg', cap: 'Crate in hand, mid-pick', alt: 'Two of the crew carrying a picking crate between the rows' },
-  { src: '/farm/team-in-the-sun.jpg', cap: 'Out in the sun', alt: 'A member of the crew in a sun hat out among the plants' },
+  { src: '/farm/team-crate-carry.jpg', who: 'Setho Mokgadi', cap: 'in front, passing the crate', alt: 'Setho Mokgadi in the foreground passing a picking crate to a colleague between the rows' },
+  { src: '/farm/team-in-the-sun.jpg', who: 'Mophato Mokgadi', cap: 'holding one up to the lens', alt: 'Mophato Mokgadi in a sun hat and branded shirt among the plants, a tomato held close to the camera' },
   { src: '/farm/team-two-with-bags.jpg', cap: 'Two bags, ready to go', alt: 'Two of the crew holding up bags of tomatoes' },
-  { src: '/farm/team-three-in-row.jpg', cap: 'Three of the crew, in the row', alt: 'Three of the team standing together in a planted row' },
+  { src: '/farm/team-three-in-row.jpg', who: 'Sonny Mokgadi', cap: 'left, with his brothers', alt: 'Sonny Mokgadi on the left with his two brothers, standing together in a planted row' },
   { src: '/farm/team-in-the-rows.jpg', cap: 'Down among the plants', alt: 'Crew working low down among the tomato plants' },
   { src: '/farm/team-checking-crop.jpg', cap: 'Checking the crop', alt: 'A member of the crew checking plants along the row' },
 ];
@@ -59,12 +63,12 @@ const secondShots = [
   { src: '/farm/team-laying-beds.jpg', cap: 'Setting out the beds', alt: 'The crew shaping and setting out beds in the red soil' },
   { src: '/farm/team-setting-posts.jpg', cap: 'Setting the posts', alt: 'The crew setting a post and running a line along a new bed' },
   { src: '/farm/team-planting-out.jpg', cap: 'Planting out, bag by bag', alt: 'Planting out along a long row of grow bags' },
-  { src: '/farm/team-tractor-thirteen.jpg', cap: 'Thirteen on the back', alt: 'Climbing onto the tractor, the number 13 on the back of the overall' },
-  { src: '/farm/team-tractor-seat.jpg', cap: 'At the wheel', alt: 'A member of the crew at the wheel of the tractor' },
+  { src: '/farm/team-tractor-thirteen.jpg', who: 'Leiso Mokgadi', cap: 'climbing up, thirteen on the back', alt: 'Leiso Mokgadi climbing onto the tractor, the number 13 on the back of the overall' },
+  { src: '/farm/team-tractor-seat.jpg', who: 'Leiso Mokgadi', cap: 'at the wheel', alt: 'Leiso Mokgadi at the wheel of the tractor' },
   { src: '/farm/team-nursery-rows.jpg', cap: 'Working the nursery', alt: 'Working among rows of black grow bags under cover' },
   { src: '/farm/team-bag-rows.jpg', cap: 'Down the rows of bags', alt: 'Bending to the plants down a long row of grow bags' },
   { src: '/farm/team-tunnel-length.jpg', cap: 'The length of the tunnel', alt: 'Two people working at the far end of a planted tunnel' },
-  { src: '/farm/team-on-the-land.jpg', cap: 'Out on the land', alt: 'A member of the crew standing out in the veld' },
+  { src: '/farm/team-on-the-land.jpg', who: 'Setho Mokgadi', cap: 'out on the land', alt: 'Setho Mokgadi standing out in the veld in an #askfor13 top, holding the farm’s sun mark' },
   { src: '/farm/team-lea-stand.jpg', cap: 'At the Local Enterprise Authority stand', alt: 'Two people talking in front of a Local Enterprise Authority banner' },
 ];
 
@@ -73,7 +77,10 @@ const Shots = ({ shots }) => (
     {shots.map((shot, i) => (
       <Reveal key={shot.src} delay={(i % 3) * 0.06} variant="scale" className="team__shot">
         <Photo src={shot.src} alt={shot.alt} />
-        <span className="team__shot-cap">{shot.cap}</span>
+        <span className="team__shot-cap">
+          {shot.who && <b className="team__shot-who">{shot.who}</b>}
+          {shot.cap}
+        </span>
       </Reveal>
     ))}
   </div>

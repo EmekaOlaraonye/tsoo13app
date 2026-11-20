@@ -796,6 +796,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
 }
 
+/* The name leads, the work follows, so a reader can tell at a glance which
+   photographs have been confirmed and which are still described by what is
+   happening in them. */
+.team__shot-who {
+  display: block;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.12rem;
+}
+
 .team__cred {
   position: relative;
   padding: 1.4rem 1.5rem;
