@@ -119,7 +119,8 @@ const PUSHA = {
   category: 'Company updates',
   title: 'Pusha BW.',
   body: 'Every crate sold is a vote for a local grower, a local hustle, a local standard. Produced in Botswana, on borehole water, by people from the village it is grown in.',
-  image: '/farm/bags-crated.jpg',
+  image: '/farm/thato-portrait.jpg',
+  alt: 'Thato Mokgadi in the tunnel, secateurs in hand',
   color: 'var(--c-yellow)',
 };
 
