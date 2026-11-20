@@ -595,106 +595,135 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 #explore .card__title { min-height: 2.1em; }
 
 /* ---- Follow us -------------------------------------------------------
-   Three cards that were doing too much: a saturated fill, a coloured
-   handle and a coloured arrow each, all in different hues, next to each
-   other. Now the platform's colour appears once per card, on its own
-   glyph, and everything else is the site's own type and ink. */
-.follow__row {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
-}
+   Third attempt, and the first that stops treating these as adverts.
 
-.follow__row > * { height: 100%; }
+   They were three floating cards, each with a saturated bar across the top,
+   a coloured glyph and a coloured arrow — three competing hues side by side
+   on a pale ground, which is what made them look loud. The auto-fit grid
+   also broke to 2 + 1 at most widths, leaving an orphan.
 
-.follow__card {
-  position: relative;
-  height: 100%;
+   Now: one panel, divided into three. The platform's colour appears once,
+   on its own glyph, and again only as a faint wash under the column you are
+   pointing at. Everything else is the site's own ink and type, and each
+   column ends with the word for what pressing it does rather than a bare
+   arrow in the corner. */
+.follow__panel {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0 1rem;
-  align-items: start;
-  /* Cards share the tallest height, so without this the rows stretch and a
-     card with a one-line blurb spaces itself differently from its neighbours. */
-  align-content: start;
-  padding: 1.35rem 1.4rem;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--white);
-  border: 1px solid var(--line);
-  color: var(--ink);
   overflow: hidden;
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+  box-shadow: var(--shadow-sm);
 }
 
-/* A hairline of the platform's colour along the top, so the card is
-   identifiable before you have read a word of it. */
-.follow__card::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: var(--chan-fill, var(--c-red));
+/* Fixed three, never auto-fit: an orphan third column was the original
+   complaint and auto-fit is what produced it. */
+@media (min-width: 820px) {
+  .follow__panel { grid-template-columns: repeat(3, 1fr); }
 }
 
-.follow__card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--chan-ink, var(--c-red));
+.follow__chan {
+  position: relative;
+  display: grid;
+  align-content: start;
+  padding: clamp(1.35rem, 3vw, 1.85rem);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  transition: background-color 0.35s var(--ease);
 }
 
+.follow__chan:first-child { border-top: 0; }
+
+@media (min-width: 820px) {
+  .follow__chan { border-top: 0; border-left: 1px solid var(--line); }
+  .follow__chan:first-child { border-left: 0; }
+}
+
+.follow__chan:hover,
+.follow__chan:focus-visible { background: var(--chan-tint, var(--c-red-soft)); }
+
+/* The one piece of platform colour in the resting state. */
 .follow__icon {
-  grid-row: span 3;
-  width: 46px;
-  height: 46px;
-  border-radius: 13px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
   background: var(--chan-fill, var(--c-red));
   color: var(--white);
-  box-shadow: 0 8px 18px -10px var(--chan-shadow, rgba(0, 0, 0, 0.4));
+  margin-bottom: 1.05rem;
+  transition: transform 0.35s var(--ease);
 }
 
-.follow__text { display: contents; }
+.follow__chan:hover .follow__icon { transform: scale(1.06) rotate(-3deg); }
 
 .follow__label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
 
+/* The body face, not the display one: the handles were set in the italic
+   display face, where "@_13way_" and "+267 72706511" both read as ornament
+   rather than as something you could type into a phone. */
 .follow__handle {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.12rem;
-  line-height: 1.15;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: var(--ink);
   overflow-wrap: anywhere;
-  margin-top: 0.1rem;
+  margin-top: 0.3rem;
 }
 
 .follow__blurb {
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  margin-top: 0.5rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
   color: var(--ink-3);
 }
 
-.follow__arrow {
-  position: absolute;
-  top: 1.35rem;
-  right: 1.3rem;
-  display: flex;
-  color: var(--line-strong, var(--ink-3));
-  transition: color 0.3s var(--ease), transform 0.3s var(--ease);
+.follow__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.1rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--chan-ink, var(--c-red));
 }
 
-.follow__card:hover .follow__arrow { color: var(--chan-ink, var(--c-red)); transform: translate(2px, -2px); }
+.follow__go svg { transition: transform 0.3s var(--ease); }
+.follow__chan:hover .follow__go svg { transform: translateX(4px); }
 
-.follow__card--instagram { --chan-fill: var(--brand-instagram); --chan-ink: var(--brand-instagram-ink); --chan-shadow: rgba(214, 41, 118, 0.55); }
-.follow__card--facebook  { --chan-fill: var(--brand-facebook);  --chan-ink: var(--brand-facebook);      --chan-shadow: rgba(24, 119, 242, 0.5); }
-.follow__card--whatsapp  { --chan-fill: var(--brand-whatsapp);  --chan-ink: var(--brand-whatsapp-ink);  --chan-shadow: rgba(37, 211, 102, 0.5); }
+.follow__chan--instagram {
+  --chan-fill: var(--brand-instagram);
+  --chan-ink: var(--brand-instagram-ink);
+  --chan-tint: rgba(214, 41, 118, 0.055);
+}
+
+.follow__chan--facebook {
+  --chan-fill: var(--brand-facebook);
+  --chan-ink: var(--brand-facebook);
+  --chan-tint: rgba(24, 119, 242, 0.055);
+}
+
+.follow__chan--whatsapp {
+  --chan-fill: var(--brand-whatsapp);
+  --chan-ink: var(--brand-whatsapp-ink);
+  --chan-tint: rgba(37, 211, 102, 0.075);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .follow__chan:hover .follow__icon,
+  .follow__chan:hover .follow__go svg { transform: none; }
+}
 
 /* ---- The Team -------------------------------------------------------- */
 .team__lead {

@@ -56,6 +56,8 @@ const frames = [
   { src: '/farm/g-the-open-field.jpg', caption: 'The open field', shape: 'tall' },
   { src: '/farm/g-walking-open-rows.jpg', caption: 'Walking the open rows', shape: 'tall' },
   { src: '/farm/g-greens-open-field.jpg', caption: 'Greens in the open field', shape: 'tall' },
+  { src: '/farm/a-cabbage-rows.jpg', caption: 'Cabbages in the open field', shape: 'wide' },
+  { src: '/farm/a-vine-rows.jpg', caption: 'Vines out in the open', shape: 'wide' },
   { src: '/farm/g-white-flowers.jpg', caption: 'In flower', shape: 'wide' },
   { src: '/farm/g-in-flower.jpg', caption: 'Coming into flower', shape: 'tall' },
   { src: '/farm/g-lifted-out.jpg', caption: 'Lifted out of the ground', shape: 'tall' },
@@ -67,6 +69,7 @@ const frames = [
   { src: '/farm/in-the-veld.jpg', caption: 'Out on the land at Mookane', shape: 'tall' },
   { src: '/farm/g-across-the-yard.jpg', caption: 'Across the yard', shape: 'tall' },
   { src: '/farm/g-block-work.jpg', caption: 'The block work going up', shape: 'tall' },
+  { src: '/farm/a-solar-roof.jpg', caption: 'Solar on the roof', shape: 'wide' },
   { src: '/farm/g-on-the-stem.jpg', caption: 'On the stem', shape: 'tall' },
   { src: '/farm/g-under-the-tree.jpg', caption: 'Under the tree', shape: 'tall' },
 
@@ -183,6 +186,7 @@ const frames = [
   { src: '/farm/bags-crated.jpg', caption: 'Bagged and crated', shape: 'petal' },
   { src: '/farm/bags-stacked.jpg', caption: 'Stacked for the run', shape: 'leaf' },
   { src: '/farm/crate-of-bags.jpg', caption: 'A crate, ready', shape: 'petal' },
+  { src: '/farm/a-boxed-stacked.jpg', caption: 'Boxed and stacked', shape: 'tall' },
   { src: '/farm/crate-carried.jpg', caption: 'Out to the vehicle', shape: 'leaf' },
 
   // Out the gate, and what happens to it after. The shelf frames stay: they

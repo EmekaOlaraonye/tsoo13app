@@ -27,7 +27,8 @@ const channels = [
     label: 'Instagram',
     blurb: 'The raw footage, posted as it happens.',
     Icon: Instagram,
-    modifier: 'follow__card--instagram',
+    action: 'Follow',
+    modifier: 'follow__chan--instagram',
   },
   {
     key: 'facebook',
@@ -36,7 +37,8 @@ const channels = [
     label: 'Facebook',
     blurb: 'The longer posts, and the people who comment.',
     Icon: Facebook,
-    modifier: 'follow__card--facebook',
+    action: 'Follow',
+    modifier: 'follow__chan--facebook',
   },
   {
     key: 'whatsapp',
@@ -45,7 +47,8 @@ const channels = [
     label: 'WhatsApp',
     blurb: 'Straight through to the farm, no form in between.',
     Icon: WhatsApp,
-    modifier: 'follow__card--whatsapp',
+    action: 'Message us',
+    modifier: 'follow__chan--whatsapp',
   },
 ];
 
@@ -86,26 +89,32 @@ const FollowUs = ({ standalone = false }) => (
         </p>
       </Reveal>
 
-      <div className="follow__row">
-        {channels.map(({ key, url, handle, label, blurb, Icon, modifier }, i) => (
-          <Reveal key={key} delay={i * 0.07} variant="scale">
+      {/* One panel, three columns, rather than three cards floating apart.
+          Three separate cards meant three saturated colours competing on the
+          same pale background, and an auto-fit grid that broke to 2 + 1 at
+          most widths. Here the platform's colour appears once, on its own
+          glyph, and again only as a faint wash when you hover the column. */}
+      <Reveal variant="scale">
+        <div className="follow__panel">
+          {channels.map(({ key, url, handle, label, blurb, Icon, modifier, action }) => (
             <a
+              key={key}
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`follow__card ${modifier}`}
+              className={`follow__chan ${modifier}`}
             >
-              <span className="follow__icon"><Icon size={22} /></span>
-              <span className="follow__text">
-                <span className="follow__label">{label}</span>
-                <span className="follow__handle">{handle}</span>
-                <span className="follow__blurb">{blurb}</span>
+              <span className="follow__icon"><Icon size={20} /></span>
+              <span className="follow__label">{label}</span>
+              <span className="follow__handle">{handle}</span>
+              <span className="follow__blurb">{blurb}</span>
+              <span className="follow__go">
+                {action} <Arrow size={14} />
               </span>
-              <span className="follow__arrow" aria-hidden="true"><Arrow size={16} /></span>
             </a>
-          </Reveal>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Reveal>
 
       <div className="ig__grid" style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
         {posts.map((post, i) => (
