@@ -784,6 +784,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .team__shot img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 
+/* One photograph that sits on its own under the lead rather than in either
+   tile grid. It is a 4:3 frame and shows a group, so cropping it to the
+   upright 4:5 of a tile would cut half the people out of it. Capped in width
+   so it reads as a single picture under the text, not a banner. */
+.team__shot--wide {
+  max-width: 44rem;
+}
+
+.team__shot--wide img { aspect-ratio: 4 / 3; }
+
 .team__shot-cap {
   position: absolute;
   left: 0;

@@ -141,6 +141,28 @@ const TheTeam = () => (
         </div>
       </Reveal>
 
+      {/* Thato is named in the sentence above but is in none of the twenty
+          photographs in the team folder, so she had no face on this page.
+          This sits here rather than in either grid below on purpose: those
+          hold eight and twelve, which divide by both the two-column and the
+          four-column layouts, and a twenty-first tile would leave a ragged
+          row at every width. It is also the right place for it — directly
+          under the sentence that names her. */}
+      <Reveal
+        variant="scale"
+        className="team__shot team__shot--wide"
+        style={{ marginTop: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+      >
+        <Photo
+          src="/farm/thato-at-mookane.jpg"
+          alt="Thato Mokgadi talking a group of visitors through the open field at Mookane"
+        />
+        <span className="team__shot-cap">
+          <b className="team__shot-who">Thato Mokgadi</b>
+          walking visitors through the open field
+        </span>
+      </Reveal>
+
       <div style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
         <Shots shots={firstShots} />
       </div>
