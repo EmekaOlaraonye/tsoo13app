@@ -15,7 +15,8 @@ const CATEGORIES = ['All', 'Events', 'Company updates', 'Articles', 'Videos', 'I
 const stories = [
   {
     id: 'squaremart',
-    category: 'Events',
+    // Setho: "feels more like an update than event".
+    category: 'Company updates',
     date: 'June 2025',
     title: 'The first crates into Gaborone.',
     body: 'Gaborone asked, so we packed the crates and drove them in ourselves — the first time Tsoo...13 bags went to the city under their own number.',
@@ -23,13 +24,17 @@ const stories = [
     color: 'var(--c-red)',
   },
   {
-    id: 'cuttings',
-    category: 'Articles',
-    date: 'January 2025',
-    title: 'Cuttings over seeds.',
-    body: 'Losing a run of seedlings forced a new method: no seeds, just stems, roots and patience. They flowered faster than the parent plant.',
-    image: '/farm/planting-row.jpg',
-    color: 'var(--c-green-lt)',
+    id: 'aatv',
+    category: 'Videos',
+    title: 'Growing it on camera, for AATV.',
+    // Title and channel read off YouTube's own oEmbed record for the video,
+    // not from memory. No date is published on it, so none is claimed here.
+    body: 'AATV Farmers Voice gave the first episode of its hydroponics series to the question we get asked most — how to grow tomatoes in a hydroponic system.',
+    image: '/farm/rows-wide.jpg',
+    url: 'https://youtu.be/Ny7o_hPlS6Y',
+    source: 'AATV Farmers Voice',
+    verb: 'Watch it',
+    color: 'var(--c-red)',
   },
   {
     id: 'opendays',
@@ -41,14 +46,6 @@ const stories = [
     body: 'Once in a while the farm stops being only ours for a day. Other growers come out to Mookane and we walk them through the whole of it — hydroponics, the open field, the spraying programmes, the layout, and the pitfalls we have already paid for. A farmer’s best friend is another farmer.',
     image: '/farm/open-day-group.jpg',
     color: 'var(--c-lime)',
-  },
-  {
-    id: 'pusha',
-    category: 'Company updates',
-    title: 'Pusha BW.',
-    body: 'Every crate sold is a vote for a local grower, a local hustle, a local standard. Produced in Botswana, on borehole water, by people from the village it is grown in.',
-    image: '/farm/bags-crated.jpg',
-    color: 'var(--c-yellow)',
   },
   {
     id: 'monitor',
@@ -111,6 +108,20 @@ const stories = [
 ];
 
 /**
+ * Pusha BW closes the page, on Setho's instruction — it is the note to end
+ * on rather than one dispatch among the rest, so it sits outside `stories`
+ * and is appended after everything else, including the video cards.
+ */
+const PUSHA = {
+  id: 'pusha',
+  category: 'Company updates',
+  title: 'Pusha BW.',
+  body: 'Every crate sold is a vote for a local grower, a local hustle, a local standard. Produced in Botswana, on borehole water, by people from the village it is grown in.',
+  image: '/farm/bags-crated.jpg',
+  color: 'var(--c-yellow)',
+};
+
+/**
  * A story is a link only when it has a source of its own to go to, and then
  * the card names it. Everything else renders as plain card: no arrow, no
  * hover lift, no cursor — because the alternative was sending a reader who
@@ -147,21 +158,30 @@ const NewsCard = ({ item, index }) => {
         </span>
       </div>
       <div className="card__body">
-        <p className="eyebrow" style={{ '--eyebrow-dot': item.color }}>{item.date}</p>
+        {item.date && (
+          <p className="eyebrow" style={{ '--eyebrow-dot': item.color }}>{item.date}</p>
+        )}
         <h3 className="card__title">{item.title}</h3>
         <span className="card__rule" />
         <p className="body-sm">{item.body}</p>
-        {item.source && <p className="card__source">Read it at {item.source}</p>}
+        {item.source && (
+          <p className="card__source">{item.verb || 'Read it'} at {item.source}</p>
+        )}
       </div>
     </Tag>
   </Reveal>
   );
 };
 
-/** The video lives on the homepage film section — this card sends you there. */
+/**
+ * The film sits on the How it grows page. This card used to point at
+ * `/#film`, which stopped resolving the day the homepage was split and the
+ * film went with the growing story — the link landed at the top of the
+ * homepage and left you to find it.
+ */
 const VideoCard = () => (
   <Reveal className="is-lead">
-    <Link to="/#film" className="card" style={{ '--card-accent': 'var(--c-red)' }}>
+    <Link to="/grows#film" className="card" style={{ '--card-accent': 'var(--c-red)' }}>
       <div className="card__media">
         <Photo className="card__img" src={VIDEO.poster} alt="" />
         <span className="card__wash" aria-hidden="true" />
@@ -196,7 +216,7 @@ const VideoCard = () => (
         <h3 className="card__title">From bare beds to fruit.</h3>
         <span className="card__rule" />
         <p className="body-sm">
-          Fifty seconds at Mookane, start to finish — on the homepage.
+          Fifty seconds at Mookane, start to finish — on the How it grows page.
           {VIDEO.credit ? ` Footage by ${VIDEO.credit}.` : ''}
         </p>
       </div>
@@ -227,7 +247,7 @@ const InterviewCard = () => (
       style={{ '--card-accent': 'var(--c-yellow-ink)' }}
     >
       <div className="card__media">
-        <Photo className="card__img" src="/farm/pair-at-wall.jpg" alt="" />
+        <Photo className="card__img" src="/farm/tunnels-from-road.jpg" alt="" />
         <span className="card__wash" aria-hidden="true" />
         <span className="card__arrow" aria-hidden="true"><Arrow size={16} /></span>
         <span
@@ -263,6 +283,7 @@ const News = () => {
       ...stories,
       { id: 'video', category: 'Videos', kind: 'video' },
       { id: 'interview', category: 'Interviews', kind: 'interview' },
+      PUSHA,
     ];
     return active === 'All' ? all : all.filter((item) => item.category === active);
   }, [active]);

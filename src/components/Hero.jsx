@@ -110,8 +110,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.32, ease }}
             >
-              A young Botswana company. It started in the soil at Mookane —
-              it hasn&apos;t stood still since.
+              A young Botswana company — it started in the soil at Mookane,
+              our mother land — it hasn&apos;t stood still since.
             </motion.p>
 
           </motion.div>
@@ -129,9 +129,13 @@ const Hero = () => {
             <span className="blob blob--ring hero__dot hero__dot--b2" style={{ borderColor: 'var(--c-yellow)' }} />
 
             <div className="hero__frame">
+              {/* Setho's own pick, from the "home page" folder. The frame it
+                  replaced was green tomatoes in a bag on a tiled floor,
+                  indoors — this is ripe fruit, four legible 13s, shot
+                  outside on the back of the bakkie. */}
               <Photo
-                src="/farm/bag-in-hand.jpg"
-                alt="A bag of Tsoo...13 tomatoes, the 13 printed on the front"
+                src="/farm/bags-on-the-bakkie.jpg"
+                alt="Bags of ripe Tsoo...13 tomatoes loaded on the back of the bakkie, the 13 printed on each one"
                 className="hero__img"
                 eager
               />

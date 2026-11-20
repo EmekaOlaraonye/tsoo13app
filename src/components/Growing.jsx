@@ -66,13 +66,10 @@ const Growing = ({ standalone = false }) => (
         ))}
       </div>
 
-      <Reveal delay={0.2}>
-        <p className="body-sm" style={{ marginTop: '1.5rem', maxWidth: '58ch', color: 'var(--ink-3)' }}>
-          We have run it this way long enough to teach it. The 2021 open day was
-          advertised, in our own words, as a day on &ldquo;a working commercial
-          SMART Hydroponic and Open Field Farm&rdquo;.
-        </p>
-      </Reveal>
+      {/* The paragraph that used to sit under these four photographs ("we
+          have run it this way long enough to teach it...") came out on
+          Setho's instruction. The open-day story it carried is not lost —
+          it is the open-day entry on the News page, where it belongs. */}
     </div>
   </section>
 );

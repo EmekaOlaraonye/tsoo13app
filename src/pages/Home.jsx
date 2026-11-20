@@ -1,18 +1,19 @@
 import Hero from '../components/Hero';
 import WhoWeAre from '../components/WhoWeAre';
+import NextUp from '../components/NextUp';
 
 /**
- * The homepage is now short on purpose: arrive, find out who we are, and
- * leave by your own choice rather than being pushed somewhere on landing.
+ * The homepage, deliberately short.
  *
- * It ends at "we grow it, we move it, we build it". Everything that used to
- * follow — the growing, the film, and the Dive deeper grid — is on /grows,
- * and the follow strip is a page of its own.
+ * Hero, who we are, and the ways on. The growing story, the film and the
+ * "Dive deeper" grid all moved to /grows when Setho called this page too
+ * long. It ends at NextUp — nothing scrolls past it.
  */
 const Home = () => (
   <>
     <Hero />
     <WhoWeAre />
+    <NextUp />
   </>
 );
 

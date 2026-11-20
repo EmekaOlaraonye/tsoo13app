@@ -6,7 +6,7 @@ import { Tomato } from '../components/ui/Tomato';
 import { Arrow } from '../components/ui/Icons';
 
 /**
- * Anything that is not one of the seven routes lands here.
+ * Anything that is not one of the nine routes lands here.
  *
  * Before this existed a mistyped or stale URL rendered the navbar, the
  * footer and nothing in between — a blank page with no explanation and no
@@ -22,8 +22,8 @@ const everywhere = [
   { to: '/journey', label: 'The Journey', desc: 'Open field, then net, then tunnels, then the storm.', dot: 'var(--c-lime)' },
   { to: '/goods', label: 'The Goods', desc: 'What we grow and how to get hold of it.', dot: 'var(--c-red)' },
   { to: '/team', label: 'The Team', desc: 'Who grows it, packs it, drives it and sells it.', dot: 'var(--c-yellow)' },
-  { to: '/news', label: 'The News', desc: 'Press, open days and updates — each piece linked to its source.', dot: 'var(--c-green-lt)' },
-  { to: '/gallery', label: 'Gallery', desc: 'Every photograph, in the order it happened.', dot: 'var(--c-red)' },
+  { to: '/gallery', label: 'Gallery', desc: 'Every photograph and clip, in the order it happened.', dot: 'var(--c-red)' },
+  { to: '/news', label: 'The News', desc: 'Press, open days and appearances — each piece linked to its source.', dot: 'var(--c-green-lt)' },
   { to: '/follow', label: 'Follow Us', desc: 'Instagram, Facebook and WhatsApp.', dot: 'var(--c-yellow)' },
   { to: '/contact-us', label: 'Contact Us', desc: 'Phone, email, and where to find the farm.', dot: 'var(--c-lime)' },
 ];

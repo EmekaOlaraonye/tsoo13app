@@ -9,8 +9,12 @@ import Photo from './ui/Photo';
  * There is one crop here, not four. Every photograph in the set — the
  * trusses, the packhouse pile, the crates, the run into town — shows the same
  * large round tomato, so the old Cherry / Plum / Season's blend split was a
- * product line the farm does not have. These cards are the one tomato and the
- * ways it actually reaches someone.
+ * product line the farm does not have.
+ *
+ * Two cards, and they stop at the bag. The third used to invite people to
+ * come and buy at Mookane; Setho cut it, along with the selling step in the
+ * flow below, because the page should say what the thing is and how it
+ * reaches you, not sell it. The page ends on the flow.
  */
 const produce = [
   {
@@ -27,23 +31,11 @@ const produce = [
     id: 'bag',
     name: 'The 13 bag',
     tagline: 'Look for the number.',
-    desc: 'Produced in Botswana, borehole water used for irrigation — it says so on the front. Graded, bagged and picked by hand.',
+    desc: 'Produced in Botswana, borehole water used for irrigation — it says so on the front. Graded, bagged and packed by hand.',
     badge: 'Hand packed',
     image: '/farm/bag-in-hand.jpg',
     alt: 'A Tsoo...13 bag of tomatoes, the 13 printed across the front',
     color: 'var(--c-yellow)',
-  },
-  {
-    id: 'direct',
-    name: 'From the farm',
-    tagline: 'Closest to the source.',
-    desc: 'Come to Mookane Village and buy it where it grows, before it travels anywhere at all.',
-    badge: 'At Mookane',
-    // Not a third photograph of a bag: the card is about coming to Mookane,
-    // so it shows the place rather than the packaging again.
-    image: '/farm/farm-gate.jpg',
-    alt: 'The Tsoo...13 frontage at Mookane Village, the sun logo on the poles',
-    color: 'var(--c-green-lt)',
   },
 ];
 
@@ -125,13 +117,14 @@ const TheGoods = ({ standalone = false }) => (
             </p>
             <h3 className="display display--lg" style={{ color: 'var(--white)', maxWidth: '11ch' }}>
               Grown here.<br />Packed here.<br />
-              <span style={{ color: 'var(--c-yellow)' }}>Going somewhere.</span>
+              <span style={{ color: 'var(--c-yellow)' }}>Handed your way.</span>
             </h3>
           </div>
         </div>
       </Reveal>
 
-      <div className="grid grid--4">
+      {/* Two cards, so a four-up grid would leave two empty columns. */}
+      <div className="grid grid--2">
         {produce.map((item, i) => (
           <ProduceCard key={item.id} item={item} index={i} />
         ))}

@@ -10,8 +10,11 @@ const links = [
   { label: 'Journey', to: '/journey', dot: 'var(--c-lime)' },
   { label: 'Goods', to: '/goods', dot: 'var(--c-red)' },
   { label: 'Team', to: '/team', dot: 'var(--c-yellow)' },
-  { label: 'News', to: '/news', dot: 'var(--c-green-lt)' },
+  // Gallery before News so that the bar, the "Dive deeper" grid and the
+  // foot of the homepage all run in the same order, and all three end on
+  // News — which is where Setho asked the homepage to stop.
   { label: 'Gallery', to: '/gallery', dot: 'var(--c-red)' },
+  { label: 'News', to: '/news', dot: 'var(--c-green-lt)' },
 ];
 
 const sheetLinks = [

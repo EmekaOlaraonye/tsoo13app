@@ -9,7 +9,7 @@ const pillars = [
   {
     n: '01',
     title: 'We grow it',
-    body: 'Hydroponic, under cover and out of the soil — every plant in its own bag, fed by drip. Cuttings instead of seed. If the usual way stops working, we find another one.',
+    body: 'Hydroponic, under cover and out of the soil — every plant in its own bag, fed by drip. If the usual way stops working, we find another one.',
     image: '/farm/tunnel-mature.jpg',
     alt: 'Tomato plants growing in bags inside the tunnel',
     color: 'var(--c-lime)',
@@ -18,9 +18,9 @@ const pillars = [
   {
     n: '02',
     title: 'We move it',
-    body: 'Picked, packed and driven the hundred-odd kilometres in ourselves — no middle-man diluting the quality.',
-    image: '/farm/crate-of-bags.jpg',
-    alt: 'Bagged tomatoes crated and ready to move',
+    body: 'Picked, packed and driven in ourselves. Same day.',
+    image: '/farm/crate-carried.jpg',
+    alt: 'A crate of bagged tomatoes carried out to the vehicle',
     color: 'var(--c-red)',
     soft: 'var(--c-red-soft)',
   },
@@ -37,7 +37,7 @@ const pillars = [
 
 const stats = [
   { num: '13', label: 'The name people ask for', color: 'var(--c-red)' },
-  { num: '2021', label: 'Opening the gate to other farmers', color: 'var(--c-green-lt)' },
+  { num: '1', label: 'Farm where it all began', color: 'var(--c-green-lt)' },
   { num: '100%', label: 'Botswana grown', color: 'var(--c-lime-ink)' },
 ];
 
@@ -112,10 +112,12 @@ const WhoWeAre = () => (
       </div>
 
       <Reveal delay={0.2} style={{ marginTop: '2.5rem' }}>
-        {/* The homepage ends here. This is the only way on, and it goes
-            to the half of the old homepage that now lives on its own. */}
+        {/* One button, and it says where it goes. Setho's call: this should
+            push a first-time reader into the growing story rather than
+            offering them a vague prize ("what we've got to show for it",
+            which was also the old Wins page's line, and that page is gone). */}
         <Link to="/grows" className="btn btn--red">
-          What we&apos;ve got to show for it <Arrow size={16} />
+          See how it grows <Arrow size={16} />
         </Link>
       </Reveal>
     </div>
