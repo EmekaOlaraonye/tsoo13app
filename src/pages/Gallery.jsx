@@ -12,8 +12,15 @@ import { Instagram, Arrow, Plus, Play } from '../components/ui/Icons';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
 
 /**
- * Every frame here was taken at Mookane Village. Captions describe only what
- * is actually in the frame.
+ * Captions describe only what is actually in the frame.
+ *
+ * This used to open by saying every frame here was taken at Mookane Village,
+ * and the band at the foot of the page said the same thing. That stopped
+ * being true when the fifty photographs from Setho's gallery folder came in:
+ * a few of them are plainly somewhere else — a hillside with mountains behind
+ * it, which Mookane does not have. Rather than drop the photographs, which
+ * were asked for by name, the three places that made the claim now say what
+ * is actually true of the set.
  *
  * One roll, no chapters. This page used to be eleven titled sections with a
  * sticky index above them; Setho asked for the opposite — "exactly like a
@@ -312,7 +319,7 @@ const Gallery = () => {
           dot="var(--c-red)"
           variant="left"
           title={<>In the <span className="t-green">field</span>.</>}
-          lede={`${stills.length} photographs and ${clipCount} clips from Mookane Village, in the order it happened. Tap any frame to open it.`}
+          lede={`${stills.length} photographs and ${clipCount} clips, most of them at Mookane Village, in the order it happened. Tap any frame to open it.`}
         />
 
         {/* The year, first — Setho's call. It is the one thing on this page
@@ -354,7 +361,7 @@ const Gallery = () => {
           image="/farm/fruit-in-bags.jpg"
           alt="Tomato plants carrying fruit in grow bags inside the tunnels"
           kicker="Mookane Village"
-          line="Every frame on this page was taken on the farm."
+          line="Every frame on this page is ours."
         />
 
         <Reveal delay={0.15} style={{ textAlign: 'center', marginTop: '3rem' }}>
