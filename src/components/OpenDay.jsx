@@ -21,7 +21,7 @@ const shots = [
   {
     src: '/farm/open-day-flyer.jpg',
     caption: 'The invitation, November 2021',
-    alt: 'Poster reading A Day the Tsoo...13 Way, 20/11/2021, Mookane Village, hydroponics and open field',
+    alt: 'Poster reading A Day the TSOO...13 Way, 20/11/2021, Mookane Village, hydroponics and open field',
     whole: true,
   },
   {

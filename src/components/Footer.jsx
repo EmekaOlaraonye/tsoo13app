@@ -102,7 +102,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <p className="foot__word" aria-hidden="true">Tsoo...13</p>
+      <p className="foot__word" aria-hidden="true">TSOO...13</p>
 
       <hr style={{ height: 1, border: 0, background: 'rgba(255,255,255,.12)', margin: '2rem 0 1.25rem' }} />
 
@@ -116,7 +116,7 @@ const Footer = () => (
           color: 'rgba(255,255,255,.4)',
         }}
       >
-        <p>&copy; {new Date().getFullYear()} Tsoo...13 &middot; Mookane Village, Botswana</p>
+        <p>&copy; {new Date().getFullYear()} TSOO...13 &middot; Mookane Village, Botswana</p>
         <p>Home grown. Hand picked. Always reliable.</p>
       </div>
     </div>

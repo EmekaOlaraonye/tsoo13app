@@ -127,7 +127,7 @@ export const DELIVERY = {
     {
       src: '/farm/dispatch.jpg',
       caption: 'Crates off the bakkie at the receiving bay',
-      alt: 'Crates of Tsoo...13 bags on the back of the bakkie at a store receiving bay',
+      alt: 'Crates of TSOO...13 bags on the back of the bakkie at a store receiving bay',
     },
     {
       src: '/farm/crate-carried.jpg',

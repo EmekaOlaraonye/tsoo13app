@@ -30,9 +30,9 @@ const sheetLinks = [
  */
 export const Wordmark = ({ isHome = false }) =>
   isHome ? (
-    <img src={dotsThirteen} alt="Tsoo...13" className="nav__mark nav__mark--img nav__mark--img-13" />
+    <img src={dotsThirteen} alt="TSOO...13" className="nav__mark nav__mark--img nav__mark--img-13" />
   ) : (
-    <img src={logoMark} alt="Tsoo...13" className="nav__mark nav__mark--img" />
+    <img src={logoMark} alt="TSOO...13" className="nav__mark nav__mark--img" />
   );
 
 const Navbar = () => {
@@ -95,7 +95,7 @@ const Navbar = () => {
               homepage it stays quiet: you are already there. */}
           <Link
             to="/"
-            aria-label={isHome ? 'Tsoo...13 — back to the top' : 'Tsoo...13 — back to the home page'}
+            aria-label={isHome ? 'TSOO...13 — back to the top' : 'TSOO...13 — back to the home page'}
             onClick={handleHomeClick}
             className={`nav__home${isHome ? '' : ' nav__home--cta'}`}
           >

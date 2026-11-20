@@ -288,7 +288,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .btn--light:hover { background: var(--white); color: var(--ink); }
 
 /* Social brand marks — the one place on the site that borrows colour from
-   outside the Tsoo...13 palette, since these buttons are literally the
+   outside the TSOO...13 palette, since these buttons are literally the
    Facebook/Instagram identity. */
 /* The platforms' own colours, defined once. The follow cards used a flat
    magenta for Instagram while the footer used the real gradient, so the
@@ -720,11 +720,15 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
    rather than a set. */
 @media (min-width: 620px) {
   .team__skills { grid-template-columns: repeat(2, 1fr); }
-  .team__shots { grid-template-columns: repeat(3, 1fr); }
+  .team__shots { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 980px) {
   .team__skills { grid-template-columns: repeat(3, 1fr); }
+  /* Four across, because the two photo blocks hold eight and twelve frames
+     and both divide by four as well as by two. No ragged last row at any
+     width. */
+  .team__shots { grid-template-columns: repeat(4, 1fr); }
 }
 
 .team__skills .family__card { height: 100%; }
@@ -1387,7 +1391,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   z-index: 1;
 }
 
-/* The three drifting tomatoes standing in for the "..." in Tsoo...13.
+/* The three drifting tomatoes standing in for the "..." in TSOO...13.
    Declared above the max-width query on purpose, so the .hero__accent
    hide rule in there still wins once the layout goes single-column. */
 .hero__vine {

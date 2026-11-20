@@ -19,7 +19,7 @@ const stories = [
     category: 'Company updates',
     date: 'June 2025',
     title: 'The first crates into Gaborone.',
-    body: 'Gaborone asked, so we packed the crates and drove them in ourselves — the first time Tsoo...13 bags went to the city under their own number.',
+    body: 'Gaborone asked, so we packed the crates and drove them in ourselves — the first time TSOO...13 bags went to the city under their own number.',
     image: '/farm/crate-of-bags.jpg',
     color: 'var(--c-red)',
   },
@@ -55,7 +55,7 @@ const stories = [
     // rest of the piece is not ours to reprint.
     date: 'July 2021',
     title: '“Smart farming yields quality crops.”',
-    body: 'Pauline Dikuelo wrote the farm up in The Monitor on 12 July 2021, under the headline “Tsoo…13’s smart farming yields quality crops”. Smart farming is the future of agriculture because it yields better crops, the piece argued — and the duo behind Tsoo…13, Sonny and Thato Mokgadi, saw the potential and went that way.',
+    body: 'Pauline Dikuelo wrote the farm up in The Monitor on 12 July 2021, under the headline “Tsoo…13’s smart farming yields quality crops”. Smart farming is the future of agriculture because it yields better crops, the piece argued — and the duo behind TSOO…13, Sonny and Thato Mokgadi, saw the potential and went that way.',
     image: '/farm/tunnel-new-bags.jpg',
     url: 'https://www.pressreader.com/botswana/the-monitor-4753/20210712/281681142879941',
     source: 'The Monitor',
@@ -226,7 +226,7 @@ const VideoCard = () => (
 
 /**
  * UNCCD Podcast Series, episode 4, 12 February 2021. The UN Convention to
- * Combat Desertification interviewed Thato Mokgadi about starting Tsoo...13;
+ * Combat Desertification interviewed Thato Mokgadi about starting TSOO...13;
  * their page describes her as its founder. The page carries no audio player
  * of its own, so this links to the page rather than promising a stream.
  */
@@ -329,7 +329,7 @@ const News = () => {
 
         <Band
           image="/farm/roadside-stall.jpg"
-          alt="Crates of Tsoo...13 bags at a roadside stall in town"
+          alt="Crates of TSOO...13 bags at a roadside stall in town"
           kicker="Mookane Village"
           line="The number travels further than any logo."
           align="left"

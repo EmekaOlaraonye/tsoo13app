@@ -55,7 +55,7 @@ const steps = [
     year: '03',
     title: 'Then the\ngreenhouse tunnels.',
     line: 'Fully enclosed, and the best this farm has run — rows at full height, fruit the whole way down them.',
-    reveal: 'This was the peak. Plants standing in their own grow bags down the length of every house, the crop under cover from planting to picking, the packhouse busy, and Tsoo...13 bags leaving Mookane for market every week.',
+    reveal: 'This was the peak. Plants standing in their own grow bags down the length of every house, the crop under cover from planting to picking, the packhouse busy, and TSOO...13 bags leaving Mookane for market every week.',
     tags: ['Full enclosure', 'Peak season'],
     image: '/farm/fruit-in-bags.jpg',
     alt: 'Tomato plants heavy with fruit, each standing in its own grow bag down the row',

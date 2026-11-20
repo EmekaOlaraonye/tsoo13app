@@ -35,19 +35,37 @@ const skills = [
 ];
 
 /**
- * Captions say what someone is doing, not what they are called at work.
- * Split three and three, with the paragraph about the skills between them.
+ * All twenty photographs from the team folder, in two blocks with the
+ * paragraph about the skills between them.
+ *
+ * Captions say what someone is doing, not what they are called at work:
+ * the name-to-face list has not come through, and a wrong name under a face
+ * is worse than no name at all.
  */
 const firstShots = [
-  { src: '/farm/team-lineup.jpg', cap: 'The team at Mookane Village', alt: 'The Tsoo...13 team lined up at Mookane Village' },
-  { src: '/farm/two-smiling.jpg', cap: 'Out in the rows, mid-pick', alt: 'A young woman holding up a tomato in the rows, a colleague behind her' },
-  { src: '/farm/team-group.jpg', cap: 'The crew, before the heat', alt: 'The Tsoo...13 crew together at the start of the day' },
+  { src: '/farm/team-thirteen-backs.jpg', cap: 'Thirteen on every back', alt: 'The crew standing together, the number 13 printed on the back of every overall' },
+  { src: '/farm/team-outside-tunnel.jpg', cap: 'The crew, outside the tunnel', alt: 'The team gathered outside one of the greenhouse tunnels' },
+  { src: '/farm/team-crate-carry.jpg', cap: 'Crate in hand, mid-pick', alt: 'Two of the crew carrying a picking crate between the rows' },
+  { src: '/farm/team-in-the-sun.jpg', cap: 'Out in the sun', alt: 'A member of the crew in a sun hat out among the plants' },
+  { src: '/farm/team-two-with-bags.jpg', cap: 'Two bags, ready to go', alt: 'Two of the crew holding up bags of tomatoes' },
+  { src: '/farm/team-three-in-row.jpg', cap: 'Three of the crew, in the row', alt: 'Three of the team standing together in a planted row' },
+  { src: '/farm/team-in-the-rows.jpg', cap: 'Down among the plants', alt: 'Crew working low down among the tomato plants' },
+  { src: '/farm/team-checking-crop.jpg', cap: 'Checking the crop', alt: 'A member of the crew checking plants along the row' },
 ];
 
 const secondShots = [
-  { src: '/farm/gloved-work.jpg', cap: 'Working the stem by hand', alt: 'Gloved hands working a tomato stem' },
-  { src: '/farm/pipe-and-bags.jpg', cap: 'Setting the irrigation line', alt: 'Two people planning the irrigation line over newly laid grower bags' },
-  { src: '/farm/sorting-indoors.jpg', cap: 'Sorting and bagging under the shed', alt: 'Sorting and bagging tomatoes under the packing shed' },
+  { src: '/farm/team-ladder-pass.jpg', cap: 'Passing it up', alt: 'One person on a ladder taking a tool passed up by another' },
+  { src: '/farm/team-ladder-work.jpg', cap: 'Up the ladder, under the roof', alt: 'Working high up under the tunnel roof from a ladder' },
+  { src: '/farm/team-laying-beds.jpg', cap: 'Setting out the beds', alt: 'The crew shaping and setting out beds in the red soil' },
+  { src: '/farm/team-setting-posts.jpg', cap: 'Setting the posts', alt: 'The crew setting a post and running a line along a new bed' },
+  { src: '/farm/team-planting-out.jpg', cap: 'Planting out, bag by bag', alt: 'Planting out along a long row of grow bags' },
+  { src: '/farm/team-tractor-thirteen.jpg', cap: 'Thirteen on the back', alt: 'Climbing onto the tractor, the number 13 on the back of the overall' },
+  { src: '/farm/team-tractor-seat.jpg', cap: 'At the wheel', alt: 'A member of the crew at the wheel of the tractor' },
+  { src: '/farm/team-nursery-rows.jpg', cap: 'Working the nursery', alt: 'Working among rows of black grow bags under cover' },
+  { src: '/farm/team-bag-rows.jpg', cap: 'Down the rows of bags', alt: 'Bending to the plants down a long row of grow bags' },
+  { src: '/farm/team-tunnel-length.jpg', cap: 'The length of the tunnel', alt: 'Two people working at the far end of a planted tunnel' },
+  { src: '/farm/team-on-the-land.jpg', cap: 'Out on the land', alt: 'A member of the crew standing out in the veld' },
+  { src: '/farm/team-lea-stand.jpg', cap: 'At the Local Enterprise Authority stand', alt: 'Two people talking in front of a Local Enterprise Authority banner' },
 ];
 
 const Shots = ({ shots }) => (
@@ -97,7 +115,7 @@ const TheTeam = () => (
           </h2>
           <p className="lede" style={{ maxWidth: '52ch' }}>
             It starts long before harvest and does not end until it is on your
-            table. At Tsoo&hellip;13, every crate carries the effort of a whole
+            table. At TSOO&hellip;13, every crate carries the effort of a whole
             team &mdash; each doing their part so the rest can do theirs.
           </p>
           <p className="body-sm" style={{ maxWidth: '54ch', marginTop: '1.1rem' }}>

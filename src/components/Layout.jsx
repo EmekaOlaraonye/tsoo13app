@@ -21,15 +21,15 @@ const RouteFallback = () => (
  * part a truncated tab actually shows.
  */
 const TITLES = {
-  '/': 'Tsoo...13 — Farming. Creating. Growing.',
-  '/grows': 'How It Grows — Tsoo...13',
-  '/journey': 'The Journey — Tsoo...13',
-  '/follow': 'Follow Us — Tsoo...13',
-  '/goods': 'The Goods — Tsoo...13',
-  '/team': 'The Team — Tsoo...13',
-  '/news': 'The News — Tsoo...13',
-  '/gallery': 'Gallery — Tsoo...13',
-  '/contact-us': 'Contact Us — Tsoo...13',
+  '/': 'TSOO...13 — Farming. Creating. Growing.',
+  '/grows': 'How It Grows — TSOO...13',
+  '/journey': 'The Journey — TSOO...13',
+  '/follow': 'Follow Us — TSOO...13',
+  '/goods': 'The Goods — TSOO...13',
+  '/team': 'The Team — TSOO...13',
+  '/news': 'The News — TSOO...13',
+  '/gallery': 'Gallery — TSOO...13',
+  '/contact-us': 'Contact Us — TSOO...13',
 };
 
 const Layout = () => {
@@ -37,7 +37,7 @@ const Layout = () => {
 
   useEffect(() => {
     const clean = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
-    document.title = TITLES[clean] || 'Page not found — Tsoo...13';
+    document.title = TITLES[clean] || 'Page not found — TSOO...13';
   }, [pathname]);
 
   useEffect(() => {

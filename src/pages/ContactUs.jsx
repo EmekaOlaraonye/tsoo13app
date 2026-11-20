@@ -56,7 +56,7 @@ const ContactUs = () => {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: FORM_KEY,
-          subject: `Tsoo...13 website — ${interest}`,
+          subject: `TSOO...13 website — ${interest}`,
           from_name: form.name || 'Website enquiry',
           replyto: form.email,
           name: form.name,

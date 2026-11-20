@@ -33,10 +33,23 @@ const produce = [
     tagline: 'Look for the number.',
     desc: 'Produced in Botswana, borehole water used for irrigation — it says so on the front. Graded, bagged and packed by hand.',
     badge: 'Hand packed',
-    image: '/farm/bag-in-hand.jpg',
-    alt: 'A Tsoo...13 bag of tomatoes, the 13 printed across the front',
+    image: '/farm/goods-on-the-scale.jpg',
+    alt: 'A TSOO...13 bag of tomatoes on the scale, the weight showing',
     color: 'var(--c-yellow)',
   },
+];
+
+/**
+ * The rest of the goods folder, start to finish: the tray, the bag, the
+ * pile it comes off, and the chiller. The pile frame is the one file in
+ * that folder that was already on the site — it is in the gallery as
+ * bag-over-pile — so it is reused rather than published twice.
+ */
+const strip = [
+  { src: '/farm/goods-seedling-tray.jpg', cap: 'Lifted out of the tray', alt: 'A seedling lifted from a nursery tray' },
+  { src: '/farm/goods-young-bags.jpg', cap: 'One plant, one bag', alt: 'Young tomato plants, each in its own grow bag' },
+  { src: '/farm/bag-over-pile.jpg', cap: 'Straight off the pile', alt: 'A TSOO...13 bag held over a pile of loose tomatoes' },
+  { src: '/farm/goods-shelf-chiller.jpg', cap: 'Faced up in the chiller', alt: 'Bags of tomatoes faced up in a chilled display' },
 ];
 
 const ProduceCard = ({ item, index }) => (
@@ -99,7 +112,7 @@ const TheGoods = ({ standalone = false }) => (
       >
         <Photo
           src="/farm/dispatch.jpg"
-          alt="Crates of Tsoo...13 bags loaded on the bakkie, ready to go out"
+          alt="Crates of TSOO...13 bags loaded on the bakkie, ready to go out"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <span
@@ -127,6 +140,15 @@ const TheGoods = ({ standalone = false }) => (
       <div className="grid grid--2">
         {produce.map((item, i) => (
           <ProduceCard key={item.id} item={item} index={i} />
+        ))}
+      </div>
+
+      <div className="dlv__row dlv__row--four" style={{ marginTop: 'clamp(2.5rem, 5vw, 4rem)' }}>
+        {strip.map((shot, i) => (
+          <Reveal key={shot.src} variant="scale" delay={0.06 * i} className="dlv__tile">
+            <Photo src={shot.src} alt={shot.alt} />
+            <span className="dlv__cap">{shot.cap}</span>
+          </Reveal>
         ))}
       </div>
 

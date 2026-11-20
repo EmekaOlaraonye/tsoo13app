@@ -30,6 +30,16 @@ src/pictures/
 src/tsooarchive/
 src/patriot/
 
+# Photographs dropped in here a folder at a time, one folder per page.
+# They are full-size originals, around 205MB a set, and only the resized
+# derivatives in public/farm belong in git. Without these lines a routine
+# `git add -A` sweeps the lot into a commit, which is exactly what happened
+# on 20 November 2026.
+src/gallery/
+src/goods/
+src/team/
+src/home page/
+
 # Local secrets and keys
 .env.local
 .env

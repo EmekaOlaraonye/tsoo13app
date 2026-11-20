@@ -25,7 +25,7 @@ const badgeTones = [
 const ease = [0.16, 1, 0.3, 1];
 
 /**
- * The "..." of Tsoo...13, drawn as three tomatoes — the brand's two motifs
+ * The "..." of TSOO...13, drawn as three tomatoes — the brand's two motifs
  * folded into one mark. They drift on a stagger, so the gutter beside the
  * logo reads as a deliberate detail rather than a stray dot.
  */
@@ -89,14 +89,14 @@ const Hero = () => {
       <div className="wrap">
         {/* The homepage title is carried by the logo image, so the h1 every
             page needs lives here — read by crawlers and screen readers only. */}
-        <h1 className="sr-only">Tsoo...13 — farming, creating, growing in Mookane Village, Botswana</h1>
+        <h1 className="sr-only">TSOO...13 — farming, creating, growing in Mookane Village, Botswana</h1>
 
         <div className="hero__grid">
           {/* ---------- Left: the logo leads ---------- */}
           <motion.div className="hero__intro" style={{ y: contentY, opacity: fade }}>
             <motion.img
               src={logo}
-              alt="Tsoo...13"
+              alt="TSOO...13"
               className="hero__logo"
               initial={{ opacity: 0, scale: 0.92, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -135,7 +135,7 @@ const Hero = () => {
                   outside on the back of the bakkie. */}
               <Photo
                 src="/farm/bags-on-the-bakkie.jpg"
-                alt="Bags of ripe Tsoo...13 tomatoes loaded on the back of the bakkie, the 13 printed on each one"
+                alt="Bags of ripe TSOO...13 tomatoes loaded on the back of the bakkie, the 13 printed on each one"
                 className="hero__img"
                 eager
               />
