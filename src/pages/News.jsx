@@ -44,7 +44,8 @@ const stories = [
     date: 'November 2021',
     title: 'A Day the 13 Way: we open the gate.',
     body: 'Once in a while the farm stops being only ours for a day. Other growers come out to Mookane and we walk them through the whole of it — hydroponics, the open field, the spraying programmes, the layout, and the pitfalls we have already paid for. A farmer’s best friend is another farmer.',
-    image: '/farm/open-day-group.jpg',
+    image: '/farm/training-group.jpg',
+    alt: 'Visitors gathered around the irrigation line in the open field, being walked through it',
     color: 'var(--c-lime)',
   },
   {
@@ -89,7 +90,8 @@ const stories = [
     date: 'June 2021',
     title: 'On the programme at GLF Africa.',
     body: 'The Global Landscapes Forum listed Thato Mokgadi as a speaker at its Africa digital conference, Restoring Africa’s Drylands — billed, in their words, as a “Fashion Designer turned Agripreneur”.',
-    image: '/farm/in-the-veld.jpg',
+    image: '/farm/thato-at-mookane.jpg',
+    alt: 'Thato Mokgadi talking a group of visitors through the open field at Mookane',
     url: 'https://events.globallandscapesforum.org/speaker/thato-mokgadi/',
     source: 'Global Landscapes Forum',
     color: 'var(--c-lime)',
@@ -141,7 +143,7 @@ const NewsCard = ({ item, index }) => {
       style={{ '--card-accent': item.color }}
     >
       <div className="card__media">
-        <Photo className="card__img" src={item.image} alt="" />
+        <Photo className="card__img" src={item.image} alt={item.alt || ''} />
         <span className="card__wash" aria-hidden="true" />
         {item.url && <span className="card__arrow" aria-hidden="true"><Arrow size={16} /></span>}
         <span
