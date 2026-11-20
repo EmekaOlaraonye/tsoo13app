@@ -130,6 +130,14 @@ const TheTeam = () => (
             director, who sets the standard. We work to grow it right, pick it
             right and deliver it right, every single time.
           </p>
+          {/* Restored at Setho's request. It was dropped when the page was
+              rebuilt on the copy from the 5 November notes, which did not
+              carry it. "Three generations" is the Patriot on Sunday's own
+              line about this ground, not ours. */}
+          <p className="body-sm" style={{ maxWidth: '54ch', marginTop: '1rem' }}>
+            Alongside him: Leiso Mokgadi, Mokgacha Mokgadi and Thato Mokgadi.
+            Three generations have farmed this ground.
+          </p>
         </div>
       </Reveal>
 
