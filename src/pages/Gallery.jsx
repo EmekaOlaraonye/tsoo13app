@@ -38,18 +38,22 @@ import { INSTAGRAM_URL, INSTAGRAM_HANDLE } from '../siteConfig';
 const frames = [
   // Open ground, where it started.
   { src: '/farm/g-the-ground-as-it-was.jpg', caption: 'The ground as it was', shape: 'tall' },
+  { kind: 'video', src: '/film/clips/breaking-the-ground.mp4', poster: '/film/clips/breaking-the-ground.jpg', caption: 'Breaking the ground', shape: 'tall' },
   { src: '/farm/field-rows.jpg', caption: 'Rows straight into the ground', shape: 'wide' },
   { src: '/farm/field-late.jpg', caption: 'Open ground, late light', shape: 'wide' },
   { src: '/farm/g-on-the-hill.jpg', caption: 'Out on the hill', shape: 'tall' },
   { src: '/farm/field-leafy.jpg', caption: 'Leafy and coming on', shape: 'leaf' },
+  { kind: 'video', src: '/film/clips/tractor-turning.mp4', poster: '/film/clips/tractor-turning.jpg', caption: 'The tractor, turning the ground', shape: 'tall' },
   { src: '/farm/field-planted.jpg', caption: 'Out on the beds', shape: 'tall' },
   { src: '/farm/g-walking-the-ground.jpg', caption: 'A walk across the ground', shape: 'tall' },
   { src: '/farm/pipe-work.jpg', caption: 'Laying the irrigation by hand', shape: 'tall' },
   { src: '/farm/g-pipe-in-trench.jpg', caption: 'Pipe into the trench', shape: 'tall' },
+  { kind: 'video', src: '/film/clips/drip-down-the-row.mp4', poster: '/film/clips/drip-down-the-row.jpg', caption: 'The drip line, down the row', shape: 'tall' },
   { src: '/farm/g-laying-the-line.jpg', caption: 'Laying the line, backs bent', shape: 'wide' },
   { src: '/farm/pipe-delivery.jpg', caption: 'A kilometre of pipe, off the back of the bakkie', shape: 'tall' },
   { src: '/farm/g-fitting-the-line.jpg', caption: 'Fitting the main line', shape: 'tall' },
   { src: '/farm/g-raising-the-pole.jpg', caption: 'Raising the pole', shape: 'tall' },
+  { kind: 'video', src: '/film/clips/setting-the-pole.mp4', poster: '/film/clips/setting-the-pole.jpg', caption: 'Setting the pole', shape: 'tall' },
   { src: '/farm/g-laying-sheeting.jpg', caption: 'Laying the sheeting', shape: 'tall' },
   { src: '/farm/flood-channel.jpg', caption: 'The water that came through', shape: 'tall' },
   { src: '/farm/frost-fires.jpg', caption: 'Fires lit against the frost, before dawn', shape: 'wide' },
@@ -83,6 +87,7 @@ const frames = [
   { src: '/farm/tunnels-from-road.jpg', caption: 'Seen from the track', shape: 'wide' },
   { kind: 'video', src: '/film/clips/frame-going-up.mp4', poster: '/film/clips/frame-going-up.jpg', caption: 'Half-skinned, going up', shape: 'wide' },
   { src: '/farm/tunnel-edge.jpg', caption: 'Where the netting meets the veld', shape: 'leaf' },
+  { kind: 'video', src: '/film/clips/up-the-ladder.mp4', poster: '/film/clips/up-the-ladder.jpg', caption: 'Up the ladder, under the roof', shape: 'tall' },
   { src: '/farm/g-crew-outside-tunnel.jpg', caption: 'The crew outside the tunnel', shape: 'tall' },
   { src: '/farm/tunnel-frame.jpg', caption: 'Looking up at the frame', shape: 'leaf' },
   { src: '/farm/beds-empty.jpg', caption: 'Empty beds, waiting', shape: 'wide' },
@@ -103,6 +108,7 @@ const frames = [
   { src: '/farm/seedling-planted.jpg', caption: 'Into the bag it goes', shape: 'blob' },
   { src: '/farm/g-planted-by-hand.jpg', caption: 'Planted by hand', shape: 'tall' },
   { src: '/farm/root-ball.jpg', caption: 'What the roots look like', shape: 'petal' },
+  { kind: 'video', src: '/film/clips/seedling-into-bag.mp4', poster: '/film/clips/seedling-into-bag.jpg', caption: 'One seedling, one bag', shape: 'tall' },
   { src: '/farm/roots-gloved.jpg', caption: 'Pulled and checked', shape: 'leaf' },
   { src: '/farm/g-pulling-roots.jpg', caption: 'Pulling out the old roots', shape: 'tall' },
   { src: '/farm/root-ball-held.jpg', caption: 'A whole root ball', shape: 'round' },
@@ -117,36 +123,44 @@ const frames = [
   { src: '/farm/planting-row.jpg', caption: 'Working the line', shape: 'tall' },
   { src: '/farm/g-down-the-line.jpg', caption: 'Working down the line', shape: 'tall' },
   { src: '/farm/pipe-and-bags.jpg', caption: 'Pipe in, bags down', shape: 'leaf' },
+  { kind: 'video', src: '/film/clips/into-the-ground.mp4', poster: '/film/clips/into-the-ground.jpg', caption: 'Into the ground', shape: 'wide' },
   { src: '/farm/bags-young.jpg', caption: 'First leaves up', shape: 'petal' },
   { src: '/farm/rows-planted.jpg', caption: 'Planted and watered in', shape: 'leaf' },
+  { kind: 'video', src: '/film/clips/tying-the-line.mp4', poster: '/film/clips/tying-the-line.jpg', caption: 'Working the plants by hand', shape: 'tall' },
 
   // Growing on.
   { src: '/farm/rows-wide.jpg', caption: 'Row on row under cover', shape: 'wide' },
   { src: '/farm/rows-young.jpg', caption: 'Coming up', shape: 'leaf' },
+  { kind: 'video', src: '/film/clips/row-on-row.mp4', poster: '/film/clips/row-on-row.jpg', caption: 'Row on row, under cover', shape: 'tall' },
   { src: '/farm/g-down-the-row.jpg', caption: 'Down the row with the sprayer', shape: 'tall' },
   { src: '/farm/rows-receding.jpg', caption: 'All the way down', shape: 'petal' },
+  { kind: 'video', src: '/film/clips/sprayer-down-the-row.mp4', poster: '/film/clips/sprayer-down-the-row.jpg', caption: 'Down the row with the sprayer', shape: 'tall' },
   { src: '/farm/rows-avenue.jpg', caption: 'An avenue of plants', shape: 'leaf' },
   { src: '/farm/rows-staggered.jpg', caption: 'Staggered down the tunnel', shape: 'petal' },
   { kind: 'video', src: '/film/clips/row-of-fruit.mp4', poster: '/film/clips/row-of-fruit.jpg', caption: 'Down the row, fruit set', shape: 'tall' },
   { src: '/farm/tunnel-mature.jpg', caption: 'Full height', shape: 'tall' },
   { src: '/farm/g-the-length-of-it.jpg', caption: 'The length of it, in fruit', shape: 'tall' },
   { src: '/farm/fruit-in-bags.jpg', caption: 'Carrying fruit', shape: 'wide' },
+  { kind: 'video', src: '/film/clips/down-the-tunnel.mp4', poster: '/film/clips/down-the-tunnel.jpg', caption: 'Down the length of the tunnel', shape: 'tall' },
   { src: '/farm/plant-laden.jpg', caption: 'Loaded', shape: 'leaf' },
   { src: '/farm/g-among-the-plants.jpg', caption: 'In among the plants', shape: 'wide' },
   { src: '/farm/plant-full.jpg', caption: 'A plant in full', shape: 'petal' },
   { src: '/farm/truss-wall.jpg', caption: 'Trusses all the way up', shape: 'leaf' },
+  { kind: 'video', src: '/film/clips/high-in-the-rows.mp4', poster: '/film/clips/high-in-the-rows.jpg', caption: 'High in the rows', shape: 'tall' },
   { src: '/farm/rows-mature.jpg', caption: 'Shoulder height', shape: 'petal' },
   { src: '/farm/rows-fruiting.jpg', caption: 'Fruit down both sides', shape: 'leaf' },
   { kind: 'video', src: '/film/clips/walking-the-row.mp4', poster: '/film/clips/walking-the-row.jpg', caption: 'Walking it, end to end', shape: 'tall' },
   { src: '/farm/plant-in-tunnel.jpg', caption: 'One plant, full span', shape: 'tall' },
   { src: '/farm/g-the-reading.jpg', caption: 'The reading in the tunnel', shape: 'tall' },
   { src: '/farm/row-walk.jpg', caption: 'Walking the row', shape: 'petal' },
+  { kind: 'video', src: '/film/clips/walking-the-path.mp4', poster: '/film/clips/walking-the-path.jpg', caption: 'Walking the path between rows', shape: 'tall' },
 
   // Close enough to touch.
   { src: '/farm/green-truss-dew.jpg', caption: 'Still green, still wet', shape: 'round' },
   { src: '/farm/truss-closeup.jpg', caption: 'A truss up close', shape: 'blob' },
   { src: '/farm/g-truss-coming-on.jpg', caption: 'A truss coming on', shape: 'tall' },
   { src: '/farm/green-cluster.jpg', caption: 'Four on a stem', shape: 'round' },
+  { kind: 'video', src: '/film/clips/green-on-the-truss.mp4', poster: '/film/clips/green-on-the-truss.jpg', caption: 'Green on the truss', shape: 'tall' },
   { src: '/farm/fruit-forming.jpg', caption: 'Just set', shape: 'petal' },
   { src: '/farm/flower-truss.jpg', caption: 'Flowering', shape: 'round' },
   { src: '/farm/heavy-truss.jpg', caption: 'Weighing the stem down', shape: 'leaf' },
@@ -180,12 +194,15 @@ const frames = [
 
   // Picked and packed.
   { src: '/farm/harvesting.jpg', caption: 'Picking', shape: 'tall' },
+  { kind: 'video', src: '/film/clips/picking-in-the-row.mp4', poster: '/film/clips/picking-in-the-row.jpg', caption: 'Picking in the row', shape: 'tall' },
   { src: '/farm/sorting-indoors.jpg', caption: 'Sorting under the shed', shape: 'leaf' },
   { src: '/farm/bag-in-hand.jpg', caption: 'The 13 on the bag', shape: 'round' },
   { src: '/farm/bag-over-pile.jpg', caption: 'Straight off the pile', shape: 'blob' },
+  { kind: 'video', src: '/film/clips/sealing-the-bags.mp4', poster: '/film/clips/sealing-the-bags.jpg', caption: 'Sealing the bags', shape: 'tall' },
   { src: '/farm/bags-crated.jpg', caption: 'Bagged and crated', shape: 'petal' },
   { src: '/farm/bags-stacked.jpg', caption: 'Stacked for the run', shape: 'leaf' },
   { src: '/farm/crate-of-bags.jpg', caption: 'A crate, ready', shape: 'petal' },
+  { kind: 'video', src: '/film/clips/bags-in-the-crate.mp4', poster: '/film/clips/bags-in-the-crate.jpg', caption: 'Bags in the crate', shape: 'tall' },
   { src: '/farm/a-boxed-stacked.jpg', caption: 'Boxed and stacked', shape: 'tall' },
   { src: '/farm/crate-carried.jpg', caption: 'Out to the vehicle', shape: 'leaf' },
 
@@ -216,9 +233,14 @@ const frames = [
  * A clip from the 2025 footage, sitting in the wall beside the stills.
  *
  * Setho liked the clips but not the compilation they were cut into, so they
- * are spread through the roll instead. Each one is short, silent and
- * `preload="none"` behind its own poster frame, so a page of ninety
- * photographs does not also download seven videos nobody pressed.
+ * are spread through the roll instead, and the seventeen phone videos that
+ * came later were speed-ramped into the same eight-to-twelve-second shape and
+ * spread the same way. None sits next to another.
+ *
+ * Each is silent and `preload="none"` behind its own poster frame, so a page
+ * of a hundred and forty photographs does not also pull thirty megabytes of
+ * video nobody pressed. The audio is stripped at encode rather than muted in
+ * the markup, so there is no track to download either.
  */
 const ClipTile = ({ clip }) => {
   const videoRef = useRef(null);

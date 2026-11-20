@@ -7,7 +7,7 @@ import { Blob } from '../components/ui/Blobs';
 import { Tomato } from '../components/ui/Tomato';
 import Band from '../components/ui/Band';
 import { Arrow, Play } from '../components/ui/Icons';
-import { VIDEO } from '../siteConfig';
+import { VIDEO, MONTAGE, REEL } from '../siteConfig';
 import Photo from '../components/ui/Photo';
 
 const CATEGORIES = ['All', 'Events', 'Company updates', 'Articles', 'Videos', 'Interviews'];
@@ -247,7 +247,7 @@ const InterviewCard = () => (
       style={{ '--card-accent': 'var(--c-yellow-ink)' }}
     >
       <div className="card__media">
-        <Photo className="card__img" src="/farm/tunnels-from-road.jpg" alt="" />
+        <Photo className="card__img" src="/farm/unccd-episode-4.jpg" alt="" />
         <span className="card__wash" aria-hidden="true" />
         <span className="card__arrow" aria-hidden="true"><Arrow size={16} /></span>
         <span
@@ -275,6 +275,66 @@ const InterviewCard = () => (
   </Reveal>
 );
 
+/**
+ * The other two films. They play on the gallery, but nothing on the News
+ * page said so, which meant filtering to Videos turned up the 49-second
+ * film and the AATV episode and stopped there.
+ */
+const FILMS = [
+  {
+    id: 'montage',
+    to: '/gallery',
+    poster: MONTAGE.poster,
+    runtime: MONTAGE.runtime,
+    title: 'The whole year, in one run.',
+    body: `${MONTAGE.blurb} It opens the gallery.`,
+    color: 'var(--c-yellow-ink)',
+  },
+  {
+    id: 'reel',
+    to: '/gallery',
+    poster: REEL.poster,
+    runtime: REEL.runtime,
+    title: 'In motion, shot upright.',
+    body: `${REEL.blurb} Further down the gallery.`,
+    color: 'var(--c-green-lt)',
+  },
+];
+
+const FilmCard = ({ item }) => (
+  <Reveal>
+    <Link to={item.to} className="card" style={{ '--card-accent': item.color }}>
+      <div className="card__media">
+        <Photo className="card__img" src={item.poster} alt="" />
+        <span className="card__wash" aria-hidden="true" />
+        <span aria-hidden="true" style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center' }}>
+          <span style={{ width: 52, height: 52, borderRadius: '50%', background: 'rgba(255,255,255,.92)', display: 'grid', placeItems: 'center', color: item.color }}>
+            <Play size={20} />
+          </span>
+        </span>
+        <span
+          className="chip"
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            left: '1rem',
+            '--chip-bg': 'rgba(255,255,255,.92)',
+            '--chip-fg': 'var(--ink)',
+          }}
+        >
+          Videos
+        </span>
+      </div>
+      <div className="card__body">
+        <p className="eyebrow" style={{ '--eyebrow-dot': item.color }}>{item.runtime}</p>
+        <h3 className="card__title">{item.title}</h3>
+        <span className="card__rule" />
+        <p className="body-sm">{item.body}</p>
+      </div>
+    </Link>
+  </Reveal>
+);
+
 const News = () => {
   const [active, setActive] = useState('All');
 
@@ -282,6 +342,7 @@ const News = () => {
     const all = [
       ...stories,
       { id: 'video', category: 'Videos', kind: 'video' },
+      ...FILMS.map((f) => ({ ...f, category: 'Videos', kind: 'film' })),
       { id: 'interview', category: 'Interviews', kind: 'interview' },
       PUSHA,
     ];
@@ -338,6 +399,7 @@ const News = () => {
         <div className="news-grid" style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
           {items.map((item, i) => {
             if (item.kind === 'video') return <VideoCard key={item.id} />;
+            if (item.kind === 'film') return <FilmCard key={item.id} item={item} />;
             if (item.kind === 'interview') return <InterviewCard key={item.id} />;
             return <NewsCard key={item.id} item={item} index={i} />;
           })}
