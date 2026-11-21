@@ -1,6 +1,6 @@
 import { Suspense, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ToTop from './ui/ToTop';
@@ -34,6 +34,10 @@ const TITLES = {
 
 const Layout = () => {
   const { pathname, hash } = useLocation();
+  // Every page arrival travelled 12px up the screen, including for people who
+  // have asked the operating system for no motion. The fade stays — it is the
+  // part that says "new page" — and the travel goes.
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     const clean = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
@@ -75,9 +79,9 @@ const Layout = () => {
       <motion.main
         id="main"
         key={pathname}
-        initial={{ opacity: 0, y: 12 }}
+        initial={reduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+        transition={reduced ? { duration: 0.2 } : { duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
         <Suspense fallback={<RouteFallback />}>
           <Outlet />

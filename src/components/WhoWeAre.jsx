@@ -63,7 +63,9 @@ const PillarCard = ({ item, index }) => (
 const WhoWeAre = () => (
   <section className="section section--paper" id="who-we-are">
     <Blob color="soft-green" size={380} top={-140} left="-10%" />
-    <Blob color="red" size={13} top="16%" right="12%" />
+    {/* A 13px red dot used to sit at 16%/12%, which lands inside the lede —
+        it read as a stray bullet in the middle of a sentence. Nothing a dot
+        that small can add is worth that, so it is gone rather than nudged. */}
     <Blob color="lime" size={20} bottom="14%" left="7%" />
     <Tomato color="var(--c-green-lt)" size={130} top={40} right="6%" opacity={0.14} rotate={-12} outline />
 
@@ -90,11 +92,15 @@ const WhoWeAre = () => (
             the way we solve problems — is what we built on top of it.
           </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2.25rem', marginTop: '2rem' }}>
+          {/* Three figures in a hairline panel rather than loose in a flex
+              row. It is the same object as the skills chain, the follow
+              channels, the goods strip and the rebuild log — which is what
+              makes the homepage belong to the rest of the site. */}
+          <div className="who__stats">
             {stats.map((s) => (
-              <div key={s.label}>
+              <div key={s.label} className="who__stat">
                 <p className="stat__num" style={{ color: s.color }}>{s.num}</p>
-                <p className="stat__label" style={{ maxWidth: '14ch' }}>{s.label}</p>
+                <p className="stat__label">{s.label}</p>
               </div>
             ))}
           </div>

@@ -15,11 +15,22 @@ const taglines = [
   'youth run, Botswana built',
 ];
 
-const badgeTones = [
-  { bg: 'var(--c-red-soft)', fg: 'var(--c-red-deep)' },
-  { bg: 'var(--c-green-soft)', fg: 'var(--c-green)' },
-  { bg: 'var(--c-yellow-soft)', fg: 'var(--c-yellow-ink)' },
-  { bg: 'var(--c-lime-soft)', fg: 'var(--c-lime-ink)' },
+/**
+ * One pill, six times, outlined rather than filled.
+ *
+ * The row used to cycle four pastel fills, so six badges arrived in four
+ * colours directly under the logo — the one place on the page that should be
+ * quietest. The colour has not gone anywhere; it has moved to the tick, which
+ * still runs through the whole palette. Same amount of colour, a quarter of
+ * the noise, and the taglines read as one set instead of four.
+ */
+const tickTones = [
+  'var(--c-red)',
+  'var(--c-green-lt)',
+  'var(--c-yellow-ink)',
+  'var(--c-lime-ink)',
+  'var(--c-red-deep)',
+  'var(--c-green)',
 ];
 
 const ease = [0.16, 1, 0.3, 1];
@@ -188,19 +199,20 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.55, ease }}
         >
-          {taglines.map((text, i) => {
-            const tone = badgeTones[i % badgeTones.length];
-            return (
-              <span
-                key={text}
-                className="chip hero__badge"
-                style={{ '--chip-bg': tone.bg, '--chip-fg': tone.fg }}
-              >
-                <Check size={12} />
-                {text}
-              </span>
-            );
-          })}
+          {taglines.map((text, i) => (
+            <span
+              key={text}
+              className="chip hero__badge"
+              style={{
+                '--chip-bg': 'transparent',
+                '--chip-fg': 'var(--ink-2)',
+                '--tick': tickTones[i % tickTones.length],
+              }}
+            >
+              <Check size={12} />
+              {text}
+            </span>
+          ))}
         </motion.div>
       </div>
     </section>

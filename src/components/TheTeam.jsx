@@ -97,7 +97,7 @@ const TheTeam = () => (
         as="h1"
         eyebrow="From our family to yours"
         dot="var(--c-lime)"
-        color="var(--c-green)"
+        color="var(--c-yellow-ink)"
         variant="left"
         title={<>The <span className="t-red">team</span>.</>}
         lede="Different hands. Different skills. One team. Many moving parts, one shared standard."
@@ -173,7 +173,10 @@ const TheTeam = () => (
         <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
           What it takes
         </p>
-        <h2 className="display display--md" style={{ color: 'var(--c-red)', marginBottom: '1.1rem' }}>
+        {/* Green, like every other section head on the site. The page's own
+            colour is the amber on the h1 above; three different heading
+            colours down one page is the scatter this pass is undoing. */}
+        <h2 className="display display--md" style={{ color: 'var(--c-green)', marginBottom: '1.1rem' }}>
           More than green fingers.
         </h2>
         <p className="body" style={{ maxWidth: '62ch' }}>

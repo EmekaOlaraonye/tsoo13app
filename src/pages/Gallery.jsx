@@ -317,6 +317,7 @@ const Gallery = () => {
           as="h1"
           eyebrow="The journey, documented"
           dot="var(--c-red)"
+          color="var(--c-green-lt)"
           variant="left"
           title={<>In the <span className="t-green">field</span>.</>}
           lede={`${stills.length} photographs and ${clipCount} clips, most of them at Mookane Village, in the order it happened. Tap any frame to open it.`}

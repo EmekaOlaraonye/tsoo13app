@@ -241,11 +241,16 @@ const TheJourney = ({ standalone = false }) => {
           immune (its panels and media are each positioned), but the plain
           sections below it were not. Every other section does the same. */}
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
+        {/* Four of the six pages opened on the same deep green, so the palette
+            was doing nothing to tell them apart. Each page takes its own
+            heading colour now and the set covers the whole range: green on
+            grows and news, olive here, red on the goods, amber on the team,
+            the light green on the gallery. */}
         <SectionHead
           as={standalone ? 'h1' : 'h2'}
           eyebrow="The journey"
           dot="var(--c-lime)"
-          color="var(--c-green)"
+          color="var(--c-lime-ink)"
           variant="left"
           title={<>How we got <span className="t-red">from there</span> to here.</>}
           lede="Five stops, from one plot of open soil to a rebuild — by way of the afternoon it all came down."

@@ -35,7 +35,7 @@ const Footer = () => (
           <p style={{ color: 'var(--white)', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.6rem' }}>
             Botswana&apos;s home of fresh tomatoes.
           </p>
-          <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,.55)', maxWidth: '30ch' }}>
+          <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,.76)', maxWidth: '30ch' }}>
             Farming, creating, growing — out of Mookane Village, and not finished yet.
           </p>
 
@@ -47,7 +47,7 @@ const Footer = () => (
         </div>
 
         <nav aria-label="Contact details" style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.56)', marginBottom: '0.3rem' }}>
+          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.76)', marginBottom: '0.3rem' }}>
             Get in touch
           </p>
           <a href={`mailto:${SALES_EMAIL}`} className="foot__link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -67,7 +67,7 @@ const Footer = () => (
 
         {columns.map((col) => (
           <nav key={col.title} aria-label={col.title} style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.56)', marginBottom: '0.3rem' }}>
+            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.76)', marginBottom: '0.3rem' }}>
               {col.title}
             </p>
             {col.links.map((l) => (
@@ -77,7 +77,7 @@ const Footer = () => (
         ))}
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
-          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', color: 'rgba(255,255,255,.56)' }}>
+          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', color: 'rgba(255,255,255,.76)' }}>
             Follow
           </p>
           <a
@@ -104,7 +104,7 @@ const Footer = () => (
 
       <p className="foot__word" aria-hidden="true">TSOO...13</p>
 
-      <hr style={{ height: 1, border: 0, background: 'rgba(255,255,255,.12)', margin: '2rem 0 1.25rem' }} />
+      <hr style={{ height: 1, border: 0, background: 'rgba(255,255,255,.2)', margin: '2rem 0 1.25rem' }} />
 
       <div
         style={{
@@ -113,7 +113,7 @@ const Footer = () => (
           gap: '0.75rem',
           justifyContent: 'space-between',
           fontSize: '0.78rem',
-          color: 'rgba(255,255,255,.56)',
+          color: 'rgba(255,255,255,.76)',
         }}
       >
         <p>&copy; {new Date().getFullYear()} TSOO...13 &middot; Mookane Village, Botswana</p>
