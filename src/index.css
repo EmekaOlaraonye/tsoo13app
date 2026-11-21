@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Shrikhand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Outfit:wght@300..900&display=swap');
 
 /* ==========================================================================
    TSOO...13 — design system
@@ -39,15 +39,14 @@
   --line-strong: rgba(20, 21, 15, 0.16);
 
   /* Type */
-  /* Shrikhand stays. It is the brand's voice, and the alternatives tried
-     against it — Bricolage Grotesque, Funnel Display — all read cleaner and
-     completely anonymous. Nothing was gained that was worth the loss.
-     Outfit was the problem: a geometric sans with no particular opinion,
-     on every other site built in the last three years. Instrument Sans is
-     a little narrower, a little more editorial, and holds its shape at the
-     small sizes this site leans on — captions, labels, eyebrows, chips. */
+  /* Both of these were tested against alternatives and both were kept.
+     Shrikhand is the brand's voice — Bricolage Grotesque and Funnel Display
+     read cleaner against it and completely anonymous, which is not a trade
+     worth making. Outfit was swapped for Instrument Sans for one commit and
+     put back at Setho's call: the pairing is the one he has been looking at
+     all along and he prefers it. Leave them. */
   --font-display: 'Shrikhand', 'Arial Black', sans-serif;
-  --font-sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* The tomato silhouette, reused as a mask wherever the motif is wanted. */
   --tomato-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 22c9-9 21-11 27-6 4 3 4 8 0 12 10 2 18 11 18 24 0 20-19 36-45 36S5 72 5 52c0-13 8-22 18-24-4-4-4-9 0-12 6-5 18-3 27 6Z' fill='%23000'/%3E%3C/svg%3E");
@@ -3092,3 +3091,89 @@ textarea.input { resize: vertical; min-height: 130px; }
 }
 
 .hero__badge svg { color: var(--tick, var(--c-red)); }
+
+
+/* ==========================================================================
+   Team — the four confirmed faces
+   These used to sit among the other sixteen at the same size with the same
+   white caption burned over the bottom corner, which buried the one thing
+   this page has that almost no other farm's website does: names. They lead
+   now, and the name is set in the page's own ink under the frame — a caption
+   describes a photograph, but a name belongs to a person and should not have
+   to compete with a gradient to be read.
+   ========================================================================== */
+
+.team__people {
+  margin-top: 0.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Two then four. Four divides by both, so no short last row — and a fifth
+   face would want to come in as a whole new row of four, not as an orphan. */
+@media (min-width: 980px) { .team__people { grid-template-columns: repeat(4, 1fr); } }
+
+.team__person {
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.team__person:nth-child(-n + 2) { border-top: 0; }
+.team__person:nth-child(2n + 1) { border-left: 0; }
+
+@media (min-width: 980px) {
+  .team__person { border-top: 0; border-left: 1px solid var(--line); }
+  .team__person:first-child { border-left: 0; }
+}
+
+.team__face {
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--paper);
+  margin-bottom: 0.9rem;
+}
+
+.team__face img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+
+.team__person:hover .team__face img { transform: scale(1.04); }
+
+.team__name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.1vw, 1.15rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.team__role {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-yellow-ink);
+  margin-top: 0.3rem;
+}
+
+.team__where { font-size: 0.84rem; line-height: 1.45; color: var(--ink-3); margin-top: 0.35rem; }
+
+/* The archive at the foot of the page. Smaller frames and a tighter gap than
+   the four above, so a reader can tell the record from the introduction
+   without being told which is which. */
+.team__shots--sheet { gap: 0.7rem; }
+.team__shots--sheet .team__shot { border-radius: var(--r-md); }
+.team__shots--sheet .team__shot-cap { padding: 1.9rem 0.8rem 0.75rem; font-size: 0.78rem; }
+
+/* Square, where the four portraits above are 4:5. That is the whole of the
+   difference a reader needs: taller frames introduce people, shorter ones
+   are the record. It also takes about 500px off the foot of the page. */
+.team__shots--sheet .team__shot img { aspect-ratio: 1 / 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .team__face img { transition: none; }
+}
