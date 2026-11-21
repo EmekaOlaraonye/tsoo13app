@@ -164,7 +164,7 @@ const Hero = () => {
                 >
                   Ask for 13<br />by name.
                 </p>
-                <span className="chip" style={{ '--chip-bg': 'var(--c-red)', '--chip-fg': 'var(--white)' }}>
+                <span className="chip" style={{ '--chip-bg': 'var(--c-red-deep)', '--chip-fg': 'var(--white)' }}>
                   Grown in Botswana
                 </span>
               </div>

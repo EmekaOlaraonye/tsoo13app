@@ -27,9 +27,9 @@ const ProcessFlow = () => (
       <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
         Start to finish
       </p>
-      <h3 className="display display--md" style={{ color: 'var(--c-green)', marginBottom: '0.5rem' }}>
+      <h2 className="display display--md" style={{ color: 'var(--c-green)', marginBottom: '0.5rem' }}>
         How one tomato<br />gets to you.
-      </h3>
+      </h2>
     </Reveal>
 
     <div className="flow__grid">

@@ -32,6 +32,7 @@ const steps = [
     image: '/farm/field-rows.jpg',
     alt: 'Rows of tomatoes growing in the open field at Mookane',
     color: 'var(--c-lime)',
+    deep: 'var(--c-lime-ink)',
     soft: 'var(--c-lime-soft)',
     ink: true,
   },
@@ -46,6 +47,7 @@ const steps = [
     image: '/farm/net-grower-bag.jpg',
     alt: 'Tomatoes ripening under the black net, the plants running along long coco-coir grower bags',
     color: 'var(--c-yellow)',
+    deep: 'var(--c-yellow-ink)',
     soft: 'var(--c-yellow-soft)',
     ink: true,
   },
@@ -60,6 +62,7 @@ const steps = [
     image: '/farm/fruit-in-bags.jpg',
     alt: 'Tomato plants heavy with fruit, each standing in its own grow bag down the row',
     color: 'var(--c-red)',
+    deep: 'var(--c-red-deep)',
     soft: 'var(--c-red-soft)',
   },
   {
@@ -79,6 +82,7 @@ const steps = [
     clipRuntime: STORM.runtime,
     alt: 'Structures flattened across the yard in the rain',
     color: 'var(--c-green-lt)',
+    deep: 'var(--c-green)',
     soft: 'var(--c-green-soft)',
   },
   {
@@ -95,6 +99,7 @@ const steps = [
     // people on it are what the letterbox actually shows.
     focus: 'center 56%',
     color: 'var(--c-red)',
+    deep: 'var(--c-red-deep)',
     soft: 'var(--c-red-soft)',
   },
 ];
@@ -112,22 +117,26 @@ const Step = ({ step, index }) => {
   return (
     <Reveal
       className={`tl__step tl__step--${side} ${step.final ? 'tl__step--final' : ''}`}
-      style={{ '--step': step.color, '--step-soft': step.soft }}
+      style={{ '--step': step.color, '--step-deep': step.deep, '--step-soft': step.soft }}
       variant={step.final ? 'scale' : 'up'}
       delay={0.05}
     >
       <span className="tl__connector" aria-hidden="true" />
 
-      <span className="tl__node" style={{ color: step.ink ? 'var(--ink)' : 'var(--white)' }}>
+      {/* Always white. The numeral used to be dark ink on the two pale
+          steps, which was right while the node took --step; now that it takes
+          the deep variant for contrast, every node is dark and dark-on-dark
+          is what that conditional produced. */}
+      <span className="tl__node" style={{ color: 'var(--white)' }}>
         {step.year}
       </span>
 
       <div className="tl__panel">
         <p className="eyebrow" style={{ '--eyebrow-dot': step.color }}>{step.stage}</p>
         <p className="tl__year" aria-hidden="true">{step.year}</p>
-        <h3 className="display display--md" style={{ whiteSpace: 'pre-line', margin: '0.4rem 0 0.9rem' }}>
+        <h2 className="display display--md" style={{ whiteSpace: 'pre-line', margin: '0.4rem 0 0.9rem' }}>
           {step.title}
-        </h3>
+        </h2>
         <p className="lede" style={{ maxWidth: '32ch', fontSize: '1.02rem' }}>{step.line}</p>
         {/* In the panel rather than over the photograph: the reveal layer it
             used to sit in only appears on hover, which no touch screen has. */}
@@ -144,7 +153,7 @@ const Step = ({ step, index }) => {
               style={
                 step.final
                   ? { '--chip-bg': 'rgba(255,255,255,.2)', '--chip-fg': 'var(--white)' }
-                  : { '--chip-bg': step.soft, '--chip-fg': step.ink ? 'var(--ink-2)' : step.color }
+                  : { '--chip-bg': step.soft, '--chip-fg': step.ink ? 'var(--ink-2)' : step.deep }
               }
             >
               {tag}

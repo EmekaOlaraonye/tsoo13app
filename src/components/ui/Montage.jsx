@@ -25,7 +25,7 @@ const Montage = () => {
         <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow-ink)', marginBottom: '1rem' }}>
           2025, end to end
         </p>
-        <h3 className="display display--md reel__title">The whole year, in one run.</h3>
+        <h2 className="display display--md reel__title">The whole year, in one run.</h2>
         <p className="lede" style={{ marginTop: '1rem' }}>
           {MONTAGE.blurb}
         </p>

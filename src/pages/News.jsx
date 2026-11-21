@@ -130,6 +130,11 @@ const PUSHA = {
  * hover lift, no cursor — because the alternative was sending a reader who
  * clicked a 2016 newspaper clipping to an Instagram profile.
  */
+/**
+ * Card titles are h2, not h3. Every card here is a top-level item under the
+ * page's single h1, and starting at h3 meant the page skipped a level and
+ * offered no h2 for anyone navigating by heading.
+ */
 const NewsCard = ({ item, index }) => {
   const Tag = item.url ? 'a' : 'div';
   const linkProps = item.url
@@ -164,7 +169,7 @@ const NewsCard = ({ item, index }) => {
         {item.date && (
           <p className="eyebrow" style={{ '--eyebrow-dot': item.color }}>{item.date}</p>
         )}
-        <h3 className="card__title">{item.title}</h3>
+        <h2 className="card__title">{item.title}</h2>
         <span className="card__rule" />
         <p className="body-sm">{item.body}</p>
         {item.source && (
@@ -216,7 +221,7 @@ const VideoCard = () => (
       </div>
       <div className="card__body">
         <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)' }}>{VIDEO.runtime}</p>
-        <h3 className="card__title">From bare beds to fruit.</h3>
+        <h2 className="card__title">From bare beds to fruit.</h2>
         <span className="card__rule" />
         <p className="body-sm">
           Fifty seconds at Mookane, start to finish — on the How it grows page.
@@ -268,7 +273,7 @@ const InterviewCard = () => (
       </div>
       <div className="card__body">
         <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow-ink)' }}>{INTERVIEW.date}</p>
-        <h3 className="card__title">{INTERVIEW.title}</h3>
+        <h2 className="card__title">{INTERVIEW.title}</h2>
         <span className="card__rule" />
         <p className="body-sm">{INTERVIEW.body}</p>
         <p className="card__source">Read it at the UNCCD</p>
@@ -330,7 +335,7 @@ const FilmCard = ({ item }) => (
       </div>
       <div className="card__body">
         <p className="eyebrow" style={{ '--eyebrow-dot': item.color }}>{item.runtime}</p>
-        <h3 className="card__title">{item.title}</h3>
+        <h2 className="card__title">{item.title}</h2>
         <span className="card__rule" />
         <p className="body-sm">{item.body}</p>
       </div>

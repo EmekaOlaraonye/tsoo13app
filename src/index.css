@@ -9,14 +9,16 @@
 :root {
   /* Brand */
   --c-red: #E4691F;
-  --c-red-deep: #C0530E;
+  /* Carries white text on buttons and chips, and sits on --c-red-soft
+     in the hero badges. Both were under 4.5:1 at the old #C0530E. */
+  --c-red-deep: #B44E0D;
   --c-red-soft: #FDECDD;
   --c-red-muted: #E3854F;
   --c-yellow: #FDB71B;
-  --c-yellow-ink: #A5720A;
+  --c-yellow-ink: #966709;
   --c-yellow-soft: #FFF4DA;
   --c-lime: #BEC331;
-  --c-lime-ink: #6E7A16;
+  --c-lime-ink: #697515;
   --c-lime-soft: #F2F4DA;
   --c-green: #2B613D;
   --c-green-lt: #4E9A63;
@@ -27,7 +29,12 @@
   --paper: #FBFAF6;
   --ink: #14150F;
   --ink-2: #53564A;
-  --ink-3: #8B8E80;
+  /* Was #8B8E80: 3.34:1 on white, failing AA for the small text it carries
+     everywhere — eyebrows, captions, form labels, stat labels. Chosen to
+     clear 4.5:1 not just on white but on the paper tint and on every soft
+     blob colour, because the decorative blobs drift behind body text at
+     narrow widths and the real background there is not white. */
+  --ink-3: #6B6D62;
   --line: rgba(20, 21, 15, 0.10);
   --line-strong: rgba(20, 21, 15, 0.16);
 
@@ -269,8 +276,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .btn:hover svg { transform: translate(3px, -3px); }
 .btn:active { transform: translateY(0); }
 
-.btn--red { background: var(--c-red); color: var(--white); box-shadow: 0 12px 26px -14px var(--c-red); }
-.btn--red:hover { background: var(--c-red-deep); box-shadow: 0 18px 34px -14px var(--c-red); }
+/* White on --c-red is 3.31:1. The deep red is the same orange a shade
+   down and clears AA, so the most-clicked thing on the site is legible;
+   --c-red stays the graphic colour everywhere text is not sitting on it. */
+.btn--red { background: var(--c-red-deep); color: var(--white); box-shadow: 0 12px 26px -14px var(--c-red); }
+.btn--red:hover { background: #9C430B; box-shadow: 0 18px 34px -14px var(--c-red); }
 
 .btn--ink { background: var(--ink); color: var(--white); }
 .btn--ink:hover { background: var(--c-green); }
@@ -296,9 +306,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 :root {
   --brand-instagram: linear-gradient(45deg, #FEDA75 0%, #FA7E1E 22%, #D62976 45%, #962FBF 68%, #4F5BD5 100%);
   --brand-instagram-ink: #D62976;
-  --brand-facebook: #1877F2;
+  /* A shade under Facebook's #1877F2: white-on-brand was 4.23:1 and the
+     "Follow" label on white was the same. Indistinguishable by eye. */
+  --brand-facebook: #1769DB;
   --brand-whatsapp: #25D366;
-  --brand-whatsapp-ink: #128C7E;
+  --brand-whatsapp-ink: #0F7A6D;
 }
 
 .btn--facebook { background: var(--brand-facebook); color: var(--white); box-shadow: 0 12px 26px -14px rgba(24, 119, 242, 0.7); }
@@ -449,7 +461,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--card-accent, var(--c-red));
+  /* Was var(--card-accent): "Read it at Mmegi" came out in --c-yellow at
+     1.75:1 on white. The accent still marks the card everywhere else. */
+  color: var(--ink-2);
 }
 
 /* Keyboard users land on this before the navbar; it stays out of sight
@@ -1723,7 +1737,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   font-weight: 400;
   font-size: 0.95rem;
   color: var(--white);
-  background: var(--step, var(--c-red));
+  /* --step-deep, not --step: white numerals on the lighter brand colours
+     were as low as 1.9:1 on lime. The deep variant is the same hue. */
+  background: var(--step-deep, var(--step, var(--c-red)));
   box-shadow: 0 0 0 6px var(--white), 0 0 0 7px var(--line);
   z-index: 2;
   transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
@@ -1932,6 +1948,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   place-items: center;
   box-shadow: 0 18px 50px -18px rgba(216, 72, 31, 0.9);
   transition: transform 0.45s var(--ease), background-color 0.4s;
+  /* It is a <button> now rather than a span inside one, so it needs the
+     button reset and a focus ring of its own. */
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.vid__play:focus-visible {
+  outline: 3px solid var(--c-yellow);
+  outline-offset: 4px;
 }
 
 .vid:hover .vid__play { transform: scale(1.09); background: var(--c-red-deep); }

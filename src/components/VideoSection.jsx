@@ -101,19 +101,24 @@ const VideoSection = () => {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div
-            className="vid"
-            role="button"
-            tabIndex={0}
-            aria-label={`Play: ${VIDEO.title}`}
-            onClick={() => setOpen(true)}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(true); } }}
-          >
+          {/* The whole panel used to be a div with role="button" wrapped
+              around the runtime, the title and the location. An element's
+              accessible name has to contain its visible text (WCAG 2.5.3),
+              and no sensible label contains all three — so voice control had
+              nothing to say to it and a screen reader announced the lot as
+              one button. The panel is a panel again; the play control is a
+              real button with nothing inside it but an icon. */}
+          <div className="vid">
             <Photo className="vid__poster" src={VIDEO.poster} alt="" />
             <span className="vid__scrim" aria-hidden="true" />
-            <span className="vid__play" aria-hidden="true">
+            <button
+              type="button"
+              className="vid__play"
+              onClick={() => setOpen(true)}
+              aria-label={`Play the film, ${VIDEO.runtime}`}
+            >
               <Play size={30} />
-            </span>
+            </button>
 
             <div className="vid__meta">
               <div>

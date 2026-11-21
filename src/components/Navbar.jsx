@@ -103,7 +103,7 @@ const Navbar = () => {
             {!isHome && <span className="nav__home-hint" aria-hidden="true">Home</span>}
           </Link>
 
-          <nav className="nav__links">
+          <nav className="nav__links" aria-label="Main">
             {links.map((link) => (
               <NavLink
                 key={link.to}

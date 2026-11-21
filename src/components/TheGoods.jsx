@@ -26,6 +26,7 @@ const produce = [
     image: '/farm/ripening-in-hand.jpg',
     alt: 'A ripe tomato held on the truss, still attached to the plant',
     color: 'var(--c-red)',
+    chip: 'var(--c-red-deep)',
   },
   {
     id: 'bag',
@@ -36,6 +37,7 @@ const produce = [
     image: '/farm/goods-on-the-scale.jpg',
     alt: 'A TSOO...13 bag of tomatoes on the scale, the weight showing',
     color: 'var(--c-yellow)',
+    chip: 'var(--c-yellow-ink)',
   },
 ];
 
@@ -64,8 +66,8 @@ const ProduceCard = ({ item, index }) => (
             position: 'absolute',
             top: '1rem',
             left: '1rem',
-            '--chip-bg': item.color,
-            '--chip-fg': item.color === 'var(--c-yellow)' || item.color === 'var(--c-lime)' ? 'var(--ink)' : 'var(--white)',
+            '--chip-bg': item.chip,
+            '--chip-fg': 'var(--white)',
           }}
         >
           {item.badge}
@@ -132,10 +134,10 @@ const TheGoods = ({ standalone = false }) => (
             <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.75)', marginBottom: '1rem' }}>
               The product
             </p>
-            <h3 className="display display--lg" style={{ color: 'var(--white)', maxWidth: '16ch' }}>
+            <h2 className="display display--lg" style={{ color: 'var(--white)', maxWidth: '16ch' }}>
               Grown here.<br />Packed here.<br />
               <span style={{ color: 'var(--c-yellow)' }}>Handed your way.</span>
-            </h3>
+            </h2>
           </div>
         </div>
       </Reveal>

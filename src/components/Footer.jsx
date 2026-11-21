@@ -46,8 +46,8 @@ const Footer = () => (
           </div>
         </div>
 
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.42)', marginBottom: '0.3rem' }}>
+        <nav aria-label="Contact details" style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.56)', marginBottom: '0.3rem' }}>
             Get in touch
           </p>
           <a href={`mailto:${SALES_EMAIL}`} className="foot__link" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -66,8 +66,8 @@ const Footer = () => (
         </nav>
 
         {columns.map((col) => (
-          <nav key={col.title} style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.42)', marginBottom: '0.3rem' }}>
+          <nav key={col.title} aria-label={col.title} style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+            <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-yellow)', color: 'rgba(255,255,255,.56)', marginBottom: '0.3rem' }}>
               {col.title}
             </p>
             {col.links.map((l) => (
@@ -77,7 +77,7 @@ const Footer = () => (
         ))}
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
-          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', color: 'rgba(255,255,255,.42)' }}>
+          <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', color: 'rgba(255,255,255,.56)' }}>
             Follow
           </p>
           <a
@@ -113,7 +113,7 @@ const Footer = () => (
           gap: '0.75rem',
           justifyContent: 'space-between',
           fontSize: '0.78rem',
-          color: 'rgba(255,255,255,.4)',
+          color: 'rgba(255,255,255,.56)',
         }}
       >
         <p>&copy; {new Date().getFullYear()} TSOO...13 &middot; Mookane Village, Botswana</p>

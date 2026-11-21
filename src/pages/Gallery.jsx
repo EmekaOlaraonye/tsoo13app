@@ -344,7 +344,10 @@ const Gallery = () => {
                 onClick={(e) => openAt(frame.src, e.currentTarget)}
                 aria-label={`Open: ${frame.caption}`}
               >
-                <Photo src={frame.src} alt={frame.caption} eager={i < 2} />
+                {/* The caption is printed in the tile and is already the button's
+                    accessible name, so repeating it here made a screen reader
+                    say it twice. */}
+                <Photo src={frame.src} alt="" eager={i < 2} />
                 <span className="mosaic__cap">
                   {frame.caption}
                   <span className="mosaic__zoom" aria-hidden="true"><Plus size={13} /></span>
