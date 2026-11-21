@@ -27,7 +27,7 @@ export const DESTINATIONS = [
     nav: 'Journey',
     label: 'See how we got here',
     category: 'The story',
-    desc: 'Open field, then net, then tunnels, then the storm.',
+    desc: 'Open field, then net, then tunnels, then the storm — and the rebuild log.',
     color: 'var(--c-lime)',
   },
   {

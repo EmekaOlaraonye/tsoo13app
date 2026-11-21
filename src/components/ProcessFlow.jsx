@@ -22,7 +22,7 @@ const steps = [
 ];
 
 const ProcessFlow = () => (
-  <div className="flow" style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
+  <div className="flow">
     <Reveal>
       <p className="eyebrow" style={{ '--eyebrow-dot': 'var(--c-red)', marginBottom: '1rem' }}>
         Start to finish

@@ -1827,11 +1827,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   overflow: hidden;
   aspect-ratio: 16 / 11;
   box-shadow: var(--shadow-md);
-  cursor: pointer;
   display: block;
   width: 100%;
-  padding: 0;
-  text-align: left;
 }
 
 @media (min-width: 900px) { .tl__media { margin-top: 0; } }
@@ -1856,33 +1853,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 
 .tl__step:hover .tl__media-tint { opacity: 0; }
-
-.tl__reveal {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1.5rem 1.4rem 1.3rem;
-  background: linear-gradient(to top, rgba(20, 21, 15, 0.93), rgba(20, 21, 15, 0.55) 58%, transparent);
-  color: var(--white);
-  transform: translateY(16px);
-  opacity: 0;
-  transition: transform 0.55s var(--ease), opacity 0.45s var(--ease);
-}
-
-.tl__media:hover .tl__reveal,
-.tl__media:focus-visible .tl__reveal { transform: translateY(0); opacity: 1; }
-
-.tl__reveal p { font-size: 0.9rem; line-height: 1.55; }
-
-.tl__hint {
-  position: absolute;
-  top: 0.9rem;
-  right: 0.9rem;
-  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
-}
-
-.tl__media:hover .tl__hint { opacity: 0; transform: scale(0.85); }
 
 .tl__connector { display: none; }
 
@@ -2292,11 +2262,6 @@ textarea.input { resize: vertical; min-height: 130px; }
    ========================================================================== */
 
 @media (hover: none) {
-  .tl__reveal { transform: none; opacity: 1; }
-  .tl__hint { display: none; }
-  .tl__media-tint { opacity: 0; }
-  .tl__media { cursor: default; }
-
   .mosaic__cap { opacity: 1; }
   .ig__overlay { opacity: 1; background: linear-gradient(to top, rgba(20, 21, 15, 0.82), transparent 55%); }
 
@@ -2343,8 +2308,6 @@ textarea.input { resize: vertical; min-height: 130px; }
   .tl__rail { left: 16px; }
   .tl__node { width: 34px; height: 34px; font-size: 0.85rem; box-shadow: 0 0 0 5px var(--white), 0 0 0 6px var(--line); }
   .tl__year { font-size: 2.4rem; }
-  .tl__reveal { padding: 1.1rem 1rem 1rem; }
-  .tl__reveal p { font-size: 0.84rem; line-height: 1.5; }
 
   .vid__meta { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
   .vid__play { box-shadow: 0 12px 30px -14px rgba(216, 72, 31, 0.9); }
@@ -2807,4 +2770,255 @@ textarea.input { resize: vertical; min-height: 130px; }
 @media (min-width: 720px) {
   .nextup__row { grid-template-columns: auto 1fr auto auto; }
   .nextup__nav { display: block; }
+}
+
+/* ==========================================================================
+   The rebuild log
+   A dated record at the foot of the journey. Same panel-and-hairline idiom
+   as .chain and .follow__panel — one surface divided by rules, nothing
+   floating — because this is the third place on the site that lists a set of
+   equal things and they should all be recognisably the same object.
+   ========================================================================== */
+
+.log {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  /* Narrower than the wrap. The text column is capped at a readable measure,
+     so a full-width panel just puts 200px of nothing to the right of every
+     entry; this makes the short measure look chosen rather than left over. */
+  max-width: 62rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* The head row is doing real work: it is what lets a short log read as live
+   rather than abandoned. Without it, two entries look like a page someone
+   stopped writing. */
+.log__open {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.95rem clamp(1.3rem, 2.6vw, 1.9rem);
+  background: var(--c-green-soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.log__open strong {
+  color: var(--c-green);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.74rem;
+  margin-right: 0.15rem;
+}
+
+.log__pulse {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 99px;
+  background: var(--c-green-lt);
+  animation: log-pulse 2.8s var(--ease) infinite;
+}
+
+@keyframes log-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(78, 154, 99, 0.5); }
+  70% { box-shadow: 0 0 0 9px rgba(78, 154, 99, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(78, 154, 99, 0); }
+}
+
+.log__list { list-style: none; }
+
+.log__entry + .log__entry { border-top: 1px solid var(--line); }
+
+.log__inner {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.3rem, 2.6vw, 1.9rem);
+}
+
+/* Date, photograph, text — three columns, so the dates line up down the left
+   and the log can be read as a column of dates alone. */
+@media (min-width: 760px) {
+  .log__inner {
+    grid-template-columns: 6rem 180px 1fr;
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+    align-items: start;
+  }
+}
+
+.log__date {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--c-green);
+}
+
+/* Square on desktop. Every photograph the farm takes is portrait off a phone
+   and every slot on this site is landscape, so a square is the shape that
+   costs a portrait frame the least. */
+.log__media {
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--paper);
+}
+
+@media (min-width: 760px) { .log__media { aspect-ratio: 1 / 1; } }
+
+.log__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.log__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.08rem, 2.4vw, 1.28rem);
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.log__body { max-width: 58ch; }
+
+@media (prefers-reduced-motion: reduce) {
+  .log__pulse { animation: none; }
+}
+
+
+/* ==========================================================================
+   Goods — the caption strip
+   The page used to run three photograph grids back to back: two cards, then
+   four tiles, then the six-step flow. By the third the eye had stopped
+   reading and started treating them as wallpaper. This block is the middle
+   one, and it is deliberately the smallest and quietest of the three — a
+   panel of small squares with the caption set underneath rather than burned
+   over the picture, so the rhythm goes wide frame, pair, strip, band,
+   sequence instead of grid, grid, grid.
+   ========================================================================== */
+
+.goods__strip {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  /* Two across even on a phone. Stacked one-up, four square photographs ran
+     1500px down the screen and the quietest block on the page became the
+     longest thing on it. Two then four: four divides by both, so there is no
+     short last row at any width. */
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 900px) { .goods__strip { grid-template-columns: repeat(4, 1fr); } }
+
+.goods__cell {
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.goods__cell:nth-child(-n + 2) { border-top: 0; }
+.goods__cell:nth-child(2n + 1) { border-left: 0; }
+
+@media (min-width: 900px) {
+  .goods__cell { border-top: 0; }
+  .goods__cell:nth-child(2n + 1) { border-left: 1px solid var(--line); }
+  .goods__cell:first-child { border-left: 0; }
+}
+
+.goods__cell figure { margin: 0; }
+
+.goods__shot {
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: var(--paper);
+  margin-bottom: 0.85rem;
+}
+
+.goods__shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+
+.goods__cell:hover .goods__shot img { transform: scale(1.05); }
+
+.goods__cap {
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .goods__shot img { transition: none; }
+}
+
+
+/* ==========================================================================
+   Journey — the chapter disclosure
+   What used to be here: the long paragraph for each beat lived in a panel
+   that slid up over the photograph on hover. Three problems with that. A
+   touch screen has no hover, so the @media (hover: none) fallback simply
+   left the panel parked over the picture for good. The wrapper carrying it
+   was a div with tabIndex and role="group" whose accessible name was the
+   whole paragraph, which is not what an accessible name is for. And it hid
+   the longest piece of writing on the page behind a gesture.
+   Now it is an ordinary disclosure button in the panel, at every width, and
+   the photograph is just a photograph.
+   ========================================================================== */
+
+.tl__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding: 0;
+  background: none;
+  color: var(--step-deep, var(--c-green));
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: color 0.25s var(--ease);
+}
+
+.tl__more > span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+.tl__more:focus-visible { outline: 3px solid var(--c-yellow); outline-offset: 3px; border-radius: 4px; }
+
+/* The chevron turns rather than the label changing, so the control does not
+   change width when it is pressed. */
+.tl__more svg { transition: transform 0.3s var(--ease); }
+.tl__more[aria-expanded='true'] svg { transform: rotate(180deg); }
+
+.tl__chapter {
+  margin-top: 0.9rem;
+  padding: 1rem 1.15rem;
+  border-left: 3px solid var(--step, var(--c-red));
+  background: var(--paper);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  /* The panels on the left of the rail set their text right, which is right
+     for three words of lede and wrong for six lines of prose. */
+  text-align: left;
+}
+
+/* ...and on those panels the rule moves to the other edge, so it still reads
+   as hanging off the side the content is anchored to. */
+@media (min-width: 900px) {
+  .tl__step--left .tl__chapter {
+    border-left: 0;
+    border-right: 3px solid var(--step, var(--c-red));
+    border-radius: var(--r-sm) 0 0 var(--r-sm);
+  }
+  .tl__step--left .tl__chapter p { margin-left: auto; }
+}
+
+.tl__chapter p { font-size: 0.92rem; line-height: 1.62; color: var(--ink-2); max-width: 46ch; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tl__more, .tl__more svg { transition: none; }
 }

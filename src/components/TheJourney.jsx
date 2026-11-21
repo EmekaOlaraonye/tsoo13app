@@ -4,9 +4,10 @@ import Reveal from './ui/Reveal';
 import SectionHead from './ui/SectionHead';
 import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
-import { Plus, Play } from './ui/Icons';
+import { ChevronDown } from './ui/Icons';
 import Photo from './ui/Photo';
 import Band from './ui/Band';
+import RebuildLog from './RebuildLog';
 import { STORM } from '../siteConfig';
 
 /**
@@ -107,6 +108,7 @@ const steps = [
 const Step = ({ step, index }) => {
   const side = index % 2 === 0 ? 'left' : 'right';
   const [playing, setPlaying] = useState(false);
+  const [open, setOpen] = useState(false);
   const videoRef = useRef(null);
 
   const play = () => {
@@ -138,8 +140,33 @@ const Step = ({ step, index }) => {
           {step.title}
         </h2>
         <p className="lede" style={{ maxWidth: '32ch', fontSize: '1.02rem' }}>{step.line}</p>
-        {/* In the panel rather than over the photograph: the reveal layer it
-            used to sit in only appears on hover, which no touch screen has. */}
+
+        {/* The rest of the beat, on request. It used to slide up over the
+            photograph on hover, which meant a phone never saw it open and a
+            screen reader met it as the accessible name of a div. A plain
+            disclosure says the same thing to everybody.
+
+            The label stays put and the chevron turns, so the control does not
+            resize when pressed; aria-expanded carries the state. The stage
+            name is appended to the accessible name because six buttons all
+            called "Read the chapter" are no use in a list of buttons — and it
+            still contains the visible text, which WCAG 2.5.3 requires. */}
+        <button
+          type="button"
+          className="tl__more"
+          aria-expanded={open}
+          aria-controls={`${step.id}-chapter`}
+          aria-label={`Read the chapter: ${step.stage}`}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span>Read the chapter</span>
+          <ChevronDown size={15} />
+        </button>
+
+        <div className="tl__chapter" id={`${step.id}-chapter`} hidden={!open}>
+          <p>{step.reveal}</p>
+        </div>
+
         {step.clip && !playing && (
           <button type="button" className="tl__cliplink" onClick={play}>
             <span>{step.clipLabel}</span> <em>({step.clipRuntime})</em>
@@ -162,10 +189,10 @@ const Step = ({ step, index }) => {
         </div>
       </div>
 
-      {/* Hover (or focus) the photograph to open the rest of the chapter.
-          A step with a clip swaps the photograph for the film in place, so
-          the panel keeps its shape and its position in the story. */}
-      <div className="tl__media" tabIndex={playing ? -1 : 0} role="group" aria-label={`${step.stage} — ${step.reveal}`}>
+      {/* A photograph, and nothing else — no tab stop, no role, no text
+          hidden behind a gesture. A step with a clip swaps it for the film in
+          place, so the panel keeps its shape and its position in the story. */}
+      <div className="tl__media">
         {playing ? (
           <video
             ref={videoRef}
@@ -180,12 +207,6 @@ const Step = ({ step, index }) => {
           <>
             <Photo src={step.image} alt={step.alt} style={step.focus ? { objectPosition: step.focus } : undefined} />
             <span className="tl__media-tint" aria-hidden="true" />
-            <span className="chip chip--float tl__hint" aria-hidden="true">
-              {step.clip ? <><Play size={12} /> Clip</> : <><Plus size={13} /> More</>}
-            </span>
-            <div className="tl__reveal">
-              <p>{step.reveal}</p>
-            </div>
           </>
         )}
       </div>
@@ -242,6 +263,11 @@ const TheJourney = ({ standalone = false }) => {
 
       </div>
     </section>
+
+    {/* The journey's last stop is "now we build it back". This is that,
+        written down as it goes — so the story does not end on a sentence
+        about the present that will quietly go stale. */}
+    <RebuildLog />
 
     {/* Setho's ending: the line the whole page has been making, and stop.
         Everything that used to follow has moved — the flow to Goods, the

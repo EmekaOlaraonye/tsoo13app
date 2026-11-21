@@ -4,6 +4,7 @@ import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import ProcessFlow from './ProcessFlow';
 import Photo from './ui/Photo';
+import Band from './ui/Band';
 
 /**
  * There is one crop here, not four. Every photograph in the set — the
@@ -83,7 +84,15 @@ const ProduceCard = ({ item, index }) => (
   </Reveal>
 );
 
+/**
+ * The page ran three photograph grids straight down: two produce cards, then
+ * four tiles, then the six-step flow. Same rectangle, three times, and by the
+ * third one the eye had stopped reading. The order below varies the width and
+ * the count instead — one wide frame, a pair, a strip of small squares, a
+ * full-bleed break, then the sequence.
+ */
 const TheGoods = ({ standalone = false }) => (
+  <>
   <section id="goods" className={`section ${standalone ? 'section--top' : ''}`}>
     <Blob color="soft-red" size={420} top={-160} right="-12%" />
     <Blob color="lime" size={18} top="13%" left="58%" />
@@ -149,20 +158,43 @@ const TheGoods = ({ standalone = false }) => (
         ))}
       </div>
 
-      <div className="dlv__row dlv__row--four" style={{ marginTop: 'clamp(2.5rem, 5vw, 4rem)' }}>
+      {/* The quietest of the three blocks, on purpose: small squares, caption
+          set underneath in the page's own ink rather than burned white over
+          the picture. Four tall portrait tiles here read as a second set of
+          cards competing with the pair above them. */}
+      <div className="goods__strip">
         {strip.map((shot, i) => (
-          <Reveal key={shot.src} variant="scale" delay={0.06 * i} className="dlv__tile">
-            <Photo src={shot.src} alt={shot.alt} />
-            <span className="dlv__cap">{shot.cap}</span>
+          <Reveal key={shot.src} delay={(i % 4) * 0.06} className="goods__cell">
+            <figure>
+              <div className="goods__shot">
+                <Photo src={shot.src} alt={shot.alt} />
+              </div>
+              <figcaption className="goods__cap">{shot.cap}</figcaption>
+            </figure>
           </Reveal>
         ))}
       </div>
+    </div>
+  </section>
 
-      {/* Moved off the journey, which now ends at the band. This is the last
-          thing on the page by Setho's instruction — nothing follows it. */}
+  {/* One dark full-width moment between the two halves of the page, so the
+      flow below arrives as a new thought rather than as a fourth grid. */}
+  <Band
+    bleed
+    image="/farm/net-house-rows.jpg"
+    alt="Grower bags being laid out down the rows under the net house, several people working the length of it"
+    kicker="Mookane Village"
+    line="There is a hand on it at every stage."
+  />
+
+  {/* Moved off the journey, which now ends at the log. This is the last
+      thing on the page by Setho's instruction — nothing follows it. */}
+  <section className="section section--paper">
+    <div className="wrap">
       <ProcessFlow />
     </div>
   </section>
+  </>
 );
 
 export default TheGoods;
