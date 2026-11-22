@@ -88,17 +88,21 @@ const steps = [
   },
   {
     id: 'rebuild',
-    stage: 'Rebuilding',
+    // Rewritten 22 November 2026, when Setho said the build is finished.
+    // This beat was written in the present tense — "the whole of the work,
+    // right now", "nothing to pick, pack or sell right now" — which is the
+    // kind of copy that quietly turns into a lie the moment the thing it
+    // describes is over. It stops at the build being done: the houses are up
+    // and skinned. It does not say the farm is selling again, because nobody
+    // has told me that and the photograph cannot.
+    stage: 'Rebuilt',
     year: '05',
-    title: 'Now we\nbuild it back.',
-    line: 'Frames back up, houses re-skinned, bags relaid. The whole of the work, right now.',
-    reveal: 'There is nothing to pick, pack or sell right now — this is the rebuild, and it is the whole of the work. Frames back up, houses re-skinned, bags relaid. Everything learned out in the field, under the net and inside the tunnels goes into what gets built this time.',
-    tags: ['Rebuilding', 'In progress'],
-    image: '/farm/tunnel-frame.jpg',
-    alt: 'A new tunnel frame going up, a finished house standing behind it',
-    // Two thirds of this frame is sky; sit low so the steelwork and the
-    // people on it are what the letterbox actually shows.
-    focus: 'center 56%',
+    title: 'And we\nbuilt it back.',
+    line: 'Frames back up, houses re-skinned, bags relaid. The houses are standing again.',
+    reveal: 'Everything learned out in the open field, under the net and inside the tunnels went into what got built this time. The frames are up, the houses are re-skinned and the bags are back down the rows. The build is finished.',
+    tags: ['The rebuild', 'Finished'],
+    image: '/farm/tunnels-exterior.jpg',
+    alt: 'Three finished greenhouse houses standing re-skinned at Mookane, new pipework trenched in across the ground in front of them',
     color: 'var(--c-red)',
     deep: 'var(--c-red-deep)',
     soft: 'var(--c-red-soft)',
@@ -253,7 +257,7 @@ const TheJourney = ({ standalone = false }) => {
           color="var(--c-lime-ink)"
           variant="left"
           title={<>How we got <span className="t-red">from there</span> to here.</>}
-          lede="Five stops, from one plot of open soil to a rebuild — by way of the afternoon it all came down."
+          lede="Five stops, from one plot of open soil to the houses standing again — by way of the afternoon it all came down."
         />
 
         <div className="tl" ref={railRef}>
@@ -277,10 +281,21 @@ const TheJourney = ({ standalone = false }) => {
     {/* Setho's ending: the line the whole page has been making, and stop.
         Everything that used to follow has moved — the flow to Goods, the
         family to the Team page, the 2025 montage to the gallery — or gone. */}
+    {/* Back to rows-avenue at Setho's call, and he is right.
+        I swapped it for field-rows.jpg on the arithmetic — the band slot is
+        about 2.9:1 and this frame is 1050x1400, so three quarters of it is
+        cropped away. What the arithmetic missed is that this photograph is
+        composed down a central avenue, so what survives the crop is exactly
+        the subject: the path, the rows either side, the people working them.
+        field-rows.jpg loses nothing to the crop and has nothing to lose — it
+        is two thirds sky over bare stakes, and it is already the photograph
+        on step 01 of this same page, so the band repeated it.
+        Crop maths tells you how much of a frame you keep. It does not tell
+        you whether the part you keep is the part worth having. */}
     <Band
       bleed
-      image="/farm/field-rows.jpg"
-      alt="Rows running straight into the open ground at Mookane"
+      image="/farm/rows-avenue.jpg"
+      alt="Looking down the rows inside a tunnel, three people working"
       kicker="Mookane Village"
       line="Open ground, then net, then tunnels. The tomato never changed."
     />

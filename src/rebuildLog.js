@@ -28,18 +28,36 @@
  * whole value of the log is that a reader can trust every line of it, and one
  * optimistic entry would cost that for all the rest.
  *
- * The two entries below are the two the farm can stand behind today, both
- * drawn from copy already on the Journey page. Everything after them wants
- * Setho's own dates and photographs.
+ * The three entries below are what the farm can stand behind today. The
+ * first went in on 22 November 2026, when Setho said the build was finished
+ * and sent the photograph of the three houses standing. It stops there: the
+ * build is done. It does not say the farm is selling again, because nobody
+ * has said so and the photograph cannot.
+ *
+ * What this log still wants is dates. "Now" and "Before that" are honest
+ * about being positions in a sequence rather than days, but the day the
+ * build was signed off would be the strongest line on the site.
  */
 
 export const ENTRIES = [
   {
-    id: 'rebuilding',
+    id: 'finished',
     date: 'Now',
+    title: 'The houses are standing again.',
+    body:
+      'The build is finished. Frames up, houses re-skinned, bags back down the rows, and the new water lines trenched in across the ground in front of them. Everything learned out in the open field, under the net and inside the tunnels went into what got built this time.',
+    image: '/farm/tunnels-exterior.jpg',
+    alt: 'Three finished greenhouse houses standing re-skinned at Mookane, new pipework trenched in across the ground in front of them',
+  },
+  {
+    id: 'rebuilding',
+    // Not a date, because nobody has given me one. It is honest about being
+    // a position in the sequence rather than a day, which is better than a
+    // month I guessed at. Replace it the moment Setho says when.
+    date: 'Before that',
     title: 'Frames back up, houses re-skinned.',
     body:
-      'There is nothing to pick, pack or sell this season. The rebuild is the whole of the work — frames back up, houses re-skinned, bags relaid — and everything learned out in the field, under the net and inside the tunnels goes into what gets built this time.',
+      'The rebuild was the whole of the work — nothing to pick, nothing to pack, nothing to sell. Frames back up, houses re-skinned, bags relaid, one house at a time.',
     image: '/farm/tunnel-frame.jpg',
     alt: 'A new tunnel frame going up, a finished house standing behind it',
     // Two thirds of this frame is sky. Optional on any entry: pass an

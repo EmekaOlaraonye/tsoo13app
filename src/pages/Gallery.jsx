@@ -66,6 +66,12 @@ const frames = [
   { src: '/farm/frost-fires.jpg', caption: 'Fires lit against the frost, before dawn', shape: 'wide' },
   { src: '/farm/g-the-open-field.jpg', caption: 'The open field', shape: 'tall' },
   { src: '/farm/g-walking-open-rows.jpg', caption: 'Walking the open rows', shape: 'tall' },
+  // Setho asked for this one on 22 November 2026 — he had not sent it, and it
+  // was sitting unpublished in the gallery drop as IMG_8419, from the same
+  // morning as the two frames either side of it. Caption says what is in the
+  // frame and no more: a crop in flower under the net. It is not a tomato
+  // crop and must not be captioned as one.
+  { src: '/farm/g-under-the-net.jpg', caption: 'Under the net, the whole house in flower', shape: 'tall' },
   { src: '/farm/g-greens-open-field.jpg', caption: 'Greens in the open field', shape: 'tall' },
   { src: '/farm/a-cabbage-rows.jpg', caption: 'Cabbages in the open field', shape: 'wide' },
   { src: '/farm/a-vine-rows.jpg', caption: 'Vines out in the open', shape: 'wide' },
