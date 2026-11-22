@@ -6,8 +6,6 @@ import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import { ChevronDown } from './ui/Icons';
 import Photo from './ui/Photo';
-import Band from './ui/Band';
-import RebuildLog from './RebuildLog';
 import { STORM } from '../siteConfig';
 
 /**
@@ -60,15 +58,8 @@ const steps = [
     line: 'Fully enclosed, and the best this farm has run — rows at full height, fruit the whole way down them.',
     reveal: 'This was the peak. Plants standing in their own grow bags down the length of every house, the crop under cover from planting to picking, the packhouse busy, and TSOO...13 bags leaving Mookane for market every week.',
     tags: ['Full enclosure', 'Peak season'],
-    // Back to tunnel-mature, which is the frame 4b94b1b chose on purpose —
-    // "Put the tunnel in the tunnel beat" — and which stood here until I
-    // swapped it for fruit-in-bags in cb7d2e5 without being asked to. The
-    // swap was wrong on the plain reading: this beat is about full
-    // enclosure, and fruit-in-bags is a close-up of fruit and grow bags with
-    // no structure anywhere in it. You cannot illustrate "fully enclosed"
-    // with a photograph that contains no enclosure.
-    image: '/farm/tunnel-mature.jpg',
-    alt: 'Inside a greenhouse tunnel at Mookane, the frame and sheeting overhead and the crop in full canopy the length of the house',
+    image: '/farm/fruit-in-bags.jpg',
+    alt: 'Tomato plants heavy with fruit, each standing in its own grow bag down the row',
     color: 'var(--c-red)',
     deep: 'var(--c-red-deep)',
     soft: 'var(--c-red-soft)',
@@ -108,8 +99,28 @@ const steps = [
     line: 'Frames back up, houses re-skinned, bags relaid. The houses are standing again.',
     reveal: 'Everything learned out in the open field, under the net and inside the tunnels went into what got built this time. The frames are up, the houses are re-skinned and the bags are back down the rows. The build is finished.',
     tags: ['The rebuild', 'Finished'],
-    image: '/farm/tunnels-exterior.jpg',
-    alt: 'Three finished greenhouse houses standing re-skinned at Mookane, new pipework trenched in across the ground in front of them',
+    // Back to tunnel-frame, the photograph that stood on this beat from
+    // cfd7ebb until I replaced it on 22 November. Setho: "I liked the
+    // initial photo, that's why I didn't complain about it."
+    //
+    // Worth knowing, because it is a real tension and his call either way:
+    // this frame is a bare steel skeleton on red soil with no sheeting on
+    // it, and the words beside it now say the houses are standing again and
+    // the build is finished. The photograph that shows that is
+    // tunnels-exterior.jpg, which is the one he pointed at on 22 November
+    // and the one the homepage "We build it" card uses. If the copy is to
+    // keep claiming the build is done, this photograph is arguing with it.
+    //
+    // Two thirds of this frame is sky. The source is 1050x1400 and the slot
+    // is 16:11, so cover keeps a 722px band of the 1400 and where that band
+    // sits is the whole question. The rebuild log used 88% on it, but that
+    // was a square thumbnail; at this shape 88% lands on bare red soil with
+    // the steelwork clipped to a strip along the top. 40% was measured
+    // against 0, 15 and 25 and is the one that holds the whole arch, the
+    // man standing on it, and the ground it is going up on.
+    image: '/farm/tunnel-frame.jpg',
+    alt: 'A new tunnel frame standing on the red soil at Mookane, no sheeting on it yet, a man up on the arch',
+    focus: 'center 40%',
     color: 'var(--c-red)',
     deep: 'var(--c-red-deep)',
     soft: 'var(--c-red-soft)',
@@ -280,32 +291,17 @@ const TheJourney = ({ standalone = false }) => {
       </div>
     </section>
 
-    {/* The journey's last stop is "now we build it back". This is that,
-        written down as it goes — so the story does not end on a sentence
-        about the present that will quietly go stale. */}
-    <RebuildLog />
+    {/* Setho's ending: the page stops on 05 and nothing follows it.
 
-    {/* Setho's ending: the line the whole page has been making, and stop.
+        There was a rebuild log here and then a full-bleed band. He liked the
+        log as an idea and still wanted the page to end at the last stop,
+        which is the stronger instinct: the timeline spends five beats
+        earning "And we built it back", and anything after it is the page
+        carrying on talking once it has made its point. Both are in git at
+        de7e764 if they are ever wanted back.
+
         Everything that used to follow has moved — the flow to Goods, the
         family to the Team page, the 2025 montage to the gallery — or gone. */}
-    {/* Back to rows-avenue at Setho's call, and he is right.
-        I swapped it for field-rows.jpg on the arithmetic — the band slot is
-        about 2.9:1 and this frame is 1050x1400, so three quarters of it is
-        cropped away. What the arithmetic missed is that this photograph is
-        composed down a central avenue, so what survives the crop is exactly
-        the subject: the path, the rows either side, the people working them.
-        field-rows.jpg loses nothing to the crop and has nothing to lose — it
-        is two thirds sky over bare stakes, and it is already the photograph
-        on step 01 of this same page, so the band repeated it.
-        Crop maths tells you how much of a frame you keep. It does not tell
-        you whether the part you keep is the part worth having. */}
-    <Band
-      bleed
-      image="/farm/rows-avenue.jpg"
-      alt="Looking down the rows inside a tunnel, three people working"
-      kicker="Mookane Village"
-      line="Open ground, then net, then tunnels. The tomato never changed."
-    />
   </>
   );
 };

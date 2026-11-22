@@ -93,9 +93,9 @@ const WhoWeAre = () => (
           </p>
 
           {/* Three figures in a hairline panel rather than loose in a flex
-              row. It is the same object as the skills chain, the follow
-              channels, the goods strip and the rebuild log — which is what
-              makes the homepage belong to the rest of the site. */}
+              row. It is the same object as the skills chain and the follow
+              channels — which is what makes the homepage belong to the
+              rest of the site. */}
           <div className="who__stats">
             {stats.map((s) => (
               <div key={s.label} className="who__stat">

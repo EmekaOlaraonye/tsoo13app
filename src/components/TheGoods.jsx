@@ -34,8 +34,19 @@ const produce = [
     tagline: 'Look for the number.',
     desc: 'Produced in Botswana, borehole water used for irrigation — it says so on the front. Graded, bagged and packed by hand.',
     badge: 'Hand packed',
-    image: '/farm/goods-on-the-scale.jpg',
-    alt: 'A TSOO...13 bag of tomatoes on the scale, the weight showing',
+    // Setho called this the important frame in the goods folder, and it is:
+    // the full lockup and the number both legible, held up over the crop it
+    // came off. It was on this page inside the strip of four small tiles,
+    // and taking the strip out took it with it — so it comes back as the
+    // photograph for the card that says "Look for the number", which is the
+    // one place on the page it is actually illustrating the words.
+    //
+    // It replaces goods-on-the-scale.jpg, the bag in a blue tray with the
+    // weight showing. That one is the better evidence of the 1.5kg, but the
+    // card's own words are about the number and the printing on the front,
+    // not the weight. The scale frame is still in the gallery.
+    image: '/farm/bag-over-pile.jpg',
+    alt: 'A hand holding up a TSOO...13 bag of tomatoes, the logo and the number on the front, over a pile of loose fruit',
     color: 'var(--c-yellow)',
     chip: 'var(--c-yellow-ink)',
   },
