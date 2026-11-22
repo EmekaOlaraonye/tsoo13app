@@ -13,7 +13,6 @@
      in the hero badges. Both were under 4.5:1 at the old #C0530E. */
   --c-red-deep: #B44E0D;
   --c-red-soft: #FDECDD;
-  --c-red-muted: #E3854F;
   --c-yellow: #FDB71B;
   --c-yellow-ink: #966709;
   --c-yellow-soft: #FFF4DA;
@@ -72,8 +71,17 @@
    element) needs a non-static position to measure offsets reliably. */
 html { scroll-behavior: smooth; position: relative; }
 
+/* Every in-page jump — the skip link, /grows#film, /journey#log — landed its
+   target under the fixed nav, because scrollIntoView({ block: 'start' }) means
+   the top of the viewport and the top of the viewport is behind the bar. One
+   declaration fixes it for the hash router and for a plain anchor alike. */
+[id] { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
 body {
   font-family: var(--font-sans);
+  /* Checkboxes, radios and the focus tick on the contact form, in the brand
+     red rather than the operating system's blue. */
+  accent-color: var(--c-red);
   background: var(--white);
   color: var(--ink);
   line-height: 1.55;
@@ -85,6 +93,53 @@ body {
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* --------------------------------------------------------------------------
+   The tomato cursor
+   --------------------------------------------------------------------------
+   The arrow replaced by the fruit the whole farm is about. Two files, because
+   Safari does not support SVG cursors at all and silently skips to the next
+   url() in the list; the PNG is the same drawing at 24px.
+
+   Scoped to fine pointers so it is never declared on touch, where there is no
+   cursor to replace and the declaration is dead weight.
+
+   What deliberately keeps its own cursor:
+     - links and buttons keep the hand, because replacing the one cursor that
+       tells you a thing is clickable with one that tells you nothing is a
+       real cost to pay for a decoration;
+     - fields keep the I-beam, for the same reason;
+     - the gallery tiles keep zoom-in.
+   Everything else inherits the tomato, including the three places that used
+   to say `cursor: default` to mean "this is not a link" — default would put
+   the OS arrow back in exactly the spots where the page is making a point.
+   -------------------------------------------------------------------------- */
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: url('/cursor-tomato.svg') 3 3, url('/cursor-tomato.png') 3 3, auto;
+  }
+
+  a[href],
+  button,
+  summary,
+  select,
+  [role='button'],
+  label[for] {
+    cursor: pointer;
+  }
+
+  input:not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),
+  textarea,
+  [contenteditable='true'] {
+    cursor: text;
+  }
+
+  :disabled,
+  [aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+}
 
 ::selection { background: var(--c-yellow); color: var(--ink); }
 
@@ -180,6 +235,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     mask: var(--tomato-mask) center / contain no-repeat;
   }
 }
+
+/* Headlines balance across their lines instead of leaving one word stranded
+   on the last; paragraphs get the lighter treatment, which only pulls a word
+   down to avoid an orphan. .band__line already asked for this on its own, and
+   wanting it in two places is the argument for setting it once. */
+.display { text-wrap: balance; }
+.lede, .body, .body-sm, .section-head p { text-wrap: pretty; }
 
 .lede {
   font-size: clamp(1.02rem, 1.5vw, 1.2rem);
@@ -456,7 +518,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 /* A card with nowhere to go: still a card, but it does not pretend to be a
    link. No lift, no zoom, no pointer. */
-.card--static { cursor: default; }
+.card--static { cursor: inherit; }
 .card--static:hover { transform: none; box-shadow: none; border-color: var(--line); }
 .card--static:hover .card__img { transform: none; }
 .card--static:hover .card__wash { opacity: 0; }
@@ -496,7 +558,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .nav__cta.is-here {
   background: var(--c-green);
   box-shadow: none;
-  cursor: default;
+  cursor: inherit;
 }
 .nav__cta.is-here:hover { background: var(--c-green); }
 
@@ -2087,6 +2149,18 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   overflow: hidden;
 }
 
+/* The site-wide focus ring is --c-red, which is 2.2:1 against this green —
+   under the 3:1 that WCAG 2.4.11 asks of a focus indicator, so the one
+   keyboard affordance the footer has was the hardest to see on the page.
+   Yellow on the same ground is 4.15:1. The dark controls elsewhere on the
+   site (.totop, .vid__play, .tl__more) already each reached for yellow for
+   this reason; this is the same decision made once for the whole footer.
+   axe does not test focus-ring contrast, so this one had to be measured
+   rather than caught. */
+.foot :focus-visible {
+  outline-color: var(--c-yellow);
+}
+
 .foot a { transition: color 0.3s; }
 .foot a:hover { color: var(--c-yellow); }
 
@@ -2116,7 +2190,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.26);
   letter-spacing: 0.01em;
   transition: color 0.6s var(--ease), -webkit-text-stroke-color 0.6s var(--ease);
-  cursor: default;
+  cursor: inherit;
 }
 
 .foot__word:hover { color: rgba(255, 255, 255, 0.05); -webkit-text-stroke-color: var(--c-yellow); }
@@ -2726,11 +2800,21 @@ textarea.input { resize: vertical; min-height: 130px; }
    who-we-are, the palest green for the way out, deep green for the foot. */
 .nextup { padding-top: clamp(3.5rem, 7vw, 6rem); background: var(--c-green-soft); }
 
+/* One panel, divided by hairlines — the same object as .chain, .log,
+   .follow__panel, .goods__strip and .who__stats. This was the last place on
+   the site that listed a set of equal things as separate floating cards,
+   which is five borders, five radii and five shadows to say what one surface
+   and four rules say more quietly. The idiom is only an idiom if the
+   exceptions are brought in. */
 .nextup__list {
   margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
 .nextup__row {
@@ -2738,20 +2822,24 @@ textarea.input { resize: vertical; min-height: 130px; }
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 0.9rem;
-  padding: 1.05rem 1.25rem;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  background: var(--white);
-  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease),
-              box-shadow 0.3s var(--ease);
+  padding: 1.15rem 1.35rem;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  transition: background-color 0.3s var(--ease);
 }
 
+.nextup__list > :first-child .nextup__row { border-top: 0; }
+
+/* The row's own colour, at a wash. A flat tint would have to be one colour
+   for all five; mixing from --dot keeps each destination's. */
 .nextup__row:hover,
 .nextup__row:focus-visible {
-  border-color: var(--dot, var(--c-red));
-  transform: translateX(5px);
-  box-shadow: var(--shadow-sm);
+  background: color-mix(in srgb, var(--dot, var(--c-red)) 8%, var(--white));
 }
+
+/* The panel clips, so a ring drawn outside the row is cut off at the top and
+   bottom edges. Drawn inside, it is whole on every row. */
+.nextup__row:focus-visible { outline-offset: -4px; }
 
 .nextup__row > i {
   width: 10px;
@@ -2759,7 +2847,11 @@ textarea.input { resize: vertical; min-height: 130px; }
   border-radius: 50%;
   background: var(--dot, var(--c-red));
   flex: none;
+  transition: transform 0.3s var(--ease);
 }
+
+.nextup__row:hover > i,
+.nextup__row:focus-visible > i { transform: scale(1.4); }
 
 .nextup__label {
   font-family: var(--font-display);

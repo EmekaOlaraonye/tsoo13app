@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
+  <!-- TSOO...13 page cursor. Drawn on a 32 grid, served at 24px: big enough
+       for both colours to register, small enough not to cover the word under
+       it. The white keyline is not decoration — it is what keeps the fruit
+       legible on the dark green footer and on the full-bleed photographs.
+       It is painted as one halo under both fills rather than as a stroke on
+       each shape, otherwise the keyline cuts a white gap across the top of
+       the tomato. Hotspot is the leaf tip at 3 3. -->
+  <g stroke="#FFFFFF" stroke-width="3.1" stroke-linejoin="round" fill="#FFFFFF">
+    <ellipse cx="18.5" cy="21" rx="10.5" ry="9.6"/>
+    <path d="M2.6 2.6 12.4 10.4 17.8 5 21.6 10.4 28 9.6 23.2 14.4 18 15.8 13.4 14.2Z"/>
+  </g>
+  <ellipse cx="18.5" cy="21" rx="10.5" ry="9.6" fill="#E4691F"/>
+  <path d="M2.6 2.6 12.4 10.4 17.8 5 21.6 10.4 28 9.6 23.2 14.4 18 15.8 13.4 14.2Z" fill="#BEC331"/>
+</svg>
