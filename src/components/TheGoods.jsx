@@ -4,7 +4,6 @@ import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import ProcessFlow from './ProcessFlow';
 import Photo from './ui/Photo';
-import Band from './ui/Band';
 
 /**
  * There is one crop here, not four. Every photograph in the set — the
@@ -42,19 +41,6 @@ const produce = [
   },
 ];
 
-/**
- * The rest of the goods folder, start to finish: the tray, the bag, the
- * pile it comes off, and the chiller. The pile frame is the one file in
- * that folder that was already on the site — it is in the gallery as
- * bag-over-pile — so it is reused rather than published twice.
- */
-const strip = [
-  { src: '/farm/goods-seedling-tray.jpg', cap: 'Lifted out of the tray', alt: 'A seedling lifted from a nursery tray' },
-  { src: '/farm/goods-young-bags.jpg', cap: 'One plant, one bag', alt: 'Young tomato plants, each in its own grow bag' },
-  { src: '/farm/bag-over-pile.jpg', cap: 'Straight off the pile', alt: 'A TSOO...13 bag held over a pile of loose tomatoes' },
-  { src: '/farm/goods-shelf-chiller.jpg', cap: 'Faced up in the chiller', alt: 'Bags of tomatoes faced up in a chilled display' },
-];
-
 const ProduceCard = ({ item, index }) => (
   <Reveal delay={(index % 4) * 0.07}>
     <article className="card" style={{ '--card-accent': item.color }}>
@@ -85,14 +71,16 @@ const ProduceCard = ({ item, index }) => (
 );
 
 /**
- * The page ran three photograph grids straight down: two produce cards, then
- * four tiles, then the six-step flow. Same rectangle, three times, and by the
- * third one the eye had stopped reading. The order below varies the width and
- * the count instead — one wide frame, a pair, a strip of small squares, a
- * full-bleed break, then the sequence.
+ * One wide frame, a pair, then the sequence.
+ *
+ * I had a strip of four small tiles and a full-bleed band in between, on the
+ * argument that three photograph grids in a row is one rectangle too many
+ * and the eye stops reading by the third. Setho's answer was better: drop a
+ * grid rather than decorate the run of them. Two blocks do not need a break
+ * between them, and the page now says what the tomato is, what the bag is,
+ * and how it reaches you — with nothing in the gaps.
  */
 const TheGoods = ({ standalone = false }) => (
-  <>
   <section id="goods" className={`section ${standalone ? 'section--top' : ''}`}>
     <Blob color="soft-red" size={420} top={-160} right="-12%" />
     <Blob color="lime" size={18} top="13%" left="58%" />
@@ -158,43 +146,12 @@ const TheGoods = ({ standalone = false }) => (
         ))}
       </div>
 
-      {/* The quietest of the three blocks, on purpose: small squares, caption
-          set underneath in the page's own ink rather than burned white over
-          the picture. Four tall portrait tiles here read as a second set of
-          cards competing with the pair above them. */}
-      <div className="goods__strip">
-        {strip.map((shot, i) => (
-          <Reveal key={shot.src} delay={(i % 4) * 0.06} className="goods__cell">
-            <figure>
-              <div className="goods__shot">
-                <Photo src={shot.src} alt={shot.alt} />
-              </div>
-              <figcaption className="goods__cap">{shot.cap}</figcaption>
-            </figure>
-          </Reveal>
-        ))}
+      {/* Straight to the sequence, and it is the last thing on the page. */}
+      <div style={{ marginTop: 'clamp(3.5rem, 7vw, 6rem)' }}>
+        <ProcessFlow />
       </div>
     </div>
   </section>
-
-  {/* One dark full-width moment between the two halves of the page, so the
-      flow below arrives as a new thought rather than as a fourth grid. */}
-  <Band
-    bleed
-    image="/farm/net-house-rows.jpg"
-    alt="Grower bags being laid out down the rows under the net house, several people working the length of it"
-    kicker="Mookane Village"
-    line="There is a hand on it at every stage."
-  />
-
-  {/* Moved off the journey, which now ends at the log. This is the last
-      thing on the page by Setho's instruction — nothing follows it. */}
-  <section className="section section--paper">
-    <div className="wrap">
-      <ProcessFlow />
-    </div>
-  </section>
-  </>
 );
 
 export default TheGoods;

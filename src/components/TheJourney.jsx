@@ -60,8 +60,15 @@ const steps = [
     line: 'Fully enclosed, and the best this farm has run — rows at full height, fruit the whole way down them.',
     reveal: 'This was the peak. Plants standing in their own grow bags down the length of every house, the crop under cover from planting to picking, the packhouse busy, and TSOO...13 bags leaving Mookane for market every week.',
     tags: ['Full enclosure', 'Peak season'],
-    image: '/farm/fruit-in-bags.jpg',
-    alt: 'Tomato plants heavy with fruit, each standing in its own grow bag down the row',
+    // Back to tunnel-mature, which is the frame 4b94b1b chose on purpose —
+    // "Put the tunnel in the tunnel beat" — and which stood here until I
+    // swapped it for fruit-in-bags in cb7d2e5 without being asked to. The
+    // swap was wrong on the plain reading: this beat is about full
+    // enclosure, and fruit-in-bags is a close-up of fruit and grow bags with
+    // no structure anywhere in it. You cannot illustrate "fully enclosed"
+    // with a photograph that contains no enclosure.
+    image: '/farm/tunnel-mature.jpg',
+    alt: 'Inside a greenhouse tunnel at Mookane, the frame and sheeting overhead and the crop in full canopy the length of the house',
     color: 'var(--c-red)',
     deep: 'var(--c-red-deep)',
     soft: 'var(--c-red-soft)',

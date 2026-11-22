@@ -208,7 +208,6 @@ const frames = [
   // Picked and packed.
   { src: '/farm/harvesting.jpg', caption: 'Picking', shape: 'tall' },
   { kind: 'video', src: '/film/clips/picking-in-the-row.mp4', poster: '/film/clips/picking-in-the-row.jpg', caption: 'Picking in the row', shape: 'tall' },
-  { src: '/farm/sorting-indoors.jpg', caption: 'Sorting under the shed', shape: 'leaf' },
   { src: '/farm/bag-in-hand.jpg', caption: 'The 13 on the bag', shape: 'round' },
   { src: '/farm/bag-over-pile.jpg', caption: 'Straight off the pile', shape: 'blob' },
   { kind: 'video', src: '/film/clips/sealing-the-bags.mp4', poster: '/film/clips/sealing-the-bags.jpg', caption: 'Sealing the bags', shape: 'tall' },

@@ -47,20 +47,20 @@ export const DESTINATIONS = [
     color: 'var(--c-yellow)',
   },
   {
-    to: '/gallery',
-    nav: 'Gallery',
-    label: 'See it in picture',
-    category: 'In the field',
-    desc: 'Every photograph and clip, in the order it happened.',
-    color: 'var(--c-lime)',
-  },
-  {
     to: '/news',
     nav: 'News',
     label: 'Fresh off the vine',
     category: 'Dispatches',
     desc: 'Press, open days and appearances — each one linked to its source.',
     color: 'var(--c-green-lt)',
+  },
+  {
+    to: '/gallery',
+    nav: 'Gallery',
+    label: 'See it in picture',
+    category: 'In the field',
+    desc: 'Every photograph and clip, in the order it happened.',
+    color: 'var(--c-lime)',
   },
 ];
 

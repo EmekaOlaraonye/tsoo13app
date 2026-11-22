@@ -10,11 +10,11 @@ const links = [
   { label: 'Journey', to: '/journey', dot: 'var(--c-lime)' },
   { label: 'Goods', to: '/goods', dot: 'var(--c-red)' },
   { label: 'Team', to: '/team', dot: 'var(--c-yellow)' },
-  // Gallery before News so that the bar, the "Dive deeper" grid and the
-  // foot of the homepage all run in the same order, and all three end on
-  // News — which is where Setho asked the homepage to stop.
-  { label: 'Gallery', to: '/gallery', dot: 'var(--c-red)' },
+  // News before Gallery, on Setho's call. The bar and the "Dive deeper"
+  // grid read from the same order, so changing it here and in routeLabels
+  // moves both together.
   { label: 'News', to: '/news', dot: 'var(--c-green-lt)' },
+  { label: 'Gallery', to: '/gallery', dot: 'var(--c-red)' },
 ];
 
 const sheetLinks = [

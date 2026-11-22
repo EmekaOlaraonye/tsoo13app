@@ -18,7 +18,13 @@ const steps = [
   { n: '03', label: 'Harvest', body: 'Picked by hand, at the moment it is ready.', image: '/farm/harvesting.jpg', alt: 'Picking in the tunnel' },
   { n: '04', label: 'Pack', body: 'Graded, bagged and stamped with the number, not a logo.', image: '/farm/goods-sealing-bag.jpg', alt: 'Hands closing a TSOO...13 bag of tomatoes' },
   { n: '05', label: 'Delivery', body: 'Loaded and driven in ourselves, the same day it is packed.', image: '/farm/goods-loading-crates.jpg', alt: 'Crates of bagged tomatoes being loaded in town' },
-  { n: '06', label: 'Shelf', body: 'Faced up under the number, where someone reaches for it.', image: '/farm/goods-shelf-stocked.jpg', alt: 'Bags of TSOO...13 tomatoes stocked on the shelf' },
+  // Setho: the other shelf frame in the goods folder shows the product
+  // better, and it does. goods-shelf-stocked is a wide aisle shot where the
+  // 13 bags are a small part of the frame, a shopper's back takes up a third
+  // of it, and another brand's packaging and a price label are both legible.
+  // This one is rows of 13 bags filling the frame with the number readable
+  // on them, and it names no shop.
+  { n: '06', label: 'Shelf', body: 'Faced up under the number, where someone reaches for it.', image: '/farm/goods-shelf-chiller.jpg', alt: 'Rows of TSOO...13 bags faced up in a chilled display, the number showing on each' },
 ];
 
 const ProcessFlow = () => (

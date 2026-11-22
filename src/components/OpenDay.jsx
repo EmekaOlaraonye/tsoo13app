@@ -11,6 +11,11 @@ import Photo from './ui/Photo';
  *
  * The poster is the farm's own: 20 November 2021, P1300, Mookane Village,
  * hydroponics and open field on the programme.
+ *
+ * There was a third frame here, a crowd bagging tomatoes under the shed.
+ * Setho took it out: this section is about the day the gate opens to other
+ * growers, and a packing photograph is not that day — it is the packhouse,
+ * which the Goods page already covers end to end.
  */
 const shots = [
   {
@@ -23,11 +28,6 @@ const shots = [
     caption: 'The invitation, November 2021',
     alt: 'Poster reading A Day the TSOO...13 Way, 20/11/2021, Mookane Village, hydroponics and open field',
     whole: true,
-  },
-  {
-    src: '/farm/packing-crowd.jpg',
-    caption: 'Everyone on the bagging at once',
-    alt: 'A crew of people bagging tomatoes into crates together under the shed',
   },
 ];
 

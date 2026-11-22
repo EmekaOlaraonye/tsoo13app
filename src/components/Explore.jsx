@@ -24,7 +24,12 @@ const IMAGES = {
   '/goods': { src: '/farm/bag-over-pile.jpg', alt: '' },
   '/team': { src: '/farm/team-lineup.jpg', alt: '' },
   '/gallery': { src: '/farm/tunnels-sunset.jpg', alt: '' },
-  '/news': { src: '/farm/sorting-indoors.jpg', alt: '' },
+  // Was sorting-indoors.jpg. Taken off the site entirely on 23 November
+  // 2026 — Setho's parents do not want that photograph used anywhere, and
+  // "anywhere" is the whole of it: this card, the gallery, and the file in
+  // public/farm. It is recoverable from git history and from the source
+  // media if it is ever wanted again, and from nowhere a visitor can reach.
+  '/news': { src: '/farm/minister-tour.jpg', alt: '' },
 };
 
 const DestinationCard = ({ item, index }) => (

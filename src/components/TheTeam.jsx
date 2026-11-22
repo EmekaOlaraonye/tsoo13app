@@ -25,7 +25,7 @@ import { Tomato } from './ui/Tomato';
  * photographs in the same upright rectangle with the same white caption
  * burned into the same corner, and by the second block the eye had stopped
  * reading them. The four confirmed faces were scattered among the other
- * sixteen at exactly the same size, which buried the one thing this page has
+ * twelve at exactly the same size, which buried the one thing this page has
  * that almost no other farm's does.
  *
  * Now the named four come out and lead, set larger with their names in the
@@ -33,7 +33,7 @@ import { Tomato } from './ui/Tomato';
  * ground, which is what breaks the page in half — there is no honest
  * full-bleed photograph for a band here, because every team frame in the set
  * is upright and the one wide group shot is a visitors' tour, not the crew.
- * The remaining sixteen close the page as what they are: the archive.
+ * The remaining twelve close the page as what they are: the archive.
  */
 
 /**
@@ -94,31 +94,41 @@ const people = [
 ];
 
 /**
- * The other sixteen from the team folder — the work, rather than the faces.
+ * Twelve from the team folder — the work, rather than the faces.
  *
- * A caption carries a name only where Setho has confirmed that exact
- * photograph; everything else describes what is happening instead. Sixteen
- * divides by two and by four, so the sheet never ends on a ragged row.
+ * Was sixteen. Setho went through the sheet row by row and took out the
+ * near-duplicates: two ladder shots in the same tunnel, two of the crew
+ * working the red soil, two of the same rows of black bags. Keeping both of
+ * a pair does not make the archive fuller, it makes the reader think they
+ * have already seen this one.
+ *
+ * He named three cuts, which would have left thirteen — a sheet four wide
+ * ending on a row of one. The fourth is mine: the Local Enterprise
+ * Authority stand, which is two people at a trade banner and the only frame
+ * here that is not work on the ground. Twelve divides by two, three and
+ * four, so the sheet ends square at every width. Say the word and it goes
+ * back — then the thirteenth should be whichever of the pairs you want
+ * returned, not an orphan row.
+ *
+ * Setho asked for his own name off the crate frame, so that caption now
+ * describes what is happening instead. Leiso's stays on the tractor frame —
+ * that one was not asked about and it is still confirmed.
  *
  * To name one: add `who` to its entry. Nothing else changes.
  */
 const workShots = [
   { src: '/farm/team-thirteen-backs.jpg', cap: 'Thirteen on every back', alt: 'The crew standing together, the number 13 printed on the back of every overall' },
   { src: '/farm/team-outside-tunnel.jpg', cap: 'The crew, outside the tunnel', alt: 'The team gathered outside one of the greenhouse tunnels' },
-  { src: '/farm/team-crate-carry.jpg', who: 'Setho Mokgadi', cap: 'in front, passing the crate', alt: 'Setho Mokgadi in the foreground passing a picking crate to a colleague between the rows' },
+  { src: '/farm/team-crate-carry.jpg', cap: 'Passing the crate', alt: 'Someone in the foreground passing a picking crate to a colleague between the rows' },
   { src: '/farm/team-two-with-bags.jpg', cap: 'Two bags, ready to go', alt: 'Two of the crew holding up bags of tomatoes' },
   { src: '/farm/team-in-the-rows.jpg', cap: 'Down among the plants', alt: 'Crew working low down among the tomato plants' },
   { src: '/farm/team-checking-crop.jpg', cap: 'Checking the crop', alt: 'A member of the crew checking plants along the row' },
   { src: '/farm/team-ladder-pass.jpg', cap: 'Passing it up', alt: 'One person on a ladder taking a tool passed up by another' },
-  { src: '/farm/team-ladder-work.jpg', cap: 'Up the ladder, under the roof', alt: 'Working high up under the tunnel roof from a ladder' },
-  { src: '/farm/team-laying-beds.jpg', cap: 'Setting out the beds', alt: 'The crew shaping and setting out beds in the red soil' },
   { src: '/farm/team-setting-posts.jpg', cap: 'Setting the posts', alt: 'The crew setting a post and running a line along a new bed' },
   { src: '/farm/team-planting-out.jpg', cap: 'Planting out, bag by bag', alt: 'Planting out along a long row of grow bags' },
   { src: '/farm/team-tractor-thirteen.jpg', who: 'Leiso Mokgadi', cap: 'climbing up, thirteen on the back', alt: 'Leiso Mokgadi climbing onto the tractor, the number 13 on the back of the overall' },
-  { src: '/farm/team-nursery-rows.jpg', cap: 'Working the nursery', alt: 'Working among rows of black grow bags under cover' },
   { src: '/farm/team-bag-rows.jpg', cap: 'Down the rows of bags', alt: 'Bending to the plants down a long row of grow bags' },
   { src: '/farm/team-tunnel-length.jpg', cap: 'The length of the tunnel', alt: 'Two people working at the far end of a planted tunnel' },
-  { src: '/farm/team-lea-stand.jpg', cap: 'At the Local Enterprise Authority stand', alt: 'Two people talking in front of a Local Enterprise Authority banner' },
 ];
 
 const TheTeam = () => (
