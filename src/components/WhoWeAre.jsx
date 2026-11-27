@@ -4,6 +4,7 @@ import { Blob } from './ui/Blobs';
 import { Tomato } from './ui/Tomato';
 import { Arrow } from './ui/Icons';
 import Photo from './ui/Photo';
+import CountUp from './ui/CountUp';
 
 const pillars = [
   {
@@ -99,7 +100,9 @@ const WhoWeAre = () => (
           <div className="who__stats">
             {stats.map((s) => (
               <div key={s.label} className="who__stat">
-                <p className="stat__num" style={{ color: s.color }}>{s.num}</p>
+                <p className="stat__num" style={{ color: s.color }}>
+                  <CountUp value={s.num} />
+                </p>
                 <p className="stat__label">{s.label}</p>
               </div>
             ))}

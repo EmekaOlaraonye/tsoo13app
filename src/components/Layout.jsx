@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import RipenRail from './ui/RipenRail';
 import ToTop from './ui/ToTop';
 
 /**
@@ -76,6 +77,10 @@ const Layout = () => {
       {/* First stop for anyone on a keyboard: hidden until focused. */}
       <a href="#main" className="skip">Skip to the content</a>
       <Navbar />
+      {/* Sits on the nav's bottom edge and fills green-to-red as you read.
+          Outside <main> on purpose: it belongs to the window, not the page,
+          and it must not be replaced when the route changes under it. */}
+      <RipenRail />
       <motion.main
         id="main"
         key={pathname}

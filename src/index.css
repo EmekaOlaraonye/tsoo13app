@@ -2998,3 +2998,90 @@ textarea.input { resize: vertical; min-height: 130px; }
 @media (prefers-reduced-motion: reduce) {
   .team__face img { transition: none; }
 }
+
+/* ==========================================================================
+   Ripening
+   --------------------------------------------------------------------------
+   The site has one motion idea and this is it: things on this page come to
+   ripeness as you reach them. A tomato farm earns that metaphor in a way no
+   generic fade-up does, and holding every effect to a single idea is the
+   difference between a site with a personality and a site with a plugin.
+
+   Three of the four pieces live here and all three are scroll-driven CSS —
+   animation-timeline, no JavaScript, no scroll listeners, nothing running on
+   the main thread. They are also all decoration, so each one is wrapped in
+   @supports and simply does not happen on a browser that has not shipped it
+   yet. Nothing moves out of place, nothing is missing, the page is just
+   quieter. The fourth, the rail, is the one reading cue in the set, so that
+   one is done in JS where it works everywhere. See RipenRail.jsx.
+
+   Everything here is inside prefers-reduced-motion: no-preference. The
+   global reduce block further up neutralises animation-duration, which is
+   not enough on its own for a scroll-driven animation — its progress comes
+   from the timeline, not from a clock — so these have to be withheld rather
+   than shortened.
+   ========================================================================== */
+
+/* The rail itself. Sits on the nav's bottom edge, so once the bar goes solid
+   it reads as the nav's own underline rather than a floating stripe. The
+   gradient is the whole point and it is never stretched: RipenRail clips it
+   from the right, so the leading edge is green at the top of a page and red
+   at the foot of it. */
+.ripen {
+  position: fixed;
+  top: calc(var(--nav-h) - 1px);
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 214;
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0);
+  background: linear-gradient(
+    90deg,
+    var(--c-green) 0%,
+    var(--c-green-lt) 20%,
+    var(--c-lime) 44%,
+    var(--c-yellow) 70%,
+    var(--c-red) 100%
+  );
+}
+
+/* The full-bleed bands drift as they pass. The scale is what buys the room
+   to move in: at 1.14 there is 7% of overspill top and bottom, and the drift
+   only uses 3.5% of it, so no edge can ever show. */
+@keyframes band-drift {
+  from { transform: scale(1.14) translateY(3.5%); }
+  to   { transform: scale(1.14) translateY(-3.5%); }
+}
+
+/* The eyebrow marker is already the brand's tomato rather than a bullet.
+   Here it does what a tomato does: comes in small and unripe, and is its
+   section's colour by the time you are reading the heading under it. */
+@keyframes eyebrow-ripen {
+  from { background-color: var(--c-lime); transform: scale(0.68); }
+  to   { background-color: var(--eyebrow-dot, var(--c-red)); transform: scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .band__img {
+      animation: band-drift linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+      will-change: transform;
+    }
+
+    .eyebrow::before {
+      animation: eyebrow-ripen linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 12%;
+    }
+
+    /* There is deliberately no scroll-driven effect on the photographs.
+       Every frame worth animating already owns `transform` for its hover
+       zoom — .tl__media img, .team__face img, .card__img — and an animation
+       beats a transition on the same property, so adding one here would
+       silently kill the hover everywhere. The bands drift because they are
+       the only photographs with nothing on hover to lose. */
+  }
+}
