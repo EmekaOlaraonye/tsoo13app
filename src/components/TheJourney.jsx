@@ -86,30 +86,37 @@ const steps = [
   },
   {
     id: 'rebuild',
-    // Rewritten 22 November 2026, when Setho said the build is finished.
-    // This beat was written in the present tense — "the whole of the work,
-    // right now", "nothing to pick, pack or sell right now" — which is the
-    // kind of copy that quietly turns into a lie the moment the thing it
-    // describes is over. It stops at the build being done: the houses are up
-    // and skinned. It does not say the farm is selling again, because nobody
-    // has told me that and the photograph cannot.
+    // Setho, 27 November: keep the photograph, change the words to match.
+    //
+    // The clash was specific. The photograph is a bare steel frame with no
+    // sheeting on it, and beside it stood "houses re-skinned", "The houses
+    // are standing again", and a chip reading FINISHED. Three claims the
+    // picture flatly does not support.
+    //
+    // So the parts that sit next to the photograph now describe what is in
+    // it: steel going back up, one house at a time. The build being finished
+    // is still on this page — it is the last line of the chapter below, and
+    // the page's lede says the journey runs "to the houses standing again".
+    // That was his 22 November instruction and it is kept. What changed is
+    // that the finished claim no longer sits shoulder to shoulder with a
+    // photograph of the work half done.
+    //
+    // Still not said anywhere: that the farm is selling again. Nobody has
+    // told me that, and this photograph could not show it if they had.
     stage: 'Rebuilt',
     year: '05',
     title: 'And we\nbuilt it back.',
-    line: 'Frames back up, houses re-skinned, bags relaid. The houses are standing again.',
-    reveal: 'Everything learned out in the open field, under the net and inside the tunnels went into what got built this time. The frames are up, the houses are re-skinned and the bags are back down the rows. The build is finished.',
-    tags: ['The rebuild', 'Finished'],
+    line: 'Steel back up out of the ground, one house at a time, on the same soil the storm cleared.',
+    reveal: 'Everything learned out in the open field, under the net and inside the tunnels went into what got built this time. Steel first, then the skin, then the bags back down the rows — one house, then the next, then the next. They are all standing again now. The build is finished.',
+    tags: ['The rebuild', 'Steel first'],
     // Back to tunnel-frame, the photograph that stood on this beat from
     // cfd7ebb until I replaced it on 22 November. Setho: "I liked the
     // initial photo, that's why I didn't complain about it."
     //
-    // Worth knowing, because it is a real tension and his call either way:
-    // this frame is a bare steel skeleton on red soil with no sheeting on
-    // it, and the words beside it now say the houses are standing again and
-    // the build is finished. The photograph that shows that is
-    // tunnels-exterior.jpg, which is the one he pointed at on 22 November
-    // and the one the homepage "We build it" card uses. If the copy is to
-    // keep claiming the build is done, this photograph is arguing with it.
+    // It stays, and the copy above was rewritten around it rather than the
+    // other way about. tunnels-exterior.jpg is the photograph of the
+    // finished build and it is still on the site — it is the homepage
+    // "We build it" card.
     //
     // Two thirds of this frame is sky. The source is 1050x1400 and the slot
     // is 16:11, so cover keeps a 722px band of the 1400 and where that band
